@@ -3,8 +3,8 @@
 const bcrypt = require('bcrypt-nodejs')
 const Sequelize = require('sequelize')
 const db = require('APP/db')
-const addressModel = db.model('addresses');
-const creditCardModel = db.model('creditCards');
+// const addressModel = db.model('addresses');
+// const creditCardModel = db.model('creditCards');
 
 const User = db.define('users', {
 	first_name: { type: Sequelize.STRING,	allowNull: false },
@@ -45,12 +45,12 @@ const User = db.define('users', {
 			return User.findOne({
 				where: {
 					id: userId
-				},
-				include: [
-				{ model: addressModel, as: 'shipping_address', required: false },
-				{ model: addressModel, as: 'billing_address', required: false },
-				{ model: creditCardModel, required: false }
-				]
+				}
+				// include: [
+				// { model: addressModel, as: 'shipping_address', required: false },
+				// { model: addressModel, as: 'billing_address', required: false },
+				// { model: creditCardModel, required: false }
+				// ]
 			})
 		}
 	}

@@ -4,55 +4,27 @@
 // so any other part of the application could call sequelize.model('User')
 // to get access to the User model.
 
-const Address = require('./address');
-const CartProduct = require('./cartProduct');
-const CreditCard = require('./creditCard');
-const LineItem = require('./lineItem');
-const Order = require('./order');
-const Review = require('./review');
-const Product = require('./product');
+const Topic = require('./topic');
+const Lesson = require('./lesson');
+const Slide = require('./slide');
+const Quiz = require('./quiz');
+const Question = require('./question');
 const User = require('./user');
 
 
 // Associations decided on the first day
-// UserAdresses
-User.belongsTo(Address, {as: 'shipping_address'});
-User.belongsTo(Address, {as: 'billing_address'});
 
-// UserCreditCards
-CreditCard.belongsTo(User);
-User.hasOne(CreditCard);
+//
+Topic.hasMany(Lesson);
+Lesson.belongsTo(Topic);
 
-// UserOrders
-Order.belongsTo(User);
-User.hasMany(Order);
+Lesson.hasMany(Slide);
+Slide.belongsTo(Lesson);
 
-// OrderLineItems
-LineItem.belongsTo(Order);
-Order.hasMany(LineItem);
+Lesson.hasOne(Quiz);
+Quiz.belongsTo(Lesson);
 
-// other associations we need
-// OrderAdresses
-Order.belongsTo(Address, {as: 'shipping_address'});
-Order.belongsTo(Address, {as: 'billing_address'});
+Quiz.hasMany(Question);
+Question.belongsTo(Quiz);
 
-// OrderCreditcards
-Order.belongsTo(CreditCard);
-CreditCard.hasOne(Order);
-
-// LineItemsProduct
-LineItem.belongsTo(Product);
-Product.hasMany(LineItem);
-
-// ReviewsProducts
-Review.belongsTo(Product);
-Product.hasMany(Review);
-
-// UsersReviews
-Review.belongsTo(User);
-User.hasMany(Review);
-
-// CartProducts
-CartProduct.belongsTo(Product);
-
-module.exports = {User, Product, Review, Order, LineItem, Address, CreditCard, CartProduct};
+module.exports = {User, Topic, Lesson, Slide, Quiz, Question};
