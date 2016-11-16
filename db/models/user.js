@@ -43,6 +43,12 @@ const User = db.define('users', {
 			return User.findOne({
 				where: {
 					id: userId
+				}
+				// include: [
+				// { model: addressModel, as: 'shipping_address', required: false },
+				// { model: addressModel, as: 'billing_address', required: false },
+				// { model: creditCardModel, required: false }
+				// ]
 				},
 				include: []
 			})

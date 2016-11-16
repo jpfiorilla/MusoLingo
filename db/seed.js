@@ -1,5 +1,6 @@
 const db = require('APP/db');
 
+/*
 const productsList = [{name: "Felix Living Room Set", price: "1545.00", description: "-Essential living room set delivered to your door\n-Boxes fit through standard doorways, stairs, and elevators\n-No tools required for assembly", quantity: 10, type: "sofa", category: "livingroom", images: ["//cdn.shopify.com/s/files/1/0338/3945/products/living-room-main_e7562283-acc4-4e1f-83ab-693b13e0b33d_large.jpg?v=1478447772"]},
 {name: "Felix Sectional", price: "1015.00", description: "-Memory foam in seat evenly distributes body weight\n-Polyurethane foam in seat adds support and durability\n-Fiber fill foam in pillows is soft and fluffy\n-No tools required for assembly\n-Machine washable slipcovers", quantity: 5, type: "sofa", category: "livingroom", images: ["//cdn.shopify.com/s/files/1/0338/3945/products/sectional-main_large.jpg?v=1478289506"]},
 {name: "Felix Sofa", price: "645.00", description: "-Memory foam in seat evenly distributes body weight\n-Polyurethane foam in seat adds support and durability\n-Fiber fill foam in pillows is soft and fluffy\n-No tools required for assembly\n-Machine washable slipcovers", quantity: 5, type: "sofa", category: "livingroom", images: ["//cdn.shopify.com/s/files/1/0338/3945/products/Product_Sofa_large.jpg?v=1478446431"]},
@@ -152,18 +153,18 @@ const lineItemsList =
 {"quantity":2,"price":175.00,"order_id":10,"product_id":6}
 ]
 
-	// table that associates
-	// 'db model': array of random objects
-const	tables = {
-		'addresses': addressesList,
-		'cartProducts': cartProductsList,
-		'creditCards': creditCardList,
-		'lineItems': lineItemsList,
-		'orders': ordersList,
-		'products': productsList,
-		'reviews': reviewList,
-		'users': userList
-	}
+// table that associates
+// 'db model': array of random objects
+const tables = {
+	'addresses': addressesList,
+	'cartProducts': cartProductsList,
+	'creditCards': creditCardList,
+	'lineItems': lineItemsList,
+	'orders': ordersList,
+	'products': productsList,
+	'reviews': reviewList,
+	'users': userList
+}
 
 // helper function for create data to tatabase
 const seedFunc = function(dbName) {
@@ -194,3 +195,4 @@ db.didSync
 	.then(() => console.log(`Seeded OK`))
 	.catch(error => console.error(error))
 	.finally(() => db.close())
+*/

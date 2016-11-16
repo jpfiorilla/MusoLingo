@@ -4,9 +4,24 @@
 // so any other part of the application could call sequelize.model('User')
 // to get access to the User model.
 
+const Topic = require('./topic');
+const Lesson = require('./lesson');
+const Slide = require('./slide');
+const Quiz = require('./quiz');
+const Question = require('./question');
 const User = require('./user');
 
-// Associations decided on the first day
-// UserAdresses
+//
+Topic.hasMany(Lesson);
+Lesson.belongsTo(Topic);
 
-module.exports = {User};
+Lesson.hasMany(Slide);
+Slide.belongsTo(Lesson);
+
+Lesson.hasOne(Quiz);
+Quiz.belongsTo(Lesson);
+
+Quiz.hasMany(Question);
+Question.belongsTo(Quiz);
+
+module.exports = {User, Topic, Lesson, Slide, Quiz, Question};
