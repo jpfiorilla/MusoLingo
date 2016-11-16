@@ -1,0 +1,123 @@
+body,html {
+  width : 100%;
+  height: 100%;
+  margin: 0 auto;
+  color: black;
+}
+
+#app, #main {
+  width: inherit;
+  height: inherit;
+}
+
+.content {
+  min-height: calc(100vh - 55px);
+  padding-top: 5.6em;
+}
+
+/* Nav bar */
+
+#navbar {
+  position: fixed;
+  z-index: 2;
+  width: inherit;
+}
+
+#navbar a {
+  text-decoration: none;
+}
+
+.navbar-item, .navbar-item > a {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item + .navbar-item::before {
+  content: '|';
+  font-size: 28px;
+  color: white;
+}
+
+/* navbar icons */
+.navbar-item button > div > span:hover {
+  color: #00b6ce !important;
+}
+
+/* navbar icons */
+.navbar-item > a > span {
+  padding: 0 16px;
+}
+
+/* Product Search */
+
+.product-results {
+  padding-top: 1em;
+  text-align: center;
+}
+
+.thumbnail {
+  display: inline-block;
+}
+
+/* Review List */
+/* Note: Change star font-size */
+
+#reviews {
+  padding-top: 20px;
+}
+
+.reviews-header * {
+  display: inline;
+}
+
+.reviews-rating {
+  float: right;
+  font-size: 30px;
+}
+
+.review > p {
+  margin: 0;
+}
+
+.add-review-error {
+  display: flex;
+  color: red;
+  font-weight: bold;
+}
+
+.stars {
+  display: inline;
+}
+
+.star-press:hover {
+  cursor: pointer;
+}
+
+.star-static:hover {
+  cursor: default;
+}
+
+/* Checkout */
+
+.form-box {
+  border: 1px solid #edd5ed;
+  padding: 0 15px 15px;
+  margin-bottom: 20px;
+}
+
+/* Always set the width of the legend inline */
+.form-box > legend {
+  border: none;
+  margin: 0;
+  padding-left: 15px;
+  color: rgba(0, 0, 0, 0.498039);
+  font-size: 1.4em;
+}
+
+/* Log In */
+.error-message {
+  color: red;
+}
+
+
+  
