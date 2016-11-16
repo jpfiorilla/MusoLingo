@@ -100,7 +100,7 @@ const creditCardList=
 {"number":"4111111111111111","expiry_date":"05/2018","security_code":529,"card_type":"visa","user_id":11}
 ]
 
-const cartProductsList= 
+const cartProductsList=
 [
 {"sessionId":"Pd749UrmWN","quantity":2, "product_id":1},
 {"sessionId":"$ZIESjH$NnuD(Ke","quantity":1, "product_id":2},
@@ -114,7 +114,7 @@ const cartProductsList=
 {"sessionId":"POLlH)mvUR","quantity":2, "product_id":10}
 ]
 
-const ordersList = 
+const ordersList =
 [
 {"confirmation_number":"OoiAooNLyWk*XV*C@eQ!","status":"processing","order_date":"2016-11-08T22:15:51.591Z","user_id":1,"shipping_address_id":1,"billing_address_id":1,"credit_card_id":1},
 {"confirmation_number":"09RVAisgseuGm","status":"completed","order_date":"2016-11-08T22:15:51.591Z","user_id":2,"shipping_address_id":2,"billing_address_id":2,"credit_card_id":2},
@@ -128,7 +128,7 @@ const ordersList =
 {"confirmation_number":"3IJ)wQZ*zOo39df4osj","status":"processing","order_date":"2016-11-08T22:15:51.591Z","user_id":10,"shipping_address_id":10,"billing_address_id":10,"credit_card_id":10}
 ]
 
-const lineItemsList = 
+const lineItemsList =
 [
 {"quantity":1,"price":1545.00,"order_id":1,"product_id":1},
 {"quantity":2,"price":1015.00,"order_id":2,"product_id":2},
@@ -192,5 +192,5 @@ db.didSync
 	.then(seedCartProducts)
 	.then(seedLineItmes)
 	.then(() => console.log(`Seeded OK`))
-	.catch(error => console.error(error))    
+	.catch(error => console.error(error))
 	.finally(() => db.close())
