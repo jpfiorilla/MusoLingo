@@ -2,17 +2,55 @@ const db = require('APP/db');
 const router = require('express').Router();
 module.exports = router;
 
-// NOTE: '/api/lessons/...'
+// NOTE: all routes are prepended with: '/api/lessons/...'
+
 const lessons = db.model('lessons');
 
-// NOTE: Get all lessons for a specific topic id.
+// NOTE: Get all lessons for a level.
+router.get('/level/:level', (req, res, next) => {
+  lessons.findAll({
+    where: {
+      level: req.params.level
+    }
+  })
+  .then(resp => {
+    if (! resp) res.send(404);
+    else res.json(resp.dataValues);
+  })
+  .catch(err => {
+    console.error(err);
+    console.log('Error in /level/:level get');
+  });
+});
+
+// NOTE: Get all lessons for a topic id.
 router.get('/topic/:id', (req, res, next) => {
   lessons.findAll({
     where: {
       topic_id: req.params.id
     }
   })
-  .then(resp => res.json(resp.dataValues))
+  .then(resp => {
+    if (! resp) res.send(404);
+    else res.json(resp.dataValues)
+  })
+  .catch(err => {
+    console.error(err);
+    console.log('Error in /api/lessons/:id');
+  });
+});
+
+// NOTE: Get a lesson by title.
+router.get('/:title', (req, res, next) => {
+  lessons.findOne({
+    where: {
+      title: req.params.title
+    }
+  })
+  .then(resp => {
+    if (! resp) res.send(404);
+    else res.json(resp.dataValues)
+  })
   .catch(err => {
     console.error(err);
     console.log('Error in /api/lessons/:id');
@@ -26,10 +64,27 @@ router.get('/:id', (req, res, next) => {
       id: req.params.id
     }
   })
-  .then(resp => res.json(resp.dataValues))
+  .then(resp => {
+    if (! resp) res.send(404);
+    else res.json(resp.dataValues)
+  })
   .catch(err => {
     console.error(err);
     console.log('Error in /api/lessons/:id');
+  });
+});
+
+// NOTE: Get all lessons from the table.
+router.get('/' , (req, res, next) => {
+  lessons.findAll()
+  .then(resp => {
+    // IDEA: Just send back the dataValues.
+    if (! resp) res.send(404);
+    else res.json(resp.dataValues);
+  })
+  .catch(err => {
+    console.error(err);
+    console.log('Error in /api/lessons/ get');
   });
 });
 
@@ -44,22 +99,5 @@ router.post('/', (req, res, next) => {
   .catch(err => {
     console.error(err);
     console.log('Error in /api/lessons post');
-  });
-});
-
-// NOTE: This route gets all the lessons from the lessons table.
-router.get('/' , (req, res, next) => {
-  lessons.findAll()
-  .then(resp => {
-    // NOTE: Just send back the dataValues.
-    if (! resp) {
-      res.send(404);
-    } else {
-      res.json(resp.dataValues);
-    }
-  })
-  .catch(err => {
-    console.error(err);
-    console.log('Error in /api/lessons/ get');
   });
 });
