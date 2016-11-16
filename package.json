@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jakepeyser/JustHome.git"
+    "url": "git+https://github.com/jpfiorilla/MusoLingo"
   },
   "keywords": [
     "react",
@@ -29,9 +29,9 @@
     "furniture"
   ],
   "bugs": {
-    "url": "https://github.com/jakepeyser/JustHome/issues"
+    "url": "https://github.com/jpfiorilla/MusoLingo/issues"
   },
-  "homepage": "https://github.com/jakepeyser/JustHome#readme",
+  "homepage": "https://github.com/jpfiorilla/MusoLingo#readme",
   "dependencies": {
     "axios": "^0.15.2",
     "bcrypt-nodejs": "^0.0.3",
