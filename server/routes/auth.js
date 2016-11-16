@@ -35,7 +35,7 @@ router.post('/login', (req, res, next) => {
         error.status = 401;
         return next(error)
       }
-      
+
       // Check if input password matches
       return user.authenticate(req.body.password)
         .then(valid => {
@@ -46,7 +46,7 @@ router.post('/login', (req, res, next) => {
           }
 
           req.session.userId = user.id;
-          return userModel.getUserAccount(user.id) 
+          return userModel.getUserAccount(user.id)
         })
         .then(userAccount => res.send(userAccount))
     })

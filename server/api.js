@@ -8,6 +8,7 @@ api.use('/auth', require('./auth'));
 
 api.use('/users', require('./routes/users'));
 api.use('/auth', require('./routes/auth'));
+api.use('/lessons', require('./routes/lessons'));
 
 // Send along any errors
 api.use((err, req, res, next) => {
