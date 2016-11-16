@@ -9,7 +9,7 @@ api.use('/auth', require('./auth'));
 api.use('/users', require('./routes/users'));
 api.use('/auth', require('./routes/auth'));
 api.use('/lessons', require('./routes/lessons'));
-api.use('/questions', require('./routes/questions'));
+// api.use('/questions', require('./routes/questions'));
 api.use('/quiz', require('./routes/quiz'));
 
 // Send along any errors
