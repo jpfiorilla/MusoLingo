@@ -32,10 +32,10 @@ const User = db.define('users', {
 	instanceMethods: {
 		authenticate(plaintext) {
 			return new Promise((resolve, reject) =>
-				bcrypt.compare(plaintext, this.password_digest,
-					(err, result) =>
-						err ? reject(err) : resolve(result))
-				)
+			bcrypt.compare(plaintext, this.password_digest,
+				(err, result) =>
+				err ? reject(err) : resolve(result))
+			)
 		}
 	},
 	classMethods: {
@@ -44,13 +44,6 @@ const User = db.define('users', {
 				where: {
 					id: userId
 				}
-				// include: [
-				// { model: addressModel, as: 'shipping_address', required: false },
-				// { model: addressModel, as: 'billing_address', required: false },
-				// { model: creditCardModel, required: false }
-				// ]
-				},
-				include: []
 			})
 		}
 	}
@@ -61,12 +54,12 @@ function setEmailAndPassword(user) {
 	if (!user.password) return Promise.resolve(user)
 
 	return new Promise((resolve, reject) =>
-		bcrypt.hash(user.get('password'), null, null, (err, hash) => {
-			if (err) reject(err)
-			user.set('password_digest', hash)
-			resolve(user)
-		})
-	)
+	bcrypt.hash(user.get('password'), null, null, (err, hash) => {
+		if (err) reject(err)
+		user.set('password_digest', hash)
+		resolve(user)
+	})
+)
 }
 
 module.exports = User

@@ -11,7 +11,7 @@ const Question = db.define('questions', {
         allowNull: false
     },
     rightchoice: Sequelize.TEXT,
-    wrongchoices: Sequelize.ARRAY,
+    wrongchoices: Sequelize.ARRAY(Sequelize.TEXT),
     explanation: Sequelize.TEXT,
     hints: Sequelize.ARRAY(Sequelize.TEXT),
     points: Sequelize.INTEGER
