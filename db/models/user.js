@@ -3,13 +3,11 @@
 const bcrypt = require('bcrypt-nodejs')
 const Sequelize = require('sequelize')
 const db = require('APP/db')
-const addressModel = db.model('addresses');
-const creditCardModel = db.model('creditCards');
 
 const User = db.define('users', {
 	first_name: { type: Sequelize.STRING,	allowNull: false },
 	last_name: { type: Sequelize.STRING,	allowNull: false },
-	email: { 
+	email: {
 		type: Sequelize.STRING,
 		allowNull: false,
 		unique: true,
@@ -38,7 +36,7 @@ const User = db.define('users', {
 					(err, result) =>
 						err ? reject(err) : resolve(result))
 				)
-		}    
+		}
 	},
 	classMethods: {
 		getUserAccount(userId) {
@@ -46,11 +44,7 @@ const User = db.define('users', {
 				where: {
 					id: userId
 				},
-				include: [
-				{ model: addressModel, as: 'shipping_address', required: false },
-				{ model: addressModel, as: 'billing_address', required: false },
-				{ model: creditCardModel, required: false }
-				]
+				include: []
 			})
 		}
 	}
