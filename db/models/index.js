@@ -11,9 +11,6 @@ const Quiz = require('./quiz');
 const Question = require('./question');
 const User = require('./user');
 
-
-// Associations decided on the first day
-
 //
 Topic.hasMany(Lesson);
 Lesson.belongsTo(Topic);
