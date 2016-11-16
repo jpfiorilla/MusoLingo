@@ -37,7 +37,10 @@ router.get('/:id', (req, res, next) => {
 router.post('/', (req, res, next) => {
   const newLesson = req.body.lesson;
   lessons.create(newLesson)
-  .then(resp => res.json(resp))
+  .then(resp => {
+    if (! resp) res.send(404);
+    else res.json(resp);
+  })
   .catch(err => {
     console.error(err);
     console.log('Error in /api/lessons post');
