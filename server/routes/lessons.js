@@ -4,88 +4,31 @@ module.exports = router;
 
 // NOTE: all routes are prepended with: '/api/lessons/...'
 
-const lessons = db.model('lessons');
+const Lessons = db.model('lessons');
+
+// NOTE: Get all lessons from the table.
+router.get('/' , (req, res, next) => {
+  return findAllInLessons(res);
+});
 
 // NOTE: Get all lessons for a level.
 router.get('/level/:level', (req, res, next) => {
-  lessons.findAll({
-    where: {
-      level: req.params.level
-    }
-  })
-  .then(resp => {
-    if (! resp) res.send(404);
-    else res.json(resp.dataValues);
-  })
-  .catch(err => {
-    console.error(err);
-    console.log('Error in /level/:level get');
-  });
+  return findAllInLessons(res, 'level', req.params.level);
 });
 
 // NOTE: Get all lessons for a topic id.
-router.get('/topic/:id', (req, res, next) => {
-  lessons.findAll({
-    where: {
-      topic_id: req.params.id
-    }
-  })
-  .then(resp => {
-    if (! resp) res.send(404);
-    else res.json(resp.dataValues)
-  })
-  .catch(err => {
-    console.error(err);
-    console.log('Error in /api/lessons/:id');
-  });
+router.get('/topic/:topic_id', (req, res, next) => {
+  return findAllInLessons(res, 'topic_id', req.params.topic_id);
 });
 
 // NOTE: Get a lesson by title.
 router.get('/:title', (req, res, next) => {
-  lessons.findOne({
-    where: {
-      title: req.params.title
-    }
-  })
-  .then(resp => {
-    if (! resp) res.send(404);
-    else res.json(resp.dataValues)
-  })
-  .catch(err => {
-    console.error(err);
-    console.log('Error in /api/lessons/:id');
-  });
+  return findOneInLessons(res, 'title', req.params.title);
 });
 
 // NOTE: Get a lesson by id.
 router.get('/:id', (req, res, next) => {
-  lessons.findOne({
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(resp => {
-    if (! resp) res.send(404);
-    else res.json(resp.dataValues)
-  })
-  .catch(err => {
-    console.error(err);
-    console.log('Error in /api/lessons/:id');
-  });
-});
-
-// NOTE: Get all lessons from the table.
-router.get('/' , (req, res, next) => {
-  lessons.findAll()
-  .then(resp => {
-    // IDEA: Just send back the dataValues.
-    if (! resp) res.send(404);
-    else res.json(resp.dataValues);
-  })
-  .catch(err => {
-    console.error(err);
-    console.log('Error in /api/lessons/ get');
-  });
+  return findOneInLessons(res, 'id', req.params.id);
 });
 
 // NOTE: Add a lesson to the lessons table.
@@ -101,3 +44,49 @@ router.post('/', (req, res, next) => {
     console.log('Error in /api/lessons post');
   });
 });
+function findOneInLessons(res, attribute, match) {
+  // NOTE: res is the server response.
+  // NOTE: attribute is the table attribute we are querying.
+    // It could be undefined if we want to get everything from the table.
+  // NOTE: match is the criteria for that attribute.
+
+  // For Example: {title: "Intro to rythm"}
+    // attribute = 'title'; match = "Intro to rythm";
+
+  var x = {};
+  if (attribute) {
+    x.where[attribute] = match;
+  }
+  return Lessons.findOne(x)
+  .then(resp => {
+    if (! resp) res.send(404);
+    else res.json(resp);
+  })
+  .catch(err => {
+    console.error(err);
+    console.log('Error in findOneInLessons');
+  });
+}
+function findAllInLessons(res, attribute, match) {
+  // NOTE: res is the server response.
+  // NOTE: attribute is the table attribute we are querying.
+    // It could be undefined if we want to get everything from the table.
+  // NOTE: match is the criteria for that attribute.
+
+  // For Example: {title: "Intro to rythm"}
+    // attribute = 'title'; match = "Intro to rythm";
+
+  var x = {};
+  if (attribute) {
+    x.where[attribute] = match;
+  }
+  return Lessons.findAll(x)
+  .then(resp => {
+    if (! resp) res.send(404);
+    else res.json(resp);
+  })
+  .catch(err => {
+    console.error(err);
+    console.log('Error in findAllInLessons');
+  });
+}
