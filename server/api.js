@@ -12,6 +12,7 @@ api.use('/lessons', require('./routes/lessons'));
 api.use('/questions', require('./routes/questions'));
 api.use('/quiz', require('./routes/quiz'));
 api.use('/slides', require('./routes/slides'));
+api.use('/topics', require('./routes/topics'));
 
 // Send along any errors
 api.use((err, req, res, next) => {
