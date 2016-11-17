@@ -35,6 +35,9 @@ export default class RandomTrebleNote extends Component {
         // Connect it to the rendering context and draw!
         stave.setContext(context).draw();
 
+        // if getNoteName(note)[1] ===
+
+
         if (getNoteName(note)[1]){
         var notes = [
             new VF.StaveNote({clef: "treble", keys: [note], duration: "w" }).addAccidental(0, new VF.Accidental(getNoteName(note)[1]))
