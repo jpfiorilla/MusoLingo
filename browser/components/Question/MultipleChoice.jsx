@@ -2,6 +2,8 @@ import React from 'react';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
+import RandomTrebleNote from '../vexflow/randomtreblenote';
+import  Vex from 'vexflow';
 
 const styles = {
   block: {
@@ -14,6 +16,7 @@ const styles = {
 
 const RadioButtonExampleSimple = () => (
   <div>
+    <RandomTrebleNote />
     {/* MULTIPLE CHOICE BUTTONS */}
     <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
       <RadioButton
