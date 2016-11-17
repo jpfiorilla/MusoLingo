@@ -17,7 +17,7 @@ const dialogStyle = {
 }
 
 const dividerStyle = {
-	"backgroundColor": "rgb(147, 147, 147)"
+	backgroundColor: "rgb(147, 147, 147)"
 }
 
 export default class Login extends React.Component {
