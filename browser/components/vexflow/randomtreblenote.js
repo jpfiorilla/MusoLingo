@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { randomTrebleNote } from '../../utils';
+import { getNoteName, randomTrebleNoteName } from '../../utils';
 
 import Vex from 'vexflow';
 
@@ -12,6 +12,8 @@ export default class RandomTrebleNote extends Component {
         )
     }
     componentDidMount(){
+        const {note} = this.props;
+
         let VF = Vex.Flow;
 
         // Create an SVG renderer and attach it to the DIV element named "boo".
@@ -19,7 +21,7 @@ export default class RandomTrebleNote extends Component {
         var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
         // Configure the rendering context.
-        renderer.resize(500, 500);
+        renderer.resize(500, 200);
         var context = renderer.getContext();
         context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
@@ -33,11 +35,17 @@ export default class RandomTrebleNote extends Component {
         // Connect it to the rendering context and draw!
         stave.setContext(context).draw();
 
+        // if getNoteName(note)[1] ===
+
+
+        if (getNoteName(note)[1]){
         var notes = [
-        // A quarter-note C.
-        new VF.StaveNote({clef: "treble", keys: ["c/4"], duration: "h" }),
-        new VF.StaveNote({clef: "treble", keys: ["a/2"], duration: "h" })
-        ];
+            new VF.StaveNote({clef: "treble", keys: [note], duration: "w" }).addAccidental(0, new VF.Accidental(getNoteName(note)[1]))
+        ];} else {
+            notes = [
+            new VF.StaveNote({clef: "treble", keys: [note], duration: "w" })
+            ];
+        }
 
         // Create a voice in 4/4 and add above notes
         var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
