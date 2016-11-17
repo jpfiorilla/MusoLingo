@@ -4,7 +4,8 @@ import HomePageComponent from './HomePageComponent';
 
 const mapStateToProps = function (state) {
   return {
-    topics: state.topics
+    topics: state.topics,
+    lessons: state.lessons
   };
 };
 

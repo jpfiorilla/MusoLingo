@@ -15,11 +15,12 @@ import HomePageContainer from './components/HomePage/HomePageContainer';
 // Redux actions and thunks
 import store from './store'
 
-import { askServerForAllTopics } from './redux/HomePageActions';
+import { askServerForAllTopics } from './redux/TopicsActions';
+import { askServerForAllLessons } from './redux/LessonsActions';
 // dispatch askServerForAllTopics
 const onHomeEnter = () => {
-  const thunk = askServerForAllTopics();
-  store.dispatch(thunk);
+  store.dispatch(askServerForAllTopics());
+  store.dispatch(askServerForAllLessons());
 }
 
 render(
