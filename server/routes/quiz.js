@@ -6,72 +6,29 @@ module.exports = router;
 // NOTE: All routes prepended with: /api/quiz/
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-// NOTE: get quiz by id
-router.get('/:id', (req, res, next) => {
-  Quizzes.findOne({
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(resp => {
-    if (! resp) res.send(404);
-    else res.json(resp.datavalues);
-  })
-  .catch(err => {
-    console.error(err);
-    console.log('Error in /:id get');
-  });
+// NOTE: get a quiz by id
+router.get('/id/:id', (req, res, next) => {
+  return findOneInQuizzes(res, 'id', req.params.id);
 });
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-// NOTE: get quiz by number
-router.get('/:number', (req, res, next) => {
-  Quizzes.findOne({
-    where: {
-      number: req.params.number
-    }
-  })
-  .then(resp => {
-    if (! resp) res.send(404);
-    else res.json(resp.datavalues);
-  })
-  .catch(err => {
-    console.error(err);
-    console.log('Error in /:number get');
-  });
+// NOTE: get a quiz by number
+router.get('/number/:number', (req, res, next) => {
+  return findOneInQuizzes(res, 'number', req.params.number);
 });
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-// NOTE: get quiz by title
-router.get('/:title', (req, res, next) => {
-  Quizzes.findOne({
-    where: {
-      title: req.paramms.title
-    }
-  })
-  .then(resp => {
-    if (! resp) res.send(404);
-    else res.json(resp.datavalues);
-  })
-  .catch(err => {
-    console.error(err);
-    console.log('Error in /:title get');
-  });
+// NOTE: get a quiz by title
+router.get('/title/:title', (req, res, next) => {
+  return findOneInQuizzes(res, 'title', req.params.title);
 });
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-// NOTE: get quiz by lesson_id
-router.get('/:lesson_id', (req, res, next) => {
-  Quizzes.findOne({
-    where: {
-      lesson_id: req.params.lesson_id
-    }
-  })
-  .then(resp => {
-    if (! resp) res.send(404);
-    else res.json(resp.datavalues);
-  })
-  .catch(err => {
-    console.error(err);
-    console.log('Error in /:lesson_id get');
-  });
+// NOTE: get all quizzes by a lesson_id
+router.get('/lesson_id/:lesson_id', (req, res, next) => {
+  return findAllInQuizzes(res, 'lesson_id', req.params.lesson_id);
+});
+// %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
+// NOTE: get all quizzes
+router.get('/all', (req, res, next) => {
+  return findAllInQuizzes(res);
 });
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 // NOTE: create a quiz.
@@ -86,6 +43,7 @@ router.post('/', (req, res, next) => {
     console.log('Error / post request.');
   })
 });
+// %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 function findOneInQuizzes(res, attribute, match) {
   // NOTE: res is the server response.
   // NOTE: attribute is the table attribute we are querying.
@@ -113,8 +71,10 @@ function findOneInQuizzes(res, attribute, match) {
   .catch(err => {
     console.error(err);
     console.log('Error in findOneInQuizzes');
+    res.end();
   });
 }
+// %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 function findAllInQuizzes(res, attribute, match) {
   // NOTE: res is the server response.
   // NOTE: attribute is the table attribute we are querying.
@@ -142,5 +102,6 @@ function findAllInQuizzes(res, attribute, match) {
   .catch(err => {
     console.error(err);
     console.log('Error in findAllInQuizzes');
+    res.end();
   });
 }
