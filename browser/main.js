@@ -30,11 +30,11 @@ render(
   <Provider store={ store }>
     <Router history={ browserHistory }>
       <Route path="/" component={App} >
-        <Route path="/quiz" component={Quiz} />
-        <Route path="/login" component={Login} />
-        <IndexRoute component={HomePageContainer} onEnter={onHomeEnter}/>
-      </Route>
-    </Router>
-  </Provider>,
+      <Route path="/quiz" component={Quiz} />
+      <Route path="/login" component={Login} />
+      <IndexRoute component={HomePageContainer} onEnter={onHomeEnter}/>
+    </Route>
+  </Router>
+</Provider>,
 document.getElementById('main')
 )
