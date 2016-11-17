@@ -1,84 +1,106 @@
 import React from 'react';
-import { TextField, SelectField, MenuItem, RaisedButton } from 'material-ui';
+import Dialog from "material-ui/Dialog"
+import FlatButton from 'material-ui/FlatButton'
+import RaisedButton from 'material-ui/RaisedButton'
+import Divider from 'material-ui/Divider'
+import { TextField, SelectField, MenuItem } from 'material-ui';
 import { Link } from 'react-router';
 
 /* -----------------    COMPONENT     ------------------ */
 
+const buttonText = {color: "white", padding: 0, transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms'}
 
-export default ({ handleChange, handleSubmit, login_error }) => {
-	return (
-		<div className="row">	
-		<div id="sign-in" className="col-xs-6">
-		  <form style={{ textAlign: 'center' }} onSubmit={ handleSubmit }>
-				<legend style={{width: '145px'}}>Sign-In</legend>
-				<TextField
-					floatingLabelText="Email"
-					type = 'email'
-					fullWidth={true}
-					onChange={(evt) => handleChange("email", evt.target.value) }
-				/>
-				<TextField
-					floatingLabelText="Password"
-					type = 'password'
-					fullWidth={true}
-					onChange={(evt) => handleChange("password", evt.target.value) }
-				/>
-				<span className="error-message">{ login_error }</span>
-				<div className="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-					<RaisedButton
-						label="Sign-In"
-						type="submit"
-						fullWidth={true}
-						primary={true}
-						style={{marginTop: '1em'}}
-					/>
-				</div>
-			</form>
-		</div>
-		<div id="sign-up" className="col-xs-6">
-			<form onSubmit={ handleSubmit }>
-				<legend style={{width: '145px'}}>Sign-Up</legend>
-						<div className='row'> 
-							<div className="col-xs-6"> 
-							<TextField
-								floatingLabelText="First Name"
-								fullWidth={true}
-								onChange={(evt) => handleChange("firstname", evt.target.value) }
-							/>
-							</div> 
-							<div className="col-xs-6"> 
-							<TextField
-								floatingLabelText="Last Name"
-								fullWidth={true}
-								onChange={(evt) => handleChange("lastname", evt.target.value) }
-							/>
-							</div> 
-						</div>
-							<TextField
-								floatingLabelText="Email"
-								type = 'email'
-								fullWidth={true}
-								onChange={(evt) => handleChange("email", evt.target.value) }
-							/>
-							<TextField
-								floatingLabelText="Password"
-								type = 'password'
-								fullWidth={true}
-								onChange={(evt) => handleChange("password", evt.target.value) }
-							/>
-						<div className="col-xs-12 col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
-						<RaisedButton
-							label="Sign-Up"
-							type="submit"
-							fullWidth={true}
-							secondary={true}
-							style={{marginTop: '1em'}}
+const dialogStyle = {
+	width: "20%",
+	"textAlign": "center"
+}
+
+const dividerStyle = {
+	"backgroundColor": "rgb(147, 147, 147)"
+}
+
+export default class SignIn extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			open: false
+		}
+
+		this.handleOpen = this.handleOpen.bind(this);
+		this.handleClose = this.handleClose.bind(this);
+	}
+
+	handleOpen() {
+		this.setState({open: true})
+	}
+
+	handleClose() {
+		this.setState({open: false})
+	}
+
+	render () {
+		const { handleChange, handleSubmit, login_error } = this.props;
+		const actions = [
+			<FlatButton
+				label="Cancel"
+				primary={true}
+				onClick={this.handleClose}
+			/>,
+			<FlatButton
+				label="Login"
+				primary={true}
+				keyboardFocused={true}
+				onClick={handleSubmit}
+			/>
+		];
+		return (
+			<div>
+				<FlatButton
+              label="Sign In" labelStyle={buttonText}
+			  onClick={this.handleOpen}
+              hoverColor="#2b4b91" rippleColor="#2b4b91"
+            />
+				<Dialog
+				id="login-dialog"
+				actions={actions}
+				modal={false}
+				open={this.state.open}
+				onRequestClose={this.handleClose}
+				contentStyle={dialogStyle}
+				>
+
+				<button className="loginBtn loginBtn-facebook">
+					Sign in with Facebook
+				</button>
+
+				<button className="loginBtn loginBtn-google">
+					Sign in with Google
+				</button><br /><br />
+
+				<Divider style={dividerStyle}/><br />
+				or
+
+				<div>
+					<form>
+						<TextField
+							hintText="E-mail"
+							floatingLabelText="E-mail Address"
+							onChange={(evt) => handleChange("email", evt.target.value)}
 						/>
-				</div>
-				</form>
-			</div>
-		</div>
 
-		);
+						<TextField
+							hintText="Password"
+							floatingLabelText="Password"
+							type="password"
+							onChange={(evt) => handleChange("password", evt.target.value)}
+						/>
+					</form>
+				</div>
+
+				</Dialog>
+
+			</div>
+		)
+	}
 }
 

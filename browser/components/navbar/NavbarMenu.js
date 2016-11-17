@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router'
+import SignIn from "../signin/SignIn"
 
 // Material theme
 import {ToolbarGroup} from 'material-ui';
@@ -10,7 +11,10 @@ import { white } from 'material-ui/styles/colors';
 // Material CSS rules
 const buttonText = {color: white, padding: 0, transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms'}
 
-export default ({ role, logout }) => (
+export default class NavbarMenu extends React.Component {
+  render() {
+    const { role, logout } = this.props;
+    return (
       <ToolbarGroup style={{float: 'right'}}>
       {
         // /admin
@@ -42,12 +46,7 @@ export default ({ role, logout }) => (
         // /login or /logout
         role === 1 ? (
           <div className="navbar-item">
-            <Link to="/sign-in">
-              <FlatButton
-                label="Sign In" labelStyle={buttonText}
-                hoverColor="#2b4b91" rippleColor="#2b4b91"
-              />
-            </Link>
+            <SignIn />
           </div>
         ) : (
           <div className="navbar-item">
@@ -65,4 +64,5 @@ export default ({ role, logout }) => (
           </Link>
         </div>
       </ToolbarGroup>
-);
+  )}
+}

@@ -28,24 +28,18 @@ function SignInDecorator (SignIn) {
 			const credentials = {
 				email: this.state.email,
 				password: this.state.password
-				}
-
-			if(evt.target.childNodes[0].innerHTML === "Sign-In") {
-				this.props.login(credentials, (err) => {
-					this.setState({ login_error: err });
-				})
-			} else {
-				credentials.firstname = this.state.firstname
-				credentials.lastname = this.state.lastname
-				this.props.signup(credentials)
 			}
+
+			this.props.login(credentials, (err) => {
+				this.setState({ login_error: err });
+			});
 		}
 
 		render() {
 			return (
 				<SignIn
 				  handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
+          			handleSubmit={this.handleSubmit}
 					login_error={this.state.login_error}
 				/>
 			)

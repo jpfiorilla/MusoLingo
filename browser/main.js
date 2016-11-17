@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 // React components
 import App from './components/App'
 import Quiz from "./components/Quiz/Quiz.jsx"
+import SignIn from "./components/signin/SignInContainer"
 
 // Redux actions and thunks
 import store from './store'
@@ -19,6 +20,7 @@ render(
     <Router history={ browserHistory }>
       <Route path="/" component={App}>
         <Route path="/quiz" component={Quiz} />
+        <Route path="/sign-in" component={SignIn} />
       </Route>
     </Router>
   </Provider>,

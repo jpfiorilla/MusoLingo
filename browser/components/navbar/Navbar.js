@@ -24,9 +24,9 @@ export default (props) => (
     </ToolbarGroup>
     <ToolbarGroup style={centerText}>
       <Link to="/">
-        <ToolbarTitle style={toolbarText} text="Mussolini" />
+        <ToolbarTitle style={toolbarText} text="MusoLingo" />
       </Link>
     </ToolbarGroup>
     <NavbarMenu { ...props } />
   </Toolbar>
-);
+)
