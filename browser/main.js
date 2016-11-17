@@ -8,19 +8,26 @@ import { Provider } from 'react-redux'
 // injectTapEventPlugin();
 
 // React components
-import App from './components/App'
-import Quiz from "./components/Quiz/Quiz.jsx"
+import App from './components/App';
+import Quiz from "./components/Quiz/Quiz.jsx";
+import HomePageContainer from './components/HomePage/HomePageContainer';
 
 // Redux actions and thunks
 import store from './store'
+import { askServerForAllTopics } from './redux/HomePageActions';
+const onHomeEnter = () => {
+  const thunk = askServerForAllTopics();
+  store.dispatch(thunk);
+}
 
 render(
   <Provider store={ store }>
     <Router history={ browserHistory }>
-      <Route path="/" component={App}>
+      <Route path="/" component={App} >
         <Route path="/quiz" component={Quiz} />
+        <IndexRoute component={HomePageContainer} onEnter={onHomeEnter}/>
       </Route>
     </Router>
   </Provider>,
-  document.getElementById('main')
+document.getElementById('main')
 )
