@@ -13,7 +13,6 @@ export const askServerForAllTopics = () => {
   return dispatch => {
     axios.get('/api/topics/all')
     .then(res => {
-      console.log('**********res: ', res);
       dispatch(setTopics(res.data));
     })
     .catch(err => {

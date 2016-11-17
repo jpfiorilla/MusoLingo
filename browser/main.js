@@ -14,7 +14,9 @@ import HomePageContainer from './components/HomePage/HomePageContainer';
 
 // Redux actions and thunks
 import store from './store'
+
 import { askServerForAllTopics } from './redux/HomePageActions';
+// dispatch askServerForAllTopics
 const onHomeEnter = () => {
   const thunk = askServerForAllTopics();
   store.dispatch(thunk);
