@@ -11,8 +11,9 @@ import { Link } from 'react-router';
 const buttonText = {color: "white", padding: 0, transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms'}
 
 const dialogStyle = {
-	width: "20%",
-	"textAlign": "center"
+	width: "20em",
+	height: "40em",
+	textAlign: "center"
 }
 
 const dividerStyle = {
