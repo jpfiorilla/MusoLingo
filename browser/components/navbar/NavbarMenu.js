@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router'
-import SignIn from "../signin/SignIn"
+import Login from "../Login/LoginContainer"
 
 // Material theme
 import {ToolbarGroup} from 'material-ui';
@@ -46,7 +46,7 @@ export default class NavbarMenu extends React.Component {
         // /login or /logout
         role === 1 ? (
           <div className="navbar-item">
-            <SignIn />
+            <Login />
           </div>
         ) : (
           <div className="navbar-item">

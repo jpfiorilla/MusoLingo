@@ -19,7 +19,7 @@ const dividerStyle = {
 	"backgroundColor": "rgb(147, 147, 147)"
 }
 
-export default class SignIn extends React.Component {
+export default class Login extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {

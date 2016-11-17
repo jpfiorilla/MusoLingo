@@ -1,11 +1,11 @@
 import React from'react';
 import { connect } from 'react-redux';
-import SignIn from './SignIn';
+import Login from './Login';
 import { login, signup } from '../../redux/user';
 
 
-function SignInDecorator (SignIn) {
-	return class StatefulSignIn extends React.Component {
+function LoginDecorator (Login) {
+	return class StatefulLogin extends React.Component {
 		constructor(props) {
 			super(props) 
 			this.state = {
@@ -37,7 +37,7 @@ function SignInDecorator (SignIn) {
 
 		render() {
 			return (
-				<SignIn
+				<Login
 				  handleChange={this.handleChange}
           			handleSubmit={this.handleSubmit}
 					login_error={this.state.login_error}
@@ -57,4 +57,4 @@ const mapDispatchtoProps = dispatch => ({
 	}
 })
 
-export default connect(null, mapDispatchtoProps)(SignInDecorator(SignIn));
+export default connect(null, mapDispatchtoProps)(LoginDecorator(Login));
