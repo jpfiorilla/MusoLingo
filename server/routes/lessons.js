@@ -7,7 +7,7 @@ module.exports = router;
 const Lessons = db.model('lessons');
 
 // NOTE: Get all lessons from the table.
-router.get('/' , (req, res, next) => {
+router.get('/all' , (req, res, next) => {
   return findAllInLessons(res);
 });
 
@@ -22,12 +22,12 @@ router.get('/topic/:topic_id', (req, res, next) => {
 });
 
 // NOTE: Get a lesson by title.
-router.get('/:title', (req, res, next) => {
+router.get('/title/:title', (req, res, next) => {
   return findOneInLessons(res, 'title', req.params.title);
 });
 
 // NOTE: Get a lesson by id.
-router.get('/:id', (req, res, next) => {
+router.get('/id/:id', (req, res, next) => {
   return findOneInLessons(res, 'id', req.params.id);
 });
 
@@ -36,7 +36,7 @@ router.post('/', (req, res, next) => {
   const newLesson = req.body.lesson;
   lessons.create(newLesson)
   .then(resp => {
-    if (! resp) res.send(404);
+    if (! resp) res.sendStatus(404);
     else res.json(resp);
   })
   .catch(err => {
@@ -47,19 +47,25 @@ router.post('/', (req, res, next) => {
 function findOneInLessons(res, attribute, match) {
   // NOTE: res is the server response.
   // NOTE: attribute is the table attribute we are querying.
-    // It could be undefined if we want to get everything from the table.
+  // It could be undefined if we want to get everything from the table.
   // NOTE: match is the criteria for that attribute.
 
   // For Example: {title: "Intro to rythm"}
-    // attribute = 'title'; match = "Intro to rythm";
+  // attribute = 'title'; match = "Intro to rythm";
 
+  // NOTE: x is the object we send along with the db query.
   var x = {};
+
+  // NOTE: if an attribute is specified we add it to x.
   if (attribute) {
+    x.where = {};
     x.where[attribute] = match;
   }
+
+  // NOTE: return the db query promise.
   return Lessons.findOne(x)
   .then(resp => {
-    if (! resp) res.send(404);
+    if (! resp) res.sendStatus(404);
     else res.json(resp);
   })
   .catch(err => {
@@ -70,19 +76,25 @@ function findOneInLessons(res, attribute, match) {
 function findAllInLessons(res, attribute, match) {
   // NOTE: res is the server response.
   // NOTE: attribute is the table attribute we are querying.
-    // It could be undefined if we want to get everything from the table.
+  // It could be undefined if we want to get everything from the table.
   // NOTE: match is the criteria for that attribute.
 
   // For Example: {title: "Intro to rythm"}
-    // attribute = 'title'; match = "Intro to rythm";
+  // attribute = 'title'; match = "Intro to rythm";
 
+  // NOTE: x is the object we send along with the db query.
   var x = {};
+
+  // NOTE: if an attribute is specified we add it to x.
   if (attribute) {
+    x.where = {};
     x.where[attribute] = match;
   }
+
+  // NOTE: return the db query promise.
   return Lessons.findAll(x)
   .then(resp => {
-    if (! resp) res.send(404);
+    if (! resp.length) res.send(404);
     else res.json(resp);
   })
   .catch(err => {

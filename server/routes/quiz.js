@@ -86,3 +86,61 @@ router.post('/', (req, res, next) => {
     console.log('Error / post request.');
   })
 });
+function findOneInQuizzes(res, attribute, match) {
+  // NOTE: res is the server response.
+  // NOTE: attribute is the table attribute we are querying.
+  // It could be undefined if we want to get everything from the table.
+  // NOTE: match is the criteria for that attribute.
+
+  // For Example: {title: "Intro to rythm"}
+  // attribute = 'title'; match = "Intro to rythm";
+
+  // NOTE: x is the object we send along with the db query.
+  var x = {};
+
+  // NOTE: if an attribute is specified we add it to x.
+  if (attribute) {
+    x.where = {};
+    x.where[attribute] = match;
+  }
+
+  // NOTE: return the db query promise.
+  return Quizzes.findOne(x)
+  .then(resp => {
+    if (! resp) res.sendStatus(404);
+    else res.json(resp);
+  })
+  .catch(err => {
+    console.error(err);
+    console.log('Error in findOneInQuizzes');
+  });
+}
+function findAllInQuizzes(res, attribute, match) {
+  // NOTE: res is the server response.
+  // NOTE: attribute is the table attribute we are querying.
+  // It could be undefined if we want to get everything from the table.
+  // NOTE: match is the criteria for that attribute.
+
+  // For Example: {title: "Intro to rythm"}
+  // attribute = 'title'; match = "Intro to rythm";
+
+  // NOTE: x is the object we send along with the db query.
+  var x = {};
+
+  // NOTE: if an attribute is specified we add it to x.
+  if (attribute) {
+    x.where = {};
+    x.where[attribute] = match;
+  }
+
+  // NOTE: return the db query promise.
+  return Quizzes.findAll(x)
+  .then(resp => {
+    if (! resp.length) res.send(404);
+    else res.json(resp);
+  })
+  .catch(err => {
+    console.error(err);
+    console.log('Error in findAllInQuizzes');
+  });
+}

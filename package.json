@@ -7,7 +7,7 @@
     "node": "6.9.x"
   },
   "scripts": {
-    "start": "bin/setup && node server/start.js",
+    "start": "bin/setup && nodemon server/start.js",
     "dev": "check-node-version --node '>= 6.7.0' && bin/setup && nodemon server/start.js",
     "test": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register tests/{*,**/*}.test.js",
     "test-watch": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register --watch tests/{*,**/*}.test.js",
