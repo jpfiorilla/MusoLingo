@@ -4,7 +4,8 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import RandomTrebleNote from '../vexflow/randomtreblenote';
 import RandomTrebleInterval from '../vexflow/randomtrebleinterval';
-import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames } from '../../utils';
+import RandomChord from '../vexflow/randomchord';
+import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads } from '../../utils';
 import  Vex from 'vexflow';
 
 const styles = {
@@ -29,9 +30,15 @@ const RadioButtonExampleSimple = ({questionType}) => {
     var intervalNotes = [lownote, highnote];
     correct = calculateInterval(intervalNotes);
     incorrect = randomIntervals(correct);
+  } else if (questionType === "guessChordName"){
+    questionComponent = RandomChord;
+    correct = randomTriad(56);
+    incorrect = [];
+    let incorrectChords = randomOtherTriads(correct);
+    incorrectChords.forEach(chord => incorrect.push(chord[1]));
+    console.log(correct, incorrect);
   }
   let rightAnswerPosition = Math.floor(Math.random() * 4);
-  let ans = 1;
   let buttonsArray = ['', '', '', ''];
   let index = 0;
   return (
@@ -40,7 +47,6 @@ const RadioButtonExampleSimple = ({questionType}) => {
         {
           React.createElement(questionComponent, {note: correct, questionType, intervalNotes})
         }
-        {/* <RandomTrebleNote questionType={questionType} note={correct} intervalNotes={[lownote, highnote]} /> */}
       </div>
       {/* MULTIPLE CHOICE BUTTONS */}
       <RadioButtonGroup name="shipSpeed" defaultSelected="1">
