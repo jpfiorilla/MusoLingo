@@ -30,6 +30,10 @@ const RadioButtonExampleSimple = ({questionType}) => {
     correct = calculateInterval(intervalNotes);
     incorrect = randomIntervals(correct);
   }
+  let rightAnswerPosition = Math.floor(Math.random() * 4);
+  let ans = 1;
+  let buttonsArray = ['', '', '', ''];
+  let index = 0;
   return (
     <div>
       <div className="sheetmusic">
@@ -40,26 +44,14 @@ const RadioButtonExampleSimple = ({questionType}) => {
       </div>
       {/* MULTIPLE CHOICE BUTTONS */}
       <RadioButtonGroup name="shipSpeed" defaultSelected="1">
-        <RadioButton
-          value="1"
-          label={correct}
-          style={styles.radioButton}
-          />
-        <RadioButton
-          value="2"
-          label={incorrect[0]}
-          style={styles.radioButton}
-        />
-        <RadioButton
-          value="3"
-          label={incorrect[1]}
-          style={styles.radioButton}
-        />
-        <RadioButton
-          value="4"
-          label={incorrect[2]}
-          style={styles.radioButton}
-        />
+      {
+        buttonsArray.map((button, idx) => {
+          let correctness = rightAnswerPosition === idx ? correct : incorrect[index++];
+          return (
+            <RadioButton value={idx} label={correctness} style={styles.radioButton} />
+          )
+        })
+      }
       </RadioButtonGroup>
     </div>
     )
