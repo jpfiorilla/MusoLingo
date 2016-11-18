@@ -9,6 +9,8 @@ const intervalQualities = ['Augmented', 'Major', 'Perfect', 'minor', 'diminished
 const intervalsPerfect = ['Augmented', 'Perfect', 'diminished'];
 const intervalsMajor = ['Augmented', 'Major', 'minor', 'diminished'];
 
+const triadQualities = ['+', '', 'm', 'dim', 'sus4'];
+
 export const randomNoteName = function(floor = 0, ceiling = 87){
     let newNoteMidi = Math.floor(Math.random() * (ceiling-floor) + floor + 1);
     return midiToVex(newNoteMidi);
@@ -57,6 +59,25 @@ export const randomIntervals = function(correct){
     while (arr.length < 3){
         let newInterval = randomIntervalName();
         if (newInterval !== correct && arr.indexOf(newInterval) === -1) arr.push(newInterval);
+    }
+    return arr;
+}
+
+export const randomTriad = function(floor, ceiling){
+    let triadQuality = triadQualities[Math.floor(Math.random() * triadQualities.length)];
+    let triadRoot = vexToTonal(randomNoteName(floor, ceiling));
+    let tonalTriad = tonal.chord.build(triadQuality, triadRoot);
+    let triad = [];
+    tonalTriad.forEach(note => triad.push(tonalToVex(note)));
+    return [triad, [getNoteName(triadRoot), triadQuality].join('')];
+}
+
+export const randomOtherTriads = function(rightTriadName){
+    let arr = [];
+    while (arr.length < 3){
+        let triadQuality = triadQualities[Math.floor(Math.random() * triadQualities.length)];
+        let newTriad = [getNoteName(rightTriadName), triadQuality].join('');
+        if (newTriad !== rightTriadName && arr.indexOf(newTriad) === -1) arr.push(newTriad);
     }
     return arr;
 }
