@@ -1,50 +1,30 @@
 const db = require('APP/db');
 const router = require('express').Router();
-const Quizzes = db.model('quizzes');
+const Topics = db.model('topics');
 module.exports = router;
 
-// NOTE: All routes prepended with: /api/quiz/
+// NOTE: all routes prepended with: '/api/topics/'
+
+// get one topic by: id, name
+// get all topics by: all,
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-// NOTE: get a quiz by id
-router.get('/id/:id', (req, res, next) => {
-  return findOneInQuizzes(res, 'id', req.params.id);
+// NOTE: Get all topics from the table.
+router.get('/all' , (req, res, next) => {
+  return findAllInTopics(res);
 });
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-// NOTE: get a quiz by number
-router.get('/number/:number', (req, res, next) => {
-  return findOneInQuizzes(res, 'number', req.params.number);
+// NOTE: Get topic by id.
+router.get('/id/:id' , (req, res, next) => {
+  return findOneInTopics(res, 'id', req.params.id);
 });
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-// NOTE: get a quiz by title
-router.get('/title/:title', (req, res, next) => {
-  return findOneInQuizzes(res, 'title', req.params.title);
+// NOTE: Get topic by name.
+router.get('/name/:name' , (req, res, next) => {
+  return findOneInTopics(res, 'name', req.params.name);
 });
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-// NOTE: get all quizzes by a lesson_id
-router.get('/lesson_id/:lesson_id', (req, res, next) => {
-  return findAllInQuizzes(res, 'lesson_id', req.params.lesson_id);
-});
-// %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-// NOTE: get all quizzes
-router.get('/all', (req, res, next) => {
-  return findAllInQuizzes(res);
-});
-// %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-// NOTE: create a quiz.
-router.post('/', (req, res, next) => {
-  const newQuiz = req.body.quiz;
-  Quizzes.create(newQuiz)
-  .then(resp => {
-    res.json(resp);
-  })
-  .catch(err => {
-    console.error(err);
-    console.log('Error / post request.');
-  })
-});
-// %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-function findOneInQuizzes(res, attribute, match) {
+function findOneInTopics(res, attribute, match) {
   // NOTE: res is the server response.
   // NOTE: attribute is the table attribute we are querying.
   // It could be undefined if we want to get everything from the table.
@@ -63,19 +43,19 @@ function findOneInQuizzes(res, attribute, match) {
   }
 
   // NOTE: return the db query promise.
-  return Quizzes.findOne(x)
+  return Topics.findOne(x)
   .then(resp => {
     if (! resp) res.sendStatus(404);
     else res.json(resp);
   })
   .catch(err => {
     console.error(err);
-    console.log('Error in findOneInQuizzes');
+    console.log('Error in findOneInTopics');
     res.end();
   });
 }
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-function findAllInQuizzes(res, attribute, match) {
+function findAllInTopics(res, attribute, match) {
   // NOTE: res is the server response.
   // NOTE: attribute is the table attribute we are querying.
   // It could be undefined if we want to get everything from the table.
@@ -94,14 +74,14 @@ function findAllInQuizzes(res, attribute, match) {
   }
 
   // NOTE: return the db query promise.
-  return Quizzes.findAll(x)
+  return Topics.findAll(x)
   .then(resp => {
     if (! resp.length) res.send(404);
     else res.json(resp);
   })
   .catch(err => {
     console.error(err);
-    console.log('Error in findAllInQuizzes');
+    console.log('Error in findAllInTopics');
     res.end();
   });
 }

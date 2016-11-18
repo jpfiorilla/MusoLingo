@@ -1,3 +1,5 @@
+@import url("login.css");
+
 body,html {
   width : 100%;
   height: 100%;
@@ -25,6 +27,14 @@ body,html {
 
 #navbar a {
   text-decoration: none;
+}
+
+#drawer-icon {
+  color: white;
+}
+
+#drawer-icon:hover {
+  color: #00BCD4
 }
 
 .navbar-item, .navbar-item > a {

@@ -1,11 +1,3 @@
-import React from 'react';
-import { TextField, SelectField, MenuItem, RaisedButton } from 'material-ui';
-import { Link } from 'react-router';
-
-/* -----------------    COMPONENT     ------------------ */
-
-
-export default ({ handleChange, handleSubmit, login_error }) => {
 	return (
 		<div className="row">	
 		<div id="sign-in" className="col-xs-6">
@@ -80,5 +72,3 @@ export default ({ handleChange, handleSubmit, login_error }) => {
 		</div>
 
 		);
-}
-

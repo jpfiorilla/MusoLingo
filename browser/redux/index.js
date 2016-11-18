@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
 import user from "./user";
+import { topicsReducer } from './TopicsActions';
+import { lessonsReducer } from './LessonsActions';
 
 export default combineReducers({
-    user
+    user,
+    topics: topicsReducer,
+    lessons: lessonsReducer
 });
