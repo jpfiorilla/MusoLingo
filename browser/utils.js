@@ -63,10 +63,13 @@ export const randomIntervals = function(correct){
     return arr;
 }
 
-export const randomTriad = function(floor){
+export const randomTriad = function(floor, ceiling){
     let triadQuality = triadQualities[Math.floor(Math.random() * triadQualities.length)];
-    let triadRoot = vexToTonal(randomNoteName(floor));
-    return [tonal.chord.build(triadQuality, triadRoot), [getNoteName(triadRoot), triadQuality].join('')];
+    let triadRoot = vexToTonal(randomNoteName(floor, ceiling));
+    let tonalTriad = tonal.chord.build(triadQuality, triadRoot);
+    let triad = [];
+    tonalTriad.forEach(note => triad.push(tonalToVex(note)));
+    return [triad, [getNoteName(triadRoot), triadQuality].join('')];
 }
 
 export const randomOtherTriads = function(rightTriadName){

@@ -32,11 +32,13 @@ const RadioButtonExampleSimple = ({questionType}) => {
     incorrect = randomIntervals(correct);
   } else if (questionType === "guessChordName"){
     questionComponent = RandomChord;
-    correct = randomTriad(56);
+    var correctArr = randomTriad(56, 75);
+    var correct = correctArr[1];
+    var correctChord = correctArr[0];
     incorrect = [];
-    let incorrectChords = randomOtherTriads(correct[1]);
+    var incorrectChords = randomOtherTriads(correctArr[1]);
     incorrectChords.forEach(chord => incorrect.push(chord));
-    console.log(correct, incorrect);
+    // console.log(correct, correctChord, incorrect);
   }
   let rightAnswerPosition = Math.floor(Math.random() * 4);
   let buttonsArray = ['', '', '', ''];
@@ -45,7 +47,7 @@ const RadioButtonExampleSimple = ({questionType}) => {
     <div>
       <div className="sheetmusic">
         {
-          React.createElement(questionComponent, {note: correct, questionType, intervalNotes})
+          React.createElement(questionComponent, {note: correct, questionType, intervalNotes, chord: correctChord})
         }
       </div>
       {/* MULTIPLE CHOICE BUTTONS */}

@@ -13,9 +13,9 @@ export default class RandomChord extends Component {
         )
     }
     componentDidMount(){
-        const {intervalNotes} = this.props;
+        const {chord} = this.props;
 
-        let VF = Vex.Flow;
+        var VF = Vex.Flow;
 
         // Create an SVG renderer and attach it to the DIV element named "boo".
         var div = document.getElementById("staff")
@@ -26,32 +26,37 @@ export default class RandomChord extends Component {
         var context = renderer.getContext();
         context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
-        // Create a stave of width 400 at position 10, 40 on the canvas.
         var stave = new VF.Stave(10, 40, 400);
 
         // Add a clef and time signature.
-        // stave.addClef("treble").addTimeSignature("4/4");
-        stave.addClef("treble");
+        stave.addClef("treble").addTimeSignature("4/4");
 
-        // Connect it to the rendering context and draw!
         stave.setContext(context).draw();
+ 
+        let outChord = new VF.StaveNote({keys: chord, duration: "w" })
 
-        var lownote = new VF.StaveNote({clef: "treble", keys: [intervalNotes[0]], duration: "h" });
-        if (intervalNotes[0][1] !== '/') lownote.addAccidental(0, new VF.Accidental(intervalNotes[0][1]));
-        var highnote = new VF.StaveNote({clef: "treble", keys: [intervalNotes[1]], duration: "h" });
-        if (intervalNotes[1][1] !== '/') highnote.addAccidental(0, new VF.Accidental(intervalNotes[1][1]));
+        chord.forEach((note, idx) => {
+            if (note[1] !== '/'){
+                outChord.addAccidental(idx, new VF.Accidental(note[1]));
+            }
+        })
 
-        var notes = [lownote, highnote];
+        let notes = [outChord];
+
+        VF.Formatter.FormatAndDraw(context, stave, notes);
+
+        /*
         // console.log('notes', intervalNotes)
 
         // Create a voice in 4/4 and add above notes
-        var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
+        let voice = new VF.Voice({num_beats: 4,  beat_value: 4});
         voice.addTickables(notes);
 
         // Format and justify the notes to 400 pixels.
-        var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+        let formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
 
         // Render voice
         voice.draw(context, stave);
+        */
     }
 }
