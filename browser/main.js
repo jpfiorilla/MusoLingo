@@ -4,6 +4,8 @@ import { render } from 'react-dom'
 import { Router, Route, IndexRoute, IndexRedirect, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 
+import { randomTrebleNote } from './utils'
+
 // import injectTapEventPlugin from 'react-tap-event-plugin'
 // injectTapEventPlugin();
 
