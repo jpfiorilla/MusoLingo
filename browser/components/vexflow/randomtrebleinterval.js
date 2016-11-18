@@ -41,7 +41,7 @@ export default class RandomTrebleNote extends Component {
         if (intervalNotes[1][1] !== '/') highnote.addAccidental(0, new VF.Accidental(intervalNotes[1][1]));
 
         var notes = [lownote, highnote];
-        console.log('notes', intervalNotes)
+        // console.log('notes', intervalNotes)
 
         // Create a voice in 4/4 and add above notes
         var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
