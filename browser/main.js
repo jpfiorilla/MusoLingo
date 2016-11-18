@@ -4,6 +4,8 @@ import { render } from 'react-dom'
 import { Router, Route, IndexRoute, IndexRedirect, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
 
+import { randomTrebleNote } from './utils'
+
 // import injectTapEventPlugin from 'react-tap-event-plugin'
 // injectTapEventPlugin();
 
@@ -14,7 +16,6 @@ import Quiz from "./components/Quiz/Quiz.jsx"
 import Login from "./components/Login/LoginContainer"
 import HomePageContainer from './components/HomePage/HomePageContainer';
 import Account from "./components/Account/AccountContainer";
-
 
 // Redux actions and thunks
 import store from './store'

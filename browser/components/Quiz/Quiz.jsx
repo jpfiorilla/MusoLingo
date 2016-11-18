@@ -66,11 +66,12 @@ export default class Lesson extends React.Component {
                 </div>
             );
         case 1:
+        // guessNoteName & guessInterval
             return (
                 <div>
                     <p>Here is a multiple choice example:</p>
                     <div style={{marginLeft: "10%"}}>
-                        <MultipleChoice />
+                        <MultipleChoice questionType={"guessInterval"} />
                     </div>
                 </div>
             );

@@ -1,5 +1,5 @@
 import React from 'react';
-import NavbarContainer from './Navbar/NavbarContainer'
+import NavbarContainer from './navbar/NavbarContainer'
 
 // Material theme
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
