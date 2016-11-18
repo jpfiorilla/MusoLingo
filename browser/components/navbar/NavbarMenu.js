@@ -6,13 +6,33 @@ import Login from "../Login/LoginContainer"
 import {ToolbarGroup} from 'material-ui';
 import FontIcon from 'material-ui/FontIcon';
 import FlatButton from 'material-ui/FlatButton';
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
 import { white } from 'material-ui/styles/colors';
 
 // Material CSS rules
 const buttonText = {color: white, padding: 0, transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms'}
 
 export default class NavbarMenu extends React.Component {
-  render() {
+  constructor(props){
+    super(props);
+    this.state = {
+      open: false
+    }
+
+    this.handleToggle = this.handleToggle.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleToggle() {
+    this.setState({open: !this.state.open});
+  }
+
+  handleClose() {
+    this.setState({open: false});
+  }
+
+  render(props) {
     const { role, logout } = this.props;
     return (
       <ToolbarGroup style={{float: 'right'}}>
@@ -33,12 +53,20 @@ export default class NavbarMenu extends React.Component {
         // /account
         role === 2 ? (
           <div className="navbar-item">
-            <Link to="/account">
-              <FlatButton
-                label="Account" labelStyle={buttonText}
-                hoverColor="#2b4b91" rippleColor="#2b4b91"
-              />
-            </Link>
+            <FlatButton
+              label="Account" labelStyle={buttonText}
+              hoverColor="#2b4b91" rippleColor="#2b4b91"
+              onClick={this.handleToggle}
+            />
+            <Drawer 
+              docked={false}
+              width={200}
+              openSecondary={true}
+              onRequestChange={(open) => this.setState({open})}
+              open={this.state.open}>
+              <MenuItem onClick={this.handleClose}>Lesson 1</MenuItem>
+              <MenuItem onClick={this.handleClose}>Lesson 2</MenuItem>
+            </Drawer>
           </div>
         ) : null
       }

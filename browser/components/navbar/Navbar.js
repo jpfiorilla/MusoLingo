@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router'
-import NavbarMenu from './NavbarMenu'
+import { NavbarMenuContainer } from './NavbarContainer'
 
 // Material theme
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -55,7 +55,7 @@ export default class Navbar extends React.Component {
             <ToolbarTitle style={toolbarText} text="MusoLingo" />
           </Link>
         </ToolbarGroup>
-        <NavbarMenu { ...props } />
+        <NavbarMenuContainer { ...props } />
       </Toolbar>
     )
   }
