@@ -12,7 +12,7 @@ export default class RandomTrebleNote extends Component {
         )
     }
     componentDidMount(){
-        const {note} = this.props;
+        const {intervalNotes} = this.props;
 
         let VF = Vex.Flow;
 
@@ -35,17 +35,12 @@ export default class RandomTrebleNote extends Component {
         // Connect it to the rendering context and draw!
         stave.setContext(context).draw();
 
-        // if getNoteName(note)[1] ===
+        var lownote = new VF.StaveNote({clef: "treble", keys: [intervalNotes[0]], duration: "h" });
+        if (intervalNotes[0][1] !== '/') lownote.addAccidental(0, new VF.Accidental(intervalNotes[0][1]));
+        var highnote = new VF.StaveNote({clef: "treble", keys: [intervalNotes[1]], duration: "h" });
+        if (intervalNotes[1][1] !== '/') lownote.addAccidental(0, new VF.Accidental(intervalNotes[1][1]));
 
-
-        if (getNoteName(note)[1]){
-        var notes = [
-            new VF.StaveNote({clef: "treble", keys: [note], duration: "w" }).addAccidental(0, new VF.Accidental(getNoteName(note)[1]))
-        ];} else {
-            notes = [
-            new VF.StaveNote({clef: "treble", keys: [note], duration: "w" })
-            ];
-        }
+        var notes = [lownote, highnote];
 
         // Create a voice in 4/4 and add above notes
         var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
@@ -56,9 +51,5 @@ export default class RandomTrebleNote extends Component {
 
         // Render voice
         voice.draw(context, stave);
-
-        // Render voice
-        voice.draw(context, stave);
     }
-    
 }

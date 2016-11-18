@@ -4,7 +4,7 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import RandomTrebleNote from '../vexflow/randomtreblenote';
 import RandomTrebleInterval from '../vexflow/randomtrebleinterval';
-import { getNoteName, randomTrebleNoteName, randomOtherTrebleNoteNames } from '../../utils';
+import { getNoteName, vexToMidi, calculateInterval, randomNoteName, randomOtherNoteNames } from '../../utils';
 import  Vex from 'vexflow';
 
 const styles = {
@@ -17,36 +17,33 @@ const styles = {
 };
 
 const RadioButtonExampleSimple = ({questionType}) => {
-  // console.log(questionType, typeof(questionType));
+  console.log(questionType);
   if (questionType === "guessNoteName"){
-    var correct = randomTrebleNoteName(58, 75);
-    console.log(correct);
-    var incorrect = randomOtherTrebleNoteNames(correct, 58, 69);
-    console.log(incorrect);
     var questionComponent = RandomTrebleNote;
+    var correct = randomNoteName(56, 75);
+    var incorrect = randomOtherNoteNames(correct, 56, 67);
   } else if (questionType === "guessInterval"){
-    var lownote = randomTrebleNoteName();
-    var highnote = randomTrebleNoteName(lownote);
-    var questionComponent = RandomTrebleInterval;
-    console.log(highnote);
+    questionComponent = RandomTrebleInterval;
+    var lownote = randomNoteName(56, 75);
+    var highnote = randomNoteName(vexToMidi(lownote), vexToMidi(lownote)+11);
+    var intervalNotes = [lownote, highnote];
+    console.log(intervalNotes);
+    correct = calculateInterval(intervalNotes);
+    incorrect = ['2', '3', '4'];
   }
-  // var lownote = randomTrebleNoteName();
-  // console.log(lownote);
-  // var highnote = randomTrebleNoteName(lownote);
-  // console.log(highnote);
   return (
     <div>
       <div className="sheetmusic">
         {
-          React.createElement(questionComponent, {note: correct, questionType})
+          React.createElement(questionComponent, {note: correct, questionType, intervalNotes})
         }
-        {/* <RandomTrebleNote questionType={questionType} note={correct} /> */}
+        {/* <RandomTrebleNote questionType={questionType} note={correct} intervalNotes={[lownote, highnote]} /> */}
       </div>
       {/* MULTIPLE CHOICE BUTTONS */}
       <RadioButtonGroup name="shipSpeed" defaultSelected="1">
         <RadioButton
           value="1"
-          label={getNoteName(correct)}
+          label={correct}
           style={styles.radioButton}
           />
         <RadioButton

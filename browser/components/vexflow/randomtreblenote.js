@@ -53,9 +53,6 @@ export default class RandomTrebleNote extends Component {
 
         // Render voice
         voice.draw(context, stave);
-
-        // Render voice
-        voice.draw(context, stave);
     }
     
 }
