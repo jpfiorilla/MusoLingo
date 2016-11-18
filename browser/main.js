@@ -14,16 +14,16 @@ import { randomTrebleNote } from './utils'
 import App from './components/App'
 import Quiz from "./components/Quiz/Quiz.jsx"
 import Login from "./components/Login/LoginContainer"
-import HomePageContainer from './components/HomePage/HomePageContainer';
+import NavigationPage from './components/NavigationPage/NavigationPageContainer';
 import Account from "./components/Account/AccountContainer";
 
 // Redux actions and thunks
 import store from './store'
-
+ 
 import { askServerForAllTopics } from './redux/TopicsActions';
 import { askServerForAllLessons } from './redux/LessonsActions';
 // dispatch askServerForAllTopics
-const onHomeEnter = () => {
+const onNavigationEnter = () => {
   store.dispatch(askServerForAllTopics());
   store.dispatch(askServerForAllLessons());
 }
@@ -35,7 +35,7 @@ render(
       <Route path="/quiz" component={Quiz} />
       <Route path="/login" component={Login} />
       <Route path="/account" component={Account} />
-      <IndexRoute component={HomePageContainer} onEnter={onHomeEnter}/>
+      <Route path="/nav" component={NavigationPage} onEnter={onNavigationEnter}/>
     </Route>
   </Router>
 </Provider>,

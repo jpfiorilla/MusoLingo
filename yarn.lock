@@ -83,6 +83,10 @@ arrify@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
 
+as-arr@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/as-arr/-/as-arr-1.0.0.tgz#f87468fe518273aff9a0e6c24500d487dfa08ada"
+
 asap@~2.0.3:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/asap/-/asap-2.0.5.tgz#522765b50c3510490e52d7dcfe085ef9ba96958f"
@@ -2019,6 +2023,10 @@ interpret@^0.6.4:
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-0.6.6.tgz#fecd7a18e7ce5ca6abfb953e1f86213a49f1625b"
 
+interval-notation@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/interval-notation/-/interval-notation-1.0.0.tgz#6696136a103551e551893b29b78ccd4b4e1b3cf6"
+
 invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.1:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
@@ -2210,6 +2218,10 @@ jsesc@^1.3.0:
 jsesc@~0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
+
+json-loader@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/json-loader/-/json-loader-0.5.4.tgz#8baa1365a632f58a3c46d20175fc6002c96e37de"
 
 json-schema@0.2.3:
   version "0.2.3"
@@ -2677,6 +2689,10 @@ nopt@~3.0.6:
 normalize-path@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-2.0.1.tgz#47886ac1662760d4261b7d979d241709d3ce3f7a"
+
+note-parser@^2:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/note-parser/-/note-parser-2.0.0.tgz#0dbe08f93ad9a44d2448adeff3dba572e3161c1b"
 
 npmlog@^4.0.0:
   version "4.0.0"
@@ -3711,6 +3727,176 @@ to-fast-properties@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-1.0.2.tgz#f3f5c0c3ba7299a7ef99427e44633257ade43320"
 
+tonal-array@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-array/-/tonal-array-0.65.0.tgz#036ff9046ba095ecbd2a04984672f0c652019f48"
+  dependencies:
+    as-arr "^1.0.0"
+    tonal-distance "^0.65.0"
+    tonal-pitch "^0.65.0"
+    tonal-transpose "^0.65.0"
+
+tonal-chord@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-chord/-/tonal-chord-0.65.0.tgz#2b5fd7564754d3751f077c732496ab4006e86ea1"
+  dependencies:
+    note-parser "^2"
+    tonal-array "^0.65.0"
+    tonal-dictionary "^0.61.0"
+    tonal-harmonizer "^0.65.0"
+    tonal-pitch "^0.65.0"
+    tonal-pitchset "^0.65.0"
+
+tonal-dictionary@^0.61.0:
+  version "0.61.0"
+  resolved "https://registry.yarnpkg.com/tonal-dictionary/-/tonal-dictionary-0.61.0.tgz#42df24701d6b938677e224160d571d7d2314a9b9"
+
+tonal-distance@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-distance/-/tonal-distance-0.65.0.tgz#c98f909aea0617970d5a502630b06fd95aecf7bf"
+  dependencies:
+    tonal-pitch "^0.65.0"
+
+tonal-encoding@^0.64.0:
+  version "0.64.0"
+  resolved "https://registry.yarnpkg.com/tonal-encoding/-/tonal-encoding-0.64.0.tgz#9f069e896b6232e3c08e0ee39076a8c0b41920c6"
+
+tonal-filter@^0.63.0:
+  version "0.63.0"
+  resolved "https://registry.yarnpkg.com/tonal-filter/-/tonal-filter-0.63.0.tgz#8c0cdf6456336c516c90d44f284750d294d7eb42"
+
+tonal-freq@^0.61.0:
+  version "0.61.0"
+  resolved "https://registry.yarnpkg.com/tonal-freq/-/tonal-freq-0.61.0.tgz#27ead2c9b76d722f081c5d9094204f5d84d0b6c6"
+  dependencies:
+    tonal-midi "^0.61.0"
+
+tonal-freq@^0.62.0:
+  version "0.62.0"
+  resolved "https://registry.yarnpkg.com/tonal-freq/-/tonal-freq-0.62.0.tgz#af5a2786f2952a0287819df823fd48b1dfa1614c"
+  dependencies:
+    tonal-midi "^0.62.0"
+
+tonal-harmonizer@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-harmonizer/-/tonal-harmonizer-0.65.0.tgz#a538b0469a423afb98f5639dc94523fea618a0f2"
+  dependencies:
+    tonal-array "^0.65.0"
+    tonal-distance "^0.65.0"
+    tonal-transpose "^0.65.0"
+
+tonal-interval@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-interval/-/tonal-interval-0.65.0.tgz#eae552fd4bbfb50c8a93e8e2bb3e6268d1b5c450"
+  dependencies:
+    tonal-pitch "^0.65.0"
+
+tonal-midi@^0.61.0:
+  version "0.61.0"
+  resolved "https://registry.yarnpkg.com/tonal-midi/-/tonal-midi-0.61.0.tgz#aba27995fc145b967421d2890ec32def954a305a"
+  dependencies:
+    note-parser "^2"
+
+tonal-midi@^0.62.0:
+  version "0.62.0"
+  resolved "https://registry.yarnpkg.com/tonal-midi/-/tonal-midi-0.62.0.tgz#f6d8e1fed6e213728fb66f7ca2dd956ddd6e29da"
+  dependencies:
+    note-parser "^2"
+
+tonal-notation@^0.64.0:
+  version "0.64.0"
+  resolved "https://registry.yarnpkg.com/tonal-notation/-/tonal-notation-0.64.0.tgz#927e6a83e9fb11a09394ad2e5d07bc01959c09be"
+
+tonal-note@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-note/-/tonal-note-0.65.0.tgz#920b0ea1905d15757f36bbe364aa29dc2c316861"
+  dependencies:
+    tonal-freq "^0.61.0"
+    tonal-midi "^0.61.0"
+    tonal-pitch "^0.65.0"
+    tonal-transpose "^0.65.0"
+
+tonal-pitch@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-pitch/-/tonal-pitch-0.65.0.tgz#9e6fe54fdfe03622b82e5b4e082bacce890fbdbe"
+  dependencies:
+    interval-notation "^1.0.0"
+    note-parser "^2"
+    tonal-encoding "^0.64.0"
+
+tonal-pitchset@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-pitchset/-/tonal-pitchset-0.65.0.tgz#28c51db2c05b17dfc69729f333888e997d0bb6d6"
+  dependencies:
+    tonal-array "^0.65.0"
+    tonal-pitch "^0.65.0"
+    tonal-transpose "^0.65.0"
+
+tonal-progression@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-progression/-/tonal-progression-0.65.0.tgz#4598a43bc236783c9e8a4b29a7026a055d4bbcad"
+  dependencies:
+    tonal-array "^0.65.0"
+    tonal-chord "^0.65.0"
+    tonal-distance "^0.65.0"
+    tonal-interval "^0.65.0"
+    tonal-notation "^0.64.0"
+    tonal-note "^0.65.0"
+    tonal-pitch "^0.65.0"
+    tonal-transpose "^0.65.0"
+
+tonal-range@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-range/-/tonal-range-0.65.0.tgz#e4c4de6ae3292b2e0a65c9a71e5564ac02acaf59"
+  dependencies:
+    tonal-array "^0.65.0"
+    tonal-midi "^0.62.0"
+    tonal-note "^0.65.0"
+    tonal-pitchset "^0.65.0"
+    tonal-transpose "^0.65.0"
+
+tonal-scale@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-scale/-/tonal-scale-0.65.0.tgz#8c94567dda3cbe38d1495c07f888aa038b528be0"
+  dependencies:
+    tonal-dictionary "^0.61.0"
+    tonal-harmonizer "^0.65.0"
+    tonal-pitch "^0.65.0"
+
+tonal-sonority@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-sonority/-/tonal-sonority-0.65.0.tgz#9a51c81bbbd10ac603e08c392db24fd0b6c8a4e8"
+  dependencies:
+    tonal-array "^0.65.0"
+    tonal-interval "^0.65.0"
+    tonal-pitch "^0.65.0"
+
+tonal-transpose@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal-transpose/-/tonal-transpose-0.65.0.tgz#2192eeb1e5d7f2d2bc26e3da54dd4335f0be176b"
+  dependencies:
+    tonal-pitch "^0.65.0"
+
+tonal@^0.65.0:
+  version "0.65.0"
+  resolved "https://registry.yarnpkg.com/tonal/-/tonal-0.65.0.tgz#76a0f928c2ba173ee3ae92c43f6412b346b09a5c"
+  dependencies:
+    tonal-array "^0.65.0"
+    tonal-chord "^0.65.0"
+    tonal-distance "^0.65.0"
+    tonal-filter "^0.63.0"
+    tonal-freq "^0.62.0"
+    tonal-interval "^0.65.0"
+    tonal-midi "^0.62.0"
+    tonal-notation "^0.64.0"
+    tonal-note "^0.65.0"
+    tonal-pitch "^0.65.0"
+    tonal-progression "^0.65.0"
+    tonal-range "^0.65.0"
+    tonal-scale "^0.65.0"
+    tonal-sonority "^0.65.0"
+    tonal-transpose "^0.65.0"
+
 toposort-class@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/toposort-class/-/toposort-class-1.0.1.tgz#7ffd1f78c8be28c3ba45cd4e1a3f5ee193bd9988"
@@ -3848,6 +4034,10 @@ verror@1.3.6:
   resolved "https://registry.yarnpkg.com/verror/-/verror-1.3.6.tgz#cff5df12946d297d2baaefaa2689e25be01c005c"
   dependencies:
     extsprintf "1.0.2"
+
+vexflow@^1.2.83:
+  version "1.2.83"
+  resolved "https://registry.yarnpkg.com/vexflow/-/vexflow-1.2.83.tgz#cd4b37aca41700d5797bc503346871901af97943"
 
 vm-browserify@0.0.4:
   version "0.0.4"

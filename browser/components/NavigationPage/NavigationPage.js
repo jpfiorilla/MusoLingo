@@ -5,7 +5,7 @@ import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import FlatButton from 'material-ui/FlatButton';
 import Subheader from 'material-ui/Subheader';
 
-export default class HomePageComponent extends React.Component {
+export default class NavigationPage extends React.Component {
 
   constructor () {
     super();

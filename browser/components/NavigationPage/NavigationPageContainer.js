@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import HomePageComponent from './HomePageComponent';
+import NavigationPage from './NavigationPage';
 
 
 const mapStateToProps = function (state) {
@@ -13,6 +13,5 @@ const mapDispatchToProps = function (dispatch) {
   return {};
 };
 
-const componentCreator = connect(mapStateToProps, mapDispatchToProps);
-const HomePageContainer = componentCreator(HomePageComponent);
-export default HomePageContainer;
+const NavigationPageContainer = connect(mapStateToProps, mapDispatchToProps);
+export default NavigationPageContainer;

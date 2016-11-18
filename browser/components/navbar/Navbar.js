@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router'
-<<<<<<< HEAD
-=======
 import { NavbarMenuContainer } from './NavbarContainer'
->>>>>>> 7d14eea525f78f8993c7b19ebb635f89723c33bc
 
 // Material theme
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -12,7 +9,6 @@ import FontIcon from 'material-ui/FontIcon';
 import FlatButton from 'material-ui/FlatButton';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import {NavbarMenuContainer} from "./NavbarContainer"
 import { white } from 'material-ui/styles/colors';
 
 // Material CSS rules
