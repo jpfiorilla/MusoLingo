@@ -34,8 +34,8 @@ const RadioButtonExampleSimple = ({questionType}) => {
     questionComponent = RandomChord;
     correct = randomTriad(56);
     incorrect = [];
-    let incorrectChords = randomOtherTriads(correct);
-    incorrectChords.forEach(chord => incorrect.push(chord[1]));
+    let incorrectChords = randomOtherTriads(correct[1]);
+    incorrectChords.forEach(chord => incorrect.push(chord));
     console.log(correct, incorrect);
   }
   let rightAnswerPosition = Math.floor(Math.random() * 4);

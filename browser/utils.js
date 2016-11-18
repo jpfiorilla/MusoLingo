@@ -69,11 +69,12 @@ export const randomTriad = function(floor){
     return [tonal.chord.build(triadQuality, triadRoot), [getNoteName(triadRoot), triadQuality].join('')];
 }
 
-export const randomOtherTriads = function(rightTriad){
+export const randomOtherTriads = function(rightTriadName){
     let arr = [];
     while (arr.length < 3){
-        let newTriad = randomTriad();
-        if (newTriad !== rightTriad && arr.indexOf(newTriad) === -1) arr.push(newTriad);
+        let triadQuality = triadQualities[Math.floor(Math.random() * triadQualities.length)];
+        let newTriad = [getNoteName(rightTriadName), triadQuality].join('');
+        if (newTriad !== rightTriadName && arr.indexOf(newTriad) === -1) arr.push(newTriad);
     }
     return arr;
 }
