@@ -1,47 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router';
+import Drawer from 'material-ui/Drawer';
+import AppBar from 'material-ui/AppBar';
+import RaisedButton from 'material-ui/RaisedButton';
 
-// Tabs for different user types
-const accountTabs = [
-	{title: 'Personal Information', route: '/account/details'},
-	{title: 'Order History', route: '/account/orders'}
-];
-const adminTabs = [
-	{title: 'Recent Orders', route: '/admin/orders'},
-	{title: 'Products', route: '/admin/products'}
-];
+export default class DrawerOpenRightExample extends React.Component {
 
-export default ({ user, children }) => {
-	// If not logged in, do not show pane switcher
-	if (!Object.keys(user).length)
-		return <span>You need to be logged in to see this page</span>
+  constructor(props) {
+	super(props);
+	this.state = { open: false };
 
-	const tabs = user.isAdmin ? adminTabs : accountTabs;
-	return (
-		<div id="info" className="col-xs-12">		
-			<div className="row center-block">
-				<div className="col-xs-4 center">
-					<h3>{ `${user.first_name} ${user.last_name}` }</h3>
-				</div>
-				<div className="col-xs-offset-4 col-xs-4">
-					<h3>{ user.email }</h3>
-				</div>
-			</div>
+	this.handleToggle = this.handleToggle.bind(this);  
+  }
 
-			<div id="account-nav" className="row">
-					<ul className="nav nav-tabs">
-					{
-						tabs.map((tab, i) => {
-							return (
-								<li key={i}>
-									<Link to={ tab.route } activeClassName="active">{ tab.title }</Link>
-								</li>
-							)
-						})
-					}
-					</ul>
-					{ children ? React.cloneElement(children, {user}) : null }
-			</div>
+  handleToggle() {
+	this.setState({ open: !this.state.open });
+  }
+
+  render() {
+	  const {user} = this.props;
+	
+	  return (
+		<div className="account-drawer">
+			<RaisedButton
+			label="Toggle Drawer"
+			onClick={this.handleToggle}
+			/>
+			<Drawer width={250} openSecondary={true} open={this.state.open} >
+				<img id="user-image" src={user.image} />
+				<h3 id="user-name">{`${user.first_name + " " + user.last_name}`}</h3>
+			</Drawer>
 		</div>
-	)
-};
+		);
+	}
+}

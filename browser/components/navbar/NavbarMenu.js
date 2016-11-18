@@ -12,7 +12,8 @@ import { white } from 'material-ui/styles/colors';
 const buttonText = {color: white, padding: 0, transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms'}
 
 export default class NavbarMenu extends React.Component {
-  render() {
+  render(props) {
+    console.log(props);
     const { role, logout } = this.props;
     return (
       <ToolbarGroup style={{float: 'right'}}>
@@ -60,7 +61,10 @@ export default class NavbarMenu extends React.Component {
       }
         <div className="navbar-item">
           <Link to="/cart">
-            <FontIcon className="material-icons" color={white} hoverColor="#00BCD4">shopping_cart</FontIcon>
+            <FontIcon
+              className="material-icons"
+              color={white}
+              hoverColor="#00BCD4">shopping_cart</FontIcon>
           </Link>
         </div>
       </ToolbarGroup>

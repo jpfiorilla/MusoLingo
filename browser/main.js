@@ -13,6 +13,7 @@ import App from './components/App'
 import Quiz from "./components/Quiz/Quiz.jsx"
 import Login from "./components/Login/LoginContainer"
 import HomePageContainer from './components/HomePage/HomePageContainer';
+import Account from "./components/Account/AccountContainer";
 
 
 // Redux actions and thunks
@@ -32,6 +33,7 @@ render(
       <Route path="/" component={App} >
       <Route path="/quiz" component={Quiz} />
       <Route path="/login" component={Login} />
+      <Route path="/account" component={Account} />
       <IndexRoute component={HomePageContainer} onEnter={onHomeEnter}/>
     </Route>
   </Router>

@@ -16,6 +16,11 @@ const User = db.define('users', {
 			notEmpty: true,
 		},
 	},
+	image: {
+		type: Sequelize.STRING,
+		allowNull: true,
+		defaultValue: "default.png"
+	},
 	isAdmin: {
 		type: Sequelize.BOOLEAN,
 		defaultValue: false

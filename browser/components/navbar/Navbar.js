@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router'
-import NavbarMenu from './NavbarMenu'
 
 // Material theme
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -9,6 +8,7 @@ import FontIcon from 'material-ui/FontIcon';
 import FlatButton from 'material-ui/FlatButton';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import {NavbarMenuContainer} from "./NavbarContainer"
 import { white } from 'material-ui/styles/colors';
 
 // Material CSS rules
@@ -55,7 +55,7 @@ export default class Navbar extends React.Component {
             <ToolbarTitle style={toolbarText} text="MusoLingo" />
           </Link>
         </ToolbarGroup>
-        <NavbarMenu { ...props } />
+        <NavbarMenuContainer { ...props } />
       </Toolbar>
     )
   }

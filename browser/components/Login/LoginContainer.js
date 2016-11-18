@@ -7,10 +7,11 @@ import { login, signup, oauth } from '../../redux/user';
 function LoginDecorator (Login) {
 	return class StatefulLogin extends React.Component {
 		constructor(props) {
-			super(props) 
+			super(props);
+
 			this.state = {
 				firstname: '', lastname: '', email: '', 
-				password: '', login_error: ''}
+				password: '', image: '', login_error: ''}
 
 			this.handleChange = this.handleChange.bind(this);
 			this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,7 +35,8 @@ function LoginDecorator (Login) {
 				firstname: this.state.firstname,
 				lastname: this.state.lastname,
 				email: this.state.email,
-				password: this.state.password
+                password: this.state.password,
+				image: null
 			}
 			this.props.signup(credentials);
 		}
@@ -46,7 +48,6 @@ function LoginDecorator (Login) {
 				email: this.state.email,
 				password: this.state.password
 			}
-
 
 			this.props.login(credentials, (err) => {
 				this.setState({ login_error: err });
