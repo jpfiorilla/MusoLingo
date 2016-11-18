@@ -1,9 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router'
-<<<<<<< HEAD
-=======
-import { NavbarMenuContainer } from './NavbarContainer'
->>>>>>> 7d14eea525f78f8993c7b19ebb635f89723c33bc
+import { Link } from 'react-router';
 
 // Material theme
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -44,7 +40,7 @@ export default class Navbar extends React.Component {
         <ToolbarGroup>
           <div className="navbar-item">
             <i id="drawer-icon" className="material-icons" hoverColor="#00BCD4" onClick={this.handleToggle}>view_headline</i>
-            <Drawer 
+            <Drawer
               docked={false}
               width={200}
               onRequestChange={(open) => this.setState({open})}
