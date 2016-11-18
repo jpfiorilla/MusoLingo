@@ -24,9 +24,9 @@ router.get('/number/:nuber', (req, res, next) => {
   return findOneInSlides(res, 'number', req.params.number);
 });
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-// NOTE: get all slides by lesson_id
+// NOTE: get slides by lesson_id
 router.get('/lesson_id/:lesson_id', (req, res, next) => {
-  return findAllInSlides(res, 'lesson_id', req.params.lesson_id);
+  return findOneInSlides(res, 'lesson_id', req.params.lesson_id);
 });
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 function findOneInSlides(res, attribute, match) {
