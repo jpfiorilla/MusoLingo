@@ -29,6 +29,14 @@ body,html {
   text-decoration: none;
 }
 
+#drawer-icon {
+  color: white;
+}
+
+#drawer-icon:hover {
+  color: #00BCD4
+}
+
 .navbar-item, .navbar-item > a {
   display: flex;
   align-items: center;
