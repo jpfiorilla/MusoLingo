@@ -11,7 +11,6 @@ import { Provider } from 'react-redux'
 import App from './components/App'
 import Quiz from "./components/Quiz/Quiz.jsx"
 import Login from "./components/Login/LoginContainer"
-import FacebookLogin from "./components/Login/FacebookLogin"
 
 // Redux actions and thunks
 import store from './store'
@@ -22,7 +21,6 @@ render(
       <Route path="/" component={App}>
         <Route path="/quiz" component={Quiz} />
         <Route path="/login" component={Login} />
-        <Route path="/login/fb" component={FacebookLogin} />
       </Route>
     </Router>
   </Provider>,

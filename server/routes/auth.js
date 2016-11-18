@@ -9,6 +9,7 @@ module.exports = router;
 
 // Sign up for JustHome and create a new user
 router.post('/signup', (req, res, next) => {
+  console.log(req);
 	userModel.create({
     first_name: req.body.firstname,
     last_name: req.body.lastname,
@@ -17,6 +18,7 @@ router.post('/signup', (req, res, next) => {
   })
 		.then(user => {
       req.session.userId = user.id;
+      console.log(userModel.getUserAccount(user.id))
       return userModel.getUserAccount(user.id)
     })
     .then(userAccount => res.status(201).send(userAccount))
@@ -48,7 +50,7 @@ router.post('/login', (req, res, next) => {
           req.session.userId = user.id;
           return userModel.getUserAccount(user.id)
         })
-        .then(userAccount => res.send(userAccount))
+        .then(userAccount => {res.send(userAccount)})
     })
 		.catch(next);
 });
