@@ -1,44 +1,58 @@
 const db = require('APP/db');
 
-
+// NOTE: seed these two first since they rely on no other models.
 const Topic = require('./models/topic');
-const Lesson = require('./models/lesson');
-const Slide = require('./models/slide');
-const Quiz = require('./models/quiz');
-const Question = require('./models/question');
+const topicSeed = require('./Seed_Helper/Topic_Seed');
 const User = require('./models/user');
+const userSeed = require('./Seed_Helper/User_Seed');
 
-const generateLessons = function(){
-	var lessons = [];
-	lessons.push(Lesson.create({
-		title: 'Intro to rhythm',
-		level: 0,
-		description: 'Learn how to read rhythmic symbols'
-	})
-	.then(createdLesson => {
-		return createdLesson.setTopic(1)
-	}));
+// NOTE: then seed:
+const Lesson = require('./models/lesson');
+const lessonSeed = require('./Seed_Helper/Lesson_Seed');
 
-	return Promise.all(lessons);
+// NOTE: then seed:
+const Slide = require('./models/slide');
+const slideSeed = require('./Seed_Helper/Slide_Seed');
+const Quiz = require('./models/quiz');
+const quizSeed = require('./Seed_Helper/Quiz_Seed');
+
+// NOTE: then seed:
+const Question = require('./models/question');
+const questionSeed = require('./Seed_Helper/Question_Seed');
+
+function Question_Seed () {
+	var array = [Question.bulkCreate(questionSeed)];
+	return Promise.all(array);
 }
-
-const generateTopics = () => {
-	var topics = [];
-	topics.push(Topic.create({
-		name: 'Intro to reading music'
-	}));
-	return Promise.all(topics);
+function Slide_Quiz_Seeder () {
+	var array = [];
+	array.push(Slide.bulkCreate(slideSeed));
+	array.push(Quiz.bulkCreate(quizSeed));
+	return Promise.all(array);
 }
-
-const seed = () => {
-	return generateTopics()
-	.then(() => generateLessons())
-	.catch(err => console.error(err));
+function Lesson_Seeder () {
+	var seed = [];
+	seed.push(Lesson.bulkCreate(lessonSeed));
+	return Promise.all(seed);
+}
+function Topic_User_Seeder () {
+	var wholeSeed = [];
+	// Topic creator.
+	wholeSeed.push(Topic.bulkCreate(topicSeed));
+	// User creator.  We cannot use bulkCreate because the password digest -
+	// hook does not support it and refactoring it may be more trouble than it's worth.
+	userSeed.forEach(user => {
+		wholeSeed.push(User.create(user));
+	});
+	return Promise.all(wholeSeed);
 }
 
 db.didSync
-	.then(() => db.sync({force: true}))
-	.then(() => seed())
-	.then(() => console.log(`Seeded OK`))
-	.catch(error => console.error(error))
-	.finally(() => db.close())
+.then(() => db.sync({force: true}))
+.then(Topic_User_Seeder)
+.then(Lesson_Seeder)
+.then(Slide_Quiz_Seeder)
+.then(Question_Seed)
+.then(() => console.log(`Seeded OK`))
+.catch(error => console.error(error))
+.finally(() => db.close());
