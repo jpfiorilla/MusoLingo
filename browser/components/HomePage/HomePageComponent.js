@@ -3,6 +3,7 @@ import { Link, browserHistory } from 'react-router'
 import {List, ListItem} from 'material-ui/List';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import FlatButton from 'material-ui/FlatButton';
+import Subheader from 'material-ui/Subheader';
 
 export default class HomePageComponent extends React.Component {
 
@@ -41,6 +42,9 @@ export default class HomePageComponent extends React.Component {
       <div>
         <div className="col-md-6">
           <List>
+            <Subheader>
+              Topics
+            </Subheader>
             {
               this.props.topics && this.props.topics.map((topic, index) => {
                 return (
@@ -54,6 +58,9 @@ export default class HomePageComponent extends React.Component {
         </div>
         <div className={this.state.hideLessons}>
           <List>
+            <Subheader>
+              Lessons
+            </Subheader>
             {
               this.state.lessonsWithThisId.length && this.state.lessonsWithThisId.map((lesson, index) => {
                 return (

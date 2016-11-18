@@ -14,7 +14,6 @@ import Quiz from "./components/Quiz/Quiz.jsx"
 import Login from "./components/Login/LoginContainer"
 import HomePageContainer from './components/HomePage/HomePageContainer';
 
-
 // Redux actions and thunks
 import store from './store'
 
