@@ -4,6 +4,11 @@ const noteLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 const notesAccidentals = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'Ab', 'Bb', 'C#', 'D#', 'Eb', 'F#', 'G#'];
 const octaves = ['0', '1', '2', '3', '4', '5', '6'];
 
+const intervals = ['second', 'third', 'fourth', 'fifth', 'sixth', 'seventh'];
+const intervalQualities = ['Augmented', 'Major', 'Perfect', 'minor', 'diminished'];
+const intervalsPerfect = ['Augmented', 'Perfect', 'diminished'];
+const intervalsMajor = ['Augmented', 'Major', 'minor', 'diminished'];
+
 export const randomNoteName = function(floor = 0, ceiling = 87){
     let newNoteMidi = Math.floor(Math.random() * (ceiling-floor) + floor + 1);
     return midiToVex(newNoteMidi);
@@ -37,6 +42,23 @@ export const calculateInterval = function(notes){
     interval[0] === '7' ? num = 'seventh' :
     interval[0] === '8' ? num = 'octave' : num = '';
     return quality + ' ' + num;
+}
+
+export const randomIntervalName = function(){
+    let qual, num = intervals[Math.floor(Math.random() * intervals.length)];
+    (num === 'unison' || num === 'fourth' || num === 'fifth' || num === 'octave') ?
+    qual = intervalsPerfect[Math.floor(Math.random() * intervalsPerfect.length)] :
+    qual = intervalsMajor[Math.floor(Math.random() * intervalsMajor.length)];
+    return qual + ' ' + num;
+}
+
+export const randomIntervals = function(correct){
+    let arr = [];
+    while (arr.length < 3){
+        let newInterval = randomIntervalName();
+        if (newInterval !== correct && arr.indexOf(newInterval) === -1) arr.push(newInterval);
+    }
+    return arr;
 }
 
 export const getNoteName = function(note){

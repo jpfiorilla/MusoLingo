@@ -4,7 +4,7 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import RandomTrebleNote from '../vexflow/randomtreblenote';
 import RandomTrebleInterval from '../vexflow/randomtrebleinterval';
-import { getNoteName, vexToMidi, calculateInterval, randomNoteName, randomOtherNoteNames } from '../../utils';
+import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames } from '../../utils';
 import  Vex from 'vexflow';
 
 const styles = {
@@ -27,9 +27,8 @@ const RadioButtonExampleSimple = ({questionType}) => {
     var lownote = randomNoteName(56, 75);
     var highnote = randomNoteName(vexToMidi(lownote), vexToMidi(lownote)+11);
     var intervalNotes = [lownote, highnote];
-    console.log(intervalNotes);
     correct = calculateInterval(intervalNotes);
-    incorrect = ['2', '3', '4'];
+    incorrect = randomIntervals(correct);
   }
   return (
     <div>
