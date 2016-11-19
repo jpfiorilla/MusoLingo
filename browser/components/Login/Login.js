@@ -87,7 +87,7 @@ export default class Login extends React.Component {
 		];
 
 		return (
-			<div>
+			<div id="login-popup">
 				<FlatButton
 					label="Sign In" labelStyle={buttonText}
 					onClick={() => {this.handleOpen("Log in")}}
@@ -103,6 +103,7 @@ export default class Login extends React.Component {
 					id="login-dialog"
 					actions={actions}
 					modal={false}
+					autoScrollBodyContent={true}
 					open={this.state.open}
 					onRequestClose={this.handleClose}
 					contentStyle={dialogStyle}

@@ -167,9 +167,10 @@
     font-weight: 200;
     font-size: 100px;
     position: relative;
-    width: 95%;
+    width: 58%;
     text-align: right;
     top: -600px;
+    left: 390px;
 }
 
 #have-fun-text {
