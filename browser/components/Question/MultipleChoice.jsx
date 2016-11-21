@@ -5,7 +5,8 @@ import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import RandomTrebleNote from '../vexflow/randomtreblenote';
 import RandomTrebleInterval from '../vexflow/randomtrebleinterval';
 import RandomChord from '../vexflow/randomchord';
-import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads } from '../../utils';
+import RandomRhythmNote from '../vexflow/randomrhythmnote';
+import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations } from '../../utils';
 import  Vex from 'vexflow';
 
 const styles = {
@@ -20,28 +21,31 @@ const styles = {
 const RadioButtonExampleSimple = ({questionType}) => {
   console.log(questionType);
   if (questionType === "guessNoteName"){
-    var questionComponent = RandomTrebleNote;
-    var correct = randomNoteName(56, 75);
-    var incorrect = randomOtherNoteNames(correct, 56, 67);
-    console.log('correct', correct);
+      var questionComponent = RandomTrebleNote;
+      var correct = randomNoteName(56, 75);
+      var incorrect = randomOtherNoteNames(correct, 56, 67);
+      console.log('correct', correct);
   } else if (questionType === "guessInterval"){
-    questionComponent = RandomTrebleInterval;
-    var lownote = randomNoteName(56, 75);
-    var highnote = randomNoteName(vexToMidi(lownote), vexToMidi(lownote)+11);
-    var intervalNotes = [lownote, highnote];
-    correct = calculateInterval(intervalNotes);
-    incorrect = randomIntervals(correct);
-    console.log('correct', correct);
+      questionComponent = RandomTrebleInterval;
+      var lownote = randomNoteName(56, 75);
+      var highnote = randomNoteName(vexToMidi(lownote), vexToMidi(lownote)+11);
+      var intervalNotes = [lownote, highnote];
+      correct = calculateInterval(intervalNotes);
+      incorrect = randomIntervals(correct);
+      console.log('correct', correct);
   } else if (questionType === "guessChordName"){
-    questionComponent = RandomChord;
-    var correctArr = randomTriad(56, 75);
-    var correct = correctArr[1];
-    var correctChord = correctArr[0];
-    incorrect = [];
-    var incorrectChords = randomOtherTriads(correctArr[1]);
-    incorrectChords.forEach(chord => incorrect.push(chord));
-    // console.log(correct, correctChord, incorrect);
-    console.log('correct', correct);
+      questionComponent = RandomChord;
+      var correctArr = randomTriad(56, 75);
+      correct = correctArr[1];
+      var correctChord = correctArr[0];
+      incorrect = [];
+      var incorrectChords = randomOtherTriads(correctArr[1]);
+      incorrectChords.forEach(chord => incorrect.push(chord));
+      console.log('correct', correct);
+  } else if (questionType === 'rhythmNote'){
+      questionComponent = RandomRhythmNote;
+      correct = randomNoteDuration();
+      incorrect = randomOtherNoteDurations(correct);
   }
   let rightAnswerPosition = Math.floor(Math.random() * 4);
   let buttonsArray = ['', '', '', ''];
@@ -50,7 +54,7 @@ const RadioButtonExampleSimple = ({questionType}) => {
     <div>
       <div className="sheetmusic">
         {
-          React.createElement(questionComponent, {note: correct, questionType, intervalNotes, chord: correctChord})
+          React.createElement(questionComponent, {note: correct, questionType, intervalNotes, chord: correctChord, rhythmnote: correct})
         }
       </div>
       {/* MULTIPLE CHOICE BUTTONS */}

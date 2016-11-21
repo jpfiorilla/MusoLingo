@@ -1,60 +1,78 @@
 var slides = [{
-  "title": "Adaptive 24/7 middleware",
+  "title": "Basic rhythmic notation",
   "number": 1,
   "slideContent": [
     {
-      "text": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum."
+      "text": "Welcome to MusoLingo!"
     },
     {
-      "img": "http://dummyimage.com/221x230.jpg/cc0000/ffffff"
-    },
-    {
-      "img": "http://dummyimage.com/235x204.png/5fa2dd/ffffff"
+      'text': 'The first thing we will cover is how to read music.'
     }
   ],
   "lesson_id": 1
 }, {
-  "title": "Total zero defect function",
+  "title": "Whole notes",
   "number": 2,
   "slideContent": [
     {
-      "img": "http://dummyimage.com/217x223.bmp/5fa2dd/ffffff"
+      'text': 'This is a whole note. It indicates that a note is to be held for four (4) beats.'
     },
     {
-      "text": "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem."
-    },
-    {
-      "img": "http://dummyimage.com/226x179.bmp/cc0000/ffffff",
-    },
-    {
-      "text": "Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem."
+      "img": "http://i.imgur.com/69AJB7X.png"
     }
   ],
   "lesson_id": 1
 }, {
-  "title": "Proactive systemic toolset",
+  "title": "Half & quarter notes",
   "number": 3,
   "slideContent": [
     {
-      "img": "http://dummyimage.com/137x235.bmp/ff4444/ffffff"
+      text: "This is a half note. It's worth half the duration of a whole note, or two (2) beats."
     },
     {
-      "text": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
+      "img": "http://i.imgur.com/w2N9QO3.png"
+    },
+    {
+      text: "Similarly, quarter notes are worth half of eighth notes, or one (1) bea."
+    },
+    {
+      "img": "http://i.imgur.com/Wq8bHjw.png"
+    },
+  ],
+  "lesson_id": 1
+}, {
+  "title": "Eighth notes",
+  "number": 4,
+  "slideContent": [
+    {
+      text: "This is an eighth note. It's worth half a quarter note, or one half of a beat (1/2)."
+    },
+    {
+      "img": "http://i.imgur.com/iv4GeCq.png"
+    },
+    {
+      "text": "When two eighth notes are written in sequence, they are attached together with a stem."
+    },
+    {
+      img: "http://i.imgur.com/HdYQtYg.png"
     }
   ],
   "lesson_id": 1
 }, {
-  "title": "Streamlined fault-tolerant open system",
-  "number": 4,
+  "title": "Sixteenth notes",
+  "number": 5,
   "slideContent": [
     {
-      "img": "http://dummyimage.com/207x142.png/5fa2dd/ffffff"
+      text: "This is a sixteenth note. It's worth half aa eighth note, or one quarter of a beat (1/4)."
     },
     {
-      "img": "http://dummyimage.com/190x131.png/5fa2dd/ffffff"
+      "img": "http://i.imgur.com/PvRcW43.png"
     },
     {
-      "text": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      "text": "Like eighth notes, when two sixteenth notes are written in sequence, they are attached together with a stem."
+    },
+    {
+      img: "http://i.imgur.com/e3lyfNN.png"
     }
   ],
   "lesson_id": 1
