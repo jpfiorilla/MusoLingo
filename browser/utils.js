@@ -11,6 +11,8 @@ const intervalsMajor = ['Augmented', 'Major', 'minor', 'diminished'];
 
 const triadQualities = ['+', '', 'm', 'dim', 'sus4'];
 
+const basicDurations = ['whole', 'half', 'quarter', '8th', '16th'];
+
 export const randomNoteName = function(floor = 0, ceiling = 87){
     let newNoteMidi = Math.floor(Math.random() * (ceiling-floor) + floor + 1);
     return midiToVex(newNoteMidi);
@@ -78,6 +80,20 @@ export const randomOtherTriads = function(rightTriadName){
         let triadQuality = triadQualities[Math.floor(Math.random() * triadQualities.length)];
         let newTriad = [getNoteName(rightTriadName), triadQuality].join('');
         if (newTriad !== rightTriadName && arr.indexOf(newTriad) === -1) arr.push(newTriad);
+    }
+    return arr;
+}
+
+export const randomNoteDuration = function(){
+    let duration = basicDurations[Math.floor(Math.random() * basicDurations.length)];
+    return duration;
+}
+
+export const randomOtherNoteDurations = function(correct){
+    let arr = [];
+    while (arr.length < 3){
+        let newDuration = randomNoteDuration();
+        if (newDuration !== correct && arr.indexOf(newDuration) === -1) arr.push(newDuration);
     }
     return arr;
 }
