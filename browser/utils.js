@@ -33,7 +33,7 @@ export const calculateInterval = function(notes){
     interval[1] === 'P' ? quality = 'Perfect' :
     interval[1] === 'A' ? quality = 'Augmented' :
     interval[1] === 'm' ? quality = 'minor' :
-    interval[1] === 'M' ? quality = 'Major' : 
+    interval[1] === 'M' ? quality = 'Major' :
     interval[1] === 'd' ? quality = 'diminished' : quality = '';
     interval[0] === '1' ? num = 'unison' :
     interval[0] === '2' ? num = 'second' :

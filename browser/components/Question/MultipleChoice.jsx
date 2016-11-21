@@ -23,6 +23,7 @@ const RadioButtonExampleSimple = ({questionType}) => {
     var questionComponent = RandomTrebleNote;
     var correct = randomNoteName(56, 75);
     var incorrect = randomOtherNoteNames(correct, 56, 67);
+    console.log('correct', correct);
   } else if (questionType === "guessInterval"){
     questionComponent = RandomTrebleInterval;
     var lownote = randomNoteName(56, 75);
@@ -30,6 +31,7 @@ const RadioButtonExampleSimple = ({questionType}) => {
     var intervalNotes = [lownote, highnote];
     correct = calculateInterval(intervalNotes);
     incorrect = randomIntervals(correct);
+    console.log('correct', correct);
   } else if (questionType === "guessChordName"){
     questionComponent = RandomChord;
     var correctArr = randomTriad(56, 75);
@@ -39,6 +41,7 @@ const RadioButtonExampleSimple = ({questionType}) => {
     var incorrectChords = randomOtherTriads(correctArr[1]);
     incorrectChords.forEach(chord => incorrect.push(chord));
     // console.log(correct, correctChord, incorrect);
+    console.log('correct', correct);
   }
   let rightAnswerPosition = Math.floor(Math.random() * 4);
   let buttonsArray = ['', '', '', ''];
