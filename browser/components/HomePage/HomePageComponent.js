@@ -40,9 +40,11 @@ export default class HomePageComponent extends React.Component {
 
   getSlidesAndHeadOver (lessonId) {
     // NOTE: hard coding 1 for testing purposes.
-    // NOTE: change back  to lesson Id when we're done.
+    // NOTE: change back  to lesson Id when db is updated with actual lesson material.
+    // *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
     this.props.askForSlides(1);
     browserHistory.push('/slides');
+    // *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
   }
 
   render () {
