@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
+
 import NavigationPage from './NavigationPage';
+import { askServerForTheSlides } from '../../redux/SlidesActions';
 
 
 const mapStateToProps = function (state) {
@@ -10,7 +12,12 @@ const mapStateToProps = function (state) {
 };
 
 const mapDispatchToProps = function (dispatch) {
-  return {};
+  // NOTE: need to give a function to load the slides for the lesson id on click.
+  return {
+    askForSlides: (lesson_id) => {
+      dispatch(askServerForTheSlides(lesson_id));
+    }
+  };
 };
 
 const NavigationPageContainer = connect(mapStateToProps, mapDispatchToProps);
