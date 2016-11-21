@@ -23,7 +23,7 @@ import store from './store'
 
 import { askServerForAllTopics } from './redux/TopicsActions';
 import { askServerForAllLessons } from './redux/LessonsActions';
-// dispatch askServerForAllTopics
+
 const onNavigationEnter = () => {
   store.dispatch(askServerForAllTopics());
   store.dispatch(askServerForAllLessons());
@@ -38,7 +38,7 @@ render(
       <Route path="/account" component={Account} />
       <Route path="/nav" component={NavigationPage} onEnter={onNavigationEnter}/>
       <Route path="/slides" component={SlidesContainer} />
-      <IndexRoute component={HomePageContainer} onEnter={onHomeEnter}/>
+      <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
     </Route>
   </Router>
 </Provider>,

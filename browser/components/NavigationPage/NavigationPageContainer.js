@@ -20,5 +20,5 @@ const mapDispatchToProps = function (dispatch) {
   };
 };
 
-const NavigationPageContainer = connect(mapStateToProps, mapDispatchToProps);
+const NavigationPageContainer = connect(mapStateToProps, mapDispatchToProps)(NavigationPage);
 export default NavigationPageContainer;

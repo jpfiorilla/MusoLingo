@@ -42,7 +42,7 @@ export default class NavigationPage extends React.Component {
     // NOTE: hard coding 1 for testing purposes.
     // NOTE: change back  to lesson Id when db is updated with actual lesson material.
     // *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
-    this.props.askForSlides(1);
+    this.props.askForSlides(lessonId);
     browserHistory.push('/slides');
     // *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
   }
