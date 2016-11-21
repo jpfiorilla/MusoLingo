@@ -33,9 +33,13 @@ export const slidesReducer = (state = [], action) => {
   switch (action.type) {
 
     case SET_SLIDES:
-    return action.slides;
+      // NOTE: need to sort the slides in the order they should appear.
+      action.slides.sort((a, b) => {
+        return a.number - b.number;
+      });
+      return action.slides;
 
     default:
-    return state
+      return state
   }
 }
