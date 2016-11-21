@@ -177,3 +177,10 @@ body,html {
   border-color: lightcoral;
   box-shadow: 0 0 10px lightcoral;
 }
+
+#circle {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: red;
+}

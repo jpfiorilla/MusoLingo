@@ -16,10 +16,11 @@ import Quiz from "./components/Quiz/Quiz.jsx"
 import Login from "./components/Login/LoginContainer"
 import NavigationPage from './components/NavigationPage/NavigationPageContainer';
 import Account from "./components/Account/AccountContainer";
+import Challenge from "./components/Challenge/Challenge";
 
 // Redux actions and thunks
 import store from './store'
- 
+
 import { askServerForAllTopics } from './redux/TopicsActions';
 import { askServerForAllLessons } from './redux/LessonsActions';
 // dispatch askServerForAllTopics
@@ -36,6 +37,7 @@ render(
       <Route path="/login" component={Login} />
       <Route path="/account" component={Account} />
       <Route path="/nav" component={NavigationPage} onEnter={onNavigationEnter}/>
+      <Route path="/game" component={Challenge}/>
     </Route>
   </Router>
 </Provider>,
