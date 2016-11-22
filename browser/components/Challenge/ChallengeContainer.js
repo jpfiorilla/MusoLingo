@@ -4,8 +4,8 @@ import Challenge from './Challenge';
 
 const mapStateToProps = function (state) {
   return {
-    // notes: state.notes,
-    // bpm: state.bpm,
+    notes: state.notes,
+    bpm: state.bpm,
     scoreCounter: state.score
   };
 };

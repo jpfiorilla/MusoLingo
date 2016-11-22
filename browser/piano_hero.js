@@ -153,16 +153,20 @@ function rhythmicAccuracy(timePlayed, noteDuration){
 
 function noteOn(midiNote, velocity, frequency) {
   polySynth.triggerAttack(frequency, null, velocity)
-  // REWRITE: only call rhythmicAccuracy if pitchAccuracy evaluates as correct (OR it might be better the other way around)
 
   // pitchAccuracy(midiNote);
   // rhythmicAccuracy(Tone.Transport.position, noteDuration());
 
+// ONLY RUN IF noteSetterLoop is currently running
+// if (seq.state === 'started'){
+//
+// }
   if (pitchAccuracy(midiNote)) {
     rhythmicAccuracy(Tone.Transport.position, noteDuration())
   }
 }
 
+// rewrite to have noteOff measure duration note is held? could require longer notes to be sustained for longer; allow a generous margin of error
 function noteOff(midiNote, velocity, frequency) {
   // console.log('lifted up', Tone.Transport)
   polySynth.triggerRelease(frequency)
@@ -181,12 +185,14 @@ function noteOff(midiNote, velocity, frequency) {
   // currentBeat is used by noteDuration(), which looks at the corresponding note/set of notes with the same index in noteSequence[0]. rhythmicAccuracy uses the noteDuration to determine the subdivision of the currentNotes that are supposed to be played. The conditional statements set the beat 1/5th of a sixteenth ahead of the currentNote, so that we're looking at the proper subdivision
 function loopCreator(notes){
   var noteSetterLoop = new Tone.Sequence(function(time, note){
-    if (Tone.Transport.position.split(':')[2] === '3.792' && Tone.Transport.position.split(':')[1] === '3'){
+    let sixteenth = Tone.Transport.position.split(':')[2];
+    let beat = Tone.Transport.position.split(':')[1];
+    if (sixteenth === '3.792' && beat === '3'){
       currentBeat = 0;
-    } else if (Tone.Transport.position.split(':')[2] === '3.792'){
-      currentBeat = Number(Tone.Transport.position.split(':')[1]) + 1;
+    } else if (sixteenth === '3.792'){
+      currentBeat = Number(beat) + 1;
     } else {
-      currentBeat = Number(Tone.Transport.position.split(':')[1]);
+      currentBeat = Number(beat);
     }
     currentNote = note;
   }, notes, noteSequence[1]);
@@ -205,6 +211,7 @@ export const startSequence = function(notesToPlay, bpm, numCorrect){
   // slight offset equal to bpm/4800 (approx. 1/5th of a sixteenth note, so that the currentNote gets re-assigned slightly ahead of the metronome)
   noteSetterLoop.start(startingPoint-offsetSeconds);
   Tone.Transport.start();
+  console.log(seq)
   seq.stop(endTime);
   noteSetterLoop.stop(endTime);
   Tone.Transport.scheduleOnce(function(){

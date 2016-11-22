@@ -19,23 +19,20 @@ export default class Challenge extends Component {
     }
 
     scorePercentage(notes){
-      var totalNotes = 0;
-      for (let i = 0; notes.length; i++){
+      var totalNotes = notes.length;
+      for (let i = 0; i < notes.length; i++){
         if (Array.isArray(notes[i])){
           totalNotes += notes[i].length
         }
       }
-      totalNotes += notes.length;
-
       return `${this.state.numCorrect/totalNotes}%`;
     }
 
-    pullScore(numCorrect) {
-      this.setState({numCorrect})
-    }
+    // pullScore(numCorrect) {
+    //   this.setState({numCorrect})
+    // }
 
     componentDidMount(){
-      var circle = document.getElementById('circle');
     }
 
     render() {
