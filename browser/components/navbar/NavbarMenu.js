@@ -87,14 +87,14 @@ export default class NavbarMenu extends React.Component {
           </div>
         )
       }
-        <div className="navbar-item">
+        {/*<div className="navbar-item">
           <Link to="/cart">
             <FontIcon
               className="material-icons"
               color={white}
               hoverColor="#00BCD4">shopping_cart</FontIcon>
           </Link>
-        </div>
+        </div>*/}
       </ToolbarGroup>
   )}
 }
