@@ -19,6 +19,12 @@ var slides = [{
     },
     {
       "img": "http://i.imgur.com/69AJB7X.png"
+    },
+    {
+      vex: {
+        type: SingleRhythmNote,
+        info: 'w'
+      }
     }
   ],
   "lesson_id": 1
