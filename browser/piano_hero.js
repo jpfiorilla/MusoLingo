@@ -1,6 +1,7 @@
 import tonal from 'tonal';
 import Tone from 'tone';
 import { polySynth, metronome } from './instruments'
+import Challenge, { pullScore } from './components/Challenge/Challenge'
 
 // noteSequence is an array. First value is the note sequence to be played, second is the duration of the click
 var noteSequence = [["C4", ["D4", "E4", "F4"], "G4", ["A4", "G4"]], "4n"]
@@ -86,11 +87,11 @@ function stopTime(){
 }
 
 function pitchAccuracy(midiNote){
-  // if (currentNote === tonal.note.fromMidi(midiNote)) return true;
-  // else return false;
+    console.log(currentNote, tonal.note.fromMidi(midiNote))
 
-  console.log(tonal.note.fromMidi(midiNote))
-  // compare currentNote to note played (ignores octave for now, only looks at index 0);
+  if (currentNote === tonal.note.fromMidi(midiNote)) return true;
+  else return false;
+
 }
 
 function noteDuration(){
@@ -153,8 +154,13 @@ function rhythmicAccuracy(timePlayed, noteDuration){
 function noteOn(midiNote, velocity, frequency) {
   polySynth.triggerAttack(frequency, null, velocity)
   // REWRITE: only call rhythmicAccuracy if pitchAccuracy evaluates as correct (OR it might be better the other way around)
-  pitchAccuracy(midiNote);
-  rhythmicAccuracy(Tone.Transport.position, noteDuration());
+
+  // pitchAccuracy(midiNote);
+  // rhythmicAccuracy(Tone.Transport.position, noteDuration());
+
+  if (pitchAccuracy(midiNote)) {
+    rhythmicAccuracy(Tone.Transport.position, noteDuration())
+  }
 }
 
 function noteOff(midiNote, velocity, frequency) {
@@ -163,31 +169,34 @@ function noteOff(midiNote, velocity, frequency) {
 }
 
 // metronome loop, which simply needs subdivision time and a corresponding number of events
-var seq = new Tone.Sequence(function(time, note){
-  metronome.start(0);
-  // increments currentMeasure by one beat every time it clicks; starts at -1 b/c of count-in; must refactor to work with time signatures other than 4
-  currentMeasure += .25
-  // console.log(currentMeasure, currentBeat, noteSequence[0][currentBeat + (Math.floor(currentMeasure) * 4)], currentBeat + (Math.floor(currentMeasure) * 4))
-  // console.log("1", noteDuration())
-  console.log(Tone.Transport.position)
-}, [0,1,2,3], noteSequence[1]);
+  var seq = new Tone.Sequence(function(time, note){
+    metronome.start(0);
+    // increments currentMeasure by one beat every time it clicks; starts at -1 b/c of count-in; must refactor to work with time signatures other than 4
+    currentMeasure += .25
+    console.log(Tone.Transport.position)
+  }, [0,1,2,3], noteSequence[1]);
 
-// 2nd loop, which looks at the sequence of notes and sets currentNote and currentBeat
-// currentNote is used reference by pitchAccuracy function to see if the correct note was played. It is set 1/5th of a sixteenth note early so that notes can be played slightly ahead of time and still count as correct
-// currentBeat is used by noteDuration(), which looks at the corresponding note/set of notes with the same index in noteSequence[0]. rhythmicAccuracy uses the noteDuration to determine the subdivision of the currentNotes that are supposed to be played. The conditional statements set the beat 1/5th of a sixteenth ahead of the currentNote, so that we're looking at the proper subdivision
-var noteSetterLoop = new Tone.Sequence(function(time, note){
-  if (Tone.Transport.position.split(':')[2] === '3.792' && Tone.Transport.position.split(':')[1] === '3'){
-    currentBeat = 0;
-  } else if (Tone.Transport.position.split(':')[2] === '3.792'){
+  // 2nd loop, which looks at the sequence of notes and sets currentNote and currentBeat
+  // currentNote is used reference by pitchAccuracy function to see if the correct note was played. It is set 1/5th of a sixteenth note early so that notes can be played slightly ahead of time and still count as correct
+  // currentBeat is used by noteDuration(), which looks at the corresponding note/set of notes with the same index in noteSequence[0]. rhythmicAccuracy uses the noteDuration to determine the subdivision of the currentNotes that are supposed to be played. The conditional statements set the beat 1/5th of a sixteenth ahead of the currentNote, so that we're looking at the proper subdivision
+function loopCreator(notes){
+  var noteSetterLoop = new Tone.Sequence(function(time, note){
+    if (Tone.Transport.position.split(':')[2] === '3.792' && Tone.Transport.position.split(':')[1] === '3'){
+      currentBeat = 0;
+    } else if (Tone.Transport.position.split(':')[2] === '3.792'){
       currentBeat = Number(Tone.Transport.position.split(':')[1]) + 1;
     } else {
       currentBeat = Number(Tone.Transport.position.split(':')[1]);
-  }
-  currentNote = note;
-}, noteSequence[0], noteSequence[1]);
+    }
+    currentNote = note;
+  }, notes, noteSequence[1]);
+
+  return noteSetterLoop;
+}
 
 export const startSequence = function(notesToPlay, bpm, numCorrect){
   currentScore = 0;
+  var noteSetterLoop = loopCreator(notesToPlay)
   noteSequence[0] = notesToPlay;
   Tone.Transport.bpm.value = bpm;
   let endTime = stopTime();
@@ -199,8 +208,9 @@ export const startSequence = function(notesToPlay, bpm, numCorrect){
   seq.stop(endTime);
   noteSetterLoop.stop(endTime);
   Tone.Transport.scheduleOnce(function(){
-    numCorrect = currentScore
-    console.log(numCorrect)
+    pullScore(currentScore)
+    // numCorrect = currentScore
+    // console.log("SCORE", numCorrect)
   }, endTime)
 }
 

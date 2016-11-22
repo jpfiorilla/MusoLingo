@@ -16,7 +16,7 @@ import Quiz from "./components/Quiz/Quiz.jsx"
 import Login from "./components/Login/LoginContainer"
 import NavigationPage from './components/NavigationPage/NavigationPageContainer';
 import Account from "./components/Account/AccountContainer";
-import Challenge from "./components/Challenge/Challenge";
+import Challenge from "./components/Challenge/ChallengeContainer";
 
 // Redux actions and thunks
 import store from './store'
