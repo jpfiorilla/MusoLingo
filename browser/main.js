@@ -11,14 +11,14 @@ import { randomTrebleNote } from './utils'
 
 // React components
 
-import App from './components/App'
-import Quiz from "./components/Quiz/Quiz.jsx"
-import Login from "./components/Login/LoginContainer"
+import App from './components/App';
+import Quiz from "./components/Quiz/Quiz.jsx";
+import Login from "./components/Login/LoginContainer";
 import NavigationPage from './components/NavigationPage/NavigationPageContainer';
 import Account from "./components/Account/AccountContainer";
 import SlidesContainer from './components/Slides/SlidesContainer';
 import HomePage from "./components/HomePage/HomePage";
-import LessonPage from "./components/LessonPage/LessonPage"
+import LessonPage from "./components/LessonPage/LessonPage";
 import Challenge from "./components/Challenge/ChallengeContainer";
 
 // Redux actions and thunks

@@ -52,7 +52,7 @@ export default class Lesson extends React.Component {
 
     getStepContent(stepIndex) {
         switch (stepIndex) {
-        case 0:
+        case 1:
             return (
                 <div>
                     <div>
@@ -65,7 +65,7 @@ export default class Lesson extends React.Component {
                     </p>
                 </div>
             );
-        case 1:
+        case 0:
         // questionType = rhythmNote || guessNoteName || guessInterval || guessChordName
             return (
                 <div>
