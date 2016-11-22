@@ -10,8 +10,7 @@ import { axiosResponse } from './../utils.js'
 import {
   SET_TOPICS,
   askServerForAllTopics,
-  setTopics,
-  topicsReducer
+  setTopics
 } from '../../browser/redux/TopicsActions';
 
 describe('Topics', () => {

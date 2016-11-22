@@ -10,8 +10,7 @@ import { axiosResponse } from './../utils.js';
 import {
   SET_LESSONS,
   askServerForAllLessons,
-  setLessons,
-  lessonsReducer
+  setLessons
 } from '../../browser/redux/LessonsActions';
 
 describe('Lessons', () => {
