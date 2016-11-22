@@ -18,6 +18,18 @@ export default class Challenge extends Component {
       pullScore = pullScore.bind(this);
     }
 
+    scorePercentage(notes){
+      var totalNotes = 0;
+      for (let i = 0; notes.length; i++){
+        if (Array.isArray(notes[i])){
+          totalNotes += notes[i].length
+        }
+      }
+      totalNotes += notes.length;
+
+      return `${this.state.numCorrect/totalNotes}%`;
+    }
+
     pullScore(numCorrect) {
       this.setState({numCorrect})
     }
@@ -34,7 +46,7 @@ export default class Challenge extends Component {
           <div><h2>{this.state.numCorrect} correct</h2></div>
         )
       }
-      
+
       console.log(this.props)
 
         return (
