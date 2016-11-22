@@ -3921,6 +3921,10 @@ tonal@^0.65.0:
     tonal-sonority "^0.65.0"
     tonal-transpose "^0.65.0"
 
+tone@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/tone/-/tone-0.8.0.tgz#15c3300383be662d223c2d6fede5f2b4464c0e1e"
+
 toposort-class@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/toposort-class/-/toposort-class-1.0.1.tgz#7ffd1f78c8be28c3ba45cd4e1a3f5ee193bd9988"

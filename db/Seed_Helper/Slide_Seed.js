@@ -22,7 +22,7 @@ var slides = [{
     },
     {
       vex: {
-        type: SingleRhythmNote,
+        type: "SingleRhythmNote",
         info: 'w'
       }
     }
