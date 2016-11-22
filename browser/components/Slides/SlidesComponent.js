@@ -61,13 +61,14 @@ export default class SlidesComponent extends React.Component {
         </div>
       );
     } else if (obj.vex) {
+      let vexComponent = obj.vex.type;
       staffNum++;
       let staffId = 'staff' + staffNum.toString();
-      return (
+      /* return (
         <div>
           <div key={index} id={staffId}></div>
         </div>
-      )
+      ) */
     }
   }
   render() {

@@ -12,7 +12,7 @@ export default class SingleRhythmNote extends Component {
         )
     }
     componentDidMount(){
-        const {staffId} = this.props;
+        const {single} = this.props;
 
         let VF = Vex.Flow;
 

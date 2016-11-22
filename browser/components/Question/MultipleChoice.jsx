@@ -44,6 +44,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         correct = randomNoteName(56, 75);
         incorrect = randomOtherNoteNames(correct, 56, 67);
         this.setState({ correctAnswer: correct })
+        correct = getNoteName(correct);
         break;
       case "guessInterval":
         questionComponent = RandomTrebleInterval;
