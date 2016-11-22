@@ -34,7 +34,8 @@ export default class NavbarMenu extends React.Component {
   }
 
   render(props) {
-    const { role, logout } = this.props;
+    const { role, logout, user } = this.props;
+    console.log(user);
     return (
       <ToolbarGroup style={{float: 'right'}}>
       {
@@ -59,6 +60,7 @@ export default class NavbarMenu extends React.Component {
               hoverColor="#2b4b91" rippleColor="#2b4b91"
               onClick={this.handleToggle}
             />
+            <i id="navbar-key" data-badge={user.numOfKeys} className="material-icons mdl-badge mdl-badge--no-background mdl-badge--overlap">vpn_key</i>
             <Drawer 
               docked={false}
               width={200}
@@ -79,6 +81,7 @@ export default class NavbarMenu extends React.Component {
           </div>
         ) : (
           <div className="navbar-item">
+            <img id="profile-picture" src={user.image} />
             <FlatButton
               label="Sign Out" labelStyle={buttonText}
               hoverColor="#00BCD4" rippleColor="#2b4b91"
@@ -87,14 +90,6 @@ export default class NavbarMenu extends React.Component {
           </div>
         )
       }
-        <div className="navbar-item">
-          <Link to="/cart">
-            <FontIcon
-              className="material-icons"
-              color={white}
-              hoverColor="#00BCD4">shopping_cart</FontIcon>
-          </Link>
-        </div>
       </ToolbarGroup>
   )}
 }
