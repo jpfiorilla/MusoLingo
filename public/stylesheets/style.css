@@ -185,3 +185,25 @@ background-color: #963838;}
   border-color: lightcoral;
   box-shadow: 0 0 10px lightcoral;
 }
+
+.multiple-choice-ans {
+  height: 40px;
+  width: 30%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 15px;
+  margin: 10px;
+  box-shadow: 5px 5px 5px grey;
+  position: relative;
+  left: 20%;
+  line-height: 36px;
+}
+
+.right-answer {
+  background-color: green;
+}
+
+.wrong-answer {
+  background-color: red;
+}

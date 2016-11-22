@@ -42,8 +42,7 @@ export default class HomePage extends React.Component {
                         </p>
                     </div>    
                 </div>
-                <div data-aos="fade-left"
-                    className="have-fun-page">
+                <div data-aos="fade-left" className="have-fun-page">
                     <div className="homepage-3">
                         <div id="image-overlay-3"></div>
                     </div>

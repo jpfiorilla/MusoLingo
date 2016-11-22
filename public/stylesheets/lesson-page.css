@@ -61,17 +61,19 @@ a:hover {
 /* Tuts */
 ul#piano {
   display:block;
+  position: relative;
   width:100%;
   height:240px;
+  top: 70px;
 }
 
 ul#piano li {
   list-style:none;
-  left: 10%;
+  left: 15%;
   float:left;
   display:inline;
   background:#aaa;
-  width:100px;
+  width: 10%;
   position:relative;
 }
 
@@ -214,29 +216,6 @@ ul#piano li p {
   -transition:all 0.2s ease-out;
 }
 
-/* Tooltip Arrow */
-/*ul#piano li b:before {
-  content:"";
-  display:block;
-  position:absolute;
-  top:100%;
-  left:50px;
-  border-width:8px;
-  border-style:solid;
-  border-color:#e6e6e6 transparent transparent transparent;
-}
-
-ul#piano li b:after {
-  content:"";
-  display:block;
-  position:absolute;
-  top:100%;
-  left:53px;
-  border-width:5px;
-  border-style:solid;
-  border-color:#111 transparent transparent transparent;
-}*/
-
 ul#piano li:hover h3 {
   visibility:visible;
   opacity:1;
@@ -271,104 +250,6 @@ ul#piano li ul,#search,#contact {
   transition:all 0.2s ease-out 0.2s;
 }
 
-#search,#contact {
-  background:#333;
-  padding:40px 10px 8px;
-  -webkit-border-radius:0 0 18px 0;
-  -moz-border-radius:0 0 18px 0;
-  border-radius:0 0 18px 0;
-}
-
-#search input[type="text"],#contact input[type="text"] {
-  border:1px solid #aaa;
-  font:normal 12px Cambria,Georgia,Serif;
-  padding:2px 5px 2px;
-  width:120px;
-  margin-bottom:2px;
-  margin-right:2px;
-  position:relative;
-  color:#aaa;
-  -webkit-box-shadow:inset 0 0 5px #ccc;
-  -moz-box-shadow:inset 0 0 5px #ccc;
-  box-shadow:inset 0 0 5px #ccc;
-  -webkit-border-radius:0 0 10px 0;
-  -moz-border-radius:0 0 10px 0;
-  border-radius:0 0 10px 0;
-}
-
-#contact textarea {
-  border:1px solid #aaa;
-  font:normal 12px Cambria,Georgia,Serif;
-  padding:2px 5px;
-  width:270px;
-  height:100px;
-  margin-top:4px;
-  position:relative;
-  color:#aaa;
-  -webkit-box-shadow:inset 0 0 5px #ccc;
-  -moz-box-shadow:inset 0 0 5px #ccc;
-  box-shadow:inset 0 0 5px #ccc;
-  -webkit-border-radius:0 0 10px 0;
-  -moz-border-radius:0 0 10px 0;
-  border-radius:0 0 10px 0;
-}
-
-#contact input[type="submit"] {
-  background:-webkit-linear-gradient(top,#666,#000,#333);
-  background:-moz-linear-gradient(top,#666,#000,#333);
-  background:-ms-linear-gradient(top,#666,#000,#333);
-  background:-o-linear-gradient(top,#666,#000,#333);
-  background:linear-gradient(top,#666,#000,#333);
-  border:none;
-  -webkit-border-radius:3px;
-  -moz-border-radius:3px;
-  border-radius:3px;
-  -webkit-box-shadow:0 1px 1px #000;
-  -moz-box-shadow:0 1px 1px #000;
-  box-shadow:0 1px 1px #000;
-  padding:3px 10px 4px;
-  margin:4px 2px;
-  font:normal 10px Verdana,Arial,Sans-Serif;
-  color:#ccc;
-  float:right;
-}
-
-#search input:focus,#contct input:focus,#contact textarea:focus {
-  color:#000;
-}
-
-/* Loupe */
-#search:after {
-  content:"";
-  width:5px;
-  height:5px;
-  border:1px solid #666;
-  -webkit-border-radius:10px;
-  -moz-border-radius:10px;
-  border-radius:10px;
-  position:absolute;
-  left:100%;
-  margin-left:-25px;
-  top:46px;
-  z-index:100;
-}
-
-#search:before {
-  content:"";
-  width:2px;
-  height:0px;
-  border:1px solid #666;
-  position:absolute;
-  z-index:3;
-  left:100%;
-  margin-left:-28px;
-  top:53px;
-  -webkit-transform:rotate(-42deg);
-  -moz-transform:rotate(-42deg);
-  -ms-transform:rotate(-42deg);
-  -o-transform:rotate(-42deg);
-  transform:rotate(-42deg);
-}
 
 ul#piano li li {
   width:150px;
@@ -415,117 +296,13 @@ ul#piano li li a:hover {
   border-bottom-color:#000;
 }
 
-/* Paper */
-.credit {
-  margin:50px;
-  width:390px;
-  height:50px;
-  padding:30px;
-  position:relative;
-  background:#fff;
-  font:italic 1em Cambria,Georgia,Serif;
-  color:#666;
-  background:-webkit-gradient(linear,0% 20%,0% 92%,from(#fff),to(#f9f9f9),color-stop(.1,#fff));
-  background:-moz-linear-gradient(0 0 270deg,#fff,#fff 10%,#f9f9f9);
-  background:-ms-linear-gradient(0 0 270deg,#fff,#fff 10%,#f9f9f9);
-  background:-o-linear-gradient(0 0 270deg,#fff,#fff 10%,#f9f9f9);
-  background:linear-gradient(0 0 270deg,#fff,#fff 10%,#f9f9f9);
-  border:1px solid #ccc;
-  -webkit-box-shadow:1px 1px 4px rgba(0,0,0,0.1);
-  -moz-box-shadow:1px 1px 4px rgba(0,0,0,0.1);
-  box-shadow:1px 1px 4px rgba(0,0,0,0.1);
-  -webkit-border-bottom-right-radius:60px 5px;
-  -moz-border-radius-bottomright:60px 5px;
-  
-border-bottom-right-radius:60px 5px;
-  -webkit-animation:taufik 1s;
-  -moz-animation:taufik 1s;
-  animation:taufik 1s;
+#piano-container {
+  background-image: url("/images/wood-2.jpg");
+  height: 350px;
+  border-radius: 10px;
+  box-shadow: -5px 5px 5px black;
+  width: 80%;
 }
-
-.credit:before {
-  content:"";
-  width:98%;
-  z-index:-1;
-  height:100%;
-  padding:0 0 1px 0;
-  position:absolute;
-  bottom:0;
-  right:0;
-  background:#fff;
-  background:-webkit-gradient(linear,0% 20%,0% 92%,from(#fff),to(#f9f9f9),color-stop(.1,#fff));
-  background:-moz-linear-gradient(0 0 270deg,#fff,#fff 10%,#f9f9f9);
-  background:-ms-linear-gradient(0 0 270deg,#fff,#fff 10%,#f9f9f9);
-  background:-o-linear-gradient(0 0 270deg,#fff,#fff 10%,#f9f9f9);
-  background:linear-gradient(0 0 270deg,#fff,#fff 10%,#f9f9f9);
-  border:1px solid #ccc;
-  -webkit-box-shadow:1px 1px 8px rgba(0,0,0,0.1);
-  -moz-box-shadow:1px 1px 8px rgba(0,0,0,0.1);
-  box-shadow:1px 1px 8px rgba(0,0,0,0.1);
-  -webkit-border-bottom-right-radius:60px 5px;
-  -moz-border-radius-bottomright:60px 5px;
-  
-border-bottom-right-radius:60px 5px;
-  -webkit-transform:skew(2deg,2deg) translate(-4px,8px);
-  -moz-transform:skew(2deg,2deg) translate(-4px,8px);
-  -ms-transform:skew(2deg,2deg) translate(-4px,8px);
-  -o-transform:skew(2deg,2deg) translate(-4px,8px);
-  transform:skew(2deg,2deg) translate(-4px,8px);
-}
-
-.credit:after {
-  content:"";
-  width:98%;
-  z-index:-1;
-  height:98%;
-  padding:0 0 1px 0;
-  position:absolute;
-  bottom:0;
-  right:0;
-  background:#f3f3f3;
-  background:-webkit-gradient(linear,0% 20%,0% 92%,from(#fff),to(#f9f9f9),color-stop(.1,#fff));
-  background:-moz-linear-gradient(0 0 270deg,#fff,#fff 10%,#f9f9f9);
-  background:-ms-linear-gradient(0 0 270deg,#fff,#fff 10%,#f9f9f9);
-  background:-o-linear-gradient(0 0 270deg,#fff,#fff 10%,#f9f9f9);
-  background:linear-gradient(0 0 270deg,#fff,#fff 10%,#f9f9f9);
-  border:1px solid #ccc;
-  -webkit-box-shadow:0px 0px 8px rgba(0,0,0,0.1);
-  -moz-box-shadow:0px 0px 8px rgba(0,0,0,0.1);
-  box-shadow:0px 0px 8px rgba(0,0,0,0.1);
-  -webkit-transform:rotate(-4deg) translate(-14px,-2px);
-  -moz-transform:rotate(-4deg) translate(-14px,-2px);
-  -ms-transform:rotate(-4deg) translate(-14px,-2px);
-  -o-transform:rotate(-4deg) translate(-14px,-2px);
-  transform:rotate(-4deg) translate(-14px,-2px);
-}
-
-.credit_ribbon {
-  position:absolute;
-  top:0;
-  left:0;
-  width:115px;
-  height:35px;
-  background:rgba(0,0,0,0.1);
-  background:-webkit-gradient(linear,555% 20%,0% 92%,from(rgba(0,0,0,0.1)),to(rgba(0,0,0,0.0)),color-stop(.1,rgba(0,0,0,0.2)));
-  background:-moz-linear-gradient(555% 0 180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.2) 10%,rgba(0,0,0,0.0));
-  background:-ms-linear-gradient(555% 0 180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.2) 10%,rgba(0,0,0,0.0));
-  background:-o-linear-gradient(555% 0 180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.2) 10%,rgba(0,0,0,0.0));
-  background:linear-gradient(555% 0 180deg,rgba(0,0,0,0.1),rgba(0,0,0,0.2) 10%,rgba(0,0,0,0.0));
-  border-left:1px dashed rgba(0,0,0,0.1);
-  border-right:1px dashed rgba(0,0,0,0.1);
-  -webkit-box-shadow:0px 1px 7px rgba(0,0,0,0.2);
-  -moz-box-shadow:0px 1px 7px rgba(0,0,0,0.2);
-  box-shadow:0px 1px 7px rgba(0,0,0,0.2);
-  -webkit-transform:rotate(-30deg) skew(0,0) translate(-30px,-20px);
-  -moz-transform:rotate(-30deg) skew(0,0) translate(-30px,-20px);
-  -o-transform:rotate(-30deg) skew(0,0) translate(-30px,-20px);
-  transform:rotate(-30deg) skew(0,0) translate(-30px,-20px);
-}
-
-.clear {
-  clear:both;
-}
-
 
 /* Animation */
 @-webkit-keyframes taufik {
