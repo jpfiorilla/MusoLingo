@@ -1,4 +1,7 @@
 /* Shared */
+#login-dialog {
+  overflow-y: scroll;
+}
 
 .loginBtn {
   box-sizing: border-box;

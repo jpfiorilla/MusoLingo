@@ -1,0 +1,186 @@
+.homepage-1 {
+    width: 100%;
+    height: 750px;
+    background: url("/images/homepage-image.jpg");
+    background-size: 100% 100%;
+    z-index: -1;
+}
+
+#get-started {
+    background: transparent;
+}
+
+.homepage-1 #image-overlay {
+    width: 100%;
+    height: 750px;
+    opacity: 0.6;
+    background: darkblue;
+    background: -webkit-linear-gradient(darkblue, black);
+    background: -o-linear-gradient(darkblue, black);
+    background: -moz-linear-gradient(darkblue, black);
+    background: linear-gradient(darkblue, black);
+    z-index: -1;
+}
+
+.homepage-navbar {
+    width: 100%;
+    height: 75px;
+}
+
+.homepage-nb {
+    position: relative;
+    color: white;
+    font-weight: lighter;
+    top: -24px;
+}
+
+.homepage-nb:hover {
+    text-decoration: none;
+}
+
+#homepage-home-link {
+    left: 81%;
+}
+
+#homepage-features-link {
+    left: 83%;
+}
+
+#homepage-about-link {
+    left: 86%;
+}
+
+#homepage-home-link:hover {
+    color: lightblue;
+}
+
+#intro {
+    color: white;
+    opacity: 1;
+    z-index: 1;
+    position: relative;
+    top: 100px;
+    left: 47%;
+    width: 36%;
+    font-size: 119px;
+    font-weight: 200;
+}
+
+#intro-text {
+    position: relative;
+    color: white;
+    z-index: 1;
+    top: 125px;
+    left: 43.6%;
+    font-weight: lighter;
+    width: 30%;
+}
+
+#get-started {
+    background: transparent;
+    border-width: thin;
+    border-color: white;
+    color: white;
+    font-size: large;
+    left: 48%;
+    position: relative;
+    top: 145px;
+    font-weight: 200;
+}
+
+#get-started:hover {
+    color: lightblue;
+    border-color: lightblue;
+}
+
+/*HOME PAGE 2*/
+.homepage-2 {
+    width: 100%;
+    height: 700px;
+    opacity: 0.6;
+    background: url("/images/key.png");
+    background-size: 100% 100%;
+    z-index: -1;
+}
+
+.homepage-2 #image-overlay-2 {
+    width: 100%;
+    height: 700px;
+    opacity: 0.6;
+    background: maroon;
+    background: -webkit-radial-gradient(circle, maroon, darkblue);
+    background: -o-radial-gradient(circle, maroon, darkblue);
+    background: -moz-radial-gradient(circle, maroon, darkblue);
+    background: radial-gradient(circle, maroon, darkblue);
+    z-index: -1;
+}
+
+.homepage-2 > #image-overlay-2 > #monitor {
+    color: white;
+    font-weight: 200;
+    font-size: 115px;
+    position: relative;
+    top: 135px;
+    left: 116px;
+    width: 75%;
+}
+
+.homepage-2 > #image-overlay-2 > #monitor-text {
+    color: white;
+    position: relative;
+    top: 160px;
+    left: 10%;
+    font-size: 25px;
+    width: 48%;
+    text-align: left;
+    font-weight: 100;
+}
+
+/*HOMEPAGE 3*/
+.have-fun-page {
+    height: 700px;
+}
+
+.homepage-3 {
+    width: 100%;
+    height: 700px;
+    opacity: 0.6;
+    background: url("/images/homepage-image-3.jpg");
+    background-size: 100% 100%;
+    z-index: -1;
+}
+
+.homepage-3 #image-overlay-3 {
+    width: 100%;
+    height: 700px;
+    opacity: 0.6;
+    background: maroon;
+    background: -webkit-radial-gradient(circle, deepskyblue, black);
+    background: -o-radial-gradient(circle, deepskyblue, black);
+    background: -moz-radial-gradient(circle, deepskyblue, black);
+    background: radial-gradient(circle, deepskyblue, black);
+    z-index: -1;
+}
+
+#have-fun {
+    color: white;
+    font-weight: 200;
+    font-size: 100px;
+    position: relative;
+    width: 58%;
+    text-align: right;
+    top: -600px;
+    left: 390px;
+}
+
+#have-fun-text {
+    color: white;
+    position: relative;
+    top: 75px;
+    left: 10%;
+    font-size: 23px;
+    font-weight: lighter;
+    width: 48%;
+    text-align: left;
+    top: -500px;
+}

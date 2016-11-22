@@ -18,7 +18,8 @@ export const randomNoteName = function(floor = 0, ceiling = 87){
     return midiToVex(newNoteMidi);
 }
 
-export const randomOtherNoteNames = function(note, floor, ceiling){
+export const randomOtherNoteNames = function (note, floor, ceiling) {
+    // calculates three other "wrong" notes
     if (!floor) floor = vexToMidi(note);
     if (!ceiling) ceiling = floor + 11;
     let arr = [];

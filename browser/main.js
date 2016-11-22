@@ -17,6 +17,8 @@ import Login from "./components/Login/LoginContainer"
 import NavigationPage from './components/NavigationPage/NavigationPageContainer';
 import Account from "./components/Account/AccountContainer";
 import SlidesContainer from './components/Slides/SlidesContainer';
+import HomePage from "./components/HomePage/HomePage";
+import LessonPage from "./components/LessonPage/LessonPage"
 
 // Redux actions and thunks
 import store from './store'
@@ -32,6 +34,7 @@ const onNavigationEnter = () => {
 render(
   <Provider store={ store }>
     <Router history={ browserHistory }>
+      <Route path="/home" component={HomePage} />
       <Route path="/" component={App} >
       <Route path="/quiz" component={Quiz} />
       <Route path="/login" component={Login} />
@@ -39,6 +42,7 @@ render(
       <Route path="/nav" component={NavigationPage} onEnter={onNavigationEnter}/>
       <Route path="/slides" component={SlidesContainer} />
       <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
+      <Route path="/lesson" component={LessonPage} />
     </Route>
   </Router>
 </Provider>,
