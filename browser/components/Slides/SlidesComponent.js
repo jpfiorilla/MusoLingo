@@ -8,6 +8,8 @@ import {
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
+import SingleRhythmNote from '../vexflow/singlerhythmnote';
+
 export default class SlidesComponent extends React.Component {
 
   /**
@@ -43,6 +45,7 @@ export default class SlidesComponent extends React.Component {
   };
 
   textOrImage (obj, index) {
+    var staffNum = 0;
     // NOTE: key of obj is either 'text' or 'img'
     console.log(obj);
     if (obj.text) {
@@ -57,6 +60,14 @@ export default class SlidesComponent extends React.Component {
           <img key={index} src={obj.img} />
         </div>
       );
+    } else if (obj.vex) {
+      staffNum++;
+      let staffId = 'staff' + staffNum.toString();
+      return (
+        <div>
+          <div key={index} id={staffId}></div>
+        </div>
+      )
     }
   }
   render() {
@@ -96,7 +107,7 @@ export default class SlidesComponent extends React.Component {
             </a>
           </p>
         ) : (
-          <div>
+          <div style={{textAlign: 'center'}}>
             {
               this.props.slides.length && this.props.slides[stepIndex].slideContent.map((stuff, index) => {
                 return this.textOrImage(stuff, index);

@@ -15,7 +15,7 @@ var slides = [{
   "number": 2,
   "slideContent": [
     {
-      'text': 'This is a whole note. It indicates that a note is to be held for four (4) beats.'
+      'text': 'This is a <b>whole note</b>. It indicates that a note is to be held for <b>four (4) beats</b>.'
     },
     {
       "img": "http://i.imgur.com/69AJB7X.png"
@@ -27,13 +27,13 @@ var slides = [{
   "number": 3,
   "slideContent": [
     {
-      text: "This is a half note. It's worth half the duration of a whole note, or two (2) beats."
+      text: "This is a <b>half note</b>. It's worth half the duration of a whole note, or <b>two (2) beats.</b>"
     },
     {
       "img": "http://i.imgur.com/w2N9QO3.png"
     },
     {
-      text: "Similarly, quarter notes are worth half of eighth notes, or one (1) bea."
+      text: "Similarly, <b>quarter notes</b> are worth half of eighth notes, or <b>one (1) beat</b>."
     },
     {
       "img": "http://i.imgur.com/Wq8bHjw.png"
@@ -45,13 +45,13 @@ var slides = [{
   "number": 4,
   "slideContent": [
     {
-      text: "This is an eighth note. It's worth half a quarter note, or one half of a beat (1/2)."
+      text: "This is an <b>eighth note</b>. It's worth half a quarter note, or one <b>half of a beat (1/2)</b>."
     },
     {
       "img": "http://i.imgur.com/iv4GeCq.png"
     },
     {
-      "text": "When two eighth notes are written in sequence, they are attached together with a stem."
+      "text": "When two eighth notes are written in sequence, they are attached together with a <b>stem</b>."
     },
     {
       img: "http://i.imgur.com/HdYQtYg.png"
@@ -63,7 +63,7 @@ var slides = [{
   "number": 5,
   "slideContent": [
     {
-      text: "This is a sixteenth note. It's worth half aa eighth note, or one quarter of a beat (1/4)."
+      text: "This is a <b>sixteenth note</b>. It's worth half an eighth note, or <b>one quarter of a beat (1/4)</b>."
     },
     {
       "img": "http://i.imgur.com/PvRcW43.png"
