@@ -1,24 +1,9 @@
-import axios from 'axios'
-
 // ----------------------     ACTIONS     ----------------------------------
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 export const SET_NOTES = 'SET_NOTES';
 export const SET_BPM = 'SET_BPM';
 export const SET_SCORE = 'SET_SCORE';
-
-// export const askServerForAllLessons = () => {
-//   return dispatch => {
-//     axios.get('/api/lessons/all')
-//     .then(res => {
-//       dispatch(setLessons(res.data));
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       console.log('Error getting the lessons from the db.');
-//     });
-//   }
-// }
 
 export const setScore = (score) => {
   return {
