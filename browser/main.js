@@ -19,6 +19,7 @@ import Account from "./components/Account/AccountContainer";
 import SlidesContainer from './components/Slides/SlidesContainer';
 import HomePage from "./components/HomePage/HomePage";
 import LessonPage from "./components/LessonPage/LessonPage"
+import Challenge from "./components/Challenge/ChallengeContainer";
 
 // Redux actions and thunks
 import store from './store'
@@ -43,6 +44,7 @@ render(
       <Route path="/slides" component={SlidesContainer} />
       <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
       <Route path="/lesson" component={LessonPage} />
+      <Route path="/game" component={Challenge}/>
     </Route>
   </Router>
 </Provider>,

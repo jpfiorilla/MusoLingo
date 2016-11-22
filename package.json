@@ -67,6 +67,7 @@
     "sequelize": "^3.24.6",
     "stats.js": "^0.17.0",
     "tonal": "^0.65.0",
+    "tone": "^0.8.0",
     "vexflow": "^1.2.83"
   },
   "devDependencies": {

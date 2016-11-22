@@ -205,5 +205,11 @@ background-color: #963838;}
 }
 
 .wrong-answer {
+}
+
+#circle {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
   background-color: red;
 }
