@@ -66,7 +66,7 @@ function findOneInLessons(res, attribute, match) {
   // NOTE: return the db query promise.
   return Lessons.findOne(x)
   .then(resp => {
-    if (! resp) res.sendStatus(404);
+    if (! resp) res.send(404);
     else res.json(resp);
   })
   .catch(err => {
