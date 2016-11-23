@@ -29,7 +29,8 @@ const User = db.define('users', {
 	password_digest: Sequelize.STRING,
 	password: Sequelize.VIRTUAL,
 	completed: {
-		type: Sequelize.JSON
+		type: Sequelize.JSON,
+		defaultValue: {"quizzes": {}, "lessons": {}, "keys": 0}
 	}
 }, {
 	indexes: [{fields: ['email'], unique: true,}],

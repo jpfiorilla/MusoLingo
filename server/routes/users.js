@@ -28,13 +28,7 @@ customUserRoutes.post('/', (req,res,next) => {
 
 customUserRoutes.get('/:id', function(req, res, next){
 	userModel.findOne({
-		where: { id: req.params.id },
-		include: [
-			{ model: addressModel, as: 'shipping_address', required: false },
-			{ model: addressModel, as: 'billing_address', required: false },
-			{ model: creditCardModel, required: false },
-			{ model: orderModel, include: [{model: lineItem, include: [{model: productModel, required: false}], required: false}], required: false }
-		]
+		where: { id: req.params.id }
 	})
 	.then(result => res.send(result))
 	.catch(next);
@@ -68,6 +62,15 @@ customUserRoutes.get('/:userId/orders', function(req, res, next){
 	.catch(next);
 });
 
+customUserRoutes.post('/keys/:id', (req, res, next) => {
+	userModel.findById(req.params.id)
+		.then(user => user.update({
+			completed: {
+				keys: user.completed.keys + req.body.keysToAdd
+			}
+		}))
+		.then(updatedUser => res.send(updatedUser))
+})
 
 // // Epilogue will automatically create standard RESTful routes
 // const users = epilogue.resource({

@@ -21,15 +21,18 @@ if (! pkg.isProduction) {
 	// Dev environment variables
 	// require('dotenv').config();
 }
+
+app.use(session({
+	secret: "superSecret",
+	cookie: {maxAge: 6000}
+}))
+
 module.exports = app
 // // We'll store the whole session in a cookie
 // .use(require('cookie-session') ({
 //   name: 'session',
 //   keys: [process.env.SESSION_SECRET || 'an insecure secret key'],
 // }))
-.use(session({
-	secret: 'superSecret'
-}))
 
 // Body parsing middleware
 .use(bodyParser.urlencoded({ extended: true }))

@@ -1,0 +1,10 @@
+#profile-picture {
+    border-radius: 100%;
+    border: 2px black solid;
+    box-shadow: 0px 0px 10px white;
+}
+
+#navbar-key {
+    margin-right: 25px;
+    color: gold;
+}

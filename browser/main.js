@@ -36,7 +36,7 @@ render(
   <Provider store={ store }>
     <Router history={ browserHistory }>
       <Route path="/home" component={HomePage} />
-      <Route path="/" component={App} >
+      <Route path="/" component={App}>
       <Route path="/quiz" component={Quiz} />
       <Route path="/login" component={Login} />
       <Route path="/account" component={Account} />

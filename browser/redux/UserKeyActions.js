@@ -6,41 +6,50 @@ import axios from 'axios'
 // ----------------------     ACTIONS     ----------------------------------
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-export const ADD_KEY = 'ADD_KEY';
+const ADD_KEY = 'ADD_KEY';
+const SET_KEYS = 'SET_KEYS'
 
 // NOTE: ask the serve to get the topics from the db.
 
-// export const addNewKeyToServer = (num) => {
-//   return dispatch => {
-//     axios.get('/api/topics/all')
-//     .then(res => {
-//       dispatch(setTopics(res.data));
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       console.log('Error getting the topics from the db.');
-//     });
-//   }
-// }
 
-// NOTE: action creator for setting the topics.
-export const setNumOfKeys = (numOfKeys) => {
+export const setKeys = (keys) => {
   return {
-    type: ADD_KEY,
-    numOfKeys
+    type: SET_KEYS,
+    keys
   }
 }
+
+export const addKeys = (keys) => {
+  return {
+    type: ADD_KEY,
+    keys
+  }
+}
+
+export const addNewKeyToServer = (userId, keysToAdd) => {
+  return dispatch => {
+    axios.post(`/api/users/keys/${userId}`, {keysToAdd})
+    .then(res => {
+      return dispatch(addKeys(res.data.completed.keys))
+    })
+    .catch(err => {
+      console.error(err);
+      console.log('Error adding keys to db');
+    });
+  }
+}
+
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 
 // --------------------         REDUCER         --------------------------
 
-export const numOfKeysReducer = (state = null, action) => {
+export const numOfKeysReducer = (state = 0, action) => {
   switch (action.type) {
-
     case ADD_KEY:
-      return action.numOfKeys;
-
+      return action.keys;
+    case SET_KEYS:
+      return action.keys;
     default:
-    return state
+      return state
   }
 }
