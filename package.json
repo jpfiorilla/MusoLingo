@@ -9,7 +9,8 @@
   "scripts": {
     "start": "bin/setup && nodemon server/start.js",
     "dev": "check-node-version --node '>= 6.7.0' && bin/setup && nodemon server/start.js",
-    "test-watch": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register --watch tests/{*,**/*}.test.js",
+    "test-redux": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register tests/redux/{*,**/*}.test.js",
+    "test-routes": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register tests/routes/{*,**/*}.test.js",
     "build": "check-node-version --node '>= 6.7.0' && bin/setup && webpack",
     "build-watch": "check-node-version --node '>= 6.7.0' && bin/setup && webpack -w --progress",
     "seed": "node db/seed.js"
