@@ -1,5 +1,3 @@
-const quiz = [{"title":"Viva","number":4,"lessontext":"Ut tellus. Nulla ut erat id mauris vulputate elementum.","image":"http://dummyimage.com/241x226.png/dddddd/000000","images":["http://dummyimage.com/169x213.bmp/5fa2dd/ffffff","http://dummyimage.com/249x227.png/cc0000/ffffff"]},
-{"title":"Daltfresh","number":6,"lessontext":"Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum.","image":"http://dummyimage.com/141x165.png/ff4444/ffffff","images":["http://dummyimage.com/193x243.jpg/5fa2dd/ffffff","http://dummyimage.com/132x227.png/5fa2dd/ffffff"]},
-{"title":"Bitwolf","number":2,"lessontext":"Morbi a ipsum. Integer a nibh. In quis justo.","image":"http://dummyimage.com/121x103.png/ff4444/ffffff","images":["http://dummyimage.com/159x156.png/ff4444/ffffff","http://dummyimage.com/208x248.png/cc0000/ffffff"]}];
+const quiz = [];
 
 module.exports = quiz;

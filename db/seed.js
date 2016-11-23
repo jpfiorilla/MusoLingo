@@ -16,14 +16,6 @@ const slideSeed = require('./Seed_Helper/Slide_Seed');
 const Quiz = require('./models/quiz');
 const quizSeed = require('./Seed_Helper/Quiz_Seed');
 
-// NOTE: then seed:
-const Question = require('./models/question');
-const questionSeed = require('./Seed_Helper/Question_Seed');
-
-function Question_Seed () {
-	var array = [Question.bulkCreate(questionSeed)];
-	return Promise.all(array);
-}
 function Slide_Quiz_Seeder () {
 	var array = [];
 	array.push(Slide.bulkCreate(slideSeed));
@@ -52,7 +44,6 @@ db.didSync
 .then(Topic_User_Seeder)
 .then(Lesson_Seeder)
 .then(Slide_Quiz_Seeder)
-.then(Question_Seed)
 .then(() => console.log(`Seeded OK`))
 .catch(error => console.error(error))
 .finally(() => db.close());
