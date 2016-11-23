@@ -56,3 +56,5 @@ db.didSync
 .then(() => console.log(`Seeded OK`))
 .catch(error => console.error(error))
 .finally(() => db.close());
+
+module.exports = db;

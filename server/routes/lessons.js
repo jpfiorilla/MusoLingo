@@ -66,7 +66,7 @@ function findOneInLessons(res, attribute, match) {
   // NOTE: return the db query promise.
   return Lessons.findOne(x)
   .then(resp => {
-    if (! resp) res.send(404);
+    if (! resp) res.sendStatus(404);
     else res.json(resp);
   })
   .catch(err => {
@@ -97,7 +97,7 @@ function findAllInLessons(res, attribute, match) {
   // NOTE: return the db query promise.
   return Lessons.findAll(x)
   .then(resp => {
-    if (! resp.length) res.send(404);
+    if (! resp.length) res.sendStatus(404);
     else res.json(resp);
   })
   .catch(err => {
