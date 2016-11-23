@@ -5,7 +5,7 @@ import FlatButton from 'material-ui/FlatButton'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ExpandTransition from 'material-ui/internal/ExpandTransition'
 import TextField from 'material-ui/TextField'
-import MultipleChoice from "../Question/MultipleChoice"
+import {MultipleChoiceContainer} from "../Question/QuestionContainer"
 import TextInput from "../Question/TextInput"
 
 // Material CSS rules
@@ -52,7 +52,7 @@ export default class Lesson extends React.Component {
 
     getStepContent(stepIndex) {
         switch (stepIndex) {
-        case 0:
+        case 1:
             return (
                 <div>
                     <div>
@@ -65,13 +65,13 @@ export default class Lesson extends React.Component {
                     </p>
                 </div>
             );
-        case 1:
-        // questionType = guessNoteName || guessInterval || guessChordName
+        case 0:
+        // questionType = rhythmNote || guessNoteName || guessInterval || guessChordName
             return (
                 <div>
                     <p>Here is a multiple choice example:</p>
                     <div style={{marginLeft: "10%"}}>
-                        <MultipleChoice questionType={"guessChordName"} />
+                        <MultipleChoiceContainer questionType={"guessNoteName"} />
                     </div>
                 </div>
             );

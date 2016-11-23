@@ -35,7 +35,6 @@ export default class NavbarMenu extends React.Component {
 
   render(props) {
     const { role, logout, user } = this.props;
-    console.log(user);
     return (
       <ToolbarGroup style={{float: 'right'}}>
       {
@@ -60,7 +59,7 @@ export default class NavbarMenu extends React.Component {
               hoverColor="#2b4b91" rippleColor="#2b4b91"
               onClick={this.handleToggle}
             />
-            <i id="navbar-key" data-badge={user.numOfKeys} className="material-icons mdl-badge mdl-badge--no-background mdl-badge--overlap">vpn_key</i>
+            <i id="navbar-key" data-badge={this.props.keys} className="material-icons mdl-badge mdl-badge--no-background mdl-badge--overlap">vpn_key</i>
             <Drawer 
               docked={false}
               width={200}

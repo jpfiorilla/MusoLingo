@@ -15,6 +15,7 @@ export default class NavigationPage extends React.Component {
       hideLessons: 'col-md-6 hidden'
     };
     this.setCurrentLesson = this.setCurrentLesson.bind(this);
+    this.getSlidesAndHeadOver = this.getSlidesAndHeadOver.bind(this);
   }
   setCurrentLesson (clicked) {
     const topic_id = clicked.id;
@@ -35,6 +36,15 @@ export default class NavigationPage extends React.Component {
       this.state.hideLessons = 'col-md-6 hidden'
     }
     this.forceUpdate();
+  }
+
+  getSlidesAndHeadOver (lessonId) {
+    // NOTE: hard coding 1 for testing purposes.
+    // NOTE: change back  to lesson Id when db is updated with actual lesson material.
+    // *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
+    this.props.askForSlides(lessonId);
+    browserHistory.push('/slides');
+    // *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
   }
 
   render () {
@@ -66,7 +76,9 @@ export default class NavigationPage extends React.Component {
                 return (
                   <ListItem key={index} primaryText={lesson.title} leftIcon={<ContentInbox />} rightIconButton={
                     <div>
-                      <FlatButton label="Slides" />
+                      <FlatButton onClick={() => {
+                        this.getSlidesAndHeadOver(lesson.id);
+                      }} label="Slides" />
                       <FlatButton label="Quizzes" />
                     </div>
                   }>

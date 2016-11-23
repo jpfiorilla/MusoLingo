@@ -1598,16 +1598,6 @@ fbjs@^0.2.1:
     promise "^7.0.3"
     whatwg-fetch "^0.9.0"
 
-fbjs@^0.7.0:
-  version "0.7.2"
-  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.7.2.tgz#4cf9a389aa23dbdfa2aed858e673c9b1b3ee0e0f"
-  dependencies:
-    core-js "^1.0.0"
-    isomorphic-fetch "^2.1.1"
-    loose-envify "^1.0.0"
-    promise "^7.1.1"
-    ua-parser-js "^0.7.9"
-
 fbjs@^0.8.1, fbjs@^0.8.4:
   version "0.8.6"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.6.tgz#7eb67d6986b2d5007a9b6e92e0e7cb6f75cad290"
@@ -3172,17 +3162,6 @@ react-tap-event-plugin@^1.0.0:
   dependencies:
     fbjs "^0.2.1"
 
-react-three:
-  version "0.9.4"
-  resolved "https://registry.yarnpkg.com/react-three/-/react-three-0.9.4.tgz#ffeedfb54aca67ed8d8865203523fbc0ee86a22b"
-  dependencies:
-    fbjs "^0.7.0"
-    object-assign "^4.0.1"
-
-react-threejs:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/react-threejs/-/react-threejs-0.0.2.tgz#d741960a50bd4c7ac166a854b483ea1923090e52"
-
 react@^15.4.0:
   version "15.4.0"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.0.tgz#736c1c7c542e8088127106e1f450b010f86d172b"
@@ -3754,10 +3733,6 @@ terraformer@~1.0.5:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/terraformer/-/terraformer-1.0.7.tgz#d8a19a56fbf25966ea062d21f515b93589702d69"
 
-three:
-  version "0.82.1"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.82.1.tgz#f63c3730971520c54479e3627d370d764a4a8383"
-
 through@~2.3, through@~2.3.1, through@2:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
@@ -3945,6 +3920,10 @@ tonal@^0.65.0:
     tonal-scale "^0.65.0"
     tonal-sonority "^0.65.0"
     tonal-transpose "^0.65.0"
+
+tone@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/tone/-/tone-0.8.0.tgz#15c3300383be662d223c2d6fede5f2b4464c0e1e"
 
 toposort-class@^1.0.1:
   version "1.0.1"

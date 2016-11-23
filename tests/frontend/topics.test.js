@@ -8,10 +8,10 @@ import actualStore from 'APP/browser/store'
 import { axiosResponse } from './../utils.js'
 
 import { ADDED_PRODUCT, RECEIVE_CART,
-         addedProduct, receiveCart, 
-         addToCart, fetchCart } from 'APP/browser/redux/cart'
+         addedProduct, receiveCart,
+         addToCart, fetchCart } from '../../browser/redux/cart'
 
-describe('Cart', () => {
+describe('Topics', () => {
   describe('Redux', () => {
 
     let testCartProduct;
@@ -109,5 +109,3 @@ describe('Cart', () => {
     });
   });
 });
-
-

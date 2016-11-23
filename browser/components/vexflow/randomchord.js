@@ -44,19 +44,5 @@ export default class RandomChord extends Component {
         let notes = [outChord];
 
         VF.Formatter.FormatAndDraw(context, stave, notes);
-
-        /*
-        // console.log('notes', intervalNotes)
-
-        // Create a voice in 4/4 and add above notes
-        let voice = new VF.Voice({num_beats: 4,  beat_value: 4});
-        voice.addTickables(notes);
-
-        // Format and justify the notes to 400 pixels.
-        let formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
-
-        // Render voice
-        voice.draw(context, stave);
-        */
     }
 }

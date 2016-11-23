@@ -2,7 +2,7 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton';
 import Login from "../Login/LoginContainer"
-import AOS from "aos"
+import AOS from "aos";
 
 const style = {
     margin: 12
@@ -36,11 +36,11 @@ export default class HomePage extends React.Component {
                     <div id="image-overlay-2">
                         <h3 id="monitor">Monitor Progress</h3>
                         <p id="monitor-text">
-                            We offer a simple and easy way for you to monitor your progress. 
-                            Win keys for lessons, games, and quizzes and challenge your friends. 
+                            We offer a simple and easy way for you to monitor your progress.
+                            Win keys for lessons, games, and quizzes and challenge your friends.
                             Collect all 88!
                         </p>
-                    </div>    
+                    </div>
                 </div>
                 <div data-aos="fade-left" className="have-fun-page">
                     <div className="homepage-3">

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+import {addNewKeyToServer} from "./UserKeyActions"
 
 /* -----------------    ACTIONS     ------------------ */
 
@@ -33,6 +34,7 @@ export const login = (credentials, displayErr) => dispatch => {
   axios.post('/api/auth/login', credentials)
     .then(res => {
       dispatch(set(res.data));
+      dispatch(addNewKeyToServer(res.data.id, 0))
       browserHistory.push(`/`);
     })
     .catch(err => {
@@ -44,8 +46,8 @@ export const login = (credentials, displayErr) => dispatch => {
 export const signup = credentials => dispatch => {
   axios.post('/api/auth/signup', credentials)
     .then(res => {
-      dispatch(set(res.data));
       browserHistory.push(`/`);
+      dispatch(set(res.data));
     })
     .catch(err => console.error('Unable to sign up', err));
 }

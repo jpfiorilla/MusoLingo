@@ -40,7 +40,7 @@ export default class Navbar extends React.Component {
         <ToolbarGroup>
           <div className="navbar-item">
             <i id="drawer-icon" className="material-icons" hoverColor="#00BCD4" onClick={this.handleToggle}>view_headline</i>
-            <Drawer 
+            <Drawer
               docked={false}
               width={200}
               onRequestChange={(open) => this.setState({open})}
