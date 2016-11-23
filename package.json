@@ -7,7 +7,7 @@
     "node": "6.9.x"
   },
   "scripts": {
-    "start": "bin/setup && nodemon server/start.js",
+    "start": "bin/setup && node server/start.js",
     "dev": "check-node-version --node '>= 6.7.0' && bin/setup && nodemon server/start.js",
     "test-redux": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register tests/redux/{*,**/*}.test.js",
     "test-routes": "check-node-version --node '>= 6.7.0' && bin/setup && mocha --compilers js:babel-register tests/routes/{*,**/*}.test.js",
@@ -51,6 +51,7 @@
     "json-loader": "^0.5.4",
     "material-design-icons": "^3.0.1",
     "material-ui": "^0.16.3",
+    "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pg": "^6.1.0",
