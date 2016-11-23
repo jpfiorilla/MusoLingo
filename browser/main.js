@@ -26,17 +26,22 @@ import store from './store'
 
 import { askServerForAllTopics } from './redux/TopicsActions';
 import { askServerForAllLessons } from './redux/LessonsActions';
+import {retrieveLoggedInUser} from './redux/user';
 
 const onNavigationEnter = () => {
   store.dispatch(askServerForAllTopics());
   store.dispatch(askServerForAllLessons());
 }
 
+const onEnterRetrieveLoggedInUser = () => {
+  store.dispatch(retrieveLoggedInUser());
+}
+
 render(
   <Provider store={ store }>
     <Router history={ browserHistory }>
       <Route path="/home" component={HomePage} />
-      <Route path="/" component={App}>
+      <Route path="/" component={App} onEnter={onEnterRetrieveLoggedInUser}>
       <Route path="/quiz" component={Quiz} />
       <Route path="/login" component={Login} />
       <Route path="/account" component={Account} />

@@ -56,6 +56,7 @@ export const retrieveLoggedInUser = () => dispatch => {
   axios.get('/api/auth/me')
     .then(res => {
       if (res.data)
+        dispatch(addNewKeyToServer(res.data.id, 0))
         dispatch(set(res.data))
     })
     .catch(err => console.error('Unable to retrieve logged in user', err));
