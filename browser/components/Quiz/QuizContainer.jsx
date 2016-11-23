@@ -1,8 +1,15 @@
 import Quiz from './Quiz'
 import { connect } from 'react-redux';
+import { addKeys } from '../../redux/UserKeyActions'
 
-const mapStateToProps = ({quizzes}) => ({
-    quizzes
+const mapStateToProps = (state) => ({
+    quizzes: state.quizzes,
+    user: state.user
 })
 
-export default const QuizContainer = connect(mapStateToProps)(Quiz)
+const mapDispatchToProps = (dispatch) => ({
+    addKeys
+})
+
+const QuizContainer = connect(mapStateToProps, mapDispatchToProps)(Quiz);
+export default QuizContainer;

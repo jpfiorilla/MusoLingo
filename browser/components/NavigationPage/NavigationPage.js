@@ -38,6 +38,11 @@ export default class NavigationPage extends React.Component {
     this.forceUpdate();
   }
 
+  getQuizAndHeadOver (lessonId) {
+    this.props.askForQuiz(lessonId);
+    browserHistory.push(`/quiz`);
+  }
+
   getSlidesAndHeadOver (lessonId) {
     // NOTE: hard coding 1 for testing purposes.
     // NOTE: change back  to lesson Id when db is updated with actual lesson material.
@@ -79,7 +84,9 @@ export default class NavigationPage extends React.Component {
                       <FlatButton onClick={() => {
                         this.getSlidesAndHeadOver(lesson.id);
                       }} label="Slides" />
-                      <FlatButton label="Quizzes" />
+                      <FlatButton onClick={() => {
+                        this.getQuizAndHeadOver(lesson.id);
+                      }} label="Quiz" />
                     </div>
                   }>
                 </ListItem>

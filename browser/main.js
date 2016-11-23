@@ -12,7 +12,7 @@ import { randomTrebleNote } from './utils'
 // React components
 
 import App from './components/App';
-import Quiz from "./components/Quiz/Quiz.jsx";
+import Quiz from "./components/Quiz/QuizContainer";
 import Login from "./components/Login/LoginContainer";
 import NavigationPage from './components/NavigationPage/NavigationPageContainer';
 import Account from "./components/Account/AccountContainer";
