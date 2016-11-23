@@ -64,12 +64,14 @@ customUserRoutes.get('/:userId/orders', function(req, res, next){
 
 customUserRoutes.post('/keys/:id', (req, res, next) => {
 	userModel.findById(req.params.id)
-		.then(user => user.update({
-			completed: {
+		.then(user => user.update(
+			{completed: {
+				quizzes: user.completed.quizzes,
+				lessons: user.completed.lessons,
 				keys: user.completed.keys + req.body.keysToAdd
-			}
-		}))
-		.then(updatedUser => res.send(updatedUser))
+			}}
+		))
+		.then(updatedUser => {console.log(req.body); res.send(updatedUser)})
 })
 
 // // Epilogue will automatically create standard RESTful routes

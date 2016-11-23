@@ -19,7 +19,6 @@ router.post('/signup', (req, res, next) => {
   })
     .then(user => {
       req.session.userId = user.id;
-      console.log(userModel.getUserAccount(user.id))
       return userModel.getUserAccount(user.id)
     })
     .then(userAccount => res.status(201).send(userAccount))
@@ -47,24 +46,27 @@ router.post('/login', (req, res, next) => {
             error.status = 401;
             return next(error)
           }
-
-          req.session.userId = user.id;
           return userModel.getUserAccount(user.id)
         })
-        .then(userAccount => {res.send(userAccount)})
+        .then(userAccount => {
+          req.session.user = userAccount;
+          res.send(userAccount)
+        })
     })
 		.catch(next);
 });
 
 // Logout of your current session
 router.delete('/logout', (req, res, next) => {
-  req.session.destroy();
+  req.session.user = null;
   res.sendStatus(204);
 });
 
+router.get('/whoami', (req, res, next) => {console.log("REQ SESSION USER: ", req)})
+
 // Reestablish account on front end
 router.get('/me', (req, res, next) => {
-  userModel.getUserAccount(req.session.userId)
+  userModel.getUserAccount(req.session.user.id)
   .then(userAccount => res.send(userAccount))
   .catch(next)
 });
