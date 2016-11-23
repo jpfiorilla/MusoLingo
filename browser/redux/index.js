@@ -5,6 +5,7 @@ import { lessonsReducer } from './LessonsActions';
 import { slidesReducer } from './SlidesActions';
 import { scoreCounterReducer, bpmReducer, notesReducer } from './ChallengeActions';
 import { numOfKeysReducer } from './UserKeyActions'
+import {quizzesReducer} from './QuizzesActions'
 
 export default combineReducers({
     user,

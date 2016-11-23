@@ -7,14 +7,14 @@ export const SET_QUIZZES = 'SET_QUIZZES';
 
 export const askServerForQuizzes = (lesson_id) => {
   return dispatch => {
-    // axios.get(`/api/slides/lesson_id/${lesson_id}`)
-    // .then(res => {
-    //   dispatch(setSlides(res.data));
-    // })
-    // .catch(err => {
-    //   console.error(err);
-    //   console.log('Error getting the slides from the db.');
-    // });
+    axios.get(`/api/quizzes/lesson_id/${lesson_id}`)
+    .then(res => {
+      dispatch(setQuizzes(res.data));
+    })
+    .catch(err => {
+      console.error(err);
+      console.log('Error getting the quizzes from the db.');
+    });
   }
 }
 
@@ -31,7 +31,7 @@ export const setQuizzes = (quizzes) => {
 
 export const quizzesReducer = (state = [], action) => {
   switch (action.type) {
-    case SET_SLIDES:
+    case SET_QUIZZES:
       // NOTE: need to sort the slides in the order they should appear.
       action.quizzes.sort((a, b) => {
         return a.number - b.number;
