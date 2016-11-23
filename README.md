@@ -1,7 +1,6 @@
-# JustHome 
+# MusoLingo 
 
-This is a sample e-commerce application to demonstrate the end-to-end usage
-of the NERP stack.
+Music is a language. Learn the fundamentals in this React-based educational app.
 
 ## Running Locally
 
@@ -13,7 +12,7 @@ of the NERP stack.
 
 ```sh
 npm install
-npm run seed
+node db/seed
 npm run build-watch
 npm run dev
 ```
@@ -29,8 +28,8 @@ The above script will go through the following steps:
 All pushes to GitHub are being built and tested by Travis CI. However, only a select few of these builds will be deployed to Heroku.
 
 We have two versions of the app on Heroku:  
-**Prod**: [https://just-home.herokuapp.com/](https://just-home.herokuapp.com/)  
-**Test**: [https://just-home-test.herokuapp.com/](https://just-home-test.herokuapp.com/)  
+// **Prod**: [https://just-home.herokuapp.com/](https://just-home.herokuapp.com/)  
+// **Test**: [https://just-home-test.herokuapp.com/](https://just-home-test.herokuapp.com/)  
 
 ### Deploying to Test
 
