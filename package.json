@@ -1,7 +1,7 @@
 {
   "name": "musolingo",
   "version": "0.0.1",
-  "description": "Urban living. Simplified",
+  "description": "Gameified music theory learning app",
   "main": "index.js",
   "engines": {
     "node": "6.9.x"
