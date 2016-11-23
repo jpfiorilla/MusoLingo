@@ -25,7 +25,8 @@ let answered = false;
 export default class MultipleChoiceQuestion extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+    console.log(this.props);
+    
     this.state = {
       type: props.questionType,
       answered: false,
@@ -33,11 +34,9 @@ export default class MultipleChoiceQuestion extends React.Component {
       userNumCorrect: 0
     }
     this.onAnswerSelection = this.onAnswerSelection.bind(this);
-    this.getColor = this.getColor.bind(this);
   }
 
   componentWillMount() {
-    console.log(this.props.questionType);
     switch (this.props.questionType) {
       case "guessNoteName":
         questionComponent = RandomTrebleNote;
@@ -89,15 +88,12 @@ export default class MultipleChoiceQuestion extends React.Component {
     let incorrect = answerArr;
     let selected = "#mca-" + idx;
     if (idx !== rightAnswerPosition) $(selected).addClass("wrong-answer")
-    else this.setState({ userNumCorrect: this.state.userNumCorrect++ })
+    else {
+      this.props.addKey(this.props.user.id, 1)
+    }
     console.log(this.state);
     $(correct[0]).addClass("right-answer")
     answered = true;
-  }
-
-  getColor(rightAnswerPosition, idx, correctness) {
-    if (idx === rightAnswerPosition) return "green"
-    else return "red"
   }
 
   render() {
@@ -113,27 +109,10 @@ export default class MultipleChoiceQuestion extends React.Component {
             React.createElement(questionComponent, {note: correctAnswer, type, intervalNotes, chord: correctChord})
           }
         </div>
-        {/* MULTIPLE CHOICE BUTTONS */}
-        
-
-        {/*<div className="custom-controls-stacked" onChange={(event, value, x) => { console.log(event, value, x) } }>
-            <label id="example" className="custom-control custom-radio">
-              <input id="radioStacked1" value="hello" name="radio-stacked" type="radio" className="custom-control-input" />
-              <span className="custom-control-indicator"></span>
-              <span className="custom-control-description">Toggle this custom radio</span>
-          </label>
-          
-            <label id="example2" className="custom-control custom-radio">
-              <input id="radioStacked1" name="radio-stacked" type="radio" className="custom-control-input" />
-              <span className="custom-control-indicator"></span>
-              <span className="custom-control-description">Toggle this custom radio</span>
-            </label>
-        </div>*/}
-
-
         {
           buttonsArray.map((button, idx) => {
             let correctness = rightAnswerPosition === idx ? correct : incorrect[index++];
+            console.log("correct answer: ", correct);
             return (
               <div id={`radio${idx}`} key={idx}
                 onClick={() => { (answered) ? null : this.onAnswerSelection(rightAnswerPosition, idx) } }>
