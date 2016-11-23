@@ -22,12 +22,12 @@ if (! pkg.isProduction) {
 	// require('dotenv').config();
 }
 
-app.use(session({
+module.exports = app
+.use(session({
 	secret: "superSecret",
+	resave: false,
 	cookie: {maxAge: 6000}
 }))
-
-module.exports = app
 // // We'll store the whole session in a cookie
 // .use(require('cookie-session') ({
 //   name: 'session',
