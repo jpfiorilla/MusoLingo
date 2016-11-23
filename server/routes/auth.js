@@ -17,10 +17,11 @@ router.post('/signup', (req, res, next) => {
     password: req.body.password
   })
     .then(user => {
-      req.session.userId = user.id;
       return userModel.getUserAccount(user.id)
     })
-    .then(userAccount => res.status(201).send(userAccount))
+    .then(userAccount => {
+      req.session.user = userAccount;
+      res.status(201).send(userAccount)})
 		.catch(next);
 });
 
@@ -61,10 +62,9 @@ router.delete('/logout', (req, res, next) => {
   res.sendStatus(204);
 });
 
-router.get('/whoami', (req, res, next) => {console.log("REQ SESSION USER: ", req)})
-
 // Reestablish account on front end
 router.get('/me', (req, res, next) => {
+  console.log(req);
   userModel.getUserAccount(req.session.user.id)
   .then(userAccount => res.send(userAccount))
   .catch(next)

@@ -46,8 +46,8 @@ export const login = (credentials, displayErr) => dispatch => {
 export const signup = credentials => dispatch => {
   axios.post('/api/auth/signup', credentials)
     .then(res => {
-      browserHistory.push(`/`);
       dispatch(set(res.data));
+      browserHistory.push(`/`);
     })
     .catch(err => console.error('Unable to sign up', err));
 }
