@@ -25,10 +25,10 @@ let answered = false;
 export default class MultipleChoiceQuestion extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+    console.log('multichoice props', this.props);
     
     this.state = {
-      type: props.questionType,
+      type: this.props.questionType,
       answered: false,
       correctAnswer: '',
       userNumCorrect: 0
@@ -76,11 +76,12 @@ export default class MultipleChoiceQuestion extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.userNumCorrect === nextState.userNumCorrect;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return nextProps.userNumCorrect === nextState.userNumCorrect;
+  // }
 
   onAnswerSelection(rightAnswerPosition, idx) {
+    console.log("HIT")
     let answerArr = ["#mca-0", "#mca-1", "#mca-2", "#mca-3"]
     let divArr = ["#radio0", "#radio1", "#radio2", "#radio3"]
 
@@ -89,7 +90,8 @@ export default class MultipleChoiceQuestion extends React.Component {
     let selected = "#mca-" + idx;
     if (idx !== rightAnswerPosition) $(selected).addClass("wrong-answer")
     else {
-      this.props.addKey(this.props.user.id, 1)
+      console.log('user props', this.props)
+      this.props.addKeys(this.props.user.id, 1)
     }
     console.log(this.state);
     $(correct[0]).addClass("right-answer")
@@ -110,7 +112,7 @@ export default class MultipleChoiceQuestion extends React.Component {
           }
         </div>
         {
-          buttonsArray.map((button, idx) => {
+          incorrect.length && buttonsArray.map((button, idx) => {
             let correctness = rightAnswerPosition === idx ? correct : incorrect[index++];
             console.log("correct answer: ", correct);
             return (

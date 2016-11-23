@@ -7,7 +7,7 @@ export const SET_QUIZZES = 'SET_QUIZZES';
 
 export const askServerForQuizzes = (lesson_id) => {
   return dispatch => {
-    axios.get(`/api/quizzes/lesson_id/${lesson_id}`)
+    axios.get(`/api/quiz/lesson_id/${lesson_id}`)
     .then(res => {
       dispatch(setQuizzes(res.data));
     })
@@ -32,12 +32,7 @@ export const setQuizzes = (quizzes) => {
 export const quizzesReducer = (state = [], action) => {
   switch (action.type) {
     case SET_QUIZZES:
-      // NOTE: need to sort the slides in the order they should appear.
-      action.quizzes.sort((a, b) => {
-        return a.number - b.number;
-      });
-      return action.slides;
-
+      return action.quizzes;
     default:
       return state
   }
