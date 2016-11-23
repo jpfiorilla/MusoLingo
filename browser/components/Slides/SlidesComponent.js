@@ -23,6 +23,7 @@ export default class SlidesComponent extends React.Component {
     this.state = {
       finished: false,
       stepIndex: 0,
+      staffNum: 0
     };
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
@@ -45,9 +46,9 @@ export default class SlidesComponent extends React.Component {
   };
 
   textOrImage (obj, index) {
-    var staffNum = 0;
+    // var staffNum = 0;
     // NOTE: key of obj is either 'text' or 'img'
-    console.log(obj);
+    // console.log(obj);
     if (obj.text) {
       return (
         <div>
@@ -62,8 +63,18 @@ export default class SlidesComponent extends React.Component {
       );
     } else if (obj.vex) {
       let vexComponent = obj.vex.type;
-      staffNum++;
-      let staffId = 'staff' + staffNum.toString();
+      obj.vex.type === 'SingleRhythmNote' ?
+      vexComponent = SingleRhythmNote : console.log('no vex type');
+      let info = obj.vex.info;
+      var staffId = 'staff' + obj.vex.num;
+      return (
+        <div key={index}>
+        {
+          React.createElement(vexComponent, {info, staffId})
+        }
+        </div>
+      )
+      
       /* return (
         <div>
           <div key={index} id={staffId}></div>

@@ -3,56 +3,85 @@ import { getNoteName, randomTrebleNoteName } from '../../utils';
 
 import Vex from 'vexflow';
 
+CanvasRenderingContext2D.prototype.clear = 
+  CanvasRenderingContext2D.prototype.clear || function (preserveTransform) {
+    if (preserveTransform) {
+      this.save();
+      this.setTransform(1, 0, 0, 1, 0, 0);
+    }
+
+    this.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    if (preserveTransform) {
+      this.restore();
+    }           
+};
+
 export default class SingleRhythmNote extends Component {
     render(){
+        let {staffId} = this.props;
+        console.log('render', staffId)
         return (
         <div>
-            <div id="staff"></div>
+            {/*<div id="staff1"></div>*/}
+            <canvas id={staffId} width="50" height="150"></canvas>
         </div>
         )
     }
     componentDidMount(){
-        const {single} = this.props;
+        const {info, staffId} = this.props;
+        console.log('mounting with', staffId)
 
         let VF = Vex.Flow;
 
         // Create an SVG renderer and attach it to the DIV element named "boo".
-        var div = document.getElementById("staff")
-        var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+        // var div = document.getElementById("staff1");
+        // var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+        var renderer = new Vex.Flow.Renderer(document.getElementById(staffId), Vex.Flow.Renderer.Backends.CANVAS);
 
         // Configure the rendering context.
-        renderer.resize(500, 200);
+        // renderer.resize(50, 50);
         var context = renderer.getContext();
+        context.clear();
         context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
         // Create a stave of width 400 at position 10, 40 on the canvas.
         var stave = new VF.Stave(10, 40, 400);
 
-        // Add a clef and time signature.
-        // stave.addClef("treble").addTimeSignature("4/4");
-        stave.addClef("treble");
+        var notes = [];
+        info.forEach(noteDur => notes.push(new VF.StaveNote({ keys: ["a/4"], duration: noteDur })))
 
-        // Connect it to the rendering context and draw!
-        stave.setContext(context).draw();
+        var beams = VF.Beam.generateBeams(notes);
+        Vex.Flow.Formatter.FormatAndDraw(context, stave, notes);
+        beams.forEach(function(b) {b.setContext(context).draw()})
+    }
+    componentWillReceiveProps(){
+        const {info, staffId} = this.props;
+        console.log('receiving props', staffId)
 
-        if (getNoteName(note)[1]){
-        var notes = [
-            new VF.StaveNote({clef: "treble", keys: [note], duration: "w" }).addAccidental(0, new VF.Accidental(getNoteName(note)[1]))
-        ];} else {
-            notes = [
-            new VF.StaveNote({clef: "treble", keys: [note], duration: "w" })
-            ];
-        }
+        let VF = Vex.Flow;
 
-        // Create a voice in 4/4 and add above notes
-        var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
-        voice.addTickables(notes);
+        // Create an SVG renderer and attach it to the DIV element named "boo".
+        // var div = document.getElementById("staff1");
+        // var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+        var renderer = new Vex.Flow.Renderer(document.getElementById(staffId), Vex.Flow.Renderer.Backends.CANVAS);
 
-        // Format and justify the notes to 400 pixels.
-        var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+        // Configure the rendering context.
+        // renderer.resize(50, 50);
+        var context = renderer.getContext();
+        // context.clearRect(0, 0, renderer.width, renderer.height);
+        context.clear();
+        context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
-        // Render voice
-        voice.draw(context, stave);
+        // Create a stave of width 400 at position 10, 40 on the canvas.
+        var stave = new VF.Stave(10, 40, 400);
+
+        var notes = [];
+        info.forEach(noteDur => notes.push(new VF.StaveNote({ keys: ["a/4"], duration: noteDur })))
+
+        var beams = VF.Beam.generateBeams(notes);
+        Vex.Flow.Formatter.FormatAndDraw(context, stave, notes);
+        beams.forEach(function(b) {b.setContext(context).draw()})
     }
     
 }
