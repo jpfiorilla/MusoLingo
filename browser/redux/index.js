@@ -14,5 +14,6 @@ export default combineReducers({
     score: scoreCounterReducer,
     bpm: bpmReducer,
     notes: notesReducer,
-    keys: numOfKeysReducer
+    keys: numOfKeysReducer,
+    quizzes: quizzesReducer
 });

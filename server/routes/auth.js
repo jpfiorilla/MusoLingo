@@ -9,7 +9,6 @@ module.exports = router;
 
 // Sign up for JustHome and create a new user
 router.post('/signup', (req, res, next) => {
-  console.log(req.body);
 	userModel.create({
     first_name: req.body.firstname,
     last_name: req.body.lastname,
