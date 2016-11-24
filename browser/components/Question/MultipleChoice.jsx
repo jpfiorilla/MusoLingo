@@ -6,6 +6,7 @@ import RandomTrebleNote from '../vexflow/randomtreblenote';
 import RandomTrebleInterval from '../vexflow/randomtrebleinterval';
 import RandomChord from '../vexflow/randomchord';
 import RandomRhythmNote from '../vexflow/randomrhythmnote';
+import RandomBassNote from '../vexflow/randombassnote';
 import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations } from '../../utils';
 import  Vex from 'vexflow';
 
@@ -42,6 +43,13 @@ export default class MultipleChoiceQuestion extends React.Component {
         questionComponent = RandomTrebleNote;
         correct = randomNoteName(56, 75);
         incorrect = randomOtherNoteNames(correct, 56, 67);
+        this.setState({ correctAnswer: correct })
+        correct = getNoteName(correct);
+        break;
+      case "guessBassNoteName":
+        questionComponent = RandomBassNote;
+        correct = randomNoteName(37, 56);
+        incorrect = randomOtherNoteNames(correct, 37, 48);
         this.setState({ correctAnswer: correct })
         correct = getNoteName(correct);
         break;
