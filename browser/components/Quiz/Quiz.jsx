@@ -12,7 +12,7 @@ import TextInput from "../Question/TextInput"
 // Material CSS rules
 const centerText = {marginLeft: "10%"}
 
-export default class Lesson extends React.Component {
+export default class Quiz extends React.Component {
     constructor(props) {
         super(props)
         this.state = {

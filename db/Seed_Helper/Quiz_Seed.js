@@ -6,6 +6,10 @@ const quiz = [{
     lesson_id: 4,
     title: "Guess the Note Name",
     question_types: ['guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName']
+}, {
+    lesson_id: 5,
+    title: "Guess the Interval",
+    question_types: ['guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval']
 }];
 
 module.exports = quiz;
