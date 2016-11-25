@@ -57,7 +57,7 @@ export default class Quiz extends React.Component {
                 <div>
                     <p>Here is a multiple choice example:</p>
                     <div style={{marginLeft: "10%"}}>
-                        <MultipleChoice questionType={this.props.quizzes[0].question_types[this.state.stepIndex]} user={this.props.user} addKeys={this.props.addKeys} />
+                        <MultipleChoiceContainer questionType={this.props.quizzes[0].question_types[this.state.stepIndex]}  />
                     </div>
                 </div>
             );

@@ -20,8 +20,7 @@ const styles = {
   },
 };
 
-var questionComponent, correct, incorrect, intervalNotes, correctChord, buttonsArray, rightAnswerPosition, index;
-let answered = false;
+var questionComponent, correct, incorrect, intervalNotes, correctChord, buttonsArray, rightAnswerPosition, index, answered;
 
 export default class MultipleChoiceQuestion extends React.Component {
   constructor(props) {
@@ -38,6 +37,7 @@ export default class MultipleChoiceQuestion extends React.Component {
   }
 
   componentWillMount() {
+    answered = false;
     switch (this.props.questionType) {
       case "guessNoteName":
         questionComponent = RandomTrebleNote;
@@ -89,6 +89,7 @@ export default class MultipleChoiceQuestion extends React.Component {
   // }
 
   onAnswerSelection(rightAnswerPosition, idx) {
+    answered = true;
     console.log("HIT")
     let answerArr = ["#mca-0", "#mca-1", "#mca-2", "#mca-3"]
     let divArr = ["#radio0", "#radio1", "#radio2", "#radio3"]
@@ -99,7 +100,7 @@ export default class MultipleChoiceQuestion extends React.Component {
     if (idx !== rightAnswerPosition) $(selected).addClass("wrong-answer")
     else {
       console.log('user props', this.props)
-      this.props.addKeys(this.props.user.id, 1)
+      this.props.addKey(this.props.user.id, 1)
     }
     console.log(this.state);
     $(correct[0]).addClass("right-answer")
