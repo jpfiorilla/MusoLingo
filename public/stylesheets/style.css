@@ -181,6 +181,16 @@ background-color: #963838;}
   box-shadow: 0 0 10px lightcoral;
 }
 
+#mc-question-body {
+  margin: 10px;
+  background-color: #dbdbda;
+  height: 29em;
+  top: -10px;
+  padding: 20px;
+  padding-left: 55px;
+  box-shadow: 0px 0px 7px grey;
+}
+
 .multiple-choice-ans {
   height: 40px;
   width: 30%;
@@ -193,6 +203,10 @@ background-color: #963838;}
   position: relative;
   left: 20%;
   line-height: 36px;
+}
+
+.multiple-choice-ans:active {
+  transform: translateY(4px);
 }
 
 .right-answer {

@@ -109,7 +109,7 @@ export default class MultipleChoiceQuestion extends React.Component {
     index = 0;
 
     return (
-      <div>
+      <div id="mc-question-body">
         <div className="sheetmusic">
           {
             React.createElement(questionComponent, {note: correctAnswer, type, intervalNotes, chord: correctChord})
