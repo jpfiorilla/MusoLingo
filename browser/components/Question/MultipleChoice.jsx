@@ -25,7 +25,6 @@ var questionComponent, correct, incorrect, intervalNotes, correctChord, buttonsA
 export default class MultipleChoiceQuestion extends React.Component {
   constructor(props) {
     super(props);
-    console.log('multichoice props', this.props);
     
     this.state = {
       type: this.props.questionType,
@@ -66,7 +65,6 @@ export default class MultipleChoiceQuestion extends React.Component {
         questionComponent = RandomChord;
         var correctArr = randomTriad(56, 75);
         correct = correctArr[1];
-        console.log(correct);
         correctChord = correctArr[0];
         incorrect = [];
         var incorrectChords = randomOtherTriads(correctArr[1]);
@@ -90,7 +88,6 @@ export default class MultipleChoiceQuestion extends React.Component {
 
   onAnswerSelection(rightAnswerPosition, idx) {
     answered = true;
-    console.log("HIT")
     let answerArr = ["#mca-0", "#mca-1", "#mca-2", "#mca-3"]
     let divArr = ["#radio0", "#radio1", "#radio2", "#radio3"]
 
@@ -99,10 +96,8 @@ export default class MultipleChoiceQuestion extends React.Component {
     let selected = "#mca-" + idx;
     if (idx !== rightAnswerPosition) $(selected).addClass("wrong-answer")
     else {
-      console.log('user props', this.props)
       this.props.addKey(this.props.user.id, 1)
     }
-    console.log(this.state);
     $(correct[0]).addClass("right-answer")
     answered = true;
   }
