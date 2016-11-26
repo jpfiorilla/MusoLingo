@@ -1,13 +1,15 @@
 import Tone from 'tone';
 import { polySynth } from './instruments';
 
-// give on screen keyboard audio functionality; when a certain note is clicked, trigger a note from polySynth
-
-export function mapSoundsToPiano(){
-  // fills an array with all the keys on the DOM (2 octaves)
-  var body = document.querySelector('body')
+// fills an array with all the keys on the DOM (2 octaves)
+export function selectKeysOnDOM(){
   var keyArray = ['C3','Db3','D3','Eb3','E3','F3','Gb3','G3','Ab3','A3','Bb3','B3','C4','Db4','D4','Eb4','E4','F4','Gb4','G4','Ab4','A4','Bb4','B4']
   .map(note => document.querySelector(`.${note}`));
+
+  return keyArray;
+}
+
+export function mapSoundsToPiano(keyArray){
   // triggers same note as key on mousedown
   keyArray.forEach(key => {
     key.onmousedown = function (){
@@ -38,106 +40,137 @@ export function mapSoundsToComputerKeyboard(){
   })
 }
 
+// triggers or releases note and changes color
+function noteAction(note, index, color, type){
+  var keys = selectKeysOnDOM();
+
+  if (type === 'attack') polySynth.triggerAttack(note)
+  else if (type === 'release') polySynth.triggerRelease(note)
+
+  keys[index].style.background = color;
+}
+
+// maps keydown events to proper keys
 function noteTrigger(keyName){
   switch (keyName){
-    case 'Tab': polySynth.triggerAttack('C3')
+    case 'Tab': noteAction('C3', 0, '#00c4ff', 'attack')
                 break;
-    case 'q': polySynth.triggerAttack('D3')
+    case 'q': noteAction('D3', 2, '#00c4ff', 'attack')
               break;
-    case 'w': polySynth.triggerAttack('E3')
+    case 'w': noteAction('E3', 4, '#00c4ff', 'attack')
               break;
-    case 'e': polySynth.triggerAttack('F3')
+    case 'e': noteAction('F3', 5, '#00c4ff', 'attack')
               break;
-    case 'r': polySynth.triggerAttack('G3')
+    case 'r': noteAction('G3', 7, '#00c4ff', 'attack')
               break;
-    case 't': polySynth.triggerAttack('A3')
+    case 't': noteAction('A3', 9, '#00c4ff', 'attack')
               break;
-    case 'y': polySynth.triggerAttack('B3')
+    case 'y': noteAction('B3', 11, '#00c4ff', 'attack')
               break;
-    case 'u': polySynth.triggerAttack('C4')
+    case 'u': noteAction('C4', 12, '#00c4ff', 'attack')
               break;
-    case 'i': polySynth.triggerAttack('D4')
+    case 'i': noteAction('D4', 14, '#00c4ff', 'attack')
               break;
-    case 'o': polySynth.triggerAttack('E4')
+    case 'o': noteAction('E4', 16, '#00c4ff', 'attack')
               break;
-    case 'p': polySynth.triggerAttack('F4')
+    case 'p': noteAction('F4', 17, '#00c4ff', 'attack')
               break;
-    case '[': polySynth.triggerAttack('G4')
+    case '[': noteAction('G4', 19, '#00c4ff', 'attack')
               break;
-    case ']': polySynth.triggerAttack('A4')
+    case ']': noteAction('A4', 21, '#00c4ff', 'attack')
               break;
-    case '1': polySynth.triggerAttack('C#3')
+    case '\\': noteAction('B4', 23, '#00c4ff', 'attack')
+               break;
+    case '1': noteAction('Db3', 1, '#00c4ff', 'attack')
               break;
-    case '2': polySynth.triggerAttack('D#3')
+    case '2': noteAction('Eb3', 3, '#00c4ff', 'attack')
               break;
-    case '4': polySynth.triggerAttack('F#3')
+    case '4': noteAction('Gb3', 6, '#00c4ff', 'attack')
               break;
-    case '5': polySynth.triggerAttack('G#3')
+    case '5': noteAction('Ab3', 8, '#00c4ff', 'attack')
               break;
-    case '6': polySynth.triggerAttack('A#3')
+    case '6': noteAction('Bb3', 10, '#00c4ff', 'attack')
               break;
-    case '8': polySynth.triggerAttack('C#4')
+    case '8': noteAction('Db4', 13, '#00c4ff', 'attack')
               break;
-    case '9': polySynth.triggerAttack('D#4')
+    case '9': noteAction('Eb4', 15, '#00c4ff', 'attack')
               break;
-    case '-': polySynth.triggerAttack('F#4')
+    case '-': noteAction('Gb4', 18, '#00c4ff', 'attack')
               break;
-    case '=': polySynth.triggerAttack('G#4')
+    case '=': noteAction('Ab4', 20, '#00c4ff', 'attack')
               break;
-    case 'Backspace': polySynth.triggerAttack('A#4')
+    case 'Backspace': noteAction('Bb4', 22, '#00c4ff', 'attack')
               break;
     default: console.log(keyName)
   }
 }
 
+// maps keyup events to proper keys
 function noteRelease(keyName){
   switch (keyName){
-    case 'Tab': polySynth.triggerRelease('C3')
+    case 'Tab': noteAction('C3', 0, '#f5f5f5', 'release')
                 break;
-    case 'q': polySynth.triggerRelease('D3')
+    case 'q': noteAction('D3', 2, '#f5f5f5', 'release')
               break;
-    case 'w': polySynth.triggerRelease('E3')
+    case 'w': noteAction('E3', 4, '#f5f5f5', 'release')
               break;
-    case 'e': polySynth.triggerRelease('F3')
+    case 'e': noteAction('F3', 5, '#f5f5f5', 'release')
               break;
-    case 'r': polySynth.triggerRelease('G3')
+    case 'r': noteAction('G3', 7, '#f5f5f5', 'release')
               break;
-    case 't': polySynth.triggerRelease('A3')
+    case 't': noteAction('A3', 9, '#f5f5f5', 'release')
               break;
-    case 'y': polySynth.triggerRelease('B3')
+    case 'y': noteAction('B3', 11, '#f5f5f5', 'release')
               break;
-    case 'u': polySynth.triggerRelease('C4')
+    case 'u': noteAction('C4', 12, '#f5f5f5', 'release')
               break;
-    case 'i': polySynth.triggerRelease('D4')
+    case 'i': noteAction('D4', 14, '#f5f5f5', 'release')
               break;
-    case 'o': polySynth.triggerRelease('E4')
+    case 'o': noteAction('E4', 16, '#f5f5f5', 'release')
               break;
-    case 'p': polySynth.triggerRelease('F4')
+    case 'p': noteAction('F4', 17, '#f5f5f5', 'release')
               break;
-    case '[': polySynth.triggerRelease('G4')
+    case '[': noteAction('G4', 19, '#f5f5f5', 'release')
               break;
-    case ']': polySynth.triggerRelease('A4')
+    case ']': noteAction('A4', 21, '#f5f5f5', 'release')
               break;
-    case '1': polySynth.triggerRelease('C#3')
-              break;
-    case '2': polySynth.triggerRelease('D#3')
-              break;
-    case '4': polySynth.triggerRelease('F#3')
-              break;
-    case '5': polySynth.triggerRelease('G#3')
-              break;
-    case '6': polySynth.triggerRelease('A#3')
-              break;
-    case '8': polySynth.triggerRelease('C#4')
-              break;
-    case '9': polySynth.triggerRelease('D#4')
-              break;
-    case '-': polySynth.triggerRelease('F#4')
-              break;
-    case '=': polySynth.triggerRelease('G#4')
-              break;
-    case 'Backspace': polySynth.triggerRelease('A#4')
-              break;
+    case '\\': noteAction('B4', 23, '#f5f5f5', 'release')
+               break;
+   case '1': noteAction('Db3', 1, '#333', 'release')
+             break;
+   case '2': noteAction('Eb3', 3, '#333', 'release')
+             break;
+   case '4': noteAction('Gb3', 6, '#333', 'release')
+             break;
+   case '5': noteAction('Ab3', 8, '#333', 'release')
+             break;
+   case '6': noteAction('Bb3', 10, '#333', 'release')
+             break;
+   case '8': noteAction('Db4', 13, '#333', 'release')
+             break;
+   case '9': noteAction('Eb4', 15, '#333', 'release')
+             break;
+   case '-': noteAction('Gb4', 18, '#333', 'release')
+             break;
+   case '=': noteAction('Ab4', 20, '#333', 'release')
+             break;
+   case 'Backspace': noteAction('Bb4', 22, '#333', 'release')
+             break;
     default: console.log(keyName)
+  }
+}
+
+// keyboard show/hide toggle functionality
+export function toggleKeyboardDisplay(){
+  var showButton = document.querySelector('#showKeyboard');
+  var hideButton = document.querySelector('#hideKeyboard');
+  var onScreenKeyboard = document.querySelector('#keyboard');
+
+  showButton.onclick = function(){
+    onScreenKeyboard.style.display = (onScreenKeyboard.style.display === 'none' ? '':'none')
+
+    console.log(showButton)
+
+    showButton.innerHTML = (onScreenKeyboard.style.display === 'none' ? 'Show Keyboard' : 'Hide Keyboard')
   }
 }
