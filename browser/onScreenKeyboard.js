@@ -25,17 +25,23 @@ export function mapSoundsToPiano(keyArray){
 }
 
 export function mapSoundsToComputerKeyboard(){
+  var onScreenKeyboard = document.querySelector('#keyboard')
   // prevents keydown event from being retriggered when key is held down
   var keyAllowed = {}
 
   document.addEventListener('keydown', (event) => {
     if (keyAllowed[event.key] === false) return;
     keyAllowed[event.key] = false;
-    noteTrigger(event.key);
+    // won't play notes if keyboard is hidden
+    if (onScreenKeyboard.style.display !== 'none'){
+      noteTrigger(event.key);
+    }
   })
 
   document.addEventListener('keyup', (event) => {
-    noteRelease(event.key);
+    if (onScreenKeyboard.style.display !== 'none'){
+      noteRelease(event.key);
+    }
     keyAllowed[event.key] = true;
   })
 }
@@ -163,13 +169,10 @@ function noteRelease(keyName){
 // keyboard show/hide toggle functionality
 export function toggleKeyboardDisplay(){
   var showButton = document.querySelector('#showKeyboard');
-  var hideButton = document.querySelector('#hideKeyboard');
   var onScreenKeyboard = document.querySelector('#keyboard');
 
   showButton.onclick = function(){
     onScreenKeyboard.style.display = (onScreenKeyboard.style.display === 'none' ? '':'none')
-
-    console.log(showButton)
 
     showButton.innerHTML = (onScreenKeyboard.style.display === 'none' ? 'Show Keyboard' : 'Hide Keyboard')
   }
