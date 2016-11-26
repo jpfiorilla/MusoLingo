@@ -14,8 +14,6 @@ var noteSequence = [["C4", "D4", "G4", "A4"], "4n"]
 
 var data, cmd, channel, type, note, midi, frequency, velocity, currentNote = { note: '', triggered: false }, currentBeat, currentMeasure = -1.25, currentScore = 0, visualNotes = [], currentVisualNote, visualNoteCounter;
 
-var circle = document.getElementById('circle');
-
 Tone.Transport.bpm.value = 80;
 // 60 / bpm gives length in seconds of quarter note; 240 gives length of 1 measure
 var startingPoint = (240 / Tone.Transport.bpm.value);
@@ -120,6 +118,7 @@ function noteDuration(){
   }
 }
 
+// changes note color
 function noteHit(result){
   if (result === true) {
     currentScore++;
@@ -232,7 +231,6 @@ export const startSequence = function(notesToPlay, bpm, numCorrect, vexflowNotes
   noteSetterLoop.stop(endTime);
   Tone.Transport.scheduleOnce(function(){
     pullScore(currentScore)
-    console.log("VISUAL NOTES", visualNotes)
   }, endTime)
 }
 

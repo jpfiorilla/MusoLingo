@@ -45,6 +45,9 @@ module.exports = app
 .use(express.static(resolve(__dirname, '..', 'node_modules/bootstrap/dist/css')))
 .use(express.static(resolve(__dirname, '..', 'node_modules/aos/dist')))
 .use(express.static(resolve(__dirname, '..', 'node_modules/react-threejs')))
+.use(express.static(resolve(__dirname, '..', 'public/sounds')))
+.use(express.static(resolve(__dirname, '..', 'node_modules/beautiful-piano/dist')))
+
 
 // Serve our api
 .use('/api', require('./api'))

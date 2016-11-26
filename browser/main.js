@@ -20,6 +20,7 @@ import SlidesContainer from './components/Slides/SlidesContainer';
 import HomePage from "./components/HomePage/HomePage";
 import LessonPage from "./components/LessonPage/LessonPage";
 import Challenge from "./components/Challenge/ChallengeContainer";
+import Keyboard from "./components/Keyboard/Keyboard"
 
 // Redux actions and thunks
 import store from './store'
@@ -50,6 +51,7 @@ render(
       <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
       <Route path="/lesson" component={LessonPage} />
       <Route path="/game" component={Challenge}/>
+      <Route path="/keyboard" component={Keyboard}/>
     </Route>
   </Router>
 </Provider>,
