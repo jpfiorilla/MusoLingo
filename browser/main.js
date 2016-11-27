@@ -40,7 +40,6 @@ const onEnterRetrieveLoggedInUser = () => {
 }
 
 const onEnterRetrieveChallenge = (nextState) => {
-  console.log(nextState.params)
   store.dispatch(askServerForChallenge(nextState.params.id));
 }
 

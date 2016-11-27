@@ -1,6 +1,6 @@
 import React from 'react';
 import { polySynth } from '../../instruments';
-import { mapSoundsToPiano, mapSoundsToComputerKeyboard, selectKeysOnDOM, toggleKeyboardDisplay } from '../../onScreenKeyboard';
+import { mapSoundsToPiano, mapSoundsToComputerKeyboard, selectKeysOnDOM, toggleKeyboardDisplay, mapSoundsToComputerKeyboardForGame } from '../../onScreenKeyboard';
 
 
 export default class Keyboard extends React.Component {
@@ -11,6 +11,7 @@ export default class Keyboard extends React.Component {
     let keys = selectKeysOnDOM();
     mapSoundsToPiano(keys);
     mapSoundsToComputerKeyboard();
+    // mapSoundsToComputerKeyboardForGame();
     toggleKeyboardDisplay();
   }
 

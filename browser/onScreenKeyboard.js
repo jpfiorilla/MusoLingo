@@ -1,5 +1,6 @@
 import Tone from 'tone';
 import { polySynth } from './instruments';
+import { noteActionGame } from './piano_hero';
 
 // fills an array with all the keys on the DOM (2 octaves)
 export function selectKeysOnDOM(){
@@ -34,6 +35,7 @@ export function mapSoundsToComputerKeyboard(){
     keyAllowed[event.key] = false;
     // won't play notes if keyboard is hidden
     if (onScreenKeyboard.style.display !== 'none'){
+      if (event.key === 'Tab') event.preventDefault();
       noteTrigger(event.key);
     }
   })
@@ -46,11 +48,11 @@ export function mapSoundsToComputerKeyboard(){
   })
 }
 
-// triggers or releases note and changes color
+// triggers or releases note and changes color; no longer used in favor of noteActionGame
 function noteAction(note, index, color, type){
   var keys = selectKeysOnDOM();
 
-  if (type === 'attack') polySynth.triggerAttack(note)
+  if (type === 'attack') polySynth.triggerAttack(note);
   else if (type === 'release') polySynth.triggerRelease(note)
 
   keys[index].style.background = color;
@@ -59,53 +61,53 @@ function noteAction(note, index, color, type){
 // maps keydown events to proper keys
 function noteTrigger(keyName){
   switch (keyName){
-    case 'Tab': noteAction('C3', 0, '#00c4ff', 'attack')
+    case 'Tab': noteActionGame('C3', 0, '#00c4ff', 'attack')
                 break;
-    case 'q': noteAction('D3', 2, '#00c4ff', 'attack')
+    case 'q': noteActionGame('D3', 2, '#00c4ff', 'attack')
               break;
-    case 'w': noteAction('E3', 4, '#00c4ff', 'attack')
+    case 'w': noteActionGame('E3', 4, '#00c4ff', 'attack')
               break;
-    case 'e': noteAction('F3', 5, '#00c4ff', 'attack')
+    case 'e': noteActionGame('F3', 5, '#00c4ff', 'attack')
               break;
-    case 'r': noteAction('G3', 7, '#00c4ff', 'attack')
+    case 'r': noteActionGame('G3', 7, '#00c4ff', 'attack')
               break;
-    case 't': noteAction('A3', 9, '#00c4ff', 'attack')
+    case 't': noteActionGame('A3', 9, '#00c4ff', 'attack')
               break;
-    case 'y': noteAction('B3', 11, '#00c4ff', 'attack')
+    case 'y': noteActionGame('B3', 11, '#00c4ff', 'attack')
               break;
-    case 'u': noteAction('C4', 12, '#00c4ff', 'attack')
+    case 'u': noteActionGame('C4', 12, '#00c4ff', 'attack')
               break;
-    case 'i': noteAction('D4', 14, '#00c4ff', 'attack')
+    case 'i': noteActionGame('D4', 14, '#00c4ff', 'attack')
               break;
-    case 'o': noteAction('E4', 16, '#00c4ff', 'attack')
+    case 'o': noteActionGame('E4', 16, '#00c4ff', 'attack')
               break;
-    case 'p': noteAction('F4', 17, '#00c4ff', 'attack')
+    case 'p': noteActionGame('F4', 17, '#00c4ff', 'attack')
               break;
-    case '[': noteAction('G4', 19, '#00c4ff', 'attack')
+    case '[': noteActionGame('G4', 19, '#00c4ff', 'attack')
               break;
-    case ']': noteAction('A4', 21, '#00c4ff', 'attack')
+    case ']': noteActionGame('A4', 21, '#00c4ff', 'attack')
               break;
-    case '\\': noteAction('B4', 23, '#00c4ff', 'attack')
+    case '\\': noteActionGame('B4', 23, '#00c4ff', 'attack')
                break;
-    case '1': noteAction('Db3', 1, '#00c4ff', 'attack')
+    case '1': noteActionGame('Db3', 1, '#00c4ff', 'attack')
               break;
-    case '2': noteAction('Eb3', 3, '#00c4ff', 'attack')
+    case '2': noteActionGame('Eb3', 3, '#00c4ff', 'attack')
               break;
-    case '4': noteAction('Gb3', 6, '#00c4ff', 'attack')
+    case '4': noteActionGame('Gb3', 6, '#00c4ff', 'attack')
               break;
-    case '5': noteAction('Ab3', 8, '#00c4ff', 'attack')
+    case '5': noteActionGame('Ab3', 8, '#00c4ff', 'attack')
               break;
-    case '6': noteAction('Bb3', 10, '#00c4ff', 'attack')
+    case '6': noteActionGame('Bb3', 10, '#00c4ff', 'attack')
               break;
-    case '8': noteAction('Db4', 13, '#00c4ff', 'attack')
+    case '8': noteActionGame('Db4', 13, '#00c4ff', 'attack')
               break;
-    case '9': noteAction('Eb4', 15, '#00c4ff', 'attack')
+    case '9': noteActionGame('Eb4', 15, '#00c4ff', 'attack')
               break;
-    case '-': noteAction('Gb4', 18, '#00c4ff', 'attack')
+    case '-': noteActionGame('Gb4', 18, '#00c4ff', 'attack')
               break;
-    case '=': noteAction('Ab4', 20, '#00c4ff', 'attack')
+    case '=': noteActionGame('Ab4', 20, '#00c4ff', 'attack')
               break;
-    case 'Backspace': noteAction('Bb4', 22, '#00c4ff', 'attack')
+    case 'Backspace': noteActionGame('Bb4', 22, '#00c4ff', 'attack')
               break;
     default: console.log(keyName)
   }
@@ -114,53 +116,53 @@ function noteTrigger(keyName){
 // maps keyup events to proper keys
 function noteRelease(keyName){
   switch (keyName){
-    case 'Tab': noteAction('C3', 0, '#f5f5f5', 'release')
+    case 'Tab': noteActionGame('C3', 0, '#f5f5f5', 'release')
                 break;
-    case 'q': noteAction('D3', 2, '#f5f5f5', 'release')
+    case 'q': noteActionGame('D3', 2, '#f5f5f5', 'release')
               break;
-    case 'w': noteAction('E3', 4, '#f5f5f5', 'release')
+    case 'w': noteActionGame('E3', 4, '#f5f5f5', 'release')
               break;
-    case 'e': noteAction('F3', 5, '#f5f5f5', 'release')
+    case 'e': noteActionGame('F3', 5, '#f5f5f5', 'release')
               break;
-    case 'r': noteAction('G3', 7, '#f5f5f5', 'release')
+    case 'r': noteActionGame('G3', 7, '#f5f5f5', 'release')
               break;
-    case 't': noteAction('A3', 9, '#f5f5f5', 'release')
+    case 't': noteActionGame('A3', 9, '#f5f5f5', 'release')
               break;
-    case 'y': noteAction('B3', 11, '#f5f5f5', 'release')
+    case 'y': noteActionGame('B3', 11, '#f5f5f5', 'release')
               break;
-    case 'u': noteAction('C4', 12, '#f5f5f5', 'release')
+    case 'u': noteActionGame('C4', 12, '#f5f5f5', 'release')
               break;
-    case 'i': noteAction('D4', 14, '#f5f5f5', 'release')
+    case 'i': noteActionGame('D4', 14, '#f5f5f5', 'release')
               break;
-    case 'o': noteAction('E4', 16, '#f5f5f5', 'release')
+    case 'o': noteActionGame('E4', 16, '#f5f5f5', 'release')
               break;
-    case 'p': noteAction('F4', 17, '#f5f5f5', 'release')
+    case 'p': noteActionGame('F4', 17, '#f5f5f5', 'release')
               break;
-    case '[': noteAction('G4', 19, '#f5f5f5', 'release')
+    case '[': noteActionGame('G4', 19, '#f5f5f5', 'release')
               break;
-    case ']': noteAction('A4', 21, '#f5f5f5', 'release')
+    case ']': noteActionGame('A4', 21, '#f5f5f5', 'release')
               break;
-    case '\\': noteAction('B4', 23, '#f5f5f5', 'release')
+    case '\\': noteActionGame('B4', 23, '#f5f5f5', 'release')
                break;
-   case '1': noteAction('Db3', 1, '#333', 'release')
+   case '1': noteActionGame('Db3', 1, '#333', 'release')
              break;
-   case '2': noteAction('Eb3', 3, '#333', 'release')
+   case '2': noteActionGame('Eb3', 3, '#333', 'release')
              break;
-   case '4': noteAction('Gb3', 6, '#333', 'release')
+   case '4': noteActionGame('Gb3', 6, '#333', 'release')
              break;
-   case '5': noteAction('Ab3', 8, '#333', 'release')
+   case '5': noteActionGame('Ab3', 8, '#333', 'release')
              break;
-   case '6': noteAction('Bb3', 10, '#333', 'release')
+   case '6': noteActionGame('Bb3', 10, '#333', 'release')
              break;
-   case '8': noteAction('Db4', 13, '#333', 'release')
+   case '8': noteActionGame('Db4', 13, '#333', 'release')
              break;
-   case '9': noteAction('Eb4', 15, '#333', 'release')
+   case '9': noteActionGame('Eb4', 15, '#333', 'release')
              break;
-   case '-': noteAction('Gb4', 18, '#333', 'release')
+   case '-': noteActionGame('Gb4', 18, '#333', 'release')
              break;
-   case '=': noteAction('Ab4', 20, '#333', 'release')
+   case '=': noteActionGame('Ab4', 20, '#333', 'release')
              break;
-   case 'Backspace': noteAction('Bb4', 22, '#333', 'release')
+   case 'Backspace': noteActionGame('Bb4', 22, '#333', 'release')
              break;
     default: console.log(keyName)
   }

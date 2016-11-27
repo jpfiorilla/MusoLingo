@@ -1,6 +1,7 @@
 import tonal from 'tonal';
 import Tone from 'tone';
-import { polySynth, metronome } from './instruments'
+import { polySynth, metronome } from './instruments';
+import { selectKeysOnDOM } from './onScreenKeyboard';
 import Challenge, { pullScore, updateColor } from './components/Challenge/Challenge'
 
 // noteSequence is an array. First value is the note sequence to be played, second is the duration of the click
@@ -69,7 +70,6 @@ function onMIDIMessage(event) {
         noteOff(note, velocity, frequency);
         break;
   }
-  //console.log('data', data, 'cmd', cmd, 'channel', channel);
 }
 
 function noteOn(midiNote, velocity, frequency) {
@@ -133,6 +133,7 @@ function noteHit(result){
 
 // takes Tone.Transport.position when key is pressed down, and noteDuration of currentNote
 function rhythmicAccuracy(timePlayed, noteDuration){
+  console.log(timePlayed)
   let decimal = Number(timePlayed.split(':')[2]);
   switch (noteDuration) {
     // quarter notes
@@ -206,6 +207,7 @@ function loopCreator(notes){
     currentNote.note = note;
     currentNote.triggered = false;
     // console.log("NOTE + DURATION", currentNote, noteDuration())
+    // cycles through array of vexFlow notes on the DOM
     currentVisualNote = visualNotes[visualNoteCounter];
     visualNoteCounter++;
     // console.log(visualNoteCounter, currentVisualNote)
@@ -248,4 +250,30 @@ function stopTime(){
   let bars = Math.floor(noteSequence[0].length / 4 ) + 1;
   let beats = noteSequence[0].length - ((bars - 1) * 4);
   return `${bars}:${beats}:0`
+}
+
+// links up on-screen keyboard to game functionality
+export function noteActionGame(note, index, color, type){
+  var keys = selectKeysOnDOM();
+
+  keys[index].style.background = color;
+
+  if (type === 'attack') {
+    polySynth.triggerAttack(note)
+
+    // will only evaluate pitch and rhythm if noteSetterLoop has started running
+    if (currentVisualNote !== undefined){
+      if (currentNote.triggered === false){
+        if (note === currentNote.note) {
+          let timeTriggered = Tone.Transport.position;
+          rhythmicAccuracy(timeTriggered, noteDuration())
+        } else {
+          noteHit(false)
+        }
+      }
+      currentNote.triggered = true;
+    }
+  }
+
+  else if (type === 'release') polySynth.triggerRelease(note)
 }
