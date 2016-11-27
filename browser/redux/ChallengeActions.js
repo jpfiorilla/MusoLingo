@@ -6,6 +6,14 @@ import axios from 'axios';
 export const SET_CHALLENGES = 'SET_CHALLENGES';
 export const SET_SCORE = 'SET_SCORE';
 export const SET_VEXNOTES = 'SET_VEXNOTES';
+export const SET_NOTES = 'SET_NOTES';
+
+export const setNotes = (notes) => {
+  return {
+    type: SET_NOTES,
+    notes
+  }
+}
 
 export const setVexNotes = (vexNotes) => {
   return {
@@ -65,6 +73,8 @@ export const challengesReducer = (state = [], action) => {
   switch (action.type) {
     case SET_CHALLENGES:
       return action.challenges;
+    case SET_NOTES:
+      return Object.assign({}, state, {vexNotes: action.notes})
     default:
       return state
   }

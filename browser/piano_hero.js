@@ -1,7 +1,8 @@
 import tonal from 'tonal';
 import Tone from 'tone';
+import Vex from 'vexflow';
 import store from './store';
-import { setScore, setVexNotes } from './redux/ChallengeActions'
+import { setScore, setVexNotes, setNotes } from './redux/ChallengeActions'
 import { polySynth, metronome } from './instruments';
 import { selectKeysOnDOM } from './onScreenKeyboard';
 import Challenge, { updateColor } from './components/Challenge/Challenge'
@@ -125,11 +126,13 @@ function noteHit(result){
   if (result === true) {
     currentScore++;
     currentVisualNote.setStyle({strokeStyle: "green", fillStyle: "green"})
-    store.dispatch(setVexNotes(visualNotes))
+    store.dispatch(setNotes(visualNotes))
+    // store.dispatch(setVexNotes(visualNotes))
   }
   else if (result === false) {
     currentVisualNote.setStyle({strokeStyle: "red", fillStyle: "red"})
-    store.dispatch(setVexNotes(visualNotes))
+    // store.dispatch(setVexNotes(visualNotes))
+    store.dispatch(setNotes(visualNotes))
   }
 }
 
@@ -221,7 +224,10 @@ function loopCreator(notes){
 export const startSequence = function(notesToPlay, bpm, vexflowNotes){
   // resets current score when restarting game
   currentScore = 0, visualNoteCounter = 0;
-  visualNotes = vexflowNotes;
+  vexflowNotes.forEach(vexNote =>{
+    visualNotes.push(new Vex.Flow.StaveNote(vexNote))
+  });
+  console.log("VISUALNOTES", visualNotes)
   var noteSetterLoop = loopCreator(notesToPlay)
   noteSequence[0] = notesToPlay;
   Tone.Transport.bpm.value = bpm;

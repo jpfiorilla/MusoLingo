@@ -7,10 +7,6 @@ import Vex from 'vexflow';
 // this function is defined and exported outside of the component because we need startSequence to be able to update the state
 // is there a way to export a dispatch function so that we're doing it through the store? is that a better practice than this approach?
 
-export function updateColor(vexNotes){
-  this.setState({vexNotes})
-}
-
 var vexNotes, beams, stave, context, postMount;
 
 export default class Challenge extends Component {
@@ -31,7 +27,6 @@ export default class Challenge extends Component {
           new Vex.Flow.StaveNote({clef: "treble", keys: ["c/4"], duration: "8" })
         ]
       }
-      updateColor = updateColor.bind(this);
     }
 
     scorePercentage(notes){
@@ -89,7 +84,24 @@ export default class Challenge extends Component {
     }
 
     componentDidUpdate(){
-      if (postMount !== true){
+      // if (postMount !== true){
+      //   var VF = Vex.Flow;
+      //   var div = document.getElementById("staff")
+      //   var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+      //
+      //   renderer.resize(500, 200);
+      //   context = renderer.getContext();
+      //   context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
+      //
+      //   stave = new VF.Stave(10, 40, 400);
+      //
+      //   stave.addClef("treble").addTimeSignature("4/4");
+      //
+      //   stave.setContext(context).draw();
+      //
+      // }
+
+      if (this.props.challenges.vexNotes && postMount !== true){
         var VF = Vex.Flow;
         var div = document.getElementById("staff")
         var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
@@ -104,31 +116,22 @@ export default class Challenge extends Component {
 
         stave.setContext(context).draw();
 
-      }
-
-      postMount = true;
-
-      if (this.props.challenges.vexNotes){
-        var staffNotes, staffNotes2 = [];
+        var staffNotes = [];
         console.log("did update vexnotes props", this.props.challenges.vexNotes)
 
-        staffNotes = Object.assign([], this.props.challenges.vexNotes)
-
-        console.log("ASSIGNED STAFFNOTES", staffNotes)
-
-        staffNotes.forEach(vexNote =>{
-          staffNotes2.push(new Vex.Flow.StaveNote(vexNote))
+        this.props.challenges.vexNotes.forEach(vexNote =>{
+          staffNotes.push(new Vex.Flow.StaveNote(vexNote))
         })
-        console.log("STAFFNOTES DID UPDATE", staffNotes2)
+        console.log("STAFFNOTES DID UPDATE", staffNotes)
 
-        var beams = Vex.Flow.Beam.generateBeams(staffNotes2);
+        beams = Vex.Flow.Beam.generateBeams(staffNotes);
 
-        Vex.Flow.Formatter.FormatAndDraw(context, stave, staffNotes2);
+        Vex.Flow.Formatter.FormatAndDraw(context, stave, staffNotes);
 
         beams.forEach(function(b) {b.setContext(context).draw()})
-      }
 
-      // console.log("COMP DID UPDATE")
+        postMount = true;
+      }
     }
 
     render() {
@@ -148,21 +151,19 @@ export default class Challenge extends Component {
         )
       }
 
-      // let staffNotes;
-      // if (vexNotes){
-      //   staffNotes = vexNotes.map(vexNote => {
-      //     return vexNote.replace(/"/g,"")
-      //   })
-      //   console.log("DESTRUNG VEXNOTES", staffNotes)
-      // }
+// this next chunk of code is currently drawing a new set of notes over the original set. I believe this is because the original set is from this.props.challenges.vexNotes, and the new set is from this.props.vexNotes
+// the noteHit function dispatches setVexNotes, which updates the store's vexNote property. If there were a way to write an action that just modifies one property on a store property(in this case, challenges.vexNotes), I wouldn't have to do all of this
+// other option is to make vexNotes its own db model
+      if (postMount === true){
+        beams = Vex.Flow.Beam.generateBeams(this.props.challenges.vexNotes);
 
-      // if (postMount === true){
-      //   Vex.Flow.Formatter.FormatAndDraw(context, stave, this.props.vexNotes)
-      //   console.log("FORMATTED")
-      // }
+        Vex.Flow.Formatter.FormatAndDraw(context, stave, this.props.challenges.vexNotes)
 
-      // console.log("REDUX VEX", this.props.vexNotes)
+        beams.forEach(function(b) {b.setContext(context).draw()})
+        console.log("FORMATTED")
+      }
 
+// startSequence is still being passed the local state.vexNotes
         return (
         <div>
 
@@ -170,7 +171,8 @@ export default class Challenge extends Component {
 
         <div id="staff"></div>
 
-        <button type="button" name="button" id="startButton" onClick={() => startSequence(noteSequence, bpm, this.state.vexNotes)}>START</button>
+        <button type="button" name="button" id="startButton" onClick={() => startSequence(noteSequence, bpm, this.props.challenges.vexNotes)}>START</button>
+
         <button type="button" name="button" id="stopButton" onClick={stopSequence}>STOP</button>
         </div>
         )
