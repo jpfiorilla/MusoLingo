@@ -3,7 +3,7 @@ import user from "./user";
 import { topicsReducer } from './TopicsActions';
 import { lessonsReducer } from './LessonsActions';
 import { slidesReducer } from './SlidesActions';
-import { challengesReducer } from './ChallengeActions';
+import { challengesReducer, scoreReducer } from './ChallengeActions';
 import { numOfKeysReducer } from './UserKeyActions'
 import {quizzesReducer} from './QuizzesActions'
 
@@ -13,6 +13,7 @@ export default combineReducers({
     lessons: lessonsReducer,
     slides: slidesReducer,
     challenges: challengesReducer,
+    score: scoreReducer,
     keys: numOfKeysReducer,
     quizzes: quizzesReducer
 });

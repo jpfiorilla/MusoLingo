@@ -6,9 +6,6 @@ import Vex from 'vexflow';
 
 // this function is defined and exported outside of the component because we need startSequence to be able to update the state
 // is there a way to export a dispatch function so that we're doing it through the store? is that a better practice than this approach?
-export function pullScore(numCorrect){
-  this.setState({numCorrect})
-}
 
 export function updateColor(vexNotes){
   this.setState({vexNotes})
@@ -25,7 +22,9 @@ export default class Challenge extends Component {
       // console.log("IN CONSTRUCTOR", props)
       this.state = {
         numCorrect: null,
-        vexNotes: [
+        vexNotes:
+        // this.props.challenges.vexNotes
+        [
           new Vex.Flow.StaveNote({clef: "treble", keys: ["c/4"], duration: "q" }),
           new Vex.Flow.StaveNote({clef: "treble", keys: ["d/4"], duration: "q" }),
           new Vex.Flow.StaveNote({clef: "treble", keys: ["d/4"], duration: "q" }),
@@ -33,7 +32,6 @@ export default class Challenge extends Component {
           new Vex.Flow.StaveNote({clef: "treble", keys: ["c/4"], duration: "8" })
         ]
       }
-      pullScore = pullScore.bind(this);
       updateColor = updateColor.bind(this);
     }
 
@@ -48,10 +46,13 @@ export default class Challenge extends Component {
     }
 
     componentWillMount(){
-      if (this.props.challenges.vexNotes){
-        console.log("VEXNOOOOOOOTES!!!!!")
-        updateColor(this.props.challenges.vexNotes)
-      }
+      // if (postMount === true){
+      //   console.log("WILL MOUNT")
+      //   let staffNotes = this.state.vexNotes.map(vexNote => {
+      //     return vexNote.replace(/"/g,"")
+      //   })
+      //   Vex.Flow.Formatter.FormatAndDraw(context, stave, staffNotes)
+      // }
     }
 
     componentDidMount(){
@@ -71,9 +72,6 @@ export default class Challenge extends Component {
       stave.setContext(context).draw();
 
       var beams = VF.Beam.generateBeams(this.state.vexNotes);
-
-      // this.state.vexNotes.forEach(note => note.setStyle({strokeStyle: "blue", fillStyle: "blue"}))
-      // this.state.vexNotes[0].setStyle({strokeStyle: "blue", fillStyle: "blue"})
 
       Vex.Flow.Formatter.FormatAndDraw(context, stave, this.state.vexNotes);
 
@@ -102,10 +100,9 @@ export default class Challenge extends Component {
       }
 
       let scoreCounter;
-      // console.log('RENDERING', this.state.numCorrect)
-      if (this.state.numCorrect !== null) {
+      if (this.props.score !== null) {
         scoreCounter = (
-          <div><h2>{this.state.numCorrect} correct</h2></div>
+          <div><h2>{this.props.score} correct</h2></div>
         )
       }
 
@@ -122,7 +119,7 @@ export default class Challenge extends Component {
         console.log("FORMATTED")
       }
 
-      // console.log("STATE VEX", this.props.challenges.vexNotes)
+      console.log("STATE VEX", this.props.challenges.vexNotes)
 
         return (
         <div>

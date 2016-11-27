@@ -1,8 +1,10 @@
 import tonal from 'tonal';
 import Tone from 'tone';
+import store from './store';
+import { setScore } from './redux/ChallengeActions'
 import { polySynth, metronome } from './instruments';
 import { selectKeysOnDOM } from './onScreenKeyboard';
-import Challenge, { pullScore, updateColor } from './components/Challenge/Challenge'
+import Challenge, { updateColor } from './components/Challenge/Challenge'
 
 // noteSequence is an array. First value is the note sequence to be played, second is the duration of the click
 var noteSequence = [["C4", ["D4", "E4", "F4"], "G4", ["A4", "G4"]], "4n"]
@@ -234,7 +236,7 @@ export const startSequence = function(notesToPlay, bpm, numCorrect, vexflowNotes
   seq.stop(endTime);
   noteSetterLoop.stop(endTime);
   Tone.Transport.scheduleOnce(function(){
-    pullScore(currentScore)
+    store.dispatch(setScore(currentScore))
   }, endTime)
 }
 

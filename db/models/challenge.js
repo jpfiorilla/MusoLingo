@@ -8,7 +8,7 @@ const db = require('APP/db');
 const Challenge = db.define('challenges', {
 	bpm: { type: Sequelize.INTEGER, allowNull: false },
 	notes: { type: Sequelize.ARRAY(Sequelize.STRING) },
-  vexNotes: { type: Sequelize.ARRAY(Sequelize.TEXT) }
+  vexNotes: { type: Sequelize.ARRAY(Sequelize.JSON) }
 })
 
 

@@ -4,7 +4,16 @@ import axios from 'axios';
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 
 export const SET_CHALLENGES = 'SET_CHALLENGES';
+export const SET_SCORE = 'SET_SCORE';
 
+export const setScore = (score) => {
+  return {
+    type: SET_SCORE,
+    score
+  }
+}
+
+// action.type = SET_CHALLENGES, action.challenges=challenges
 export const setChallenges = (challenges) => {
   return {
     type: SET_CHALLENGES,
@@ -28,6 +37,14 @@ export const askServerForChallenge = (challenge_id) => {
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 
 // --------------------         REDUCER         --------------------------
+export const scoreReducer = (state = null, action) => {
+  switch (action.type) {
+    case SET_SCORE:
+      return action.score;
+    default:
+      return state
+  }
+}
 export const challengesReducer = (state = [], action) => {
   switch (action.type) {
     case SET_CHALLENGES:

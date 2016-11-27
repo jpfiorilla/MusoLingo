@@ -4,7 +4,9 @@ import Challenge from './Challenge';
 
 const mapStateToProps = function (state) {
   return {
-    challenges: state.challenges
+    challenges: state.challenges,
+    score: state.score,
+    vexNotes: state.challenges.vexNotes
   };
 };
 
