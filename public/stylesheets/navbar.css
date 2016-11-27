@@ -14,3 +14,9 @@
     width: 60px;
     margin: 10px;
 }
+
+#navbar-logo {
+    position: relative;
+    height: 90px;
+    top: 18px;
+}

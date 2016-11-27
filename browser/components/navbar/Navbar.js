@@ -50,9 +50,9 @@ export default class Navbar extends React.Component {
             </Drawer>
           </div>
         </ToolbarGroup>
-        <ToolbarGroup style={centerText}>
+        <ToolbarGroup>
           <Link to="/">
-            <ToolbarTitle style={toolbarText} text="MusoLingo" />
+            <img id="navbar-logo" src="/images/logo-white.png" />
           </Link>
         </ToolbarGroup>
         <NavbarMenuContainer { ...props } />
