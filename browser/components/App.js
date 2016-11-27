@@ -14,5 +14,5 @@ export default ({ children }) => (
           <Keyboard />
         </div>
       </div>
-    </MuiThemeProvider>
+  </MuiThemeProvider>
 );

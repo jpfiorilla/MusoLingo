@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import { NavbarMenuContainer } from './NavbarContainer'
 
 // Material theme
@@ -45,7 +45,7 @@ export default class Navbar extends React.Component {
               width={200}
               onRequestChange={(open) => this.setState({open})}
               open={this.state.open}>
-              <MenuItem onClick={this.handleClose}>Lesson 1</MenuItem>
+              <MenuItem onClick={() => browserHistory.push('/user')}>User Page</MenuItem>
               <MenuItem onClick={this.handleClose}>Lesson 2</MenuItem>
             </Drawer>
             <Link to="/">

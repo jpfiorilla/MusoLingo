@@ -74,7 +74,7 @@ export default class SlidesComponent extends React.Component {
         }
         </div>
       )
-      
+
       /* return (
         <div>
           <div key={index} id={staffId}></div>
