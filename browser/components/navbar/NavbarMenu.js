@@ -9,15 +9,38 @@ import FlatButton from 'material-ui/FlatButton';
 import Drawer from 'material-ui/Drawer';
 import { white } from 'material-ui/styles/colors';
 
-import IconMenu from 'material-ui/IconMenu';
+import Popover from 'material-ui/Popover';
+import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 // Material CSS rules
 const buttonText = {color: white, padding: 0, transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms'}
 
 export default class NavbarMenu extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      open: false
+    }
+    this.onAccountToggle = this.onAccountToggle.bind(this)
+    this.handleAccountClose = this.handleAccountClose.bind(this)
+  }
+
+  onAccountToggle(e){
+    e.preventDefault()
+
+    this.setState({
+      open: true,
+      anchorEl: e.currentTarget
+    })
+  }
+
+  handleAccountClose() {
+    this.setState({
+      open: false
+    })
+  }
+
   render(props) {
     const { role, logout, user } = this.props;
     return (
@@ -52,13 +75,18 @@ export default class NavbarMenu extends React.Component {
             <Login />
           </div>
         ) : (
-          <div className="navbar-item">
-
-            <FlatButton
-              label="Sign Out" labelStyle={buttonText}
-              hoverColor="#00BCD4" rippleColor="#2b4b91"
-              onClick={logout}
-            />
+          <div className="account-dropdown">
+            <img id="account-beathoven-head" onClick={this.onAccountToggle} src="/images/beathoven-head.png" />
+            <Popover open={this.state.open} 
+              anchorEl={this.state.anchorEl} 
+              anchorOrigin={{horizontal: "left", vertical: "bottom"}}
+              targetOrigin={{horizontal: "left", vertical: "top"}}
+              onRequestClose={this.handleAccountClose}>
+              <Menu>
+                <MenuItem primaryText="Account" />
+                <MenuItem onClick={logout} primaryText="Sign Out" />
+              </Menu>
+            </Popover>
           </div>
         )
       }
