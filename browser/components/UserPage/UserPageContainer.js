@@ -11,6 +11,9 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return {
     // going to need something to update user info.
+    updateUserInfo: (something) => {
+      dispatch(somefunc(something));
+    }
   };
 };
 

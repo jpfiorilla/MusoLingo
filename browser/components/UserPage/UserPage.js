@@ -5,6 +5,16 @@ import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import FlatButton from 'material-ui/FlatButton';
 import Subheader from 'material-ui/Subheader';
 
+/*
+what do we need to do:
+we now need to allow the user to update their name, email,
+password or image.
+
+we need to display a form, on click, for each of those fields.
+then we do the state change thing and say on submit we put to the db.
+
+*/
+
 export default class UserPage extends React.Component {
 
   constructor () {
@@ -12,13 +22,27 @@ export default class UserPage extends React.Component {
 
     this.state = {
       something_to_show: '',
-      active: ''
+      active: '',
+      update: ''
     };
     this.showQuizzesOrLessons = this.showQuizzesOrLessons.bind(this);
+    this.form = this.form.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleSubmit (event, attrToUpdate) {
+    // this.props.updateUserInfo(this.state.update, attrToUpdate);
+    console.log(attrToUpdate, this.state.update);
+    this.state.update = undefined;
+    event.preventDefault();
+  }
+  handleChange (event) {
+    this.state.update = event.target.value;
   }
 
   showQuizzesOrLessons (stuff, quizOrLesson) {
     if ((! this.state.something_to_show) || (quizOrLesson !== this.state.active)) {
+      this.state.update = undefined;
       this.state.something_to_show = stuff;
       this.state.active = quizOrLesson;
     } else {
@@ -28,6 +52,17 @@ export default class UserPage extends React.Component {
     // NOTE: need to force update when state changes since react doesnt do this
     // automatically
     this.forceUpdate();
+  }
+  form (label) {
+    return (
+      <form onSubmit={(e) => this.handleSubmit(e, label)}>
+        <label>
+          Update {label}:
+          <input onChange={this.handleChange} type="text" name="name" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
   }
 
   render() {
@@ -45,6 +80,7 @@ export default class UserPage extends React.Component {
 
     // NOTE: if completed is defined
     if (completed) {
+
       // NOTE: set local variables to the user's completed stuff.
       keys = completed.keys;
 
@@ -96,10 +132,23 @@ export default class UserPage extends React.Component {
             <Subheader>
               User Information
             </Subheader>
-            <ListItem primaryText={this.props.user.first_name}/>
-            <ListItem primaryText={this.props.user.last_name}/>
-            <ListItem primaryText="Email" secondaryText={email}/>
-            <ListItem primaryText="Image"/>
+
+            <ListItem onClick={() => {
+              this.showQuizzesOrLessons(this.form('first_name'), 'first_name');
+            }} primaryText={this.props.user.first_name}/>
+
+            <ListItem onClick={() => {
+              this.showQuizzesOrLessons(this.form('last_name'), 'last_name');
+            }} primaryText={this.props.user.last_name}/>
+
+            <ListItem onClick={() => {
+              this.showQuizzesOrLessons(this.form('email'), 'email');
+            }} primaryText="Email" secondaryText={email}/>
+
+            <ListItem onClick={() => {
+              this.showQuizzesOrLessons(this.form('image'), 'image');
+            }} primaryText="Image"/>
+
             <ListItem primaryText="Admin" secondaryText={isAdmin}/>
             <ListItem primaryText="Keys" secondaryText={keys} />
             <ListItem primaryText="Completed Lessons" onClick={() => {
