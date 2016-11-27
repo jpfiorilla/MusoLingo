@@ -33,7 +33,6 @@ customUserRoutes.get('/:id', function(req, res, next){
 	.catch(next);
 });
 
-// how to update addresses & creditcard ?
 customUserRoutes.put('/:id', (req,res,next) => {
 	userModel.findById(req.params.id)
 		.then(result => result.update(req.body))

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import UserPage from './UserPage';
-
+import { updateUser } from '../../redux/user';
 
 const mapStateToProps = function (state) {
   return {
@@ -11,8 +11,8 @@ const mapStateToProps = function (state) {
 const mapDispatchToProps = function (dispatch) {
   return {
     // going to need something to update user info.
-    updateUserInfo: (something) => {
-      dispatch(somefunc(something));
+    updateUserInfo: (update, attr, userId) => {
+      dispatch(updateUser(update, attr, userId));
     }
   };
 };

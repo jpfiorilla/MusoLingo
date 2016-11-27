@@ -31,8 +31,7 @@ export default class UserPage extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
   handleSubmit (event, attrToUpdate) {
-    // this.props.updateUserInfo(this.state.update, attrToUpdate);
-    console.log(attrToUpdate, this.state.update);
+    this.props.updateUserInfo(this.state.update, attrToUpdate, this.props.user.id);
     this.state.update = undefined;
     event.preventDefault();
   }
