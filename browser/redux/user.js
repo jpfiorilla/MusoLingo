@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import {addNewKeyToServer} from "./UserKeyActions"
+import { addNewKeyToServer } from "./UserKeyActions"
 
 /* -----------------    ACTIONS     ------------------ */
 
@@ -55,9 +55,10 @@ export const signup = credentials => dispatch => {
 export const retrieveLoggedInUser = () => dispatch => {
   axios.get('/api/auth/me')
     .then(res => {
-      if (res.data)
-        dispatch(addNewKeyToServer(res.data.id, 0))
-        dispatch(set(res.data))
+      if (res.data) {
+        dispatch(set(res.data));
+        dispatch(addNewKeyToServer(res.data.id, 0));
+      }
     })
     .catch(err => console.error('Unable to retrieve logged in user', err));
 }

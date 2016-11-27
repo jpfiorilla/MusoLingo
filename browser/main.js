@@ -20,13 +20,14 @@ import SlidesContainer from './components/Slides/SlidesContainer';
 import HomePage from "./components/HomePage/HomePage";
 import LessonPage from "./components/LessonPage/LessonPage";
 import Challenge from "./components/Challenge/ChallengeContainer";
+import UserPage from './components/UserPage/UserPageContainer';
 
 // Redux actions and thunks
 import store from './store'
 
 import { askServerForAllTopics } from './redux/TopicsActions';
 import { askServerForAllLessons } from './redux/LessonsActions';
-import {retrieveLoggedInUser} from './redux/user';
+import { retrieveLoggedInUser } from './redux/user';
 
 const onNavigationEnter = () => {
   store.dispatch(askServerForAllTopics());
@@ -47,9 +48,10 @@ render(
       <Route path="/account" component={Account} />
       <Route path="/nav" component={NavigationPage} onEnter={onNavigationEnter}/>
       <Route path="/slides" component={SlidesContainer} />
-      <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
       <Route path="/lesson" component={LessonPage} />
       <Route path="/game" component={Challenge}/>
+      <Route path="/user" component={UserPage}/>
+      <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
     </Route>
   </Router>
 </Provider>,

@@ -16,7 +16,6 @@ customUserRoutes.get('/', (req,res,next) => {
 		.catch(next);
 });
 
-
 // how to set addresses & creditcard ?
 customUserRoutes.post('/', (req,res,next) => {
 	userModel.create(req.body)

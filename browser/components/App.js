@@ -5,12 +5,12 @@ import NavbarContainer from './navbar/NavbarContainer'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 export default ({ children }) => (
-    <MuiThemeProvider>
-      <div id="app">
-        <NavbarContainer />
-        <div className="container content">
-          { children }
-        </div>
+  <MuiThemeProvider>
+    <div id="app">
+      <NavbarContainer />
+      <div className="container content">
+        { children }
       </div>
-    </MuiThemeProvider>
+    </div>
+  </MuiThemeProvider>
 );
