@@ -64,7 +64,7 @@ router.delete('/logout', (req, res, next) => {
 
 // Reestablish account on front end
 router.get('/me', (req, res, next) => {
-  console.log(req);
+  // console.log(req);
   userModel.getUserAccount(req.session.user.id)
   .then(userAccount => res.send(userAccount))
   .catch(next)

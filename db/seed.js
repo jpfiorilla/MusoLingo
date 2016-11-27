@@ -5,6 +5,8 @@ const Topic = require('./models/topic');
 const topicSeed = require('./Seed_Helper/Topic_Seed');
 const User = require('./models/user');
 const userSeed = require('./Seed_Helper/User_Seed');
+const Challenge = require('./models/challenge');
+const challengeSeed = require('./Seed_Helper/Challenge_Seed');
 
 // NOTE: then seed:
 const Lesson = require('./models/lesson');
@@ -35,7 +37,10 @@ function Topic_User_Seeder () {
 	// hook does not support it and refactoring it may be more trouble than it's worth.
 	userSeed.forEach(user => {
 		wholeSeed.push(User.create(user));
-	});
+	})
+	challengeSeed.forEach(challenge => {
+		wholeSeed.push(Challenge.create(challenge))
+	})
 	return Promise.all(wholeSeed);
 }
 

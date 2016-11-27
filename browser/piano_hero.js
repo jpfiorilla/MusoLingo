@@ -205,6 +205,7 @@ function loopCreator(notes){
     // redefines currentNote
     currentNote.note = note;
     currentNote.triggered = false;
+    // console.log("NOTE + DURATION", currentNote, noteDuration())
     currentVisualNote = visualNotes[visualNoteCounter];
     visualNoteCounter++;
     // console.log(visualNoteCounter, currentVisualNote)
@@ -220,13 +221,14 @@ export const startSequence = function(notesToPlay, bpm, numCorrect, vexflowNotes
   var noteSetterLoop = loopCreator(notesToPlay)
   noteSequence[0] = notesToPlay;
   Tone.Transport.bpm.value = bpm;
+  startingPoint = (240 / Tone.Transport.bpm.value);
+  offsetSeconds = (240 / Tone.Transport.bpm.value) / 80;
   let endTime = stopTime();
 
   seq.start();
   // slight offset equal to bpm/4800 (approx. 1/5th of a sixteenth note, so that the currentNote gets re-assigned slightly ahead of the metronome)
   noteSetterLoop.start(startingPoint-offsetSeconds);
   Tone.Transport.start();
-  // console.log(seq)
   seq.stop(endTime);
   noteSetterLoop.stop(endTime);
   Tone.Transport.scheduleOnce(function(){
@@ -235,7 +237,6 @@ export const startSequence = function(notesToPlay, bpm, numCorrect, vexflowNotes
 }
 
 export const stopSequence = function(){
-  // Tone.Transport.cancel();
   Tone.Transport.stop();
   currentMeasure = -1.25;
   console.log("STOPPED")

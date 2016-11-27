@@ -13,6 +13,18 @@
  * Good luck!
  */
 
+#keyboard {
+  clear: both;
+  float: left;
+  padding: 15px 25px 25px 25px;
+}
+
+#showKeyboard {
+  clear: both;
+  float: left;
+  padding: 3px;
+  margin: 15px 0 0 25px;
+}
 
 #beautiful-piano :focus {
   outline:none !important;

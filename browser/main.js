@@ -28,6 +28,7 @@ import store from './store'
 import { askServerForAllTopics } from './redux/TopicsActions';
 import { askServerForAllLessons } from './redux/LessonsActions';
 import {retrieveLoggedInUser} from './redux/user';
+import { askServerForChallenge } from './redux/ChallengeActions';
 
 const onNavigationEnter = () => {
   store.dispatch(askServerForAllTopics());
@@ -36,6 +37,11 @@ const onNavigationEnter = () => {
 
 const onEnterRetrieveLoggedInUser = () => {
   store.dispatch(retrieveLoggedInUser());
+}
+
+const onEnterRetrieveChallenge = (nextState) => {
+  console.log(nextState.params)
+  store.dispatch(askServerForChallenge(nextState.params.id));
 }
 
 render(
@@ -50,8 +56,8 @@ render(
       <Route path="/slides" component={SlidesContainer} />
       <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
       <Route path="/lesson" component={LessonPage} />
-      <Route path="/game" component={Challenge}/>
-      <Route path="/keyboard" component={Keyboard}/>
+      <Route path="/game/:id" component={Challenge} onEnter={onEnterRetrieveChallenge}/>
+      <Route path="/keyboard"/>
     </Route>
   </Router>
 </Provider>,

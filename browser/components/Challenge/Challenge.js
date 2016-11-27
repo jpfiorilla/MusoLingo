@@ -62,7 +62,6 @@ export default class Challenge extends Component {
       var beams = VF.Beam.generateBeams(this.state.vexNotes);
 
       // this.state.vexNotes.forEach(note => note.setStyle({strokeStyle: "blue", fillStyle: "blue"}))
-
       // this.state.vexNotes[0].setStyle({strokeStyle: "blue", fillStyle: "blue"})
 
       Vex.Flow.Formatter.FormatAndDraw(context, stave, this.state.vexNotes);
@@ -70,7 +69,6 @@ export default class Challenge extends Component {
       beams.forEach(function(b) {b.setContext(context).draw()})
 
       counter = 1;
-
       // Create a voice in 4/4 and add above notes
       // var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
       // voice.addTickables(notes);
@@ -83,6 +81,15 @@ export default class Challenge extends Component {
     }
 
     render() {
+      const { notes, bpm, vexNotes } = this.props.challenges;
+      // splitting eighth, triplets, and sixteenth notes into arrays for piano hero functions
+      let noteSequence;
+      if (notes){
+        noteSequence = notes.map(note => {
+          return note.split(" ")
+        })
+      }
+
       let scoreCounter;
       console.log('RENDERING', this.state.numCorrect)
       if (this.state.numCorrect !== null) {
@@ -95,13 +102,12 @@ export default class Challenge extends Component {
         Vex.Flow.Formatter.FormatAndDraw(context, stave, this.state.vexNotes)
         console.log("FORMATTED")
       }
-
       // console.log("PROPS", this.props)
       // console.log("STATE", this.state)
 
         return (
         <div>
-          <button type="button" name="button" id="startButton" onClick={() => startSequence(["C3", "D3", "D3", ["C3", "C3"]], 80, this.state.numCorrect, this.state.vexNotes)}>START</button>
+          <button type="button" name="button" id="startButton" onClick={() => startSequence(noteSequence, bpm, this.state.numCorrect, this.state.vexNotes)}>START</button>
           <button type="button" name="button" id="stopButton" onClick={stopSequence}>STOP</button>
 
         {scoreCounter}
