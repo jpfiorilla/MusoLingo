@@ -3,7 +3,7 @@ import user from "./user";
 import { topicsReducer } from './TopicsActions';
 import { lessonsReducer } from './LessonsActions';
 import { slidesReducer } from './SlidesActions';
-import { scoreCounterReducer, bpmReducer, notesReducer } from './ChallengeActions';
+import { challengesReducer } from './ChallengeActions';
 import { numOfKeysReducer } from './UserKeyActions'
 import {quizzesReducer} from './QuizzesActions'
 
@@ -12,9 +12,7 @@ export default combineReducers({
     topics: topicsReducer,
     lessons: lessonsReducer,
     slides: slidesReducer,
-    score: scoreCounterReducer,
-    bpm: bpmReducer,
-    notes: notesReducer,
+    challenges: challengesReducer,
     keys: numOfKeysReducer,
     quizzes: quizzesReducer
 });

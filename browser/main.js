@@ -21,6 +21,7 @@ import HomePage from "./components/HomePage/HomePage";
 import LessonPage from "./components/LessonPage/LessonPage";
 import Challenge from "./components/Challenge/ChallengeContainer";
 import UserPage from './components/UserPage/UserPageContainer';
+import Keyboard from "./components/Keyboard/Keyboard";
 
 // Redux actions and thunks
 import store from './store'
@@ -28,6 +29,7 @@ import store from './store'
 import { askServerForAllTopics } from './redux/TopicsActions';
 import { askServerForAllLessons } from './redux/LessonsActions';
 import { retrieveLoggedInUser } from './redux/user';
+import { askServerForChallenge } from './redux/ChallengeActions';
 
 const onNavigationEnter = () => {
   store.dispatch(askServerForAllTopics());
@@ -36,6 +38,10 @@ const onNavigationEnter = () => {
 
 const onEnterRetrieveLoggedInUser = () => {
   store.dispatch(retrieveLoggedInUser());
+}
+
+const onEnterRetrieveChallenge = (nextState) => {
+  store.dispatch(askServerForChallenge(nextState.params.id));
 }
 
 render(
@@ -52,6 +58,8 @@ render(
       <Route path="/game" component={Challenge}/>
       <Route path="/user" component={UserPage}/>
       <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
+      <Route path="/game/:id" component={Challenge} onEnter={onEnterRetrieveChallenge}/>
+      <Route path="/keyboard"/>
     </Route>
   </Router>
 </Provider>,

@@ -1,56 +1,37 @@
+import axios from 'axios';
 // ----------------------     ACTIONS     ----------------------------------
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-export const SET_NOTES = 'SET_NOTES';
-export const SET_BPM = 'SET_BPM';
-export const SET_SCORE = 'SET_SCORE';
 
-export const setScore = (score) => {
+export const SET_CHALLENGES = 'SET_CHALLENGES';
+
+export const setChallenges = (challenges) => {
   return {
-    type: SET_SCORE,
-    score
+    type: SET_CHALLENGES,
+    challenges
   }
 }
 
-export const setBPM = (bpm) => {
-  return {
-    type: SET_BPM,
-    bpm
+export const askServerForChallenge = (challenge_id) => {
+  return dispatch => {
+    axios.get(`/api/challenges/${challenge_id}`)
+    .then(res => {
+      dispatch(setChallenges(res.data));
+    })
+    .catch(err => {
+      console.error(err);
+      console.log('Error getting the challenge from the db.');
+    });
   }
 }
 
-export const setNotes = (notes) => {
-  return {
-    type: SET_NOTES,
-    notes
-  }
-}
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 
 // --------------------         REDUCER         --------------------------
-
-export const scoreCounterReducer = (state = null, action) => {
+export const challengesReducer = (state = [], action) => {
   switch (action.type) {
-    case SET_SCORE:
-      return action.score;
-    default:
-      return state
-  }
-}
-
-export const bpmReducer = (state = 120, action) => {
-  switch (action.type) {
-    case SET_BPM:
-      return action.bpm;
-    default:
-      return state
-  }
-}
-
-export const notesReducer = (state = [], action) => {
-  switch (action.type) {
-    case SET_NOTES:
-      return action.notes;
+    case SET_CHALLENGES:
+      return action.challenges;
     default:
       return state
   }

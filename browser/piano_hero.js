@@ -1,6 +1,7 @@
 import tonal from 'tonal';
 import Tone from 'tone';
-import { polySynth, metronome } from './instruments'
+import { polySynth, metronome } from './instruments';
+import { selectKeysOnDOM } from './onScreenKeyboard';
 import Challenge, { pullScore, updateColor } from './components/Challenge/Challenge'
 
 // noteSequence is an array. First value is the note sequence to be played, second is the duration of the click
@@ -13,8 +14,6 @@ var noteSequence = [["C4", "D4", "G4", "A4"], "4n"]
 // var noteSequence = [[["A4", "G4", "D4", "G4"], ["A4", "G4", "D4", "G4"], ["A4", "G4", "D4", "G4"], ["A4", "G4", "D4", "G4"]], "4n"]
 
 var data, cmd, channel, type, note, midi, frequency, velocity, currentNote = { note: '', triggered: false }, currentBeat, currentMeasure = -1.25, currentScore = 0, visualNotes = [], currentVisualNote, visualNoteCounter;
-
-var circle = document.getElementById('circle');
 
 Tone.Transport.bpm.value = 80;
 // 60 / bpm gives length in seconds of quarter note; 240 gives length of 1 measure
@@ -71,7 +70,6 @@ function onMIDIMessage(event) {
         noteOff(note, velocity, frequency);
         break;
   }
-  //console.log('data', data, 'cmd', cmd, 'channel', channel);
 }
 
 function noteOn(midiNote, velocity, frequency) {
@@ -120,6 +118,7 @@ function noteDuration(){
   }
 }
 
+// changes note color
 function noteHit(result){
   if (result === true) {
     currentScore++;
@@ -134,6 +133,7 @@ function noteHit(result){
 
 // takes Tone.Transport.position when key is pressed down, and noteDuration of currentNote
 function rhythmicAccuracy(timePlayed, noteDuration){
+  console.log(timePlayed)
   let decimal = Number(timePlayed.split(':')[2]);
   switch (noteDuration) {
     // quarter notes
@@ -206,6 +206,8 @@ function loopCreator(notes){
     // redefines currentNote
     currentNote.note = note;
     currentNote.triggered = false;
+    // console.log("NOTE + DURATION", currentNote, noteDuration())
+    // cycles through array of vexFlow notes on the DOM
     currentVisualNote = visualNotes[visualNoteCounter];
     visualNoteCounter++;
     // console.log(visualNoteCounter, currentVisualNote)
@@ -221,23 +223,22 @@ export const startSequence = function(notesToPlay, bpm, numCorrect, vexflowNotes
   var noteSetterLoop = loopCreator(notesToPlay)
   noteSequence[0] = notesToPlay;
   Tone.Transport.bpm.value = bpm;
+  startingPoint = (240 / Tone.Transport.bpm.value);
+  offsetSeconds = (240 / Tone.Transport.bpm.value) / 80;
   let endTime = stopTime();
 
   seq.start();
   // slight offset equal to bpm/4800 (approx. 1/5th of a sixteenth note, so that the currentNote gets re-assigned slightly ahead of the metronome)
   noteSetterLoop.start(startingPoint-offsetSeconds);
   Tone.Transport.start();
-  // console.log(seq)
   seq.stop(endTime);
   noteSetterLoop.stop(endTime);
   Tone.Transport.scheduleOnce(function(){
     pullScore(currentScore)
-    console.log("VISUAL NOTES", visualNotes)
   }, endTime)
 }
 
 export const stopSequence = function(){
-  // Tone.Transport.cancel();
   Tone.Transport.stop();
   currentMeasure = -1.25;
   console.log("STOPPED")
@@ -249,4 +250,30 @@ function stopTime(){
   let bars = Math.floor(noteSequence[0].length / 4 ) + 1;
   let beats = noteSequence[0].length - ((bars - 1) * 4);
   return `${bars}:${beats}:0`
+}
+
+// links up on-screen keyboard to game functionality
+export function noteActionGame(note, index, color, type){
+  var keys = selectKeysOnDOM();
+
+  keys[index].style.background = color;
+
+  if (type === 'attack') {
+    polySynth.triggerAttack(note)
+
+    // will only evaluate pitch and rhythm if noteSetterLoop has started running
+    if (currentVisualNote !== undefined){
+      if (currentNote.triggered === false){
+        if (note === currentNote.note) {
+          let timeTriggered = Tone.Transport.position;
+          rhythmicAccuracy(timeTriggered, noteDuration())
+        } else {
+          noteHit(false)
+        }
+      }
+      currentNote.triggered = true;
+    }
+  }
+
+  else if (type === 'release') polySynth.triggerRelease(note)
 }
