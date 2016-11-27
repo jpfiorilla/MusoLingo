@@ -48,12 +48,10 @@ export default class Navbar extends React.Component {
               <MenuItem onClick={this.handleClose}>Lesson 1</MenuItem>
               <MenuItem onClick={this.handleClose}>Lesson 2</MenuItem>
             </Drawer>
-          </div>
-        </ToolbarGroup>
-        <ToolbarGroup>
-          <Link to="/">
-            <img id="navbar-logo" src="/images/logo-white.png" />
+            <Link to="/">
+              <img id="navbar-logo" src="/images/logo-white.png" />
           </Link>
+          </div>
         </ToolbarGroup>
         <NavbarMenuContainer { ...props } />
       </Toolbar>
