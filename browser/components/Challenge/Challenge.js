@@ -21,7 +21,6 @@ export default class Challenge extends Component {
       // })
       // console.log("IN CONSTRUCTOR", props)
       this.state = {
-        numCorrect: null,
         vexNotes:
         // this.props.challenges.vexNotes
         [
@@ -42,7 +41,7 @@ export default class Challenge extends Component {
           totalNotes += notes[i].length
         }
       }
-      return `${this.state.numCorrect/totalNotes}%`;
+      return `${this.props.score/totalNotes}%`;
     }
 
     componentWillMount(){
@@ -57,27 +56,27 @@ export default class Challenge extends Component {
 
     componentDidMount(){
       console.log("COMP DIDMOUNT RUNNING", this.props)
-      var VF = Vex.Flow;
-      var div = document.getElementById("staff")
-      var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+      // var VF = Vex.Flow;
+      // var div = document.getElementById("staff")
+      // var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+      //
+      // renderer.resize(500, 200);
+      // context = renderer.getContext();
+      // context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
+      //
+      // stave = new VF.Stave(10, 40, 400);
+      //
+      // stave.addClef("treble").addTimeSignature("4/4");
+      //
+      // stave.setContext(context).draw();
+      //
+      // var beams = VF.Beam.generateBeams(this.state.vexNotes);
+      //
+      // Vex.Flow.Formatter.FormatAndDraw(context, stave, this.state.vexNotes);
+      //
+      // beams.forEach(function(b) {b.setContext(context).draw()})
 
-      renderer.resize(500, 200);
-      context = renderer.getContext();
-      context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
-
-      stave = new VF.Stave(10, 40, 400);
-
-      stave.addClef("treble").addTimeSignature("4/4");
-
-      stave.setContext(context).draw();
-
-      var beams = VF.Beam.generateBeams(this.state.vexNotes);
-
-      Vex.Flow.Formatter.FormatAndDraw(context, stave, this.state.vexNotes);
-
-      beams.forEach(function(b) {b.setContext(context).draw()})
-
-      postMount = true;
+      // postMount = true;
       // Create a voice in 4/4 and add above notes
       // var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
       // voice.addTickables(notes);
@@ -87,6 +86,49 @@ export default class Challenge extends Component {
       //
       // // Render voice
       // voice.draw(context, stave);
+    }
+
+    componentDidUpdate(){
+      if (postMount !== true){
+        var VF = Vex.Flow;
+        var div = document.getElementById("staff")
+        var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+
+        renderer.resize(500, 200);
+        context = renderer.getContext();
+        context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
+
+        stave = new VF.Stave(10, 40, 400);
+
+        stave.addClef("treble").addTimeSignature("4/4");
+
+        stave.setContext(context).draw();
+
+      }
+
+      postMount = true;
+
+      if (this.props.challenges.vexNotes){
+        var staffNotes, staffNotes2 = [];
+        console.log("did update vexnotes props", this.props.challenges.vexNotes)
+
+        staffNotes = Object.assign([], this.props.challenges.vexNotes)
+
+        console.log("ASSIGNED STAFFNOTES", staffNotes)
+
+        staffNotes.forEach(vexNote =>{
+          staffNotes2.push(new Vex.Flow.StaveNote(vexNote))
+        })
+        console.log("STAFFNOTES DID UPDATE", staffNotes2)
+
+        var beams = Vex.Flow.Beam.generateBeams(staffNotes2);
+
+        Vex.Flow.Formatter.FormatAndDraw(context, stave, staffNotes2);
+
+        beams.forEach(function(b) {b.setContext(context).draw()})
+      }
+
+      // console.log("COMP DID UPDATE")
     }
 
     render() {
@@ -114,21 +156,22 @@ export default class Challenge extends Component {
       //   console.log("DESTRUNG VEXNOTES", staffNotes)
       // }
 
-      if (postMount === true){
-        Vex.Flow.Formatter.FormatAndDraw(context, stave, this.state.vexNotes)
-        console.log("FORMATTED")
-      }
+      // if (postMount === true){
+      //   Vex.Flow.Formatter.FormatAndDraw(context, stave, this.props.vexNotes)
+      //   console.log("FORMATTED")
+      // }
 
-      console.log("STATE VEX", this.props.challenges.vexNotes)
+      // console.log("REDUX VEX", this.props.vexNotes)
 
         return (
         <div>
-          <button type="button" name="button" id="startButton" onClick={() => startSequence(noteSequence, bpm, this.state.numCorrect, this.state.vexNotes)}>START</button>
-          <button type="button" name="button" id="stopButton" onClick={stopSequence}>STOP</button>
 
         {scoreCounter}
 
         <div id="staff"></div>
+
+        <button type="button" name="button" id="startButton" onClick={() => startSequence(noteSequence, bpm, this.state.vexNotes)}>START</button>
+        <button type="button" name="button" id="stopButton" onClick={stopSequence}>STOP</button>
         </div>
         )
     }

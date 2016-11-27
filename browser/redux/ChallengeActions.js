@@ -5,7 +5,14 @@ import axios from 'axios';
 
 export const SET_CHALLENGES = 'SET_CHALLENGES';
 export const SET_SCORE = 'SET_SCORE';
+export const SET_VEXNOTES = 'SET_VEXNOTES';
 
+export const setVexNotes = (vexNotes) => {
+  return {
+    type: SET_VEXNOTES,
+    vexNotes
+  }
+}
 export const setScore = (score) => {
   return {
     type: SET_SCORE,
@@ -37,6 +44,15 @@ export const askServerForChallenge = (challenge_id) => {
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 
 // --------------------         REDUCER         --------------------------
+export const vexNotesReducer = (state = [], action) => {
+  switch (action.type) {
+    case SET_VEXNOTES:
+      return action.vexNotes;
+    default:
+      return state
+  }
+}
+
 export const scoreReducer = (state = null, action) => {
   switch (action.type) {
     case SET_SCORE:

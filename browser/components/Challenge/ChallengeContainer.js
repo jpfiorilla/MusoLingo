@@ -6,7 +6,7 @@ const mapStateToProps = function (state) {
   return {
     challenges: state.challenges,
     score: state.score,
-    vexNotes: state.challenges.vexNotes
+    vexNotes: state.vexNotes
   };
 };
 

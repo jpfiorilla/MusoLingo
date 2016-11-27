@@ -1,7 +1,7 @@
 import tonal from 'tonal';
 import Tone from 'tone';
 import store from './store';
-import { setScore } from './redux/ChallengeActions'
+import { setScore, setVexNotes } from './redux/ChallengeActions'
 import { polySynth, metronome } from './instruments';
 import { selectKeysOnDOM } from './onScreenKeyboard';
 import Challenge, { updateColor } from './components/Challenge/Challenge'
@@ -125,17 +125,17 @@ function noteHit(result){
   if (result === true) {
     currentScore++;
     currentVisualNote.setStyle({strokeStyle: "green", fillStyle: "green"})
-    updateColor(visualNotes)
+    store.dispatch(setVexNotes(visualNotes))
   }
   else if (result === false) {
     currentVisualNote.setStyle({strokeStyle: "red", fillStyle: "red"})
-    updateColor(visualNotes)
+    store.dispatch(setVexNotes(visualNotes))
   }
 }
 
 // takes Tone.Transport.position when key is pressed down, and noteDuration of currentNote
 function rhythmicAccuracy(timePlayed, noteDuration){
-  console.log(timePlayed)
+  // console.log(timePlayed)
   let decimal = Number(timePlayed.split(':')[2]);
   switch (noteDuration) {
     // quarter notes
@@ -218,7 +218,7 @@ function loopCreator(notes){
   return noteSetterLoop;
 }
 
-export const startSequence = function(notesToPlay, bpm, numCorrect, vexflowNotes){
+export const startSequence = function(notesToPlay, bpm, vexflowNotes){
   // resets current score when restarting game
   currentScore = 0, visualNoteCounter = 0;
   visualNotes = vexflowNotes;
