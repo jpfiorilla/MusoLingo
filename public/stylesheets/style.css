@@ -204,3 +204,10 @@ background-color: #963838;}
 .wrong-answer {
   background-color: red;
 }
+
+#circle {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: red;
+}
