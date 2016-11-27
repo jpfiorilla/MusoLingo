@@ -14,11 +14,15 @@ export function updateColor(vexNotes){
   this.setState({vexNotes})
 }
 
-var vexNotes, beams, stave, context, counter;
+var vexNotes, beams, stave, context, postMount;
 
 export default class Challenge extends Component {
-    constructor(){
-      super()
+    constructor(props){
+      super(props)
+      // this.props.challenges.vexNotes = this.props.challenges.vexNotes.map(vexNote => {
+      //   return vexNote.replace(/"/g,"")
+      // })
+      // console.log("IN CONSTRUCTOR", props)
       this.state = {
         numCorrect: null,
         vexNotes: [
@@ -43,8 +47,15 @@ export default class Challenge extends Component {
       return `${this.state.numCorrect/totalNotes}%`;
     }
 
+    componentWillMount(){
+      if (this.props.challenges.vexNotes){
+        console.log("VEXNOOOOOOOTES!!!!!")
+        updateColor(this.props.challenges.vexNotes)
+      }
+    }
+
     componentDidMount(){
-      console.log("COMP DIDMOUNT RUNNING")
+      console.log("COMP DIDMOUNT RUNNING", this.props)
       var VF = Vex.Flow;
       var div = document.getElementById("staff")
       var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
@@ -62,15 +73,13 @@ export default class Challenge extends Component {
       var beams = VF.Beam.generateBeams(this.state.vexNotes);
 
       // this.state.vexNotes.forEach(note => note.setStyle({strokeStyle: "blue", fillStyle: "blue"}))
-
       // this.state.vexNotes[0].setStyle({strokeStyle: "blue", fillStyle: "blue"})
 
       Vex.Flow.Formatter.FormatAndDraw(context, stave, this.state.vexNotes);
 
       beams.forEach(function(b) {b.setContext(context).draw()})
 
-      counter = 1;
-
+      postMount = true;
       // Create a voice in 4/4 and add above notes
       // var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
       // voice.addTickables(notes);
@@ -83,25 +92,41 @@ export default class Challenge extends Component {
     }
 
     render() {
+      const { notes, bpm } = this.props.challenges;
+      // splitting eighth, triplets, and sixteenth notes into arrays for piano hero functions
+      let noteSequence;
+      if (notes){
+        noteSequence = notes.map(note => {
+          return note.split(" ")
+        })
+      }
+
       let scoreCounter;
-      console.log('RENDERING', this.state.numCorrect)
+      // console.log('RENDERING', this.state.numCorrect)
       if (this.state.numCorrect !== null) {
         scoreCounter = (
           <div><h2>{this.state.numCorrect} correct</h2></div>
         )
       }
 
-      if (counter === 1){
+      // let staffNotes;
+      // if (vexNotes){
+      //   staffNotes = vexNotes.map(vexNote => {
+      //     return vexNote.replace(/"/g,"")
+      //   })
+      //   console.log("DESTRUNG VEXNOTES", staffNotes)
+      // }
+
+      if (postMount === true){
         Vex.Flow.Formatter.FormatAndDraw(context, stave, this.state.vexNotes)
         console.log("FORMATTED")
       }
 
-      // console.log("PROPS", this.props)
-      // console.log("STATE", this.state)
+      // console.log("STATE VEX", this.props.challenges.vexNotes)
 
         return (
         <div>
-          <button type="button" name="button" id="startButton" onClick={() => startSequence(["C3", "D3", "D3", ["C3", "C3"]], 80, this.state.numCorrect, this.state.vexNotes)}>START</button>
+          <button type="button" name="button" id="startButton" onClick={() => startSequence(noteSequence, bpm, this.state.numCorrect, this.state.vexNotes)}>START</button>
           <button type="button" name="button" id="stopButton" onClick={stopSequence}>STOP</button>
 
         {scoreCounter}

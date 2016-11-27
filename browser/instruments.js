@@ -4,7 +4,7 @@ export const polySynth = new Tone.PolySynth(6, Tone.Synth, {
   "oscillator" : {
     "partials" : [0, 2, 3, 4],
   },
-  "volume": -36
+  "volume": -24
 }).toMaster();
 
 export const metronome = new Tone.Player("/sounds/MPCmetronome.wav");

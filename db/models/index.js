@@ -10,6 +10,7 @@ const Slide = require('./slide');
 const Quiz = require('./quiz');
 const Question = require('./question');
 const User = require('./user');
+const Challenge = require('./challenge');
 
 //
 Topic.hasMany(Lesson);
@@ -24,4 +25,4 @@ Quiz.belongsTo(Lesson);
 Quiz.hasMany(Question);
 Question.belongsTo(Quiz);
 
-module.exports = {User, Topic, Lesson, Slide, Quiz, Question};
+module.exports = {User, Topic, Lesson, Slide, Quiz, Question, Challenge};
