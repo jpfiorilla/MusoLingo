@@ -275,6 +275,23 @@ lessontwoone.forEach((slide, idx) => {
   slide.number = idx + 1;
 });
 
+lessonthreeone = [{
+  "title": "Triads",
+  "slideContent": [
+    {
+      text: "An interval is defined as the space between two notes."
+    }, {
+      img: ''
+    }, {
+      text: ""
+    }
+  ]
+}]
+lessonthreeone.forEach((slide, idx) => {
+  slide.lesson_id = 6;
+  slide.number = idx + 1;
+});
+
 const slides = _.flatten([lessononeone, lessononetwo, lessononethree, lessononefour, lessontwoone]);
 
 module.exports = slides;
