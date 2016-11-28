@@ -68,7 +68,7 @@ export default class Quiz extends React.Component {
                 <div>
                     <div>
                         <TextInput />
-                    </div>    
+                    </div>
                     <p>
                         Select campaign settings. Campaign settings can include your budget, network, bidding
                         options and adjustments, location targeting, campaign end date, and other settings that
@@ -98,7 +98,7 @@ export default class Quiz extends React.Component {
             return 'You\'re a long way from home sonny jim!';
         }*/
     }
-    
+
     renderContent() {
         const {finished, stepIndex} = this.state;
         const contentStyle = {margin: '0 16px', overflow: 'hidden'};
@@ -124,16 +124,16 @@ export default class Quiz extends React.Component {
         return (
             <div style={contentStyle}>
                 <div className="row">
-                    
-                    <div className= "text-right" >      
+
+                    <div className= "text-right" >
                         <button id="hint-button" type="button">?</button>
                     </div>
 
                 </div>
                 <div>{this.props.quizzes.length && this.getStepContent(stepIndex)}</div>
                 <div style={{ marginTop: 24, marginBottom: 12 }}>
-                <div className="row">  
-                    <div className="col-md-6">      
+                <div className="row">
+                    <div className="col-md-6">
                         <FlatButton
                             label="Back"
                             disabled={stepIndex === 0}
@@ -148,7 +148,7 @@ export default class Quiz extends React.Component {
                             onClick={this.handleNext}
                         />
                     </div>
-                </div>        
+                </div>
                 </div>
             </div>
         );
@@ -195,7 +195,7 @@ export default class Quiz extends React.Component {
                 </Step>
                 <Step>
                     <StepLabel></StepLabel>
-                </Step>        
+                </Step>
                 </Stepper>*/}
                 <ExpandTransition loading={loading} open={true}>
                     {this.renderContent()}
@@ -206,4 +206,3 @@ export default class Quiz extends React.Component {
 }
 
 // STEPPER?
-

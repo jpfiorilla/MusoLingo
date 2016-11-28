@@ -25,7 +25,7 @@ export default class UserPage extends React.Component {
       active: '',
       update: ''
     };
-    this.showQuizzesOrLessons = this.showQuizzesOrLessons.bind(this);
+    this.showStuff = this.showStuff.bind(this);
     this.form = this.form.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -39,7 +39,7 @@ export default class UserPage extends React.Component {
     this.state.update = event.target.value;
   }
 
-  showQuizzesOrLessons (stuff, quizOrLesson) {
+  showStuff (stuff, quizOrLesson) {
     if ((! this.state.something_to_show) || (quizOrLesson !== this.state.active)) {
       this.state.update = undefined;
       this.state.something_to_show = stuff;
@@ -70,6 +70,9 @@ export default class UserPage extends React.Component {
     var firstName, lastName, email, image, isAdmin, completed, keys,
     quizzes, lessons;
 
+    lessons = (<p>No lessons completed yet</p>);
+    quizzes = (<p>No quizzes completed yet</p>);
+
     firstName = this.props.user.first_name;
     lastName = this.props.user.last_name;
     email = this.props.user.email;
@@ -89,10 +92,11 @@ export default class UserPage extends React.Component {
         console.log('INSIDE lessons');
         lessons = (
           <List>
+            <h2>Completed:</h2>
             {
               Object.keys(completed.lessons).map((lesson_id, index) => {
                 return (
-                  <ListItem key={index} primaryText={lesson_id} />
+                  <ListItem disabled="true" key={index} primaryText={lesson_id} />
                 );
               })
             }
@@ -105,11 +109,11 @@ export default class UserPage extends React.Component {
         // NOTE: quizzes is the local variable for the JSX.
         quizzes = (
           <List>
+            <h2>Completed:</h2>
             {
               Object.keys(completed.quizzes).map((quiz_id, index) => {
                 return (
-                  // NOTE: quizzes[quiz_id] is the user's score for that quiz.
-                  <ListItem key={index} primaryText={quiz_id} secondaryText={completed.quizzes[quiz_id]}/>
+                  <ListItem disabled="true" key={index} primaryText={`quiz # ${quiz_id}`} />
                 );
               })
             }
@@ -128,33 +132,37 @@ export default class UserPage extends React.Component {
       <div>
         <div className="col-md-6">
           <List>
-            <Subheader>
+            <h2>
               User Information
-            </Subheader>
+            </h2>
 
             <ListItem onClick={() => {
-              this.showQuizzesOrLessons(this.form('first_name'), 'first_name');
-            }} primaryText={this.props.user.first_name}/>
+              this.showStuff(this.form('first_name'), 'first_name');
+            }} primaryText="First Name" secondaryText={this.props.user.first_name}/>
 
             <ListItem onClick={() => {
-              this.showQuizzesOrLessons(this.form('last_name'), 'last_name');
-            }} primaryText={this.props.user.last_name}/>
+              this.showStuff(this.form('last_name'), 'last_name');
+            }} primaryText="Last Name" secondaryText={this.props.user.last_name}/>
 
             <ListItem onClick={() => {
-              this.showQuizzesOrLessons(this.form('email'), 'email');
+              this.showStuff(this.form('email'), 'email');
             }} primaryText="Email" secondaryText={email}/>
 
             <ListItem onClick={() => {
-              this.showQuizzesOrLessons(this.form('image'), 'image');
-            }} primaryText="Image"/>
+              this.showStuff(this.form('image'), 'image');
+            }} primaryText="Update Image"/>
 
-            <ListItem primaryText="Admin" secondaryText={isAdmin}/>
-            <ListItem primaryText="Keys" secondaryText={keys} />
-            <ListItem primaryText="Completed Lessons" onClick={() => {
-              this.showQuizzesOrLessons(lessons, 'lessons');
+            <ListItem onClick={() => {
+              this.showStuff(this.form('password'), 'password');
+            }} primaryText="Update Password"/>
+
+            <ListItem disabled="true" primaryText="Admin" secondaryText={isAdmin}/>
+            <ListItem disabled="true" primaryText="Keys Collected" secondaryText={keys} />
+            <ListItem primaryText="Lessons Completed" secondaryText="Click to view" onClick={() => {
+              this.showStuff(lessons, 'lessons');
             }} />
-            <ListItem primaryText="Completed Quizzes" onClick={() => {
-              this.showQuizzesOrLessons(quizzes, 'quizzes');
+            <ListItem primaryText="Quizzes Completed" secondaryText="Click to view" onClick={() => {
+              this.showStuff(quizzes, 'quizzes');
             }} />
           </List>
         </div>

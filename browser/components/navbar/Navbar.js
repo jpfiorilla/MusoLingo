@@ -45,7 +45,7 @@ export default class Navbar extends React.Component {
               width={200}
               onRequestChange={(open) => this.setState({open})}
               open={this.state.open}>
-              <MenuItem onClick={() => browserHistory.push('/user')}>User Page</MenuItem>
+              <MenuItem onClick={this.handleClose}>User Page</MenuItem>
               <MenuItem onClick={this.handleClose}>Lesson 2</MenuItem>
             </Drawer>
             <Link to="/">

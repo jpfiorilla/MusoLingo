@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 import Login from "../Login/LoginContainer"
 
 // Material theme
@@ -62,8 +62,8 @@ export default class NavbarMenu extends React.Component {
         // /account
         role === 2 ? (
           <div className="navbar-item">
-            <i id="navbar-key" 
-              data-badge={this.props.keys} 
+            <i id="navbar-key"
+              data-badge={this.props.keys}
               className="material-icons mdl-badge mdl-badge--no-background mdl-badge--overlap">vpn_key</i>
           </div>
         ) : null
@@ -77,13 +77,13 @@ export default class NavbarMenu extends React.Component {
         ) : (
           <div className="account-dropdown">
             <img id="account-beathoven-head" onClick={this.onAccountToggle} src="/images/beathoven-head.png" />
-            <Popover open={this.state.open} 
-              anchorEl={this.state.anchorEl} 
+            <Popover open={this.state.open}
+              anchorEl={this.state.anchorEl}
               anchorOrigin={{horizontal: "left", vertical: "bottom"}}
               targetOrigin={{horizontal: "left", vertical: "top"}}
               onRequestClose={this.handleAccountClose}>
               <Menu>
-                <MenuItem primaryText="Account" />
+                <MenuItem onClick={() => browserHistory.push("/user")} primaryText="Account" />
                 <MenuItem onClick={logout} primaryText="Sign Out" />
               </Menu>
             </Popover>
