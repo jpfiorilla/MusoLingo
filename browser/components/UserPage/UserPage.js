@@ -5,16 +5,6 @@ import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import FlatButton from 'material-ui/FlatButton';
 import Subheader from 'material-ui/Subheader';
 
-/*
-what do we need to do:
-we now need to allow the user to update their name, email,
-password or image.
-
-we need to display a form, on click, for each of those fields.
-then we do the state change thing and say on submit we put to the db.
-
-*/
-
 export default class UserPage extends React.Component {
 
   constructor () {
