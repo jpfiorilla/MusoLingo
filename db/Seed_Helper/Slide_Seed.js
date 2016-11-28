@@ -102,6 +102,19 @@ var lessononeone = [{
 }];
 
 lessononetwo = [{
+  "title": '',
+  "slideContent": [
+    {
+      text: "Let's learn about some more rhythmic notation."
+    }
+  ]
+}]
+lessononetwo.forEach((slide, idx) => {
+  slide.lesson_id = 2;
+  slide.number = idx + 1;
+});
+
+lessononethree = [{
   "title": "Notes on the staff",
   "slideContent": [
     {
@@ -175,12 +188,12 @@ lessononetwo = [{
     }
   ]
 }];
-lessononetwo.forEach((slide, idx) => {
+lessononethree.forEach((slide, idx) => {
   slide.lesson_id = 3;
   slide.number = idx + 1;
 });
 
-lessononethree = [{
+lessononefour = [{
   "title": "Time signatures",
   "slideContent": [
     {
@@ -237,12 +250,12 @@ lessononethree = [{
   ]
 }
 ];
-lessononethree.forEach((slide, idx) => {
-  slide.lesson_id = 3;
+lessononefour.forEach((slide, idx) => {
+  slide.lesson_id = 4;
   slide.number = idx + 1;
 });
 
-lessononefour = [{
+lessononefive = [{
   "title": "Bass clef",
   "slideContent": [
     {
@@ -253,8 +266,8 @@ lessononefour = [{
   ]
 }
 ];
-lessononefour.forEach((slide, idx) => {
-  slide.lesson_id = 4;
+lessononefive.forEach((slide, idx) => {
+  slide.lesson_id = 5;
   slide.number = idx + 1;
 });
 
@@ -265,6 +278,8 @@ lessontwoone = [
   "slideContent": [
     {
       text: "We learned that there are 12 notes from A to G#, including the accidentals."
+    }, {
+      text: ""
     }, {
       text: "But a piano has much more than just 12 keys. So what notes do all those other keys correspond to?"
     }
@@ -349,7 +364,7 @@ lessontwoone = [
 }
 ]
 lessontwoone.forEach((slide, idx) => {
-  slide.lesson_id = 5;
+  slide.lesson_id = 6;
   slide.number = idx + 1;
 });
 
@@ -485,7 +500,7 @@ lessontwotwo = [
   }
 ]
 lessontwotwo.forEach((slide, idx) => {
-  slide.lesson_id = 6;
+  slide.lesson_id = 7;
   slide.number = idx + 1;
 });
 
@@ -562,7 +577,7 @@ lessontwothree = [
   },
 ]
 lessontwothree.forEach((slide, idx) => {
-  slide.lesson_id = 7;
+  slide.lesson_id = 8;
   slide.number = idx + 1;
 });
 
@@ -579,10 +594,10 @@ lessonthreeone = [{
   ]
 }]
 lessonthreeone.forEach((slide, idx) => {
-  slide.lesson_id = 8;
+  slide.lesson_id = 9;
   slide.number = idx + 1;
 });
 
-const slides = _.flatten([lessononeone, lessononetwo, lessononethree, lessononefour, lessontwoone, lessontwotwo, lessontwothree, lessonthreeone]);
+const slides = _.flatten([lessononeone, lessononetwo, lessononethree, lessononefour, lessononefive, lessontwoone, lessontwotwo, lessontwothree, lessonthreeone]);
 
 module.exports = slides;
