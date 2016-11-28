@@ -10,6 +10,27 @@ const challenges = [
       {clef: 'treble', keys: ['c/4'], duration: '8'},
       {clef: 'treble', keys: ['c/4'], duration: '8'}
     ]
+  },
+  {
+    "bpm": 60,
+    "notes": ["A4 G4", "A4 G4", "A4 G4", "A4", "A4 G4", "A4 G4", "A4 G4", "A4", "B4"],
+    "vexNotes": [
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: 'q'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: 'q'},
+      {clef: 'treble', keys: ['b/4'], duration: 'q'}
+    ]
   }
 ]
 
