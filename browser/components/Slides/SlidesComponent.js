@@ -39,12 +39,15 @@ export default class SlidesComponent extends React.Component {
     }
   };
 
-  jsxBold (text) {
+  jsxBold (text, index) {
     // NOTE: since the slides are seeded with <b> tags, we need have the bold text actually display.
     var retArr = [];
     var index = 0;
     var elType = 'p';
     var subStr = '';
+    var features = {
+      style: {display : 'inline'}
+    };
 
     while (index < text.length) {
       // NOTE: if we encounter a tag we assume it's an opening or closing b tag.
@@ -52,12 +55,12 @@ export default class SlidesComponent extends React.Component {
         // NOTE: if it's an opening tag...
         if (text.slice(index, index + 3) === '<b>') {
           // NOTE: create a <p> JSX element with the text in substring.
-          retArr.push(React.createElement(elType, {style: {display : 'inline'}}, subStr));
+          retArr.push(React.createElement(elType, features, subStr));
           subStr = '';
           elType = 'b';
           index += 3;
         } else { // closing tag, return the b.
-          retArr.push(React.createElement(elType, {style: {display : 'inline'}}, subStr));
+          retArr.push(React.createElement(elType, features, subStr));
           subStr = '';
           elType = 'p';
           index += 4;
@@ -68,14 +71,14 @@ export default class SlidesComponent extends React.Component {
       }
     }
     if (subStr) {
-      retArr.push(React.createElement('p', {style: {display : 'inline'}}, subStr));
+      retArr.push(React.createElement('p', features, subStr));
     }
     return retArr;
   }
   textOrImage (obj, index) {
 
     if (obj.text) {
-      var y = this.jsxBold(obj.text);
+      var y = this.jsxBold(obj.text, index);
       return (
         <div>
           {y}
@@ -100,74 +103,74 @@ export default class SlidesComponent extends React.Component {
           }
         </div>
       )
-
-      /* return (
-      <div>
-      <div key={index} id={staffId}></div>
-    </div>
-  ) */
-}
-}
-render() {
-  const {finished, stepIndex} = this.state;
-  const contentStyle = {margin: '0 16px'};
-
-  let linearStepper;
-
-  if (this.props.slides.length) {
-    linearStepper = (
-      <Stepper activeStep={stepIndex}>
-        {
-          this.props.slides.map((slide, index) => {
-            return (
-              <Step key={index}>
-                <StepLabel>{slide.title}</StepLabel>
-              </Step>
-            );
-          })
-        }
-      </Stepper>
-    )
+    }
   }
-  return (
-    <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
+  render() {
+    const {finished, stepIndex} = this.state;
+    const contentStyle = {margin: '0 16px'};
 
-      { linearStepper }
+    let linearStepper;
 
-      <div style={contentStyle}>
-        {finished ? (
-          <p>
-            <a href="#" onClick={(event) => {
-              event.preventDefault();
-              this.setState({stepIndex: 0, finished: false});
-            }}>
-            Replay the slides
-          </a>
-        </p>
-      ) : (
-        <div style={{textAlign: 'center'}}>
+    if (this.props.slides.length) {
+      linearStepper = (
+        <Stepper activeStep={stepIndex}>
           {
-            this.props.slides.length && this.props.slides[stepIndex].slideContent.map((stuff, index) => {
-              return this.textOrImage(stuff, index);
+            this.props.slides.map((slide, index) => {
+              return (
+                <Step key={index}>
+                  <StepLabel>{slide.title}</StepLabel>
+                </Step>
+              );
             })
           }
-          <div style={{marginTop: 12}}>
-            <FlatButton
-              label="Back"
-              disabled={stepIndex === 0}
-              onClick={this.handlePrev}
-              style={{marginRight: 12}}
-            />
-            <RaisedButton
-              label={stepIndex === this.props.slides.length - 1 ? 'Finish' : 'Next'}
-              primary={true}
-              onClick={this.handleNext}
-            />
+        </Stepper>
+      )
+    }
+    return (
+      <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
+
+        { linearStepper }
+
+        <div style={contentStyle}>
+          {finished ? (
+            <p>
+              <a href="#" onClick={(event) => {
+                event.preventDefault();
+                this.setState({stepIndex: 0, finished: false});
+              }}>
+              Replay the slides
+            </a>
+          </p>
+        ) : (
+          <div style={{textAlign: 'center'}}>
+            {
+              this.props.slides.length && this.props.slides[stepIndex].slideContent.map((stuff, index) => {
+                return this.textOrImage(stuff, index);
+              })
+            }
+            <div style={{marginTop: 12}}>
+              <FlatButton
+                label="Back"
+                disabled={stepIndex === 0}
+                onClick={this.handlePrev}
+                style={{marginRight: 12}}
+              />
+              <RaisedButton
+                label={stepIndex === this.props.slides.length - 1 ? 'Finish' : 'Next'}
+                primary={true}
+                onClick={() => {
+                  if (stepIndex === this.props.slides.length - 1 && this.props.user.completed) {
+                    this.props.user.completed.lessons[this.props.slides[0].lesson_id] = 'We did it!';
+                    this.props.completed(this.props.user.completed, 'completed', this.props.user.id);
+                  }
+                  this.handleNext();
+                }}
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
 }
 }
