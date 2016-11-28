@@ -20,12 +20,12 @@ const styles = {
   },
 };
 
-var questionComponent, correct, incorrect, intervalNotes, correctChord, buttonsArray, rightAnswerPosition, index, answered;
+var questionComponent, correct, incorrect, lownote, highnote, intervalNotes, correctChord, buttonsArray, rightAnswerPosition, index, answered;
 
 export default class MultipleChoiceQuestion extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       type: this.props.questionType,
       answered: false,
@@ -55,9 +55,9 @@ export default class MultipleChoiceQuestion extends React.Component {
         break;
       case "guessInterval":
         questionComponent = RandomTrebleInterval;
-        var lownote = randomNoteName(56, 75);
-        var highnote = randomNoteName(vexToMidi(lownote), vexToMidi(lownote) + 11);
-        var intervalNotes = [lownote, highnote];
+        lownote = randomNoteName(56, 75);
+        highnote = randomNoteName(vexToMidi(lownote), vexToMidi(lownote) + 11);
+        intervalNotes = [lownote, highnote];
         correct = calculateInterval(intervalNotes);
         incorrect = randomIntervals(correct);
         this.setState({correctAnswer: correct})

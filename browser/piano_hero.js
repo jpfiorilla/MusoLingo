@@ -1,8 +1,11 @@
 import tonal from 'tonal';
 import Tone from 'tone';
+import Vex from 'vexflow';
+import store from './store';
+import { setScore, setVexNotes, setNotes } from './redux/ChallengeActions'
 import { polySynth, metronome } from './instruments';
 import { selectKeysOnDOM } from './onScreenKeyboard';
-import Challenge, { pullScore, updateColor } from './components/Challenge/Challenge'
+import Challenge, { updateColor } from './components/Challenge/Challenge'
 
 // noteSequence is an array. First value is the note sequence to be played, second is the duration of the click
 var noteSequence = [["C4", ["D4", "E4", "F4"], "G4", ["A4", "G4"]], "4n"]
@@ -123,17 +126,19 @@ function noteHit(result){
   if (result === true) {
     currentScore++;
     currentVisualNote.setStyle({strokeStyle: "green", fillStyle: "green"})
-    updateColor(visualNotes)
+    store.dispatch(setNotes(visualNotes))
+    // store.dispatch(setVexNotes(visualNotes))
   }
   else if (result === false) {
     currentVisualNote.setStyle({strokeStyle: "red", fillStyle: "red"})
-    updateColor(visualNotes)
+    // store.dispatch(setVexNotes(visualNotes))
+    store.dispatch(setNotes(visualNotes))
   }
 }
 
 // takes Tone.Transport.position when key is pressed down, and noteDuration of currentNote
 function rhythmicAccuracy(timePlayed, noteDuration){
-  console.log(timePlayed)
+  // console.log(timePlayed)
   let decimal = Number(timePlayed.split(':')[2]);
   switch (noteDuration) {
     // quarter notes
@@ -216,10 +221,13 @@ function loopCreator(notes){
   return noteSetterLoop;
 }
 
-export const startSequence = function(notesToPlay, bpm, numCorrect, vexflowNotes){
+export const startSequence = function(notesToPlay, bpm, vexflowNotes){
   // resets current score when restarting game
   currentScore = 0, visualNoteCounter = 0;
-  visualNotes = vexflowNotes;
+  vexflowNotes.forEach(vexNote =>{
+    visualNotes.push(new Vex.Flow.StaveNote(vexNote))
+  });
+  console.log("VISUALNOTES", visualNotes)
   var noteSetterLoop = loopCreator(notesToPlay)
   noteSequence[0] = notesToPlay;
   Tone.Transport.bpm.value = bpm;
@@ -234,7 +242,7 @@ export const startSequence = function(notesToPlay, bpm, numCorrect, vexflowNotes
   seq.stop(endTime);
   noteSetterLoop.stop(endTime);
   Tone.Transport.scheduleOnce(function(){
-    pullScore(currentScore)
+    store.dispatch(setScore(currentScore))
   }, endTime)
 }
 
