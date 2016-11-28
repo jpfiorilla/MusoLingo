@@ -62,6 +62,15 @@ export default class MultipleChoiceQuestion extends React.Component {
         incorrect = randomIntervals(correct);
         this.setState({correctAnswer: correct})
         break;
+      case "guessBassInterval":
+        questionComponent = RandomTrebleInterval;
+        lownote = randomNoteName(37, 56);
+        highnote = randomNoteName(vexToMidi(lownote), vexToMidi(lownote) + 11);
+        intervalNotes = [lownote, highnote];
+        correct = calculateInterval(intervalNotes);
+        incorrect = randomIntervals(correct);
+        this.setState({correctAnswer: correct})
+        break;
       case "guessChordName":
         questionComponent = RandomChord;
         var correctArr = randomTriad(56, 75);
