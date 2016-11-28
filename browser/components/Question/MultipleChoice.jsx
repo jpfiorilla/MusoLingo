@@ -7,6 +7,7 @@ import RandomTrebleInterval from '../vexflow/randomtrebleinterval';
 import RandomChord from '../vexflow/randomchord';
 import RandomRhythmNote from '../vexflow/randomrhythmnote';
 import RandomBassNote from '../vexflow/randombassnote';
+import RandomInvertedChord from '../vexflow/randominvertedchord'
 import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations } from '../../utils';
 import  Vex from 'vexflow'
 
@@ -20,7 +21,7 @@ const styles = {
   },
 };
 
-var questionComponent, correct, incorrect, lownote, highnote, intervalNotes, correctChord, buttonsArray, rightAnswerPosition, index, answered;
+var questionComponent, correct, incorrect, lownote, highnote, intervalNotes, correctChord, buttonsArray, rightAnswerPosition, index, answered, incorrectChords, correctArr;
 
 export default class MultipleChoiceQuestion extends React.Component {
   constructor(props) {
@@ -73,11 +74,21 @@ export default class MultipleChoiceQuestion extends React.Component {
         break;
       case "guessChordName":
         questionComponent = RandomChord;
-        var correctArr = randomTriad(56, 75);
+        correctArr = randomTriad(56, 75);
         correct = correctArr[1];
         correctChord = correctArr[0];
         incorrect = [];
-        var incorrectChords = randomOtherTriads(correctArr[1]);
+        incorrectChords = randomOtherTriads(correctArr[1]);
+        incorrectChords.forEach(chord => incorrect.push(chord));
+        this.setState({ correctAnswer: correct })
+        break;
+      case "guessInversionName":
+        questionComponent = RandomInvertedChord;
+        correctArr = randomTriad(56, 75);
+        correct = correctArr[1];
+        correctChord = correctArr[0];
+        incorrect = [];
+        incorrectChords = randomOtherTriads(correctArr[1]);
         incorrectChords.forEach(chord => incorrect.push(chord));
         this.setState({ correctAnswer: correct })
         break;

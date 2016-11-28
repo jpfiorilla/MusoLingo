@@ -104,6 +104,12 @@ export const getNoteName = function(note){
     else return note[0];
 }
 
+export const octaveDown = function(note){
+    let newOctave = Number(note[note.length-1]) - 1;
+    let newNote = note.substring(0, note.length-1) + newOctave.toString();
+    return newNote;
+}
+
 export const enharmonize = function(note){
     return 
     note === 'Gb' ? 'F#' :

@@ -1,5 +1,3 @@
-// We have 15 different topics.
-
 var lessons = [{"title":"Notes","level":1,"description":"Learn how to read rhythmic notation.","topic_id":1},
 {"title":"More rhythm","level":2,"description":"Learn how to read more rhythmic notation.","topic_id":1},
 {"title":"Staves","level":3,"description":"Learn how to understand the staff.","topic_id":1},
