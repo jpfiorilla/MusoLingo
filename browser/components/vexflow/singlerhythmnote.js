@@ -3,7 +3,7 @@ import { getNoteName, randomTrebleNoteName } from '../../utils';
 
 import Vex from 'vexflow';
 
-CanvasRenderingContext2D.prototype.clear = 
+CanvasRenderingContext2D.prototype.clear =
   CanvasRenderingContext2D.prototype.clear || function (preserveTransform) {
     if (preserveTransform) {
       this.save();
@@ -14,7 +14,7 @@ CanvasRenderingContext2D.prototype.clear =
 
     if (preserveTransform) {
       this.restore();
-    }           
+    }
 };
 
 export default class SingleRhythmNote extends Component {
@@ -55,7 +55,7 @@ export default class SingleRhythmNote extends Component {
         Vex.Flow.Formatter.FormatAndDraw(context, stave, notes);
         beams.forEach(function(b) {b.setContext(context).draw()})
     }
-    componentWillReceiveProps(){
+    componentDidUpdate(){
         const {info, staffId} = this.props;
         console.log('receiving props', staffId)
 
@@ -83,5 +83,5 @@ export default class SingleRhythmNote extends Component {
         Vex.Flow.Formatter.FormatAndDraw(context, stave, notes);
         beams.forEach(function(b) {b.setContext(context).draw()})
     }
-    
+
 }
