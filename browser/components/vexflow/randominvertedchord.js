@@ -4,7 +4,7 @@ import { getNoteName, randomTrebleNoteName, octaveDown } from '../../utils';
 import tonal from 'tonal';
 import Vex from 'vexflow';
 
-export default class RandomChord extends Component {
+export default class RandomInvertedChord extends Component {
     render(){
         return (
         <div>
@@ -33,17 +33,30 @@ export default class RandomChord extends Component {
 
         stave.setContext(context).draw();
 
-        console.log('chord', chord);
- 
-        let outChord = new VF.StaveNote({keys: chord, duration: "w" })
+        let invChord = [];
+        if (Math.floor(Math.random() * 2)){
+            invChord[0] = octaveDown(chord[1]);
+            invChord[1] = chord[0];
+            invChord[2] = chord[2];
+        } else {
+            invChord[0] = octaveDown(chord[2]);
+            invChord[1] = chord[0];
+            invChord[2] = chord[1];
+        }
 
-        chord.forEach((note, idx) => {
+        console.log('invchord', invChord)
+ 
+        let outChord = new VF.StaveNote({keys: invChord, duration: "w" })
+
+        invChord.forEach((note, idx) => {
             if (note[1] !== '/'){
                 outChord.addAccidental(idx, new VF.Accidental(note[1]));
             }
         })
 
+
         let notes = [outChord];
+        console.log('notes', notes)
 
         VF.Formatter.FormatAndDraw(context, stave, notes);
     }
