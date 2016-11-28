@@ -40,15 +40,18 @@ export default class SlidesComponent extends React.Component {
   };
 
   jsxBold (text) {
-
+    // NOTE: since the slides are seeded with <b> tags, we need have the bold text actually display.
     var retArr = [];
     var index = 0;
     var elType = 'p';
     var subStr = '';
 
     while (index < text.length) {
+      // NOTE: if we encounter a tag we assume it's an opening or closing b tag.
       if (text[index] === '<') {
+        // NOTE: if it's an opening tag...
         if (text.slice(index, index + 3) === '<b>') {
+          // NOTE: create a <p> JSX element with the text in substring.
           retArr.push(React.createElement(elType, {style: {display : 'inline'}}, subStr));
           subStr = '';
           elType = 'b';
