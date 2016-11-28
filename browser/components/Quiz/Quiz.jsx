@@ -132,17 +132,17 @@ export default class Quiz extends React.Component {
                 <div>{(this.props.quizzes.length) ? this.getStepContent(stepIndex) : <p>Quiz length is empty</p>}</div>
                 <div style={{ marginTop: 24, marginBottom: 12 }}>
                 <div className="row">
-                    <div className="col-md-6">
+{/*                    <div className="col-md-6">
                         <FlatButton
                             label="Back"
                             disabled={stepIndex === 0}
                             onClick={this.handlePrev}
                             style={{marginRight: 12}}
                         />
-                    </div>
-                    <div className="col-md-6 text-right">
+                    </div>*/}
+                    <div id="next-button" className="col-md-6 text-right">
                         <RaisedButton
-                            label={stepIndex === 2 ? 'Finish' : 'Next'}
+                            label='Next'
                             primary={true}
                             onClick={this.handleNext}
                         />

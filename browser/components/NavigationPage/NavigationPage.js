@@ -31,11 +31,13 @@ export default class NavigationPage extends React.Component {
   }
 
   getQuizAndHeadOver (lessonId) {
+    this.props.clearQuizzes();
     this.props.askForQuiz(lessonId);
     browserHistory.push(`/quiz`);
   }
 
   getSlidesAndHeadOver (lessonId) {
+    this.props.clearSlides();
     // NOTE: hard coding 1 for testing purposes.
     // NOTE: change back  to lesson Id when db is updated with actual lesson material.
     // *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_

@@ -409,3 +409,8 @@ hr.style1{
   margin-left: 10px;
   opacity: 0.5;
 }
+
+#next-button {
+  position: relative;
+  left: 300px;
+}

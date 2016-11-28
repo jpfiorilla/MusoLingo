@@ -4,6 +4,7 @@ import axios from 'axios'
 
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 export const SET_QUIZZES = 'SET_QUIZZES';
+export const CLEAR_QUIZZES = 'CLEAR_QUIZZES';
 
 export const askServerForQuizzes = (lesson_id) => {
   return dispatch => {
@@ -18,11 +19,24 @@ export const askServerForQuizzes = (lesson_id) => {
   }
 }
 
+export const clearQuizzesBeforeRender = () => {
+  return dispatch => {
+    dispatch(clearQuizzes());
+  }
+}
+
 // NOTE: action creator for setting the topics.
 export const setQuizzes = (quizzes) => {
   return {
     type: SET_QUIZZES,
     quizzes
+  }
+}
+
+export const clearQuizzes = () => {
+  return {
+    type: CLEAR_QUIZZES,
+    quizzes: []
   }
 }
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
@@ -32,6 +46,8 @@ export const setQuizzes = (quizzes) => {
 export const quizzesReducer = (state = [], action) => {
   switch (action.type) {
     case SET_QUIZZES:
+      return action.quizzes;
+    case CLEAR_QUIZZES:
       return action.quizzes;
     default:
       return state

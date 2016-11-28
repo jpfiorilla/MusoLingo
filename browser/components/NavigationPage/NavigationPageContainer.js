@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
 import NavigationPage from './NavigationPage';
-import { askServerForTheSlides } from '../../redux/SlidesActions';
-import { askServerForQuizzes } from '../../redux/QuizzesActions';
+import { askServerForTheSlides, clearSlidesBeforeRender } from '../../redux/SlidesActions';
+import { askServerForQuizzes, clearQuizzesBeforeRender } from '../../redux/QuizzesActions';
 
 
 const mapStateToProps = function (state) {
@@ -20,6 +20,12 @@ const mapDispatchToProps = function (dispatch) {
     },
     askForQuiz: (lesson_id) => {
       dispatch(askServerForQuizzes(lesson_id));
+    },
+    clearSlides: () => {
+      dispatch(clearSlidesBeforeRender());
+    },
+    clearQuizzes: () => {
+      dispatch(clearQuizzesBeforeRender());
     }
   };
 };
