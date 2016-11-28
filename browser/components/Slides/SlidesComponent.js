@@ -40,11 +40,6 @@ export default class SlidesComponent extends React.Component {
   };
 
   jsxBold (text) {
-    // The default is p.
-    // We build a string as we go aong for the p tag.
-    // if we encounter and < tag we end the current p string and build
-    // a b string until we hit the < tag.
-    // then we add the b to the array and start the p until.
 
     var retArr = [];
     var index = 0;
@@ -53,12 +48,6 @@ export default class SlidesComponent extends React.Component {
 
     while (index < text.length) {
       if (text[index] === '<') {
-        // check if it's an opening or closing tag.
-        //
-        // if it's an opening tag then return the current p and start building the b.
-        // it it's a closing tag then return the current b and start building the new p.
-        //
-        // update the index and go until the end.
         if (text.slice(index, index + 3) === '<b>') {
           retArr.push(React.createElement(elType, {style: {display : 'inline'}}, subStr));
           subStr = '';
