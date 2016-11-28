@@ -3,7 +3,7 @@ const quiz = [{
     title: "Guess the Note Value",
     question_types: ['rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote']
 }, {
-    lesson_id: 2,
+    lesson_id: 3,
     title: "Guess the Note Name",
     question_types: ['guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName']
 }, {
@@ -16,7 +16,11 @@ const quiz = [{
     question_types: ['guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval']
 }, {
     lesson_id: 6,
-    title: "Guess the Interval",
+    title: "Guess the Triad Name",
+    question_types: ['guessChordName', 'guessChordName', 'guessChordName', 'guessChordName', 'guessChordName', 'guessChordName', 'guessChordName', 'guessChordName', 'guessChordName', 'guessChordName']
+}, {
+    lesson_id: 7,
+    title: "Guess the Triad Name",
     question_types: ['guessChordName', 'guessChordName', 'guessChordName', 'guessChordName', 'guessChordName', 'guessChordName', 'guessChordName', 'guessChordName', 'guessChordName', 'guessChordName']
 }];
 
