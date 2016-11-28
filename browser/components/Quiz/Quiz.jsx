@@ -55,8 +55,7 @@ export default class Quiz extends React.Component {
 
     getStepContent(stepIndex) {
         return (
-                <div>
-                    <p>Here is a multiple choice example:</p>
+                <div id="multiplechoice-container">
                     <div style={{marginLeft: "10%"}}>
                         <MultipleChoiceContainer questionType={this.props.quizzes[0].question_types[this.state.stepIndex]}  />
                     </div>
