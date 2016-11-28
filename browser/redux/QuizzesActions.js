@@ -5,6 +5,7 @@ import axios from 'axios'
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 export const SET_QUIZZES = 'SET_QUIZZES';
 export const CLEAR_QUIZZES = 'CLEAR_QUIZZES';
+export const SET_CURRENT_QUIZ = 'SET_CURRENT_QUIZ';
 
 export const askServerForQuizzes = (lesson_id) => {
   return dispatch => {
@@ -19,6 +20,12 @@ export const askServerForQuizzes = (lesson_id) => {
   }
 }
 
+export const setCurrentQuizForProgress = (lessonId) => {
+  return dispatch => {
+    dispatch(setCurrentQuiz(lessonId));
+  }
+}
+
 export const clearQuizzesBeforeRender = () => {
   return dispatch => {
     dispatch(clearQuizzes());
@@ -26,6 +33,13 @@ export const clearQuizzesBeforeRender = () => {
 }
 
 // NOTE: action creator for setting the topics.
+export const setCurrentQuiz = (lessonId) => {
+  return {
+    type: SET_CURRENT_QUIZ,
+    currentQuiz: lessonId
+  }
+}
+
 export const setQuizzes = (quizzes) => {
   return {
     type: SET_QUIZZES,
@@ -51,5 +65,14 @@ export const quizzesReducer = (state = [], action) => {
       return action.quizzes;
     default:
       return state
+  }
+}
+
+export const currentQuizReducer = (state = '', action) => {
+  switch (action.type){
+    case SET_CURRENT_QUIZ:
+      return action.currentQuiz;
+    default:
+      return state;
   }
 }
