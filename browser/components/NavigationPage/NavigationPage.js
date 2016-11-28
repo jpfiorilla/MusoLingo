@@ -59,8 +59,7 @@ export default class NavigationPage extends React.Component {
   }
 
   render () {
-    let icons = ["/images/notes.ico", "/images/staff.png"];
-    let backgrounds = ['url(/images/reading-music.png)', 'url(/images/navpage-beathoven-piano.png)'];
+    let backgrounds = ['url(/images/reading-music.png)', 'url(/images/navpage-beathoven-piano.png)', 'url(images/navpage-crowd.png)'];
     var random_background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     return (
       <div className="col-md-6">
