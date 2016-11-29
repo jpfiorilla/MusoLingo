@@ -23,6 +23,7 @@ export default class SlidesComponent extends React.Component {
     this.handlePrev = this.handlePrev.bind(this);
     this.textOrImage = this.textOrImage.bind(this);
     this.jsxBold = this.jsxBold.bind(this);
+    this.goToQuiz = this.goToQuiz.bind(this);
   }
 
   componentWillUnmount () {
@@ -36,6 +37,10 @@ export default class SlidesComponent extends React.Component {
       this.state.stepIndex = 0;
     }
   }
+  goToQuiz () {
+    this.props.askForQuiz(this.props.slides[0].lesson_id);
+    browserHistory.push('/quiz');
+  }
 
   handleNext () {
     const {stepIndex} = this.state;
@@ -47,7 +52,6 @@ export default class SlidesComponent extends React.Component {
     if (stepIndex >= this.props.slides.length - 1) {
       localStorage.setItem(currSlide, 0);
     }
-    console.log('LOCAL ', localStorage);
   };
 
   handlePrev () {
@@ -55,7 +59,6 @@ export default class SlidesComponent extends React.Component {
     if (stepIndex > 0) {
       this.setState({stepIndex: stepIndex - 1});
       localStorage.setItem(currSlide, this.state.stepIndex - 1);
-      console.log('LOCAL ', localStorage);
     }
   };
 
@@ -163,6 +166,9 @@ export default class SlidesComponent extends React.Component {
               }}>
               Replay the slides
             </a>
+            <FlatButton onClick={this.goToQuiz}>
+              Go to Quiz
+            </FlatButton>
           </p>
         ) : (
           <div style={{textAlign: 'center'}}>

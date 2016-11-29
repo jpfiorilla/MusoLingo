@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import SlidesComponent from './SlidesComponent';
 import { updateUser } from '../../redux/user';
 import { clearSlides } from '../../redux/SlidesActions';
+import { askServerForQuizzes } from '../../redux/QuizzesActions';
 
 const mapStateToProps = function (state) {
   return {
@@ -19,6 +20,9 @@ const mapDispatchToProps = function (dispatch) {
     },
     clearSlides: () => {
       dispatch(clearSlides());
+    },
+    askForQuiz: (lesson_id) => {
+      dispatch(askServerForQuizzes(lesson_id));
     }
   };
 };
