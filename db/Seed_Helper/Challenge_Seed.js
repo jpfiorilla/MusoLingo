@@ -36,10 +36,8 @@ const challenges = [
     "bpm": 80,
     "notes": ["C3", "D3"],
     "vexNotes": [
-      {clef: 'treble', keys: ['c/4'], duration: 'q'},
-      {clef: 'treble', keys: ['d/4'], duration: 'q'},
-      {clef: 'treble', keys: ['c/4'], duration: 'q'},
-      {clef: 'treble', keys: ['d/4'], duration: 'q'}
+      {clef: 'treble', keys: ['b/3'], duration: '2'},
+      {clef: 'treble', keys: ['g/4'], duration: '2'}
     ]
   },
 ]

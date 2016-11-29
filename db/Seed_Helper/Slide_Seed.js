@@ -534,9 +534,7 @@ lessontwothree = [
     "title": '',
     "slideContent": [
       {
-        vex: { // c3 and d3, another of c3 and Db3
-
-        }
+        img: "/images/lessons_pictures/c3 d3.png" // c3 and d3, another of c3 and Db3
       },
       {
         text: "Both of these intervals are seconds, but they are <b>NOT</b> the same interval. If we were to play each of them, they would sound different."
@@ -553,9 +551,8 @@ lessontwothree = [
     "title": '',
     "slideContent": [
       {
-        vex: { // C and Eb; C and E
+        img:"/images/lessons_pictures/c3 e3.png", // C and Eb; C and E
 
-        }
       },
       {
         text: "Since we have C and some variation of E in both of these examples, we know that both intervals are <b>thirds</b>."
@@ -572,35 +569,98 @@ lessontwothree = [
         text: "Starting to see the pattern? The quality of the interval is determined by the number of half-steps between the two notes."
       },
       {
-        img: ''// table comparing # of semitones to interval name
+        img: "/images/lessons_pictures/intervalschart.png",// table comparing # of semitones to interval name
+        style: {
+          padding: "40px 0"
+        }
       },
       {
         text: "The terminology changes once we get to fourths and fifths, but the concepts are the same."
       }
     ]
   },
+  {
+    "title": '',
+    "slideContent": [
+      {
+        text: "The tritone, which is equivalent to 6 semitones, is considered a particularly <b>dissonant</b> interval."
+      },
+      {
+        img: "/images/lessons_pictures/tritone.png",
+      },
+      {
+        text: "It can also be described as an <b>augmented fourth</b>, or a <b>diminished fifth</b>."
+      }
+    ]
+  },
+  {
+    "title": '',
+    "slideContent": [
+      {
+        text: "Intervals can be described as being <b>consonant</b> or <b>dissonant</b>."
+      },
+      {
+        img: "/images/lessons_pictures/consonancedissonance.png",
+      },
+      {
+        text: "In Western music theory, <b>consonant intervals</b> are described as being pleasant and agreeable, while <b>dissonant intervals</b> are said to create tension."
+      },
+    ]
+  },
+  {
+  "title": '',
+  "slideContent": [
+    {
+      text: "These concepts are central to <b>harmony</b>, the study of how notes interact when played simultaneously."
+    },
+    {
+      img: "/images/lessons_pictures/consonance_dissonance.png",
+      style: {
+        padding: "25px 0"
+      }
+    },
+    {
+      text: "Stayed tuned for more harmony in our next lesson: <b>chords</b>!"
+    }
+  ]
+},
 ]
 lessontwothree.forEach((slide, idx) => {
   slide.lesson_id = 8;
   slide.number = idx + 1;
 });
 
-lessonthreeone = [{
+lessonthreeone = [
+  {
   "title": "Triads",
   "slideContent": [
     {
-      text: "An interval is defined as the space between two notes."
+      text: "A <b>chord</b> is a group of three or more notes that combine harmoniously when played together."
     }, {
       img: ''
-    }, {
-      text: ""
     }
-  ]
-}]
+    ]
+  }, {
+    "title": "Major/Minor Chords",
+    "slideContent": [
+      {
+        text: "The most commonly used chords in Western music are the <b>major</b> and <b>minor</b> triads."
+      }, {
+        img: ''
+      },
+      {
+        text: "A <b>triad</b> is a type of chord with a structure of three notes: the <b>root</b>, the <b>third</b>, and the <b>fifth</b>."
+      }
+    ]
+  }
+];
 lessonthreeone.forEach((slide, idx) => {
   slide.lesson_id = 9;
   slide.number = idx + 1;
 });
+
+// lessonthreetwo;
+// lessonthreethree;
 
 const slides = _.flatten([lessononeone, lessononetwo, lessononethree, lessononefour, lessononefive, lessontwoone, lessontwotwo, lessontwothree, lessonthreeone]);
 
