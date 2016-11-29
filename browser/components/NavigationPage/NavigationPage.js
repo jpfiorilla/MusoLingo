@@ -30,6 +30,17 @@ export default class NavigationPage extends React.Component {
     return percentageComplete;
   }
 
+  flipCurrentLesson (index) {
+    console.log($(`#navpage-${index}`))
+    if ($(`#navpage-${index}`)[0].classList.length > 1){
+      $(`#navpage-${index}`).removeClass("navpage-flipped")
+      $(`#flipper-${index}`).removeClass("navpage-flipped")
+    } else {
+      $(`#navpage-${index}`).addClass("navpage-flipped");
+      $(`#flipper-${index}`).addClass("navpage-flipped");
+    }
+  }
+
   setCurrentLesson (hovered) {
     const topic_id = hovered.id;
     let lessonsWithId = this.props.lessons.filter(lesson => {
@@ -67,8 +78,8 @@ export default class NavigationPage extends React.Component {
             {
               this.props.topics && this.props.topics.map((topic, index) => {
                 return (
-                  <div className="navpage-container" key={index} onMouseOver={() => {this.setCurrentLesson(topic)}}>
-                    <div className="flipper">
+                  <div id={`navpage-${index}`} className="navpage-container" key={index} onMouseOver={() => {this.setCurrentLesson(topic)}} onClick={() => {this.flipCurrentLesson(index)}}>
+                    <div id={`flipper-${index}`} className="flipper">
                       <div className="front">
                             <div className="navbar-icon-text">
                               <h3 className="topic-header">{topic.name}</h3>
