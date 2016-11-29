@@ -23,10 +23,11 @@ export default class NavigationPage extends React.Component {
 
   checkCompletion (lessonId) { // checks current quiz
     var percentageComplete = 0;
-    this.props.user.completedQuizzes.forEach(quizId => {
-      if (quizId === lessonId) percentageComplete = 100;
-    })
-
+    if (this.props.user.completedQuizzes) {
+      this.props.user.completedQuizzes.forEach(quizId => {
+        if (quizId === lessonId) percentageComplete = 100;
+      })
+    }
     return percentageComplete;
   }
 
@@ -53,7 +54,7 @@ export default class NavigationPage extends React.Component {
     // NOTE: hard coding 1 for testing purposes.
     // NOTE: change back  to lesson Id when db is updated with actual lesson material.
     // *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
-    
+
     this.props.askForSlides(lessonId);
     browserHistory.push('/slides');
     // *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
@@ -78,7 +79,7 @@ export default class NavigationPage extends React.Component {
                       </div>
                       <div className="back">
                         {
-                          this.props.lessons.map((lesson, index2) => {
+                          this.props.lessons && this.props.lessons.map((lesson, index2) => {
                             if(lesson.topic_id === topic.id){
                               return (
                                 <div key={index2}>

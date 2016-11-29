@@ -79,14 +79,13 @@ export default class UserPage extends React.Component {
       // NOTE: if the user has completed some lessons
       // we want to assign a local lessons variable to some JSX.
       if (Object.keys(completed.lessons).length) {
-        console.log('INSIDE lessons');
         lessons = (
           <List>
             <h2>Completed:</h2>
             {
               Object.keys(completed.lessons).map((lesson_id, index) => {
                 return (
-                  <ListItem disabled="true" key={index} primaryText={lesson_id} />
+                  <ListItem disabled={true} key={index} primaryText={`lesson # ${lesson_id}`} />
                 );
               })
             }
@@ -95,15 +94,15 @@ export default class UserPage extends React.Component {
       }
       // NOTE: if the user has completed some quizzes, we assign jsx to
       // a local quizzes variable.
-      if (Object.keys(completed.quizzes).length) {
+      if (this.props.user.completedQuizzes.length) {
         // NOTE: quizzes is the local variable for the JSX.
         quizzes = (
           <List>
             <h2>Completed:</h2>
             {
-              Object.keys(completed.quizzes).map((quiz_id, index) => {
+              this.props.user.completedQuizzes.map((quiz_id, index) => {
                 return (
-                  <ListItem disabled="true" key={index} primaryText={`quiz # ${quiz_id}`} />
+                  <ListItem disabled={true} key={index} primaryText={`quiz # ${quiz_id}`} />
                 );
               })
             }
@@ -146,8 +145,8 @@ export default class UserPage extends React.Component {
               this.showStuff(this.form('password'), 'password');
             }} primaryText="Update Password"/>
 
-            <ListItem disabled="true" primaryText="Admin" secondaryText={isAdmin}/>
-            <ListItem disabled="true" primaryText="Keys Collected" secondaryText={keys} />
+            <ListItem disabled={true} primaryText="Admin" secondaryText={isAdmin}/>
+            <ListItem disabled={true} primaryText="Keys Collected" secondaryText={keys} />
             <ListItem primaryText="Lessons Completed" secondaryText="Click to view" onClick={() => {
               this.showStuff(lessons, 'lessons');
             }} />
