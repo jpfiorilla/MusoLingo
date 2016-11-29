@@ -13,19 +13,51 @@
  * Good luck!
  */
 
+@font-face {
+  font-family: basictitle;
+  src: url("/fonts/BasicTitle.ttf");
+}
+
+
 #keyboard {
   clear: both;
   padding: 15px 25px 25px 25px;
+  background-color: rgba(0, 0, 0, 0.55);
+  height: 292px;
+  width: 613px;
   position: relative;
-  left: 20%;
+  left: 23%;
+  top: 8%;
 }
+
 #showKeyboard {
   position: fixed;
-  top: 80%;
+  top: 83%;
   clear: both;
   left: 1%;
   height: 85px;
   padding: 3px;
+}
+
+#showKeyboard-icon {
+  top: 83%;
+  clear: both;
+  left: 1%;
+  height: 85px;
+  padding: 3px;
+}
+
+#toggleKeyboard-text {
+  font-family: bebas;
+  visibility: hidden;
+  color: red;
+  position: relative;
+  top: -73%;
+  left: 101%;
+}
+
+#showKeyboard:hover #toggleKeyboard-text {
+  visibility: visible;
 }
 
 #beautiful-piano :focus {
@@ -154,4 +186,34 @@
   content: attr(data-keyname);
   position: absolute;
   bottom: 8px;
+}
+
+#keyboard-help {
+  background-color: aliceblue;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  border-radius: 100%;
+  position: relative;
+  top: -2%;
+  left: 98%;
+  font-family: bebas;
+}
+
+#keyboard-help:hover {
+  box-shadow: 0px 0px 17px aliceblue;
+}
+
+#keyboard-help-text {
+  width: 170px;
+  position: relative;
+  top: -73%;
+  left: 172%;
+  text-align: left;
+  font-size: small;
+  visibility: hidden;
+}
+
+#keyboard-help:hover #keyboard-help-text {
+  visibility: visible;
 }

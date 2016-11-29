@@ -155,7 +155,7 @@ export default class Quiz extends React.Component {
                             style={{marginRight: 12}}
                         />
                     </div>*/}
-                    <div id="next-button" className="col-md-6 text-right">
+                    <div id="next-button" className="col-xs-6 col-sm-6 col-md-6 text-right">
                         <RaisedButton
                             label='Next'
                             primary={true}

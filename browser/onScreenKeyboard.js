@@ -175,7 +175,7 @@ export function toggleKeyboardDisplay(){
 
   showButton.onclick = function(){
     onScreenKeyboard.style.display = (onScreenKeyboard.style.display === 'none' ? '':'none')
-
-    showButton.innerHTML = (onScreenKeyboard.style.display === 'none' ? 'Show Keyboard' : 'Hide Keyboard')
+    showButton.innerHTML = (onScreenKeyboard.style.display === 'none' ? ('<img id="showKeyboard-icon" src="/images/piano-icon.png" /><div id="toggleKeyboard-text">Show</div>') : ('<img id="showKeyboard-icon" src="/images/piano-icon.png" /><div id="toggleKeyboard-text">HIDE</div>'))
   }
+  
 }

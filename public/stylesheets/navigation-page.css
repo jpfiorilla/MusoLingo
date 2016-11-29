@@ -1,0 +1,128 @@
+/*NAVIGATION PAGE:*/
+
+.navbar-icon {
+  position: relative;
+  left: 28%;
+  height: 300px;
+  width: 400px;
+  border-radius: 3%;
+  box-shadow: 0px 0px 19px black;
+}
+
+.navbar-icon:hover {
+    box-shadow: 0px 0px 19px rgb(182, 31, 31);
+}
+
+.navpage-flipped {
+  -moz-transform: rotateY(180deg) translateX(-420px);
+  -webkit-transform: rotateY(180deg) translateX(-420px);
+  transform: rotateY(180deg) translateX(-420px);
+}
+
+#reading-music-icon {
+  height: 100px;
+  position: relative;
+  top: 15%;
+  left: 14%;
+}
+
+.navpage-container {
+  perspective: 1000px;
+  left: 50px;
+  position: relative;
+  margin: 20px;
+}
+
+.navbar-icon-text {
+  left: 20px;
+  position: relative;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	top: 0;
+	left: 200px;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+    position: absolute;
+    height: 300px;
+    width: 400px;
+    border-radius: 3%;
+    box-shadow: 0px 0px 19px black;
+    transform: rotateY(180deg) scale(-1, 1);
+    -moz-transform: rotateY(180deg) scale(-1, 1);
+    -webkit-transform: rotateY(180deg) scale(-1, 1);
+    -o-transform: rotateY(180deg) scale(-1, 1);
+    -ms-transform: rotateY(180deg) scale(-1, 1);
+    overflow-y: scroll;
+}
+
+.topic-header {
+  font-family: bebas;
+  font-size: x-large;
+  text-shadow: 1px 1px beige;
+  width: 50%;
+  position: relative;
+  left: 40%;
+  top: 150px;
+  z-index: 100;
+  text-transform: uppercase;
+}
+
+.lesson-header {
+  font-family: bebas;
+  text-align: center;
+  font-size: larger;
+  padding-left: 20px;
+}
+
+.slides-quizzes {
+  text-align: center;
+}
+
+#learn {
+  font-family: gravity-book;
+  cursor: pointer;
+  display: inline-block;
+  margin: 20px;
+}
+
+#learn:hover {
+  color: red;
+}
+
+#play {
+  font-family: gravity-book;
+  cursor: pointer;
+  display: inline-block;
+  margin: 20px;
+}
+
+#play:hover {
+  color: red;
+}
+
+hr.style1{
+	border-top: 1px solid #8c8b8b;
+  margin-left: 10px;
+  opacity: 0.5;
+}
