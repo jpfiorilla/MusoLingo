@@ -1,4 +1,5 @@
 import axios from 'axios'
+import updateStorage from './Local_Storage';
 
 // ----------------------     ACTIONS     ----------------------------------
 
@@ -6,6 +7,7 @@ import axios from 'axios'
 export const SET_QUIZZES = 'SET_QUIZZES';
 export const CLEAR_QUIZZES = 'CLEAR_QUIZZES';
 export const SET_CURRENT_QUIZ = 'SET_CURRENT_QUIZ';
+const loc_stor_quiz_property = 'quiz';
 
 export const askServerForQuizzes = (lesson_id) => {
   return dispatch => {
@@ -56,12 +58,15 @@ export const clearQuizzes = () => {
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 
 // --------------------         REDUCER         --------------------------
+var initQuiz = JSON.parse(localStorage.getItem(loc_stor_quiz_property));
 
-export const quizzesReducer = (state = [], action) => {
+export const quizzesReducer = (state = initQuiz || [], action) => {
   switch (action.type) {
     case SET_QUIZZES:
+      updateStorage(loc_stor_quiz_property, action.quizzes);
       return action.quizzes;
     case CLEAR_QUIZZES:
+    updateStorage(loc_stor_quiz_property, action.quizzes);
       return action.quizzes;
     default:
       return state
