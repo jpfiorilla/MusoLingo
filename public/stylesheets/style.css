@@ -18,6 +18,11 @@
   src: url("/fonts/Gravity-Book.otf");
 }
 
+@font-face {
+  font-family: gravity-light;
+  src: url("/fonts/Gravity-Light.otf")
+}
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
     margin: 0;
     padding: 0;
@@ -206,17 +211,21 @@ background-color: #963838;}
 #multiplechoice-container {
   background-color: whitesmoke;
   padding-right: 51px;
-  margin: 20px;
+  margin: 12px;
   padding-top: 30px;
   padding-bottom: 50px;
   border-radius: 3%;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.65);
+  height: 480px;
+  position: relative;
+  top: -47px;
 }
 
 .multiple-choice-ans {
   height: 40px;
-  width: 30%;
+  width: 46%;
   background-color: black;
+  font-family: gravity-light;
   color: white;
   text-align: center;
   border-radius: 15px;

@@ -1,7 +1,8 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton';
-import Login from "../Login/LoginContainer"
+import {LoginContainer} from "../Login/LoginContainer";
+import {GetStartedContainer} from "../Login/LoginContainer"
 import AOS from "aos";
 
 const style = {
@@ -19,15 +20,15 @@ export default class HomePage extends React.Component {
                     <div className="homepage-1">
                         <div id="image-overlay">
                             <div className="homepage-navbar">
-                                <Login />
+                                <LoginContainer />
                                 <a href="" className="homepage-nb" id="homepage-home-link">Home</a>
                                 <a href="" className="homepage-nb" id="homepage-features-link">Features</a>
                                 <a href="" className="homepage-nb" id="homepage-about-link">About</a>
                             </div>
                             <div className="homepage-content">
-                                <h3 id="intro">88</h3>
+                                <img src="/images/logo.png" id="intro-logo" />
                                 <p id="intro-text">Start playing the keyboard today</p>
-                                <button type="button" className="btn btn-outline-info" id="get-started">Get Started</button>
+                                <GetStartedContainer />
                             </div>
                         </div>
                     </div>
