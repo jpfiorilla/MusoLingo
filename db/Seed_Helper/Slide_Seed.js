@@ -277,9 +277,14 @@ lessontwoone = [
   "number": 1,
   "slideContent": [
     {
-      text: "We learned that there are 12 notes from A to G#, including the accidentals."
+      text: "We learned that there are 12 different notes in terms of pitch. Each note is triggered by a different key."
     }, {
-      text: ""
+      img: "/images/lessons_pictures/12semitones.png",
+      style: {
+        position: "relative",
+        left: "-11%",
+        padding: "40px"
+      }
     }, {
       text: "But a piano has much more than just 12 keys. So what notes do all those other keys correspond to?"
     }
@@ -290,13 +295,16 @@ lessontwoone = [
   "number": 2,
   "slideContent": [
     {
-      text: "You may have noticed that all keyboards have the same repeating pattern of 12 keys. Each of these sets of 12 corresponds to a single octave."
+      text: "You may have noticed that all keyboards have the same repeating pattern of 12 keys. Each of these sets of 12 corresponds to a single <b>octave</b>."
     },
     {
-      img: '' // insert image of piano octaves
+      img: "/images/lessons_pictures/octavesgraphic.png",
+      style: {
+        padding: "5px 0 25px 0"
+      }
     },
     {
-      text: "Each octave contains the 12 notes from A to G#. However, the sounds produced aren't exactly the same. As we move right along the keyboard, we are ascending octaves, and the notes have a higher pitch."
+      text: "Each octave contains all of the 12 notes. However, the sounds produced by a C in one octave and a C in a different octave aren't exactly the same. As we move right along the keyboard, we are ascending octaves, and the notes have a higher pitch."
     }
   ],
   "lesson_id": 5
@@ -310,15 +318,20 @@ lessontwoone = [
     {
       text: "Fortunately, a musical staff does."
     },
-    // {
-    //   vex: {
-    //     type: '',
-    //     num: '',
-    //     info: [],
-    //   }
-    // },
     {
-      text: "Both of these notes represent C. But the one on the left represents C in the fourth octave (C3), while the one on the right represents C in the fifth octave (C4)." // add sound sample that plays both C notes?
+      img: "/images/lessons_pictures/c2.jpg",
+      style: {
+        padding: "10px"
+      }
+    },
+    {
+      img: "/images/lessons_pictures/c51.png",
+      style: {
+        padding: "10px 0 15px"
+      }
+    },
+    {
+      text: "Both of these notes represent C on the treble clef. But the one on the top represents C in the fourth octave (C4), while the one on the bottom represents C in the fifth octave (C5)." // add sound sample that plays both C notes?
     }
   ],
   "lesson_id": 5,
@@ -327,13 +340,18 @@ lessontwoone = [
   "number": 4,
   "slideContent": [
     {
-      text: "If you were playing on a full 88-key piano, the lowest note would be A0. C4 would be the fourth C key moving from the left."
+      text: "If you were playing on a full 88-key piano, the lowest note would be A0. C4 would be the fourth C key moving from the left. The blue key below is C4, and the yellow key is A4."
     },
     {
-      img: '' // insert image of C4/middle C
+      img: "/images/lessons_pictures/fullpiano.png",
+      style: {
+        position: "relative",
+        left: "-20%",
+        padding: "30px 0 15px"
+      }
     },
     {
-      text: "On a smaller keyboard, like many MIDI keyboards, the notes may be mapped out differently, and the starting octave can usually be adjusted with a button. Our on-screen keyboard starts with C3 and ends at B4"
+      text: "On a smaller keyboard, like many MIDI keyboards, the notes may be mapped out differently, and the starting octave can usually be adjusted with a button. Our on-screen keyboard starts with C3 and ends at B4."
     }
   ],
   "lesson_id": 5
@@ -342,13 +360,17 @@ lessontwoone = [
   "number": 5,
   "slideContent": [
     {
-      text: "A half-step, or 'semitone,' describes the distance between two consecutive notes. Two consecutive half-steps in a row may also be called a whole-step."
+      text: "A <b>half-step</b>, or <b>semitone</b>, describes the distance between two consecutive notes in an octave. Two consecutive half-steps in a row may also be called a <b>whole-step</b>."
     },
     {
-      vex: '' // show a half step and a whole step
+      img: "images/lessons_pictures/halfwholestep.png",
+      style: {
+        position: "relative",
+        left: "-26.5%"
+      }
     },
     {
-      text: "There is one half-step between F and Gb. There is one whole step between F and G. And there are four half-steps, or two whole-steps, between G and A. And so on..."
+      text: "There is one half-step between B and C, because there are no notes in between the two. There is one whole step between B and C#, because there is one note between the two."
     }
   ],
   "lesson_id": 5
@@ -357,7 +379,7 @@ lessontwoone = [
   "number": 6,
   "slideContent": [
     {
-      text: "Half-steps and octaves will be very useful in understanding our next topic - intervals!"
+      text: "Half-steps and octaves will be very useful in understanding our next topic - <b>intervals</b>!"
     }
   ],
   "lesson_id": 5
