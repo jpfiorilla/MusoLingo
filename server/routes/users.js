@@ -47,7 +47,19 @@ customUserRoutes.delete('/:id', (req,res,next) => {
 		.catch(next);
 });
 
-// Retrieve a user's orders
+customUserRoutes.post('/quizzes/score/:id', (req, res, next) => {
+	userModel.findById(req.params.id)
+		.then(user => {
+			var quizzesScore = user.quizzesScore;
+			if (Array.isArray(quizzesScore[req.body.quizId])) {
+				quizzesScore[req.body.quizId].push(req.body.scores)
+			}
+			else {quizzesScore[req.body.quizId] = [req.body.scores]}
+			return user.update({ quizzesScore })
+		})
+		.then(updatedUser => {console.log(updatedUser); res.send(updatedUser)})
+})
+
 customUserRoutes.post('/quizzes/:id', (req, res, next) => {
 	userModel.findById(req.params.id)
 		.then(user => user.update(

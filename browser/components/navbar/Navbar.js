@@ -37,24 +37,30 @@ export default class Navbar extends React.Component {
   render(props) {
     return (
       <Toolbar id="navbar" style={{backgroundColor: '#b61f1f', opacity: "0.9", height: "70px"}}>
-        <ToolbarGroup>
-          <div className="navbar-item">
-            <i id="drawer-icon" className="material-icons" hoverColor="#00BCD4" onClick={this.handleToggle}>view_headline</i>
-            <Drawer
-              docked={false}
-              width={200}
-              onRequestChange={(open) => this.setState({open})}
-              open={this.state.open}>
-              <MenuItem onClick={this.handleClose}>User Page</MenuItem>
-              <MenuItem onClick={this.handleClose}>Lesson 2</MenuItem>
-            </Drawer>
-            <Link to="/">
-              <img id="navbar-logo" src="/images/logo-white.png" />
+          <Link to="/">
+            <img id="navbar-logo" src="/images/logo-white.png" />
+            <h3 id="navbar-logo-text">KEYS</h3>
           </Link>
-          </div>
-        </ToolbarGroup>
         <NavbarMenuContainer { ...props } />
       </Toolbar>
     )
   }
 }
+
+
+        // <ToolbarGroup>
+        //   <div className="navbar-item">
+        //     <i id="drawer-icon" className="material-icons" hoverColor="#00BCD4" onClick={this.handleToggle}>view_headline</i>
+        //     <Drawer
+        //       docked={false}
+        //       width={200}
+        //       onRequestChange={(open) => this.setState({open})}
+        //       open={this.state.open}>
+        //       <MenuItem onClick={this.handleClose}>User Page</MenuItem>
+        //       <MenuItem onClick={this.handleClose}>Lesson 2</MenuItem>
+        //     </Drawer>
+        //     <Link to="/">
+        //       <img id="navbar-logo" src="/images/logo-white.png" />
+        //   </Link>
+        //   </div>
+        // </ToolbarGroup>

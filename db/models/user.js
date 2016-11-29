@@ -16,7 +16,11 @@ const User = db.define('users', {
 			notEmpty: true,
 		},
 	},
-	completedQuizzes: {type: Sequelize.ARRAY(Sequelize.INTEGER), defaultValue: []},
+	completedQuizzes: { type: Sequelize.ARRAY(Sequelize.INTEGER), defaultValue: [] },
+	quizzesScore: {
+		type: Sequelize.JSON,
+		defaultValue: {}
+	},
 	image: {
 		type: Sequelize.STRING,
 		allowNull: true,

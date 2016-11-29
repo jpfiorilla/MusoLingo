@@ -48,7 +48,7 @@ export const login = (credentials, displayErr) => dispatch => {
   })
   .catch(err => {
     console.error('Unable to log in', err)
-    displayErr('Invalid credentials');
+    console.log('Invalid credentials');
   });
 }
 

@@ -15,15 +15,17 @@
 
 #keyboard {
   clear: both;
-  float: left;
   padding: 15px 25px 25px 25px;
+  position: relative;
+  left: 20%;
 }
-
 #showKeyboard {
+  position: fixed;
+  top: 80%;
   clear: both;
-  float: left;
+  left: 1%;
+  height: 85px;
   padding: 3px;
-  margin: 15px 0 0 25px;
 }
 
 #beautiful-piano :focus {
@@ -152,11 +154,4 @@
   content: attr(data-keyname);
   position: absolute;
   bottom: 8px;
-}
-
-#showKeyboard {
-  position: fixed;
-  top: 10%;
-  height: 85px;
-  left: 1%;
 }

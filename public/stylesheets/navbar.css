@@ -1,3 +1,9 @@
+/*FONTS*/
+@font-face {
+  font-family: basictitle;
+  src: url("/fonts/BasicTitle.ttf");
+}
+
 #profile-picture {
     border-radius: 100%;
     border: 2px black solid;
@@ -19,4 +25,17 @@
     position: relative;
     height: 90px;
     top: 18px;
+}
+
+#navbar-logo-text {
+    position: relative;
+    top: -83%;
+    left: 76%;
+    font-size: 60px;
+    font-family: basictitle;
+    color: white;
+}
+
+#navbar-logo-text:hover {
+    color: black;
 }

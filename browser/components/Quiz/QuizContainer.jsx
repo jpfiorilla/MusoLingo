@@ -6,9 +6,10 @@ import {saveUserProgressToServer} from '../../redux/ProgressActions'
 const mapStateToProps = (state) => ({
     quizzes: state.quizzes,
     user: state.user,
-    currentQuiz: state.currentQuiz
+    currentQuiz: state.currentQuiz,
+    quizScores: state.quizScores
 })
-addKey: (id, keys) => dispatch(addNewKeyToServer(id, keys))
+
 const mapDispatchToProps = (dispatch) => ({
     addKeys,
     addQuizz: (id, quiz) => dispatch(saveUserProgressToServer(id, quiz))

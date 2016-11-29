@@ -44,7 +44,17 @@ export default class Quiz extends React.Component {
 
         // ADDS COMPLETED QUIZ
         if (this.state.stepIndex === this.props.quizzes[0].question_types.length - 1){
-            this.props.addQuizz(this.props.user.id, this.props.currentQuiz)
+            var numRight = 0, numWrong = 0;
+            this.props.quizScores[this.props.currentQuiz].forEach((score) => {
+                if (score) numRight++;
+                else numWrong++;
+            })
+            var finalScore = numRight / (numRight + numWrong);
+            
+            // If user passed the test (> 60% right), add quiz id to completed quizzes array
+            if (finalScore > .6) {
+                this.props.addQuizz(this.props.user.id, this.props.currentQuiz)
+            }
         }
     };
 

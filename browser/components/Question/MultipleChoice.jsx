@@ -31,7 +31,7 @@ export default class MultipleChoiceQuestion extends React.Component {
       type: this.props.questionType,
       answered: false,
       correctAnswer: '',
-      userNumCorrect: 0
+      score: []
     }
     this.onAnswerSelection = this.onAnswerSelection.bind(this);
   }
@@ -103,10 +103,6 @@ export default class MultipleChoiceQuestion extends React.Component {
     }
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return nextProps.userNumCorrect === nextState.userNumCorrect;
-  // }
-
   onAnswerSelection(rightAnswerPosition, idx) {
     answered = true;
     let answerArr = ["#mca-0", "#mca-1", "#mca-2", "#mca-3"]
@@ -115,19 +111,26 @@ export default class MultipleChoiceQuestion extends React.Component {
     let correct = answerArr.splice(rightAnswerPosition, 1);
     let incorrect = answerArr;
     let selected = "#mca-" + idx;
-    if (idx !== rightAnswerPosition) $(selected).addClass("wrong-answer")
+    if (idx !== rightAnswerPosition) {
+      $(selected).addClass("wrong-answer")
+      this.setScore(false)
+    }
     else {
       this.props.addKey(this.props.user.id, 1)
       $("#beathoven-good-job").removeClass("bad-job")
-      // if (idx % 2 !== 0) $("body").addClass("addKeyFlip")
-      // else $("body").addClass("addKey")
+      this.setScore(true)
     }
     $(correct[0]).addClass("right-answer")
     answered = true;
   }
 
+  setScore(score) {
+    let userId = this.props.user.id;
+    let quizId = this.props.currentQuiz;
+    this.props.saveScores(userId, quizId, score);
+  }
+
   render() {
-    console.log(this.props)
     var {correctAnswer, type} = this.state;
     rightAnswerPosition = Math.floor(Math.random() * 4);
     buttonsArray = ['', '', '', ''];
