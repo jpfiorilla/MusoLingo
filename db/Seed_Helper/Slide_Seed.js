@@ -74,7 +74,7 @@ var lessononeone = [{
       "img": "http://i.imgur.com/iv4GeCq.png"
     },
     {
-      "text": "When two eighth notes are written in sequence, they are attached together with a <b>stem</b>."
+      "text": "When two or four eighth notes are written in sequence, they are attached together with a <b>stem</b>."
     },
     {
       img: "http://i.imgur.com/HdYQtYg.png"
@@ -92,7 +92,7 @@ var lessononeone = [{
       "img": "http://i.imgur.com/PvRcW43.png"
     },
     {
-      "text": "Like eighth notes, when two sixteenth notes are written in sequence, they are attached together with a stem."
+      "text": "Like eighth notes, when two or four sixteenth notes are written in sequence, they are attached together with a stem."
     },
     {
       img: "http://i.imgur.com/e3lyfNN.png"
