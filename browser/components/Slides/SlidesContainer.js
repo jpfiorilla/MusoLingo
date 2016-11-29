@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import SlidesComponent from './SlidesComponent';
 import { updateUser } from '../../redux/user';
+import { clearSlides } from '../../redux/SlidesActions';
 
 const mapStateToProps = function (state) {
   return {
@@ -15,6 +16,9 @@ const mapDispatchToProps = function (dispatch) {
     // replay the slides page.
     completed: (update, att, user_id) => {
       dispatch(updateUser(update, att, user_id));
+    },
+    clearSlides: () => {
+      dispatch(clearSlides());
     }
   };
 };

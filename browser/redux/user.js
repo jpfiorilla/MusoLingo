@@ -42,6 +42,7 @@ export const updateUser = (update, att, userId) => dispatch => {
 export const login = (credentials, displayErr) => dispatch => {
   axios.post('/api/auth/login', credentials)
   .then(res => {
+    console.log('RES ', res);
     dispatch(set(res.data));
     dispatch(addNewKeyToServer(res.data.id, 0))
     browserHistory.push(`/`);

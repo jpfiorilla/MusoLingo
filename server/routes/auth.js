@@ -32,6 +32,7 @@ router.post('/login', (req, res, next) => {
   })
 		.then(user => {
       // Check if input email not found
+			console.log('MADE IT ', user);
       if (!user) {
         let error = new Error('User not found');
         error.status = 401;
@@ -53,7 +54,10 @@ router.post('/login', (req, res, next) => {
           res.send(userAccount)
         })
     })
-		.catch(next);
+		.catch(err => {
+			console.log(err);
+			next(err)
+		});
 });
 
 // Logout of your current session
