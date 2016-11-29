@@ -6,7 +6,7 @@ import { saveUserScoreToServer } from "../../redux/ProgressActions"
 
 const mapStateToProps = ({ user, currentQuiz }) => ({
   user,
-  currentQuiz,
+  currentQuiz
 });
 
 const mapDispatchToProps = dispatch => ({
