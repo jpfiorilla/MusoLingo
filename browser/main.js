@@ -13,7 +13,7 @@ import { randomTrebleNote } from './utils'
 
 import App from './components/App';
 import Quiz from "./components/Quiz/QuizContainer";
-import Login from "./components/Login/LoginContainer";
+import {LoginContainer} from "./components/Login/LoginContainer";
 import NavigationPage from './components/NavigationPage/NavigationPageContainer';
 import Account from "./components/Account/AccountContainer";
 import SlidesContainer from './components/Slides/SlidesContainer';
@@ -50,7 +50,6 @@ render(
       <Route path="/home" component={HomePage} />
       <Route path="/" component={App} onEnter={onEnterRetrieveLoggedInUser}>
       <Route path="/quiz" component={Quiz} />
-      <Route path="/login" component={Login} />
       <Route path="/account" component={Account} />
       <Route path="/nav" component={NavigationPage} onEnter={onNavigationEnter}/>
       <Route path="/slides" component={SlidesContainer} />

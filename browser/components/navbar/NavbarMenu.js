@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, browserHistory } from 'react-router'
-import Login from "../Login/LoginContainer"
+import {LoginContainer} from "../Login/LoginContainer"
 
 // Material theme
 import {ToolbarGroup} from 'material-ui';

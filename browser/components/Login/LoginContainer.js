@@ -2,7 +2,7 @@ import React from'react';
 import { connect } from 'react-redux';
 import Login from './Login';
 import { login, signup, oauth } from '../../redux/user';
-
+import GetStarted from './GetStarted'
 
 function LoginDecorator (Login) {
 	return class StatefulLogin extends React.Component {
@@ -78,4 +78,5 @@ const mapDispatchtoProps = dispatch => ({
 	}
 })
 
-export default connect(null, mapDispatchtoProps)(LoginDecorator(Login));
+export const LoginContainer = connect(null, mapDispatchtoProps)(LoginDecorator(Login));
+export const GetStartedContainer = connect(null, mapDispatchtoProps)(LoginDecorator(GetStarted));
