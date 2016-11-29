@@ -138,7 +138,7 @@ lessononethree = [{
   "title": "Notes on the treble clef",
   "slideContent": [
     {
-      text: "Notes ascend in alphabetical order, so the notes on the lines here would be E G B D F."
+      text: "Notes ascend in alphabetical order, so the notes on the lines here would be E G B D F. An easy way to remember this is through the pnuemonic <b>E</b>very <b>G</b>ood <b>B</b>oy <b>D</b>oes <b>F</b>ine."
     }, {
       img: ""
     }
@@ -277,9 +277,14 @@ lessontwoone = [
   "number": 1,
   "slideContent": [
     {
-      text: "We learned that there are 12 notes from A to G#, including the accidentals."
+      text: "We learned that there are 12 different notes in terms of pitch. Each note is triggered by a different key."
     }, {
-      text: ""
+      img: "/images/lessons_pictures/12semitones.png",
+      style: {
+        position: "relative",
+        left: "-11%",
+        padding: "40px"
+      }
     }, {
       text: "But a piano has much more than just 12 keys. So what notes do all those other keys correspond to?"
     }
@@ -290,13 +295,16 @@ lessontwoone = [
   "number": 2,
   "slideContent": [
     {
-      text: "You may have noticed that all keyboards have the same repeating pattern of 12 keys. Each of these sets of 12 corresponds to a single octave."
+      text: "You may have noticed that all keyboards have the same repeating pattern of 12 keys. Each of these sets of 12 corresponds to a single <b>octave</b>."
     },
     {
-      img: '' // insert image of piano octaves
+      img: "/images/lessons_pictures/octavesgraphic.png",
+      style: {
+        padding: "5px 0 25px 0"
+      }
     },
     {
-      text: "Each octave contains the 12 notes from A to G#. However, the sounds produced aren't exactly the same. As we move right along the keyboard, we are ascending octaves, and the notes have a higher pitch."
+      text: "Each octave contains all of the 12 notes. However, the sounds produced by a C in one octave and a C in a different octave aren't exactly the same. As we move right along the keyboard, we are ascending octaves, and the notes have a higher pitch."
     }
   ],
   "lesson_id": 5
@@ -310,15 +318,20 @@ lessontwoone = [
     {
       text: "Fortunately, a musical staff does."
     },
-    // {
-    //   vex: {
-    //     type: '',
-    //     num: '',
-    //     info: [],
-    //   }
-    // },
     {
-      text: "Both of these notes represent C. But the one on the left represents C in the fourth octave (C3), while the one on the right represents C in the fifth octave (C4)." // add sound sample that plays both C notes?
+      img: "/images/lessons_pictures/c2.jpg",
+      style: {
+        padding: "10px"
+      }
+    },
+    {
+      img: "/images/lessons_pictures/c51.png",
+      style: {
+        padding: "10px 0 15px"
+      }
+    },
+    {
+      text: "Both of these notes represent C on the treble clef. But the one on the top represents C in the fourth octave (C4), while the one on the bottom represents C in the fifth octave (C5)." // add sound sample that plays both C notes?
     }
   ],
   "lesson_id": 5,
@@ -327,13 +340,18 @@ lessontwoone = [
   "number": 4,
   "slideContent": [
     {
-      text: "If you were playing on a full 88-key piano, the lowest note would be A0. C4 would be the fourth C key moving from the left."
+      text: "If you were playing on a full 88-key piano, the lowest note would be A0. C4 would be the fourth C key moving from the left. The blue key below is C4, and the yellow key is A4."
     },
     {
-      img: '' // insert image of C4/middle C
+      img: "/images/lessons_pictures/fullpiano.png",
+      style: {
+        position: "relative",
+        left: "-20%",
+        padding: "30px 0 15px"
+      }
     },
     {
-      text: "On a smaller keyboard, like many MIDI keyboards, the notes may be mapped out differently, and the starting octave can usually be adjusted with a button. Our on-screen keyboard starts with C3 and ends at B4"
+      text: "On a smaller keyboard, like many MIDI keyboards, the notes may be mapped out differently, and the starting octave can usually be adjusted with a button. Our on-screen keyboard starts with C3 and ends at B4."
     }
   ],
   "lesson_id": 5
@@ -342,13 +360,17 @@ lessontwoone = [
   "number": 5,
   "slideContent": [
     {
-      text: "A half-step, or 'semitone,' describes the distance between two consecutive notes. Two consecutive half-steps in a row may also be called a whole-step."
+      text: "A <b>half-step</b>, or <b>semitone</b>, describes the distance between two consecutive notes in an octave. Two consecutive half-steps in a row may also be called a <b>whole-step</b>."
     },
     {
-      vex: '' // show a half step and a whole step
+      img: "images/lessons_pictures/halfwholestep.png",
+      style: {
+        position: "relative",
+        left: "-26.5%"
+      }
     },
     {
-      text: "There is one half-step between F and Gb. There is one whole step between F and G. And there are four half-steps, or two whole-steps, between G and A. And so on..."
+      text: "There is one half-step between B and C, because there are no notes in between the two. There is one whole step between B and C#, because there is one note between the two."
     }
   ],
   "lesson_id": 5
@@ -357,7 +379,7 @@ lessontwoone = [
   "number": 6,
   "slideContent": [
     {
-      text: "Half-steps and octaves will be very useful in understanding our next topic - intervals!"
+      text: "Half-steps and octaves will be very useful in understanding our next topic - <b>intervals</b>!"
     }
   ],
   "lesson_id": 5
@@ -373,23 +395,21 @@ lessontwotwo = [
     "title": "1",
     "slideContent": [
       {
-        text: "In music theory, an interval describes the distance between two notes."
+        text: "In music theory, an <b>interval</b> describes the distance between two notes."
       },
       {
-        text: "There are two aspects to intervals: distance and quality. This lesson will cover distance."
+        text: "There are two aspects to intervals: <b>distance</b> and <b>quality</b>. This lesson will cover distance."
       }
     ]
   },
   {
     "title": "2",
     "slideContent": [
-      // {
-      //   vex: { // c3 and d3
-      //
-      //   }
-      // },
       {
-        text: "Let's start with C3 and D3. In terms of distance, the interval between these two notes will always be a second, regardless of any accidentals in either note."
+        img: "/images/lessons_pictures/c3 d3.png"
+      },
+      {
+        text: "Let's start with C3 and D3. In terms of distance, the interval between these two notes will always be a <b>second</b>, regardless of any accidentals in either note."
       },
       {
         text: "This goes for all consecutive letter names, as long as they're in the same octave."
@@ -400,12 +420,10 @@ lessontwotwo = [
     "title": "3",
     "slideContent": [
       {
-        vex: { // c3 and e3
-
-        }
+        img: "/images/lessons_pictures/c3 e3.png"
       },
       {
-        text: "Just as any interval between C and D is a second, any interval between C and E is a third."
+        text: "Just as any interval between C and D is a second, any interval between C and E is a <b>third</b>."
       }
     ]
   },
@@ -413,12 +431,10 @@ lessontwotwo = [
     "title": "4",
     "slideContent": [
       {
-        vex: {
-
-        }
+        img: "/images/lessons_pictures/c4 f4.png"
       },
       {
-        text: "Are you starting to see a pattern? The interval between C and F is a fourth."
+        text: "Are you starting to see a pattern? The interval between C and F is a <b>fourth</b>."
       }
     ]
   },
@@ -426,12 +442,10 @@ lessontwotwo = [
     "title": "5",
     "slideContent": [
       {
-        vex: {
-
-        }
+        img: "/images/lessons_pictures/c4 g4.png"
       },
       {
-        text: "C and G form a fifth."
+        text: "C and G form a <b>fifth</b>."
       }
     ]
   },
@@ -439,12 +453,10 @@ lessontwotwo = [
     "title": "6",
     "slideContent": [
       {
-        vex: {
-
-        }
+        img: "/images/lessons_pictures/c4 a4.png"
       },
       {
-        text: "C and A form a sixth."
+        text: "C and A form a <b>sixth</b>."
       }
     ]
   },
@@ -452,12 +464,10 @@ lessontwotwo = [
     "title": "7",
     "slideContent": [
       {
-        vex: {
-
-        }
+        img: "/images/lessons_pictures/c4 b4.png"
       },
       {
-        text: "C and B form a seventh."
+        text: "C and B form a <b>seventh</b>."
       }
     ]
   },
@@ -465,12 +475,10 @@ lessontwotwo = [
     "title": "8",
     "slideContent": [
       {
-        vex: {
-
-        }
+        img: "/images/lessons_pictures/c4 c5.png"
       },
       {
-        text: "What interval do we get if we compare C with the C in the next octave? I just said it: an octave!"
+        text: "What interval do we get if we compare C with the C in the next octave? I just said it: an <b>octave</b>!"
       }
     ]
   },
@@ -478,12 +486,10 @@ lessontwotwo = [
     "title": "9",
     "slideContent": [
       {
-        vex: {
-
-        }
+        img: "/images/lessons_pictures/c5 g4.png"
       },
       {
-        text: "Intervals can also be counted downward. For example, G2 can be described as being a fourth below C3. If we were to count upward however, they would form a fifth"
+        text: "Intervals can also be counted downward. For example, G3 can be described as being a fourth <b>below</b> C4. If we were to count upward however, they would form a fifth."
       },
       {
         text: "Don't worry too much about counting downward. For our purposes, we'll mostly be counting upward."
@@ -517,12 +523,10 @@ lessontwothree = [
     "title": '',
     "slideContent": [
       {
-        vex: { // c3 and d3
-
-        }
+        img: "/images/lessons_pictures/c3 d3.png"
       },
       {
-        text: "Let's take another look at C3 and D3. Remember when I said that the interval between these notes will always be a second, regardless of whether or not accidentals show up in either note?"
+        text: "Let's take another look at C3 and D3. Remember when I said that the interval between these notes will always be a <b>second</b>, regardless of whether or not accidentals show up in either note?"
       }
     ]
   },
@@ -530,12 +534,10 @@ lessontwothree = [
     "title": '',
     "slideContent": [
       {
-        vex: { // c3 and d3, another of c3 and Db3
-
-        }
+        img: "/images/lessons_pictures/c3 d3.png" // c3 and d3, another of c3 and Db3
       },
       {
-        text: "Both of these intervals are seconds, but they are NOT the same interval. If we were to play each of them, they would sound different."
+        text: "Both of these intervals are seconds, but they are <b>NOT</b> the same interval. If we were to play each of them, they would sound different."
       }, // sound sample of both intervals?
       {
         text: "Even though these intervals have the same distance, they differ in <b>quality</b>. C and Db are consecutive notes, with a single <b>half-step</b> between them."
@@ -549,9 +551,8 @@ lessontwothree = [
     "title": '',
     "slideContent": [
       {
-        vex: { // C and Eb; C and E
+        img:"/images/lessons_pictures/c3 e3.png", // C and Eb; C and E
 
-        }
       },
       {
         text: "Since we have C and some variation of E in both of these examples, we know that both intervals are <b>thirds</b>."
@@ -568,35 +569,98 @@ lessontwothree = [
         text: "Starting to see the pattern? The quality of the interval is determined by the number of half-steps between the two notes."
       },
       {
-        img: ''// table comparing # of semitones to interval name
+        img: "/images/lessons_pictures/intervalschart.png",// table comparing # of semitones to interval name
+        style: {
+          padding: "40px 0"
+        }
       },
       {
         text: "The terminology changes once we get to fourths and fifths, but the concepts are the same."
       }
     ]
   },
+  {
+    "title": '',
+    "slideContent": [
+      {
+        text: "The tritone, which is equivalent to 6 semitones, is considered a particularly <b>dissonant</b> interval."
+      },
+      {
+        img: "/images/lessons_pictures/tritone.png",
+      },
+      {
+        text: "It can also be described as an <b>augmented fourth</b>, or a <b>diminished fifth</b>."
+      }
+    ]
+  },
+  {
+    "title": '',
+    "slideContent": [
+      {
+        text: "Intervals can be described as being <b>consonant</b> or <b>dissonant</b>."
+      },
+      {
+        img: "/images/lessons_pictures/consonancedissonance.png",
+      },
+      {
+        text: "In Western music theory, <b>consonant intervals</b> are described as being pleasant and agreeable, while <b>dissonant intervals</b> are said to create tension."
+      },
+    ]
+  },
+  {
+  "title": '',
+  "slideContent": [
+    {
+      text: "These concepts are central to <b>harmony</b>, the study of how notes interact when played simultaneously."
+    },
+    {
+      img: "/images/lessons_pictures/consonance_dissonance.png",
+      style: {
+        padding: "25px 0"
+      }
+    },
+    {
+      text: "Stayed tuned for more harmony in our next lesson: <b>chords</b>!"
+    }
+  ]
+},
 ]
 lessontwothree.forEach((slide, idx) => {
   slide.lesson_id = 8;
   slide.number = idx + 1;
 });
 
-lessonthreeone = [{
+lessonthreeone = [
+  {
   "title": "Triads",
   "slideContent": [
     {
-      text: "An interval is defined as the space between two notes."
+      text: "A <b>chord</b> is a group of three or more notes that combine harmoniously when played together."
     }, {
       img: ''
-    }, {
-      text: ""
     }
-  ]
-}]
+    ]
+  }, {
+    "title": "Major/Minor Chords",
+    "slideContent": [
+      {
+        text: "The most commonly used chords in Western music are the <b>major</b> and <b>minor</b> triads."
+      }, {
+        img: ''
+      },
+      {
+        text: "A <b>triad</b> is a type of chord with a structure of three notes: the <b>root</b>, the <b>third</b>, and the <b>fifth</b>."
+      }
+    ]
+  }
+];
 lessonthreeone.forEach((slide, idx) => {
   slide.lesson_id = 9;
   slide.number = idx + 1;
 });
+
+// lessonthreetwo;
+// lessonthreethree;
 
 const slides = _.flatten([lessononeone, lessononetwo, lessononethree, lessononefour, lessononefive, lessontwoone, lessontwotwo, lessontwothree, lessonthreeone]);
 

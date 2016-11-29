@@ -3,7 +3,7 @@ import { getNoteName, randomTrebleNoteName } from '../../utils';
 
 import Vex from 'vexflow';
 
-export default class RandomRhythmNote extends Component {
+export default class RandomDistance extends Component {
     render(){
         return (
         <div>
@@ -12,7 +12,7 @@ export default class RandomRhythmNote extends Component {
         )
     }
     componentDidMount(){
-        const {rhythmnote} = this.props;
+        const {intervalNotes} = this.props;
 
         let VF = Vex.Flow;
 
@@ -30,38 +30,32 @@ export default class RandomRhythmNote extends Component {
 
         // Add a clef and time signature.
         // stave.addClef("treble").addTimeSignature("4/4");
-        // stave.addClef("treble");
+        stave.addClef("treble");
 
         // Connect it to the rendering context and draw!
-        // stave.setContext(context).draw();
+        stave.setContext(context).draw();
 
-        let noteDur;
-        if (rhythmnote === '16th') noteDur = rhythmnote.substring(0, 2);
-        else noteDur = rhythmnote[0];
+        console.log('INTERVAL NOTES!!', intervalNotes)
 
-        let keys;
-        Math.floor(Math.random() * 2) ?
-        keys = ['c/5'] :
-        keys = ['a/4'];
 
-        let notes = [new VF.StaveNote({clef: 'treble', keys, duration: noteDur})];
+        var lownote = new VF.StaveNote({clef: "treble", keys: [intervalNotes[0]], duration: "h" });
+        if (intervalNotes[0][1] !== '/') lownote.addAccidental(0, new VF.Accidental(intervalNotes[0][1]));
+        var highnote = new VF.StaveNote({clef: "treble", keys: [intervalNotes[1]], duration: "h" });
+        if (intervalNotes[1][1] !== '/') highnote.addAccidental(0, new VF.Accidental(intervalNotes[1][1]));
 
-        var beams = VF.Beam.generateBeams(notes);
-        Vex.Flow.Formatter.FormatAndDraw(context, stave, notes);
-        beams.forEach(function(b) {b.setContext(context).draw()})
-
+        var notes = [lownote, highnote];
         // Create a voice in 4/4 and add above notes
-        // var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
-        // voice.addTickables(notes);
+        var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
+        voice.addTickables(notes);
 
         // Format and justify the notes to 400 pixels.
-        // var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+        var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
 
         // Render voice
-        // voice.draw(context, stave);
+        voice.draw(context, stave);
     }
     componentDidUpdate(){
-        const {rhythmnote} = this.props;
+        const {intervalNotes} = this.props;
 
         let VF = Vex.Flow;
 
@@ -79,34 +73,28 @@ export default class RandomRhythmNote extends Component {
 
         // Add a clef and time signature.
         // stave.addClef("treble").addTimeSignature("4/4");
-        // stave.addClef("treble");
+        stave.addClef("treble");
 
         // Connect it to the rendering context and draw!
-        // stave.setContext(context).draw();
+        stave.setContext(context).draw();
 
-        let noteDur;
-        if (rhythmnote === '16th') noteDur = rhythmnote.substring(0, 2);
-        else noteDur = rhythmnote[0];
+        console.log('INTERVAL NOTES!!', intervalNotes)
 
-        let keys;
-        Math.floor(Math.random() * 2) ?
-        keys = ['c/5'] :
-        keys = ['a/4'];
 
-        let notes = [new VF.StaveNote({clef: 'treble', keys, duration: noteDur})];
+        var lownote = new VF.StaveNote({clef: "treble", keys: [intervalNotes[0]], duration: "h" });
+        if (intervalNotes[0][1] !== '/') lownote.addAccidental(0, new VF.Accidental(intervalNotes[0][1]));
+        var highnote = new VF.StaveNote({clef: "treble", keys: [intervalNotes[1]], duration: "h" });
+        if (intervalNotes[1][1] !== '/') highnote.addAccidental(0, new VF.Accidental(intervalNotes[1][1]));
 
-        var beams = VF.Beam.generateBeams(notes);
-        Vex.Flow.Formatter.FormatAndDraw(context, stave, notes);
-        beams.forEach(function(b) {b.setContext(context).draw()})
-
+        var notes = [lownote, highnote];
         // Create a voice in 4/4 and add above notes
-        // var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
-        // voice.addTickables(notes);
+        var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
+        voice.addTickables(notes);
 
         // Format and justify the notes to 400 pixels.
-        // var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
+        var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
 
         // Render voice
-        // voice.draw(context, stave);
+        voice.draw(context, stave);
     }
 }
