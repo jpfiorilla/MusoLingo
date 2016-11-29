@@ -80,14 +80,14 @@ export default class SlidesComponent extends React.Component {
     if (obj.text) {
       var y = this.jsxBold(obj.text, index);
       return (
-        <div>
+        <div key={index}>
           {y}
         </div>
       );
     } else if (obj.img) {
       return (
         <div>
-          <img key={index} src={obj.img} />
+          <img key={index} src={obj.img} style={obj.style} />
         </div>
       );
     } else if (obj.vex) {
