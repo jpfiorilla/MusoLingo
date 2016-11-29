@@ -66,6 +66,19 @@ export const randomIntervals = function(correct){
     return arr;
 }
 
+export const randomDistance = function(){
+    return intervals[Math.floor(Math.random() * intervals.length)];
+}
+
+export const randomOtherDistances = function(correct){
+    let arr = [];
+    while (arr.length < 3){
+        let newInterval = randomDistance();
+        if (newInterval !== correct && arr.indexOf(newInterval) === -1) arr.push(newInterval);
+    }
+    return arr;
+}
+
 export const randomTriad = function(floor, ceiling){
     let triadQuality = triadQualities[Math.floor(Math.random() * triadQualities.length)];
     let triadRoot = vexToTonal(randomNoteName(floor, ceiling));

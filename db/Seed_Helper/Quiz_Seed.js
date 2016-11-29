@@ -11,6 +11,10 @@ const quiz = [{
     title: "Guess the Bass Clef Note Name",
     question_types: ['guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName']
 }, {
+    lesson_id: 7,
+    title: "Guess the Distance",
+    question_types: ['guessDistance', 'guessDistance', 'guessDistance', 'guessDistance', 'guessDistance', 'guessDistance', 'guessDistance', 'guessDistance', 'guessDistance', 'guessDistance']
+}, {
     lesson_id: 8,
     title: "Guess the Interval",
     question_types: ['guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval', 'guessInterval']
