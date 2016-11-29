@@ -15,23 +15,30 @@ export default class HomePage extends React.Component {
     render() {
         return (
             <MuiThemeProvider>
-            <div>
-                <div className="homepage-1">
-                    <div id="image-overlay">
-                        <div className="homepage-navbar">
-                            <Login />
-                            <a href="" className="homepage-nb" id="homepage-home-link">Home</a>
-                            <a href="" className="homepage-nb" id="homepage-features-link">Features</a>
-                            <a href="" className="homepage-nb" id="homepage-about-link">About</a>
-                        </div>
-                        <div className="homepage-content">
-                            <h3 id="intro">88</h3>
-                            <p id="intro-text">Start playing the keyboard today</p>
-                            <button type="button" className="btn btn-outline-info" id="get-started">Get Started</button>
+                <div>
+                    <div className="homepage-1">
+                        <div id="image-overlay">
+                            <div className="homepage-navbar">
+                                <Login />
+                                <a href="" className="homepage-nb" id="homepage-home-link">Home</a>
+                                <a href="" className="homepage-nb" id="homepage-features-link">Features</a>
+                                <a href="" className="homepage-nb" id="homepage-about-link">About</a>
+                            </div>
+                            <div className="homepage-content">
+                                <h3 id="intro">88</h3>
+                                <p id="intro-text">Start playing the keyboard today</p>
+                                <button type="button" className="btn btn-outline-info" id="get-started">Get Started</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div data-aos="fade-right"
+            </MuiThemeProvider>
+        )
+    }
+}
+
+
+                /* <div data-aos="fade-right"
                     className="homepage-2">
                     <div id="image-overlay-2">
                         <h3 id="monitor">Monitor Progress</h3>
@@ -53,8 +60,4 @@ export default class HomePage extends React.Component {
                             88 will adapt to your needs to ensure a productive music environment.
                         </p>
                     </div>
-                </div>
-            </MuiThemeProvider>
-        )
-    }
-}
+                </div> */
