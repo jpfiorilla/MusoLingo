@@ -69,16 +69,8 @@ export default class MultipleChoiceQuestion extends React.Component {
         lownote = randomNoteName(56, 75);
         highnote = randomNoteName(vexToMidi(lownote), vexToMidi(lownote) + 11);
         intervalNotes = [lownote, highnote];
-        // correct = randomDistance();
-        // incorrect = randomOtherDistances(correct);
-
         correct = calculateInterval(intervalNotes).split(" ")[1].toString();
         incorrect = randomOtherDistances(correct);
-
-        // correct = correct.split(" ")[1].toString();
-        // let incorrects = [];
-        // incorrect.forEach(one => incorrects.push(one.split(" ")[1].toString()));
-        // incorrect = incorrects;
         this.setState({correctAnswer: correct})
         break;
       case "guessBassInterval":
@@ -114,8 +106,10 @@ export default class MultipleChoiceQuestion extends React.Component {
         questionComponent = RandomRhythmNote;
         correct = randomNoteDuration();
         incorrect = randomOtherNoteDurations(correct);
-        correct = getNoteName(correct);
+        // correct = getNoteName(correct);
+        this.setState({ correctAnswer: correct[0] })
         console.log(correct);
+        break;
       default:
         console.log("No question type defined")
     }
@@ -155,7 +149,7 @@ export default class MultipleChoiceQuestion extends React.Component {
       <div id="mc-question-body">
         <div className="sheetmusic">
           {
-            React.createElement(questionComponent, {note: correctAnswer, type, intervalNotes, chord: correctChord})
+            React.createElement(questionComponent, {rhythmnote: correctAnswer, note: correctAnswer, type, intervalNotes, chord: correctChord})
           }
         </div>
         {
