@@ -127,6 +127,7 @@ export default class MultipleChoiceQuestion extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     var {correctAnswer, type} = this.state;
     rightAnswerPosition = Math.floor(Math.random() * 4);
     buttonsArray = ['', '', '', ''];

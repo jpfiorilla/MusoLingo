@@ -5,6 +5,7 @@ import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import FlatButton from 'material-ui/FlatButton';
 import Subheader from 'material-ui/Subheader';
 import Divider from 'material-ui/Divider';
+import LinearProgress from 'material-ui/LinearProgress';
 
 export default class NavigationPage extends React.Component {
 
@@ -17,6 +18,16 @@ export default class NavigationPage extends React.Component {
     };
     this.setCurrentLesson = this.setCurrentLesson.bind(this);
     this.getSlidesAndHeadOver = this.getSlidesAndHeadOver.bind(this);
+    this.checkCompletion = this.checkCompletion.bind(this);
+  }
+
+  checkCompletion (lessonId) { // checks current quiz
+    var percentageComplete = 0;
+    this.props.user.completedQuizzes.forEach(quizId => {
+      if (quizId === lessonId) percentageComplete = 100;
+    })
+
+    return percentageComplete;
   }
 
   setCurrentLesson (hovered) {
@@ -33,6 +44,7 @@ export default class NavigationPage extends React.Component {
   getQuizAndHeadOver (lessonId) {
     this.props.clearQuizzes();
     this.props.askForQuiz(lessonId);
+    this.props.setCurrentQuiz(lessonId);
     browserHistory.push(`/quiz`);
   }
 
@@ -48,8 +60,7 @@ export default class NavigationPage extends React.Component {
   }
 
   render () {
-    let icons = ["/images/notes.ico", "/images/staff.png"];
-    let backgrounds = ['url(/images/reading-music.png)', 'url(/images/navpage-beathoven-piano.png)'];
+    let backgrounds = ['url(/images/reading-music.png)', 'url(/images/navpage-beathoven-piano.png)', 'url(images/navpage-crowd.png)'];
     var random_background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     return (
       <div className="col-md-6">
@@ -75,6 +86,7 @@ export default class NavigationPage extends React.Component {
                                   <div className="slides-quizzes">
                                     <h3 id="learn" onClick={() => {this.getSlidesAndHeadOver(lesson.id)}}>Learn</h3>
                                     <h3 id="play" onClick={() => {this.getQuizAndHeadOver(lesson.id)}}>Play</h3>
+                                    <LinearProgress style={{width: "60%", left: "20%"}} mode="determinate" value={this.checkCompletion(lesson.id)} />
                                   </div>
                                 <hr className="style1" />
                                 </div>

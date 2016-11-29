@@ -18,7 +18,7 @@ export default class Keyboard extends React.Component {
   render(){
     return (
       <div>
-        <button id="showKeyboard">Show Keyboard</button>
+        <img id="showKeyboard" src="/images/piano-icon.png" />
         <div id="keyboard" style={{display: 'none'}}></div>
       </div>
     )

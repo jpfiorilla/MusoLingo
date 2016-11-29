@@ -155,6 +155,8 @@
 }
 
 #showKeyboard {
-  position: relative;
-  top: -700px;
+  position: fixed;
+  top: 10%;
+  height: 85px;
+  left: 1%;
 }

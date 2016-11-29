@@ -41,6 +41,11 @@ export default class Quiz extends React.Component {
             finished: stepIndex >= this.props.quizzes[0].question_types.length-1,
         }));
         }
+
+        // ADDS COMPLETED QUIZ
+        if (this.state.stepIndex === this.props.quizzes[0].question_types.length - 1){
+            this.props.addQuizz(this.props.user.id, this.props.currentQuiz)
+        }
     };
 
     handlePrev(){

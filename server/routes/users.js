@@ -48,17 +48,13 @@ customUserRoutes.delete('/:id', (req,res,next) => {
 });
 
 // Retrieve a user's orders
-customUserRoutes.get('/:userId/orders', function(req, res, next){
-	orderModel.findAll({
-		where: { user_id: req.params.userId },
-		include: [
-			{ model: lineItem, include: [{model: productModel, required: true}], required: false }
-		],
-		order: 'order_date DESC'
-	})
-	.then(orders => res.send(orders))
-	.catch(next);
-});
+customUserRoutes.post('/quizzes/:id', (req, res, next) => {
+	userModel.findById(req.params.id)
+		.then(user => user.update(
+			{completedQuizzes: [...user.completedQuizzes, req.body.completedQuiz]}
+		))
+		.then(updatedUser => {console.log(updatedUser); res.send(updatedUser)})
+})
 
 customUserRoutes.post('/keys/:id', (req, res, next) => {
 	userModel.findById(req.params.id)
