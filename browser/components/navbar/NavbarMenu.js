@@ -72,7 +72,7 @@ export default class NavbarMenu extends React.Component {
         // /login or /logout
         role === 1 ? (
           <div className="navbar-item">
-            <Login />
+            <LoginContainer />
           </div>
         ) : (
           <div className="account-dropdown">
