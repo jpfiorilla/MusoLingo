@@ -7,12 +7,7 @@ import Vex from 'vexflow';
 var vexNotes, beams, stave, context, postMount, renderer, staveMeasures;
 
 export default class Challenge extends Component {
-    constructor(props){
-      super(props)
-      this.state = {
-      }
-    }
-
+  
     scorePercentage(notes){
       var totalNotes = notes.length;
       for (let i = 0; i < notes.length; i++){
@@ -24,37 +19,6 @@ export default class Challenge extends Component {
     }
 
     componentDidMount(){
-      // console.log("COMP DIDMOUNT RUNNING", this.props)
-      // var VF = Vex.Flow;
-      // var div = document.getElementById("staff")
-      // var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-      //
-      // renderer.resize(500, 200);
-      // context = renderer.getContext();
-      // context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
-      //
-      // stave = new VF.Stave(10, 40, 400);
-      //
-      // stave.addClef("treble").addTimeSignature("4/4");
-      //
-      // stave.setContext(context).draw();
-      //
-      // var beams = VF.Beam.generateBeams(this.state.vexNotes);
-      //
-      // Vex.Flow.Formatter.FormatAndDraw(context, stave, this.state.vexNotes);
-      //
-      // beams.forEach(function(b) {b.setContext(context).draw()})
-
-      // postMount = true;
-      // Create a voice in 4/4 and add above notes
-      // var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
-      // voice.addTickables(notes);
-      //
-      // // Format and justify the notes to 400 pixels.
-      // var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
-      //
-      // // Render voice
-      // voice.draw(context, stave);
     }
 
     componentDidUpdate(){
