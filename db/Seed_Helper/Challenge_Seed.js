@@ -6,9 +6,9 @@ const challenges = [
     "vexNotes": [
       {clef: 'treble', keys: ['c/4'], duration: 'q'},
       {clef: 'treble', keys: ['d/4'], duration: 'q'},
-      {clef: 'treble', keys: ['d/4'], duration: 'q'},
-      {clef: 'treble', keys: ['c/4'], duration: '8'},
-      {clef: 'treble', keys: ['c/4'], duration: '8'}
+      {clef: 'treble', keys: ['e/4'], duration: 'q'},
+      {clef: 'treble', keys: ['f/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'}
     ]
   },
   {
@@ -28,16 +28,32 @@ const challenges = [
       {clef: 'treble', keys: ['g/4'], duration: '8'},
       {clef: 'treble', keys: ['a/4'], duration: '8'},
       {clef: 'treble', keys: ['g/4'], duration: '8'},
-      {clef: 'treble', keys: ['a/4'], duration: 'q'},
-      {clef: 'treble', keys: ['b/4'], duration: 'q'}
+      {clef: 'treble', keys: ['a/4'], duration: 'q'}
     ]
   },
   {
     "bpm": 80,
     "notes": ["C3", "D3"],
     "vexNotes": [
-      {clef: 'treble', keys: ['b/3'], duration: '2'},
-      {clef: 'treble', keys: ['g/4'], duration: '2'}
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: 'q'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: 'q'},
+      {clef: 'treble', keys: ['c/4'], duration: 'q'},
+      {clef: 'treble', keys: ['d/4'], duration: 'q'},
+      {clef: 'treble', keys: ['e/4'], duration: 'q'},
+      {clef: 'treble', keys: ['f/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'}
     ]
   },
 ]

@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import { startSequence, stopSequence } from '../../piano_hero';
+import { separateMeasures, staveCreator, beamCreator } from '../../vexparser';
 import tonal from 'tonal';
 import Vex from 'vexflow';
 
-var vexNotes, beams, stave, context, postMount;
+var vexNotes, beams, stave, context, postMount, renderer;
 
 export default class Challenge extends Component {
     constructor(props){
@@ -26,7 +27,7 @@ export default class Challenge extends Component {
     }
 
     componentDidMount(){
-      console.log("COMP DIDMOUNT RUNNING", this.props)
+      // console.log("COMP DIDMOUNT RUNNING", this.props)
       // var VF = Vex.Flow;
       // var div = document.getElementById("staff")
       // var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
@@ -60,35 +61,50 @@ export default class Challenge extends Component {
     }
 
     componentDidUpdate(){
-
       if (this.props.challenges.vexNotes && postMount !== true){
         var VF = Vex.Flow;
         var div = document.getElementById("staff")
-        var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
-        renderer.resize(500, 200);
+        renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
+        renderer.resize(1150, 200);
+
         context = renderer.getContext();
-        context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
+        context.setFont("Arial", 10, "");
 
-        stave = new VF.Stave(10, 40, 400);
-
-        stave.addClef("treble").addTimeSignature("4/4");
-
-        stave.setContext(context).draw();
+        // stave = new VF.Stave(10, 40, 400);
+        // stave.addClef("treble").addTimeSignature("4/4");
+        // stave.setContext(context).draw();
 
         var staffNotes = [];
-        console.log("did update vexnotes props", this.props.challenges.vexNotes)
-
         this.props.challenges.vexNotes.forEach(vexNote =>{
-          staffNotes.push(new Vex.Flow.StaveNote(vexNote))
+          staffNotes.push(vexNote)
         })
-        console.log("STAFFNOTES DID UPDATE", staffNotes)
 
-        beams = Vex.Flow.Beam.generateBeams(staffNotes);
+        let noteMeasures = separateMeasures(staffNotes);
+        let staveMeasures = staveCreator(noteMeasures);
+        var beamArray = beamCreator(noteMeasures)
 
-        Vex.Flow.Formatter.FormatAndDraw(context, stave, staffNotes);
+        console.log("STAFFNOTES", staffNotes)
+        console.log("NOTES", noteMeasures)
+        console.log("STAVES", staveMeasures)
 
-        beams.forEach(function(b) {b.setContext(context).draw()})
+        // sets context and formats notes for each staff
+        staveMeasures.forEach((staff, index) => {
+          staff.setContext(context).draw();
+          Vex.Flow.Formatter.FormatAndDraw(context, staff, noteMeasures[index])
+        })
+
+        // console.log("did update vexnotes props", this.props.challenges.vexNotes)
+        // this.props.challenges.vexNotes.forEach(vexNote =>{
+        //   staffNotes.push(new VF.StaveNote(vexNote))
+        // })
+        // console.log("STAFFNOTES DID UPDATE", staffNotes)
+
+        beamArray.forEach(array => {
+          array.forEach(b => {
+            b.setContext(context).draw()
+          })
+        })
 
         postMount = true;
       }
