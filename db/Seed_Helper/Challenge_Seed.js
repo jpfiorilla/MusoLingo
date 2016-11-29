@@ -31,7 +31,17 @@ const challenges = [
       {clef: 'treble', keys: ['a/4'], duration: 'q'},
       {clef: 'treble', keys: ['b/4'], duration: 'q'}
     ]
-  }
+  },
+  {
+    "bpm": 80,
+    "notes": ["C3", "D3"],
+    "vexNotes": [
+      {clef: 'treble', keys: ['c/4'], duration: 'q'},
+      {clef: 'treble', keys: ['d/4'], duration: 'q'},
+      {clef: 'treble', keys: ['c/4'], duration: 'q'},
+      {clef: 'treble', keys: ['d/4'], duration: 'q'}
+    ]
+  },
 ]
 
 module.exports = challenges;
