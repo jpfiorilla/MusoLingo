@@ -1,3 +1,4 @@
+// helper functions for game; help parse and render vex flow notes when there is more than one measure
 import Vex from 'vexflow';
 
 export const durationParser = function(note){
@@ -22,13 +23,30 @@ export const separateMeasures = function(staffNotes){
     var singleMeasure = [];
     while (noteCount < 4){
       noteCount += durationParser(staffNotes[index]);
-      // console.log("NOTECOUNT", index, noteCount)
       // makes sure that the most recent note did not exceed the limit for the measure
       if (noteCount <= 4){
         singleMeasure.push(new Vex.Flow.StaveNote(staffNotes[index]));
       } else {
       }
-      // console.log("SINGLE MEASURE", index, singleMeasure)
+      index++;
+    }
+    arrayOfMeasures.push(singleMeasure)
+    noteCount = 0;
+  }
+  return arrayOfMeasures;
+}
+
+export const separateMeasuresDuringGame = function(staffNotes){
+  var arrayOfMeasures = [], noteCount = 0, index = 0;
+  while (index < staffNotes.length){
+    var singleMeasure = [];
+    while (noteCount < 4){
+      noteCount += durationParser(staffNotes[index]);
+      // makes sure that the most recent note did not exceed the limit for the measure
+      if (noteCount <= 4){
+        singleMeasure.push(staffNotes[index]);
+      } else {
+      }
       index++;
     }
     arrayOfMeasures.push(singleMeasure)
@@ -59,4 +77,17 @@ export const beamCreator = function (noteMeasures){
     // beamArray.push(new Vex.Flow.Beam(measure))
   });
   return beamArray;
+}
+
+export const musicRender = function (staveMeasures, noteMeasures, beamArray, context){
+  staveMeasures.forEach((staff, index) => {
+    staff.setContext(context).draw();
+    Vex.Flow.Formatter.FormatAndDraw(context, staff, noteMeasures[index])
+  })
+
+  beamArray.forEach(array => {
+    array.forEach(b => {
+      b.setContext(context).draw()
+    })
+  })
 }

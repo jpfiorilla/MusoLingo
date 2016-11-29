@@ -127,11 +127,9 @@ function noteHit(result){
     currentScore++;
     currentVisualNote.setStyle({strokeStyle: "green", fillStyle: "green"})
     store.dispatch(setNotes(visualNotes))
-    // store.dispatch(setVexNotes(visualNotes))
   }
   else if (result === false) {
     currentVisualNote.setStyle({strokeStyle: "red", fillStyle: "red"})
-    // store.dispatch(setVexNotes(visualNotes))
     store.dispatch(setNotes(visualNotes))
   }
 }
@@ -211,7 +209,6 @@ function loopCreator(notes){
     // redefines currentNote
     currentNote.note = note;
     currentNote.triggered = false;
-    // console.log("NOTE + DURATION", currentNote, noteDuration())
     // cycles through array of vexFlow notes on the DOM
     currentVisualNote = visualNotes[visualNoteCounter];
     visualNoteCounter++;
@@ -220,10 +217,12 @@ function loopCreator(notes){
 
   return noteSetterLoop;
 }
-
+// notesToPlay corresponds to the noteSequence that noteSetterLoop will use to declare variables like currentNote
+// vexflowNotes
 export const startSequence = function(notesToPlay, bpm, vexflowNotes){
   // resets current score when restarting game
   currentScore = 0, visualNoteCounter = 0;
+  // saving vexflowNotes to a global variable; converts them from object properties to actual vexNotes
   vexflowNotes.forEach(vexNote =>{
     visualNotes.push(new Vex.Flow.StaveNote(vexNote))
   });
