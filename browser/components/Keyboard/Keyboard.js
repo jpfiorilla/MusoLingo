@@ -18,7 +18,10 @@ export default class Keyboard extends React.Component {
   render(){
     return (
       <div>
-        <img id="showKeyboard" src="/images/piano-icon.png" />
+        <div id="showKeyboard">
+          <img id="showKeyboard-icon" src="/images/piano-icon.png" />
+          <div id="toggleKeyboard-text">Show</div>
+        </div>
         <div id="keyboard" style={{display: 'none'}}></div>
       </div>
     )

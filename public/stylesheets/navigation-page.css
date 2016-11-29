@@ -2,11 +2,15 @@
 
 .navbar-icon {
   position: relative;
-  left: 55%;
+  left: 28%;
   height: 300px;
   width: 400px;
   border-radius: 3%;
   box-shadow: 0px 0px 19px black;
+}
+
+.navbar-icon:hover {
+    box-shadow: 0px 0px 19px rgb(182, 31, 31);
 }
 
 .navpage-flipped {
@@ -78,7 +82,7 @@
   text-shadow: 1px 1px beige;
   width: 50%;
   position: relative;
-  left: 80%;
+  left: 40%;
   top: 150px;
   z-index: 100;
   text-transform: uppercase;
