@@ -1,7 +1,11 @@
 const quiz = [{
     lesson_id: 1,
     title: "Guess the Note Value",
-    question_types: ['rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote']
+    question_types: ['rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote', 'rhythmNote']
+}, {
+    lesson_id: 2,
+    title: "Guess the Note Value",
+    question_types: ['moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm']
 }, {
     lesson_id: 3,
     title: "Guess the Note Name",
