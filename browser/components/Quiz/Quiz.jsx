@@ -90,80 +90,104 @@ export default class Quiz extends React.Component {
     const contentStyle = {margin: '0 16px', overflow: 'hidden'};
 
     if (finished) {
-      return (
-        <div style={contentStyle}>
-          <p>
-            <a
-              href="#"
-              onClick={(event) => {
-                event.preventDefault();
-                this.setState({stepIndex: 0, finished: false});
-              }}
-              >
-                Click here
-              </a> to reset the example.
-            </p>
-          </div>
-        );
+      if (document.getElementById("beathoven-quiz-animation")) {
+        $("#beathoven-quiz-animation").addClass("hide-animation")
+      }
+
+      if (document.getElementById("beathoven-good-job")) {
+        $("#beathoven-good-job").addClass("hide-animation")
       }
 
       return (
         <div style={contentStyle}>
-          <div className="row">
-
-            <div className= "text-right" >
-              <button id="hint-button" type="button">?</button>
-            </div>
-
-          </div>
-          <div>{(this.props.quizzes.length) ? this.getStepContent(stepIndex) : <p>Quiz length is empty</p>}</div>
-          <div style={{ marginTop: "-107px", marginBottom: "17px", marginRight: "15px" }}>
-            <div className="row">
-              <div id="next-button" className="col-xs-6 col-sm-6 col-md-6 text-right">
-                <RaisedButton
-                  label='Next'
-                  primary={true}
-                  onClick={this.handleNext}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    }
-    render() {
-      const {loading, stepIndex} = this.state;
-
-      let allQuizzes;
-      if (this.props.quizzes.length){
-        allQuizzes = (
-          <Stepper activeStep={stepIndex}>
+          <div>
             {
-              this.props.quizzes[0].question_types.map((question, index) => {
-                return (
-                  <Step key={index}>
-                    <StepLabel></StepLabel>
-                  </Step>
-                )
-              })
+              this.state.grade >= 0.6 ? (
+                <div>
+                  <ReactPlayer style={{ width: "100%" }} loop={true} width="800px" height="400px" url="/movies/beathoven_quiz.mp4" playing />
+                  <div id="quiz-buttons" style={{position: "relative", left: "34%"}}>
+                    <FlatButton label="Challenge" href="/game/4" primary={true} />
+                    <FlatButton label="Repeat" onClick={(event) => {
+                      event.preventDefault();
+                      this.setState({stepIndex: 0, finished: false});
+                    } } primary={true} />
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <ReactPlayer style={{ width: "100%" }} loop={true} width="800px" height="400px" url="/movies/beathoven-quiz-fail.mp4" playing />
+                  <div id="quiz-buttons" style={{position: "relative", left: "46%"}}>
+                    <FlatButton label="Repeat" onClick={(event) => {
+                      event.preventDefault();
+                      this.setState({stepIndex: 0, finished: false});
+                    } } primary={true} />
+                  </div>
+                </div>
+              )
             }
-          </Stepper>
-        )
-      }
-
-      return (
-        <div id="quiz-body" style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
-          <ReactPlayer style={{left: "73%", position: "absolute", top: "45%"}} loop={false} width="300px" height="200px" url="/movies/beathoven-1.mp4" playing />
-          <div className="bad-job" id="beathoven-good-job">
-            <ReactPlayer style={{left: "10%", top: "50%", position: "absolute"}} loop={false} width="300px" height="300px" url="/movies/good-job.mp4" playing />
           </div>
-          {
-            allQuizzes
-          }
-          <ExpandTransition loading={loading} open={true}>
-            {this.renderContent()}
-          </ExpandTransition>
         </div>
       );
     }
+
+    return (
+      <div style={contentStyle}>
+        <div className="row">
+
+          <div className= "text-right" >
+            <button id="hint-button" type="button">?</button>
+          </div>
+
+        </div>
+        <div>{(this.props.quizzes.length) ? this.getStepContent(stepIndex) : <p>Quiz length is empty</p>}</div>
+        <div style={{ marginTop: "-107px", marginBottom: "17px", marginRight: "15px" }}>
+          <div className="row">
+            <div id="next-button" className="col-xs-6 col-sm-6 col-md-6 text-right">
+              <RaisedButton
+                label='Next'
+                primary={true}
+                onClick={this.handleNext}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
+  render() {
+    
+    const {loading, stepIndex} = this.state;
+
+    let allQuizzes;
+    if (this.props.quizzes.length){
+      allQuizzes = (
+        <Stepper activeStep={stepIndex}>
+          {
+            this.props.quizzes[0].question_types.map((question, index) => {
+              return (
+                <Step key={index}>
+                  <StepLabel></StepLabel>
+                </Step>
+              )
+            })
+          }
+        </Stepper>
+      )
+    }
+
+    return (
+      <div id="quiz-body" style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
+        <ReactPlayer style={{left: "73%", position: "absolute", top: "45%"}} loop={false} width="300px" height="200px" url="/movies/beathoven-1.mp4" playing />
+        <div className="bad-job" id="beathoven-good-job">
+          <ReactPlayer style={{left: "10%", top: "50%", position: "absolute"}} loop={false} width="300px" height="300px" url="/movies/good-job.mp4" playing />
+        </div>
+        {
+          allQuizzes
+        }
+        <ExpandTransition loading={loading} open={true}>
+          {this.renderContent()}
+        </ExpandTransition>
+      </div>
+    );
+  }
+}

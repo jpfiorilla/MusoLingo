@@ -1,60 +1,35 @@
 import React, {Component} from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import SvgIcon from 'material-ui/SvgIcon';
+import PlayIcon from 'material-ui/svg-icons/av/play-circle-filled';
+import StopIcon from 'material-ui/svg-icons/av/stop';
 import { startSequence, stopSequence } from '../../piano_hero';
 import { separateMeasures, separateMeasuresDuringGame, staveCreator, beamCreator, musicRender } from '../../vexparser';
+import { setScore } from '../../redux/ChallengeActions'
+import store from '../../store';
 import tonal from 'tonal';
 import Vex from 'vexflow';
 
 var vexNotes, beams, stave, context, postMount, renderer, staveMeasures;
 
 export default class Challenge extends Component {
-    constructor(props){
-      super(props)
-      this.state = {
-      }
+    constructor() {
+      super()
+
+      this.scorePercentage = this.scorePercentage.bind(this);
     }
 
     scorePercentage(notes){
-      var totalNotes = notes.length;
+      var totalNotes = 0;
       for (let i = 0; i < notes.length; i++){
-        if (Array.isArray(notes[i])){
-          totalNotes += notes[i].length
+        if (notes[i] !== 'rest') {
+          totalNotes += notes[i].split(" ").length;
         }
       }
-      return `${this.props.score/totalNotes}%`;
+      return `${Math.round(this.props.score/totalNotes * 100)}%`;
     }
 
     componentDidMount(){
-      // console.log("COMP DIDMOUNT RUNNING", this.props)
-      // var VF = Vex.Flow;
-      // var div = document.getElementById("staff")
-      // var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-      //
-      // renderer.resize(500, 200);
-      // context = renderer.getContext();
-      // context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
-      //
-      // stave = new VF.Stave(10, 40, 400);
-      //
-      // stave.addClef("treble").addTimeSignature("4/4");
-      //
-      // stave.setContext(context).draw();
-      //
-      // var beams = VF.Beam.generateBeams(this.state.vexNotes);
-      //
-      // Vex.Flow.Formatter.FormatAndDraw(context, stave, this.state.vexNotes);
-      //
-      // beams.forEach(function(b) {b.setContext(context).draw()})
-
-      // postMount = true;
-      // Create a voice in 4/4 and add above notes
-      // var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
-      // voice.addTickables(notes);
-      //
-      // // Format and justify the notes to 400 pixels.
-      // var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
-      //
-      // // Render voice
-      // voice.draw(context, stave);
     }
 
     componentDidUpdate(){
@@ -63,7 +38,7 @@ export default class Challenge extends Component {
         var div = document.getElementById("staff")
 
         renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-        renderer.resize(1150, 200);
+        renderer.resize(1350, 200);
 
         context = renderer.getContext();
         context.setFont("Arial", 10, "");
@@ -77,9 +52,9 @@ export default class Challenge extends Component {
         staveMeasures = staveCreator(noteMeasures);
         var beamArray = beamCreator(noteMeasures)
 
-        console.log("STAFFNOTES", staffNotes)
-        console.log("NOTES", noteMeasures)
-        console.log("STAVES", staveMeasures)
+        // console.log("STAFFNOTES", staffNotes)
+        // console.log("NOTES", noteMeasures)
+        // console.log("STAVES", staveMeasures)
 
         // noteMeasures[0].forEach(note => {
         //   note.setStyle({strokeStyle: "green", fillStyle: "green"})
@@ -88,6 +63,9 @@ export default class Challenge extends Component {
         musicRender(staveMeasures, noteMeasures, beamArray, context)
 
         postMount = true;
+
+        let updatedVexNotes = [].concat.apply([], noteMeasures);
+        // store.dispatch(setNotes(updatedVexNotes))
       }
     }
 
@@ -103,8 +81,9 @@ export default class Challenge extends Component {
 
       let scoreCounter;
       if (this.props.score !== null) {
+        // SCORE COUNTER:
         scoreCounter = (
-          <div><h2>{this.props.score} correct</h2></div>
+          <div><h2>{this.props.score} correct {this.scorePercentage(this.props.challenges.notes)}</h2></div>
         )
       }
 
@@ -116,24 +95,30 @@ export default class Challenge extends Component {
         // staveMeasures = staveCreator(noteMeasures);
         var beamArray = beamCreator(noteMeasures)
 
-        console.log("NOTES", noteMeasures)
-        console.log("STAVES", staveMeasures)
+        // console.log("NOTES", noteMeasures)
+        // console.log("STAVES", staveMeasures)
 
         musicRender(staveMeasures, noteMeasures, beamArray, context)
-        console.log("FORMATTED")
+        // console.log("FORMATTED")
       }
 
 // change start button to reset after one loop; maybe have it toggle once the scoreCounter is visible?
         return (
         <div>
 
-        {scoreCounter}
+        <h3 id="theme-title">{this.props.challenges.title}</h3> <br />
+        <i>bpm= </i><b>{this.props.challenges.bpm}</b>
 
         <div id="staff"></div>
 
-        <button type="button" name="button" id="startButton" onClick={() => startSequence(noteSequence, bpm, this.props.challenges.vexNotes)}>START</button>
+        {scoreCounter}
 
-        <button type="button" name="button" id="stopButton" onClick={stopSequence}>STOP</button>
+        <RaisedButton icon={<PlayIcon />} backgroundColor="#5D99FF" onClick={() => startSequence(noteSequence, bpm, this.props.challenges.vexNotes)} />
+        <RaisedButton icon={<StopIcon />} backgroundColor="#FF6954" onClick={stopSequence} />
+
+        {/* <button type="button" name="button" id="startButton" onClick={() => startSequence(noteSequence, bpm, this.props.challenges.vexNotes)}>START</button>
+
+        <button type="button" name="button" id="stopButton" onClick={stopSequence}>STOP</button> */}
         </div>
         )
     }

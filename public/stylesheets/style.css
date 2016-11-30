@@ -23,6 +23,11 @@
   src: url("/fonts/Gravity-Light.otf")
 }
 
+@font-face {
+  font-family: gravity-bold;
+  src: url("/fonts/Gravity-Bold.otf")
+}
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
     margin: 0;
     padding: 0;
@@ -233,6 +238,7 @@ background-color: #963838;}
   position: relative;
   left: 20%;
   line-height: 36px;
+  cursor: pointer;
 }
 
 .multiple-choice-ans:active {
@@ -313,6 +319,10 @@ background-color: #963838;}
   box-shadow: 0px 0px 11px gray;
 }
 
+.slides-container b {
+  font-family: gravity-bold;
+}
+
 /*MULTIPLE CHOICE*/
 #radio0 {
   position: relative;
@@ -335,4 +345,12 @@ background-color: #963838;}
   position: relative;
   top: -85px;
   left: 123px;
+}
+
+.hide-animation {
+  visibility: hidden;
+}
+
+.show-animation {
+  visibility: visible;
 }
