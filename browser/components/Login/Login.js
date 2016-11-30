@@ -31,7 +31,7 @@ export default class Login extends React.Component {
 		super(props);
 		this.state = {
 			open: false,
-			action: null
+			action: 'Hi'
 		}
 
 		this.handleOpen = this.handleOpen.bind(this);
@@ -113,9 +113,9 @@ export default class Login extends React.Component {
 					{this.state.action} with Facebook
 				</button>
 
-				<button className="loginBtn loginBtn-google">
+				{/* <button className="loginBtn loginBtn-google">
 					{this.state.action} with Google
-				</button><br /><br />
+				</button><br /><br /> */}
 
 				<Divider style={dividerStyle}/><br />
 				or

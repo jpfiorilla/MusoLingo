@@ -72,12 +72,12 @@ export const quizzesReducer = (state = initQuiz || [], action) => {
       return state
   }
 }
-
-export const currentQuizReducer = (state = '', action) => {
-  switch (action.type){
-    case SET_CURRENT_QUIZ:
-      return action.currentQuiz;
-    default:
-      return state;
-  }
-}
+//
+// export const currentQuizReducer = (state = '', action) => {
+//   switch (action.type){
+//     case SET_CURRENT_QUIZ:
+//       return action.currentQuiz;
+//     default:
+//       return state;
+//   }
+// }

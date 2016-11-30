@@ -10,8 +10,7 @@ const mapStateToProps = ({ user, currentQuiz }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addKey: (id, keys) => dispatch(addNewKeyToServer(id, keys)),
-  saveScores: (userId, quizId, scores) => dispatch(saveUserScoreToServer(userId, quizId, scores))
+  addKey: (id, keys) => dispatch(addNewKeyToServer(id, keys))
 })
 
 export const MultipleChoiceContainer = connect(mapStateToProps, mapDispatchToProps)(MultipleChoice);
