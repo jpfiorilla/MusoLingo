@@ -199,7 +199,6 @@ export default class SlidesComponent extends React.Component {
           </div>
         )}
       </div>
-    </div>
-  );
-}
+    </div>);
+  }
 }

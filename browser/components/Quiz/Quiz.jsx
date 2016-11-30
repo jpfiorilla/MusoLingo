@@ -5,7 +5,7 @@ import FlatButton from 'material-ui/FlatButton'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ExpandTransition from 'material-ui/internal/ExpandTransition'
 import TextField from 'material-ui/TextField'
-import {MultipleChoiceContainer} from "../Question/QuestionContainer"
+import { MultipleChoiceContainer } from "../Question/QuestionContainer"
 import MultipleChoice from '../Question/MultipleChoice';
 import TextInput from "../Question/TextInput"
 import ReactPlayer from "react-player"
@@ -14,162 +14,125 @@ import ReactPlayer from "react-player"
 const centerText = {marginLeft: "10%"}
 
 export default class Quiz extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            loading: false,
-            finished: false,
-            stepIndex: 0,
-            quizzes: this.props.quizzes
-        }
-        this.handleNext = this.handleNext.bind(this);
-        this.handlePrev = this.handlePrev.bind(this);
+  constructor() {
+    super()
+    this.state = {
+      loading: false,
+      finished: false,
+      stepIndex: 0,
+      correct: 0,
+      grade: 0
+    }
+    this.handleNext = this.handleNext.bind(this);
+    this.handlePrev = this.handlePrev.bind(this);
+    this.addOneForRight = this.addOneForRight.bind(this);
+  }
+
+  addOneForRight (right) {
+    if (right) {
+      this.state.correct ++;
+      this.state.grade = this.state.correct / this.props.quizzes[0].question_types.length;
+    }
+  }
+
+  dummyAsync(cb) {
+    this.setState({ loading: true }, () => {
+      this.asyncTimer = setTimeout(cb, 500);
+    })
+  }
+
+  handleNext(){
+    const {stepIndex} = this.state;
+    if (!this.state.loading) {
+      this.dummyAsync(() => this.setState({
+        loading: false,
+        stepIndex: stepIndex + 1,
+        finished: stepIndex >= this.props.quizzes[0].question_types.length-1,
+      }));
     }
 
-    dummyAsync(cb) {
-        this.setState({ loading: true }, () => {
-            this.asyncTimer = setTimeout(cb, 500);
-        })
+    const done = this.state.stepIndex === this.props.quizzes[0].question_types.length - 1;
+    const passed = this.state.grade >= 0.6;
+
+    if (done && passed) {
+      // NOTE: add this quiz to the user's completed obj.
+      const lesson_id = this.props.quizzes[0].lesson_id;
+      this.props.user.completed.quizzes[lesson_id] = this.state.grade;
+      this.props.updateUser(this.props.user.completed, 'completed', this.props.user.id);
     }
+  }
 
-    handleNext(){
-        const {stepIndex} = this.state;
-        if (!this.state.loading) {
-        this.dummyAsync(() => this.setState({
-            loading: false,
-            stepIndex: stepIndex + 1,
-            finished: stepIndex >= this.props.quizzes[0].question_types.length-1,
-        }));
-        }
+  handlePrev () {
+    const {stepIndex} = this.state;
+    if (!this.state.loading) {
+      this.dummyAsync(() => this.setState({
+        loading: false,
+        stepIndex: stepIndex - 1,
+      }));
+    }
+  };
 
-        // ADDS COMPLETED QUIZ
-        if (this.state.stepIndex === this.props.quizzes[0].question_types.length - 1){
-            var numRight = 0, numWrong = 0;
-            this.props.quizScores[this.props.currentQuiz].forEach((score) => {
-                if (score) numRight++;
-                else numWrong++;
-            })
-            var finalScore = numRight / (numRight + numWrong);
-            
-            // If user passed the test (> 60% right), add quiz id to completed quizzes array
-            if (finalScore > .6) {
-                this.props.addQuizz(this.props.user.id, this.props.currentQuiz)
-            }
-        }
-    };
+  getStepContent(stepIndex) {
+    return (
+      <div id="multiplechoice-container">
+        <div style={{marginLeft: "10%"}}>
+          <MultipleChoiceContainer
+            rightOrWrong={this.addOneForRight}
+            questionType={this.props.quizzes[0].question_types[this.state.stepIndex]}
+          />
+        </div>
+      </div>
+    );
+  }
 
-    handlePrev(){
-        const {stepIndex} = this.state;
-        if (!this.state.loading) {
-        this.dummyAsync(() => this.setState({
-            loading: false,
-            stepIndex: stepIndex - 1,
-        }));
-        }
-    };
+  renderContent() {
+    const {finished, stepIndex} = this.state;
+    const contentStyle = {margin: '0 16px', overflow: 'hidden'};
 
-    getStepContent(stepIndex) {
-        return (
-                <div id="multiplechoice-container">
-                    <div style={{marginLeft: "10%"}}>
-                        <MultipleChoiceContainer questionType={this.props.quizzes[0].question_types[this.state.stepIndex]}  />
-                    </div>
-                </div>
-            );
-        /*switch (stepIndex) {
-        case 1:
-            return (
-                <div>
-                    <div>
-                        <TextInput />
-                    </div>
-                    <p>
-                        Select campaign settings. Campaign settings can include your budget, network, bidding
-                        options and adjustments, location targeting, campaign end date, and other settings that
-                        affect an entire campaign.
-                    </p>
-                </div>
-            );
-        case 0:
-        // questionType = rhythmNote || guessNoteName || guessInterval || guessChordName
-            return (
-                <div>
-                    <p>Here is a multiple choice example:</p>
-                    <div style={{marginLeft: "10%"}}>
-                        <MultipleChoice questionType={this.props.quizzes[0].question_types[this.state.stepIndex]} />
-                    </div>
-                </div>
-            );
-        case 2:
-            return (
-            <p>
-                Try out different ad text to see what brings in the most customers, and learn how to
-                enhance your ads using features like ad extensions. If you run into any problems with your
-                ads, find out how to tell if they're running and how to resolve approval issues.
+    if (finished) {
+      return (
+        <div style={contentStyle}>
+          <p>
+            <a
+              href="#"
+              onClick={(event) => {
+                event.preventDefault();
+                this.setState({stepIndex: 0, finished: false});
+              }}
+              >
+                Click here
+              </a> to reset the example.
             </p>
-            );
-        default:
-            return 'You\'re a long way from home sonny jim!';
-        }*/
-    }
-
-    renderContent() {
-        const {finished, stepIndex} = this.state;
-        const contentStyle = {margin: '0 16px', overflow: 'hidden'};
-
-        if (finished) {
-        return (
-            <div style={contentStyle}>
-                <p>
-                    <a
-                    href="#"
-                    onClick={(event) => {
-                        event.preventDefault();
-                        this.setState({stepIndex: 0, finished: false});
-                    }}
-                    >
-                    Click here
-                    </a> to reset the example.
-                </p>
-            </div>
+          </div>
         );
-        }
+      }
 
-        return (
-            <div style={contentStyle}>
-                <div className="row">
+      return (
+        <div style={contentStyle}>
+          <div className="row">
 
-                    <div className= "text-right" >
-                        <button id="hint-button" type="button">?</button>
-                    </div>
-
-                </div>
-                <div>{(this.props.quizzes.length) ? this.getStepContent(stepIndex) : <p>Quiz length is empty</p>}</div>
-                <div style={{ marginTop: "-107px", marginBottom: "17px", marginRight: "15px" }}>
-                <div className="row">
-{/*                    <div className="col-md-6">
-                        <FlatButton
-                            label="Back"
-                            disabled={stepIndex === 0}
-                            onClick={this.handlePrev}
-                            style={{marginRight: 12}}
-                        />
-                    </div>*/}
-                    <div id="next-button" className="col-xs-6 col-sm-6 col-md-6 text-right">
-                        <RaisedButton
-                            label='Next'
-                            primary={true}
-                            
-                            onClick={this.handleNext}
-                        />
-                    </div>
-                </div>
-                </div>
+            <div className= "text-right" >
+              <button id="hint-button" type="button">?</button>
             </div>
-        );
+
+          </div>
+          <div>{(this.props.quizzes.length) ? this.getStepContent(stepIndex) : <p>Quiz length is empty</p>}</div>
+          <div style={{ marginTop: "-107px", marginBottom: "17px", marginRight: "15px" }}>
+            <div className="row">
+              <div id="next-button" className="col-xs-6 col-sm-6 col-md-6 text-right">
+                <RaisedButton
+                  label='Next'
+                  primary={true}
+
+                  onClick={this.handleNext}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      );
     }
     render() {
-        // console.log('props', this.props, 'state', this.state)
         const {loading, stepIndex} = this.state;
 
         let allQuizzes;
@@ -198,26 +161,10 @@ export default class Quiz extends React.Component {
                 {
                     allQuizzes
                 }
-                {/*<Stepper activeStep={stepIndex}>
-                <Step>
-                    <StepLabel></StepLabel>
-                </Step>
-                <Step>
-                    <StepLabel></StepLabel>
-                </Step>
-                <Step>
-                    <StepLabel></StepLabel>
-                </Step>
-                <Step>
-                    <StepLabel></StepLabel>
-                </Step>
-                </Stepper>*/}
                 <ExpandTransition loading={loading} open={true}>
                     {this.renderContent()}
                 </ExpandTransition>
             </div>
         );
+        }
     }
-}
-
-// STEPPER?
