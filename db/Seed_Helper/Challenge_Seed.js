@@ -76,7 +76,7 @@ const challenges = [
       {clef: 'treble', keys: ['a/4'], duration: '8'},
       {clef: 'treble', keys: ['bb/4'], duration: '2', accidental: 'b'},
       {clef: 'treble', keys: ['f/4'], duration: 'q'},
-      {clef: 'treble', keys: ['b/3'], duration: 'q'},
+      {clef: 'treble', keys: ['bb/3'], duration: 'q', accidental: 'b'},
       {clef: 'treble', keys: ['g/4'], duration: '2', dot: true}
     ]
   },
