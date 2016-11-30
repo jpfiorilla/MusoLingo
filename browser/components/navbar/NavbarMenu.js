@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, browserHistory } from 'react-router'
-import Login from "../Login/LoginContainer"
+import {LoginContainer} from "../Login/LoginContainer"
 
 // Material theme
 import {ToolbarGroup} from 'material-ui';
@@ -72,7 +72,7 @@ export default class NavbarMenu extends React.Component {
         // /login or /logout
         role === 1 ? (
           <div className="navbar-item">
-            <Login />
+            <LoginContainer />
           </div>
         ) : (
           <div className="account-dropdown">
@@ -83,8 +83,8 @@ export default class NavbarMenu extends React.Component {
               targetOrigin={{horizontal: "left", vertical: "top"}}
               onRequestClose={this.handleAccountClose}>
               <Menu>
-                <MenuItem onClick={() => browserHistory.push("/user")} primaryText="Account" />
-                <MenuItem onClick={logout} primaryText="Sign Out" />
+                <MenuItem style={{fontFamily: "gravity-book", textAlign: "center"}} onClick={() => browserHistory.push("/user")} primaryText="Account" />
+                <MenuItem style={{fontFamily: "gravity-book", textAlign: "center"}} onClick={logout} primaryText="Sign Out" />
               </Menu>
             </Popover>
           </div>

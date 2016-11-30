@@ -84,6 +84,7 @@ export default class NavigationPage extends React.Component {
                             if(lesson.topic_id === topic.id){
                               return (
                                 <div key={index2}>
+                                  <h3 className="lesson-step">{index2 + 1}</h3>
                                   <h3 className="lesson-header">{lesson.title}</h3>
                                   <div className="slides-quizzes">
                                     <h3 id="learn" onClick={() => {this.getSlidesAndHeadOver(lesson.id)}}>Learn</h3>

@@ -48,7 +48,7 @@
 }
 
 #toggleKeyboard-text {
-  font-family: bebas;
+  font-family: bebas-kai;
   visibility: hidden;
   color: red;
   position: relative;
@@ -197,7 +197,7 @@
   position: relative;
   top: -2%;
   left: 98%;
-  font-family: bebas;
+  font-family: bebas-kai;
 }
 
 #keyboard-help:hover {

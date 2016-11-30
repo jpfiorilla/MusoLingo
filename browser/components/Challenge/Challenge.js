@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { startSequence, stopSequence } from '../../piano_hero';
-import { separateMeasures, staveCreator, beamCreator } from '../../vexparser';
+import { separateMeasures, separateMeasuresDuringGame, staveCreator, beamCreator, musicRender } from '../../vexparser';
 import tonal from 'tonal';
 import Vex from 'vexflow';
 
-var vexNotes, beams, stave, context, postMount, renderer;
+var vexNotes, beams, stave, context, postMount, renderer, staveMeasures;
 
 export default class Challenge extends Component {
     constructor(props){
@@ -21,9 +21,6 @@ export default class Challenge extends Component {
         }
       }
       return `${this.props.score/totalNotes}%`;
-    }
-
-    componentWillMount(){
     }
 
     componentDidMount(){
@@ -71,40 +68,24 @@ export default class Challenge extends Component {
         context = renderer.getContext();
         context.setFont("Arial", 10, "");
 
-        // stave = new VF.Stave(10, 40, 400);
-        // stave.addClef("treble").addTimeSignature("4/4");
-        // stave.setContext(context).draw();
-
         var staffNotes = [];
         this.props.challenges.vexNotes.forEach(vexNote =>{
           staffNotes.push(vexNote)
         })
 
-        let noteMeasures = separateMeasures(staffNotes);
-        let staveMeasures = staveCreator(noteMeasures);
+        let noteMeasures = separateMeasures(this.props.challenges.vexNotes);
+        staveMeasures = staveCreator(noteMeasures);
         var beamArray = beamCreator(noteMeasures)
 
         console.log("STAFFNOTES", staffNotes)
         console.log("NOTES", noteMeasures)
         console.log("STAVES", staveMeasures)
 
-        // sets context and formats notes for each staff
-        staveMeasures.forEach((staff, index) => {
-          staff.setContext(context).draw();
-          Vex.Flow.Formatter.FormatAndDraw(context, staff, noteMeasures[index])
-        })
-
-        // console.log("did update vexnotes props", this.props.challenges.vexNotes)
-        // this.props.challenges.vexNotes.forEach(vexNote =>{
-        //   staffNotes.push(new VF.StaveNote(vexNote))
+        // noteMeasures[0].forEach(note => {
+        //   note.setStyle({strokeStyle: "green", fillStyle: "green"})
         // })
-        // console.log("STAFFNOTES DID UPDATE", staffNotes)
 
-        beamArray.forEach(array => {
-          array.forEach(b => {
-            b.setContext(context).draw()
-          })
-        })
+        musicRender(staveMeasures, noteMeasures, beamArray, context)
 
         postMount = true;
       }
@@ -130,11 +111,15 @@ export default class Challenge extends Component {
 // this next chunk of code is currently drawing a new set of notes over the original set. idk why - try clearing original notes first?
 // how to incorporate separating measures?
       if (postMount === true){
-        beams = Vex.Flow.Beam.generateBeams(this.props.challenges.vexNotes);
+        // THIS VERSION of separateMeasures should handle actual new VF.StaveNotes rather than the just objects with the properties we want
+        let noteMeasures = separateMeasuresDuringGame(this.props.challenges.vexNotes);
+        // staveMeasures = staveCreator(noteMeasures);
+        var beamArray = beamCreator(noteMeasures)
 
-        Vex.Flow.Formatter.FormatAndDraw(context, stave, this.props.challenges.vexNotes)
+        console.log("NOTES", noteMeasures)
+        console.log("STAVES", staveMeasures)
 
-        beams.forEach(function(b) {b.setContext(context).draw()})
+        musicRender(staveMeasures, noteMeasures, beamArray, context)
         console.log("FORMATTED")
       }
 

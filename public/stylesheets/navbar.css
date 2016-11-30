@@ -11,7 +11,7 @@
 }
 
 #navbar-key {
-    margin-right: 25px;
+    margin-right: -10px;
     color: gold;
 }
 
@@ -23,13 +23,13 @@
 
 #navbar-logo {
     position: relative;
-    height: 90px;
-    top: 18px;
+    height: 85px;
+    top: 0px;
 }
 
 #navbar-logo-text {
     position: relative;
-    top: -83%;
+    top: -78%;
     left: 76%;
     font-size: 60px;
     font-family: basictitle;
@@ -37,5 +37,5 @@
 }
 
 #navbar-logo-text:hover {
-    color: black;
+    color: rgb(182, 31, 31);
 }

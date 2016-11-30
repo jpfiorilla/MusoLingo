@@ -8,8 +8,9 @@ import RandomChord from '../vexflow/randomchord';
 import RandomRhythmNote from '../vexflow/randomrhythmnote';
 import RandomBassNote from '../vexflow/randombassnote';
 import RandomDistance from '../vexflow/randomdistance';
-import RandomInvertedChord from '../vexflow/randominvertedchord'
-import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations, randomDistance, randomOtherDistances, randomIntervalName } from '../../utils';
+import RandomInvertedChord from '../vexflow/randominvertedchord';
+import RandomTiedNote from '../vexflow/randomtiednote';
+import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations, randomDistance, randomOtherDistances, randomIntervalName, randomTieDuration, getDuration, getOtherDurations } from '../../utils';
 import  Vex from 'vexflow'
 
 const styles = {
@@ -22,7 +23,7 @@ const styles = {
   },
 };
 
-var questionComponent, correct, incorrect, lownote, highnote, intervalNotes, correctChord, buttonsArray, rightAnswerPosition, index, answered, incorrectChords, correctArr;
+var questionComponent, correct, incorrect, lownote, highnote, intervalNotes, correctChord, buttonsArray, rightAnswerPosition, index, answered, incorrectChords, correctArr, duration;
 
 export default class MultipleChoiceQuestion extends React.Component {
   constructor(props) {
@@ -110,6 +111,14 @@ export default class MultipleChoiceQuestion extends React.Component {
         this.setState({ correctAnswer: correct[0] })
         console.log(correct);
         break;
+      case "moreRhythm":
+        questionComponent = RandomTiedNote;
+        duration = randomTieDuration();
+        correct = getDuration(duration);
+        // incorrect = getOtherDurations(correct);
+        incorrect = ['2 beats', '4 beats', '2/3 beats'];
+        // tied, dotted, triplet
+        break;
       default:
         console.log("No question type defined")
     }
@@ -148,7 +157,7 @@ export default class MultipleChoiceQuestion extends React.Component {
       <div id="mc-question-body">
         <div className="sheetmusic">
           {
-            React.createElement(questionComponent, {rhythmnote: correctAnswer, note: correctAnswer, type, intervalNotes, chord: correctChord})
+            React.createElement(questionComponent, {rhythmnote: correctAnswer, tiednote: correctAnswer, note: correctAnswer, type, intervalNotes, chord: correctChord, duration})
           }
         </div>
         {

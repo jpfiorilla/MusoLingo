@@ -5,9 +5,9 @@ const notesAccidentals = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'Ab', 'Bb', 'C#', '
 const octaves = ['0', '1', '2', '3', '4', '5', '6'];
 
 const intervals = ['second', 'third', 'fourth', 'fifth', 'sixth', 'seventh'];
-const intervalQualities = ['Augmented', 'Major', 'Perfect', 'minor', 'diminished'];
-const intervalsPerfect = ['Augmented', 'Perfect', 'diminished'];
-const intervalsMajor = ['Augmented', 'Major', 'minor', 'diminished'];
+const intervalQualities = ['Augmented', 'Major', 'Perfect', 'Minor', 'diminished'];
+const intervalsPerfect = ['Augmented', 'Perfect', 'Diminished'];
+const intervalsMajor = ['Augmented', 'Major', 'Minor', 'Diminished'];
 
 const triadQualities = ['+', '', 'm', 'dim', 'sus4'];
 
@@ -101,6 +101,53 @@ export const randomOtherTriads = function(rightTriadName){
 export const randomNoteDuration = function(){
     let duration = basicDurations[Math.floor(Math.random() * basicDurations.length)];
     return duration;
+}
+
+const shorterDurations = ['half', 'quarter', 'eighth'];
+export const randomShorterNoteDuration = function(){
+    let duration = shorterDurations[Math.floor(Math.random() * shorterDurations.length)];
+    return duration;
+}
+
+export const randomTieDuration = function(){
+    let duration = shorterDurations[Math.floor(Math.random() * shorterDurations.length)];
+    let chooser = Math.floor(Math.random() * 2);
+    let exp;
+    if (chooser === 0){
+        exp = 'Dotted ' + duration + ' note';
+        // console.log('tie duration', exp);
+        return exp;
+    } else if (chooser === 1){
+        exp = 'Tied ' + duration + ' note';
+        // console.log('tie duration', exp);
+        return exp;
+    // } else if (chooser === 2){
+    //     return 'Triplet ' + duration + 'note';
+    }
+}
+
+export const getDuration = function(note){
+    let alteration = note.split(" ")[0].toString();
+    let notetype = note.split(" ")[1].toString();
+    let base = 0, newDuration = 0;
+    notetype === 'half' ? base = 2 :
+    notetype === 'quarter' ? base = 1 :
+    base = 0.5;
+    alteration === 'Dotted' ? newDuration = base * 1.5 :
+    alteration === 'Tied' ? newDuration = base * 1.5 :
+    newDuration = base * 2 / 3;
+    let exp = newDuration.toString().substring(0, 3) + ' beats';
+    console.log('getDur of correct: ', exp);
+    return exp;
+}
+
+export const getOtherDurations = function(correct){
+    let arr = [];
+    while (arr.length < 3){
+        let newDuration = getDuration(randomTieDuration());
+        if (newDuration !== correct && arr.indexOf(newDuration) === -1) arr.push(newDuration);
+    }
+    return arr;
 }
 
 export const randomOtherNoteDurations = function(correct){

@@ -9,13 +9,18 @@
 
 /*FONTS*/
 @font-face {
-  font-family: bebas;
-  src: url("/fonts/bebas.ttf");
+  font-family: bebas-kai;
+  src: url("/fonts/BebasKai-Regular.otf");
 }
 
 @font-face {
   font-family: gravity-book;
   src: url("/fonts/Gravity-Book.otf");
+}
+
+@font-face {
+  font-family: gravity-light;
+  src: url("/fonts/Gravity-Light.otf")
 }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
@@ -206,17 +211,20 @@ background-color: #963838;}
 #multiplechoice-container {
   background-color: whitesmoke;
   padding-right: 51px;
-  margin: 20px;
-  padding-top: 30px;
+  margin: 12px;
   padding-bottom: 50px;
   border-radius: 3%;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.65);
+  height: 425px;
+  position: relative;
+  top: -47px;
 }
 
 .multiple-choice-ans {
   height: 40px;
-  width: 30%;
+  width: 46%;
   background-color: black;
+  font-family: gravity-light;
   color: white;
   text-align: center;
   border-radius: 15px;
@@ -294,4 +302,43 @@ background-color: #963838;}
 #next-button {
   position: relative;
   left: 300px;
+}
+
+.slides-container {
+  width: 100%;
+  margin: auto;
+  background-color: whitesmoke;
+  font-family: gravity-book;
+  font-size: medium;
+  padding: 10px;
+  box-shadow: 0px 0px 11px gray;
+}
+
+.slides-container img {
+  box-shadow: 2px 2px 9px grey;
+  margin: 15px;
+}
+
+/*MULTIPLE CHOICE*/
+#radio0 {
+  position: relative;
+  left: -125px;
+}
+
+#radio1 {
+  position: relative;
+  top: -50px;
+  left: 123px;
+}
+
+#radio2 {
+  position: relative;
+  left: -125px;
+  top: -35px;
+}
+
+#radio3 {
+  position: relative;
+  top: -85px;
+  left: 123px;
 }

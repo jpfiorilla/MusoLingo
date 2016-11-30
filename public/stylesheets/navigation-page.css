@@ -7,6 +7,15 @@
   width: 400px;
   border-radius: 3%;
   box-shadow: 0px 0px 19px black;
+  cursor: pointer;
+}
+
+.lesson-step {
+  font-size: 65px;
+  position: relative;
+  top: 123px;
+  left: 5px;
+  color: #be3636;
 }
 
 .navbar-icon:hover {
@@ -14,9 +23,9 @@
 }
 
 .navpage-flipped {
-  -moz-transform: rotateY(180deg) translateX(-420px);
-  -webkit-transform: rotateY(180deg) translateX(-420px);
-  transform: rotateY(180deg) translateX(-420px);
+  -moz-transform: rotateY(180deg) translateX(-480px);
+  -webkit-transform: rotateY(180deg) translateX(-480px);
+  transform: rotateY(180deg) translateX(-480px);
 }
 
 #reading-music-icon {
@@ -42,8 +51,8 @@
 .flipper {
 	transition: 0.6s;
 	transform-style: preserve-3d;
-
 	position: relative;
+  left: -5%;
 }
 
 /* hide back of pane during swap */
@@ -74,22 +83,23 @@
     -o-transform: rotateY(180deg) scale(-1, 1);
     -ms-transform: rotateY(180deg) scale(-1, 1);
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .topic-header {
-  font-family: bebas;
+  font-family: bebas-kai;
   font-size: x-large;
   text-shadow: 1px 1px beige;
-  width: 50%;
+  width: 98%;
   position: relative;
-  left: 40%;
   top: 150px;
   z-index: 100;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .lesson-header {
-  font-family: bebas;
+  font-family: bebas-kai;
   text-align: center;
   font-size: larger;
   padding-left: 20px;
@@ -107,7 +117,7 @@
 }
 
 #learn:hover {
-  color: red;
+  color: rgb(182, 31, 31);
 }
 
 #play {
@@ -118,7 +128,7 @@
 }
 
 #play:hover {
-  color: red;
+  color: rgb(182, 31, 31);
 }
 
 hr.style1{

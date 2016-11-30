@@ -50,7 +50,7 @@ export default class Quiz extends React.Component {
         finished: stepIndex >= this.props.quizzes[0].question_types.length-1,
       }));
     }
-    
+
     const done = this.state.stepIndex === this.props.quizzes[0].question_types.length - 1;
     const passed = this.state.grade >= 0.6;
 
@@ -117,12 +117,13 @@ export default class Quiz extends React.Component {
 
           </div>
           <div>{(this.props.quizzes.length) ? this.getStepContent(stepIndex) : <p>Quiz length is empty</p>}</div>
-          <div style={{ marginTop: 24, marginBottom: 12 }}>
+          <div style={{ marginTop: "-107px", marginBottom: "17px", marginRight: "15px" }}>
             <div className="row">
               <div id="next-button" className="col-xs-6 col-sm-6 col-md-6 text-right">
                 <RaisedButton
                   label='Next'
                   primary={true}
+
                   onClick={this.handleNext}
                 />
               </div>
