@@ -4,6 +4,7 @@ import Vex from 'vexflow';
 import store from './store';
 import { setScore, setVexNotes, setNotes } from './redux/ChallengeActions'
 import { polySynth, metronome, metronomeGain } from './instruments';
+import { separateMeasures } from './vexparser';
 import { selectKeysOnDOM } from './onScreenKeyboard';
 import Challenge from './components/Challenge/Challenge'
 
@@ -232,9 +233,12 @@ export const startSequence = function(notesToPlay, bpm, vexflowNotes){
   // resets current score when restarting game
   currentScore = 0, visualNoteCounter = 0;
   // saving vexflowNotes to a global variable; converts them from object properties to actual vexNotes
-  vexflowNotes.forEach(vexNote =>{
-    visualNotes.push(new Vex.Flow.StaveNote(vexNote))
-  });
+  let noteMeasures = separateMeasures(vexflowNotes);
+  visualNotes = [].concat.apply([], noteMeasures);
+
+  // vexflowNotes.forEach(vexNote =>{
+  //   visualNotes.push(new Vex.Flow.StaveNote(vexNote))
+  // });
   // console.log("VISUALNOTES", visualNotes)
   var noteSetterLoop = loopCreator(notesToPlay)
   noteSequence[0] = notesToPlay;

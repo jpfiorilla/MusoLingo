@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { startSequence, stopSequence } from '../../piano_hero';
 import { separateMeasures, separateMeasuresDuringGame, staveCreator, beamCreator, musicRender } from '../../vexparser';
+import { setScore } from '../../redux/ChallengeActions'
+import store from '../../store';
 import tonal from 'tonal';
 import Vex from 'vexflow';
 
@@ -57,6 +59,9 @@ export default class Challenge extends Component {
         musicRender(staveMeasures, noteMeasures, beamArray, context)
 
         postMount = true;
+
+        let updatedVexNotes = [].concat.apply([], noteMeasures);
+        // store.dispatch(setNotes(updatedVexNotes))
       }
     }
 
@@ -96,7 +101,8 @@ export default class Challenge extends Component {
         return (
         <div>
 
-        <h2><b>{this.props.challenges.title}</b></h2>
+        <b>{this.props.challenges.title}</b>
+        <i>bpm=</i><b>{this.props.challenges.bpm}</b>
 
         <div id="staff"></div>
 

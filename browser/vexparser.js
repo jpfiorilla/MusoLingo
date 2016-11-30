@@ -22,10 +22,17 @@ export const separateMeasures = function(staffNotes){
   while (index < staffNotes.length){
     var singleMeasure = [];
     while (noteCount < 4){
-      noteCount += durationParser(staffNotes[index]);
+      noteCount += (staffNotes[index].dot ? durationParser(staffNotes[index]) * 1.5 : durationParser(staffNotes[index]));
       // makes sure that the most recent note did not exceed the limit for the measure
       if (noteCount <= 4){
-        singleMeasure.push(new Vex.Flow.StaveNote(staffNotes[index]));
+        if (staffNotes[index].accidental !== undefined){
+          singleMeasure.push(new Vex.Flow.StaveNote(staffNotes[index]).addAccidental(0, new Vex.Flow.Accidental(`${staffNotes[index].accidental}`)));
+        } else if (staffNotes[index].dot === true){
+          singleMeasure.push(new Vex.Flow.StaveNote(staffNotes[index]).addDotToAll())
+        } else {
+          singleMeasure.push(new Vex.Flow.StaveNote(staffNotes[index]));
+        }
+        // what to do with excess notes
       } else {
       }
       index++;
@@ -33,7 +40,7 @@ export const separateMeasures = function(staffNotes){
     arrayOfMeasures.push(singleMeasure)
     noteCount = 0;
   }
-  return arrayOfMeasures;
+    return arrayOfMeasures;
 }
 
 export const separateMeasuresDuringGame = function(staffNotes){
@@ -41,11 +48,16 @@ export const separateMeasuresDuringGame = function(staffNotes){
   while (index < staffNotes.length){
     var singleMeasure = [];
     while (noteCount < 4){
-      if (index === staffNotes.length) noteCount+=5;
-      noteCount += durationParser(staffNotes[index]);
+      noteCount += (staffNotes[index].dots > 0 ? durationParser(staffNotes[index]) * 1.5 : durationParser(staffNotes[index]));
       // makes sure that the most recent note did not exceed the limit for the measure
       if (noteCount <= 4){
-        singleMeasure.push(staffNotes[index]);
+        if (staffNotes[index].accidental !== undefined){
+          singleMeasure.push(staffNotes[index].addAccidental(0, new Vex.Flow.Accidental(`${staffNotes[index].accidental}`)))
+        } else if (staffNotes[index].dot === true){
+          singleMeasure.push(staffNotes[index].addDotToAll())
+        } else {
+          singleMeasure.push(staffNotes[index]);
+        }
       } else {
       }
       index++;
