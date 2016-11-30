@@ -7,15 +7,20 @@ import Vex from 'vexflow';
 var vexNotes, beams, stave, context, postMount, renderer, staveMeasures;
 
 export default class Challenge extends Component {
-  
+    constructor() {
+      super()
+
+      this.scorePercentage = this.scorePercentage.bind(this);
+    }
+
     scorePercentage(notes){
-      var totalNotes = notes.length;
+      var totalNotes = 0;
       for (let i = 0; i < notes.length; i++){
-        if (Array.isArray(notes[i])){
-          totalNotes += notes[i].length
+        if (notes[i] !== 'rest') {
+          totalNotes += notes[i].split(" ").length;
         }
       }
-      return `${this.props.score/totalNotes}%`;
+      return `${Math.round(this.props.score/totalNotes * 100)}%`;
     }
 
     componentDidMount(){
@@ -27,7 +32,7 @@ export default class Challenge extends Component {
         var div = document.getElementById("staff")
 
         renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-        renderer.resize(1150, 200);
+        renderer.resize(1350, 200);
 
         context = renderer.getContext();
         context.setFont("Arial", 10, "");
@@ -41,9 +46,9 @@ export default class Challenge extends Component {
         staveMeasures = staveCreator(noteMeasures);
         var beamArray = beamCreator(noteMeasures)
 
-        console.log("STAFFNOTES", staffNotes)
-        console.log("NOTES", noteMeasures)
-        console.log("STAVES", staveMeasures)
+        // console.log("STAFFNOTES", staffNotes)
+        // console.log("NOTES", noteMeasures)
+        // console.log("STAVES", staveMeasures)
 
         // noteMeasures[0].forEach(note => {
         //   note.setStyle({strokeStyle: "green", fillStyle: "green"})
@@ -68,7 +73,7 @@ export default class Challenge extends Component {
       let scoreCounter;
       if (this.props.score !== null) {
         scoreCounter = (
-          <div><h2>{this.props.score} correct</h2></div>
+          <div><h2>{this.props.score} correct {this.scorePercentage(this.props.challenges.notes)}</h2></div>
         )
       }
 
@@ -80,20 +85,22 @@ export default class Challenge extends Component {
         // staveMeasures = staveCreator(noteMeasures);
         var beamArray = beamCreator(noteMeasures)
 
-        console.log("NOTES", noteMeasures)
-        console.log("STAVES", staveMeasures)
+        // console.log("NOTES", noteMeasures)
+        // console.log("STAVES", staveMeasures)
 
         musicRender(staveMeasures, noteMeasures, beamArray, context)
-        console.log("FORMATTED")
+        // console.log("FORMATTED")
       }
 
 // change start button to reset after one loop; maybe have it toggle once the scoreCounter is visible?
         return (
         <div>
 
-        {scoreCounter}
+        <h2><b>{this.props.challenges.title}</b></h2>
 
         <div id="staff"></div>
+
+        {scoreCounter}
 
         <button type="button" name="button" id="startButton" onClick={() => startSequence(noteSequence, bpm, this.props.challenges.vexNotes)}>START</button>
 

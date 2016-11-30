@@ -41,6 +41,7 @@ export const separateMeasuresDuringGame = function(staffNotes){
   while (index < staffNotes.length){
     var singleMeasure = [];
     while (noteCount < 4){
+      if (index === staffNotes.length) noteCount+=5;
       noteCount += durationParser(staffNotes[index]);
       // makes sure that the most recent note did not exceed the limit for the measure
       if (noteCount <= 4){
@@ -57,7 +58,7 @@ export const separateMeasuresDuringGame = function(staffNotes){
 
 // looks at the number of measures and creates a corresponding number of staves
 export const staveCreator = function(arrayOfMeasures){
-  console.log("INSIDE STAVE CREATOR", arrayOfMeasures)
+  // console.log("INSIDE STAVE CREATOR", arrayOfMeasures)
   let staveArray = [];
   arrayOfMeasures.forEach((measure, index) => {
     if (index === 0){

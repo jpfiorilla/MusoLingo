@@ -102,7 +102,7 @@ function frequencyFromNoteNumber(note) {
 
 
 function pitchAccuracy(midiNote){
-  console.log(currentNote.note, tonal.note.fromMidi(midiNote))
+  // console.log(currentNote.note, tonal.note.fromMidi(midiNote))
 
   if (currentNote.note === tonal.note.fromMidi(midiNote)) return true;
   else return false;
@@ -203,15 +203,23 @@ function loopCreator(notes){
     }
 
     // if no key was pressed for the previous note, turn that note red; MUST occur before new currentNote is defined
-    if (currentNote.triggered === false && visualNoteCounter > 0){
+    if (currentNote.triggered === false && visualNoteCounter > 0 && currentNote.note !== 'rest'){
       noteHit(false)
     }
     // redefines currentNote
     currentNote.note = note;
     currentNote.triggered = false;
     // cycles through array of vexFlow notes on the DOM
-    currentVisualNote = visualNotes[visualNoteCounter];
-    visualNoteCounter++;
+
+    // hard-coded for DEMO; rest is a placeholder for half notes, rests, etc. so that the current vexNote doesn't change yet
+    // console.log("NOOOOOTE", note)
+    if (note !== 'rest'){
+      currentVisualNote = visualNotes[visualNoteCounter];
+      visualNoteCounter++;
+    } else {
+      currentVisualNote = visualNotes[visualNoteCounter-1]
+      // console.log("YOOOO", currentVisualNote)
+    }
     // console.log(visualNoteCounter, currentVisualNote)
   }, notes, noteSequence[1]);
 
@@ -233,7 +241,7 @@ export const startSequence = function(notesToPlay, bpm, vexflowNotes){
   startingPoint = (240 / Tone.Transport.bpm.value);
   offsetSeconds = (240 / Tone.Transport.bpm.value) / 80;
   let endTime = stopTime();
-
+  console.log(endTime)
   seq.start();
   // slight offset equal to bpm/4800 (approx. 1/5th of a sixteenth note, so that the currentNote gets re-assigned slightly ahead of the metronome)
   noteSetterLoop.start(startingPoint-offsetSeconds);
@@ -267,6 +275,7 @@ export function noteActionGame(note, index, color, type){
 
   if (type === 'attack') {
     polySynth.triggerAttack(note)
+    // console.log("on screen NOTE", note)
 
     // will only evaluate pitch and rhythm if noteSetterLoop has started running
     if (currentVisualNote !== undefined){

@@ -34,7 +34,7 @@ const challenges = [
     ]
   },
   {
-    "title": "Third Example",
+    "title": "Hot Cross Buns",
     "bpm": 80,
     "notes": ["C3", "D3"],
     "vexNotes": [
@@ -62,7 +62,7 @@ const challenges = [
   {
     "title": "Jurassic Park Theme",
     "bpm": 80,
-    "notes": ["Bb4 A4", "Bb4", "F4", "Eb4", "Bb4 A4", "Bb4", "F4", "Eb4","Bb4 A4", "Bb4", "Bb4", "F4", "Bb3", "G4"],
+    "notes": ["Bb4 A4", "Bb4", "F4", "Eb4", "Bb4 A4", "Bb4", "F4", "Eb4", "Bb4 A4", "Bb4", "rest", "F4", "Bb3", "G4", "rest", "G4"],
     "vexNotes": [
       {clef: 'treble', keys: ['b/4'], duration: '8'},
       {clef: 'treble', keys: ['a/4'], duration: '8'},
@@ -80,8 +80,39 @@ const challenges = [
       {clef: 'treble', keys: ['f/4'], duration: 'q'},
       {clef: 'treble', keys: ['b/3'], duration: 'q'},
       {clef: 'treble', keys: ['g/4'], duration: '2'},
+      {clef: 'treble', keys: ['b/4'], duration: 'qr'}
     ]
-  }
+  },
+  {
+    "title": "Old McDonald",
+    "bpm": 80,
+    "notes": ["Bb4 A4", "Bb4", "F4", "Eb4", "Bb4 A4", "Bb4", "F4", "Eb4", "Bb4 A4"],
+    "vexNotes": [
+      {clef: 'treble', keys: ['b/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['b/4'], duration: 'q'},
+      {clef: 'treble', keys: ['f/4'], duration: 'q'},
+      {clef: 'treble', keys: ['e/4'], duration: 'q'},
+      {clef: 'treble', keys: ['b/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['b/4'], duration: 'q'},
+      {clef: 'treble', keys: ['f/4'], duration: 'q'},
+      {clef: 'treble', keys: ['e/4'], duration: 'q'},
+      {clef: 'treble', keys: ['d/4'], duration: 'q'},
+      {clef: 'treble', keys: ['d/4'], duration: 'q'},
+      {clef: 'treble', keys: ['d/4'], duration: 'q'},
+      {clef: 'treble', keys: ['d/4'], duration: 'q'}
+    ]
+  },
 ]
+
+
+      // {clef: 'treble', keys: ['b/4'], duration: '8'},
+
+      // {clef: 'treble', keys: ['a/4'], duration: '8'},
+      // {clef: 'treble', keys: ['b/4'], duration: '2'},
+      // {clef: 'treble', keys: ['f/4'], duration: 'q'},
+      // {clef: 'treble', keys: ['b/3'], duration: 'q'},
+      // {clef: 'treble', keys: ['g/4'], duration: '2'}
 
 module.exports = challenges;
