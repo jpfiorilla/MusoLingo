@@ -175,5 +175,4 @@ export default class MultipleChoiceQuestion extends React.Component {
       </div>
     )
   }
-
 }
