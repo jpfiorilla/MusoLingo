@@ -139,7 +139,7 @@ export default class SlidesComponent extends React.Component {
 
     if (this.props.slides.length) {
       linearStepper = (
-        <Stepper activeStep={stepIndex}>
+        <Stepper style={{overflowY: "hidden", overflowX: "scroll", marginBottom: "40px"}} activeStep={stepIndex}>
           {
             this.props.slides.map((slide, index) => {
               return (
@@ -153,7 +153,7 @@ export default class SlidesComponent extends React.Component {
       )
     }
     return (
-      <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
+      <div className="slides-container">
 
         { linearStepper }
 
