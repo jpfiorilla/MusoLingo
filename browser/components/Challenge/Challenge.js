@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import SvgIcon from 'material-ui/SvgIcon';
-import PlayIcon from 'material-ui/svg-icons/av/play-circle-filled';
+import PlayIcon from 'material-ui/svg-icons/av/play-circle-outline';
 import StopIcon from 'material-ui/svg-icons/av/stop';
 import { startSequence, stopSequence } from '../../piano_hero';
 import { separateMeasures, separateMeasuresDuringGame, staveCreator, beamCreator, musicRender } from '../../vexparser';
@@ -106,7 +106,7 @@ export default class Challenge extends Component {
         return (
         <div>
 
-        <h3 id="theme-title">{this.props.challenges.title}</h3> <br />
+        <b id="theme-title">{this.props.challenges.title}</b> <br />
         <i>bpm= </i><b>{this.props.challenges.bpm}</b>
 
         <div id="staff"></div>
