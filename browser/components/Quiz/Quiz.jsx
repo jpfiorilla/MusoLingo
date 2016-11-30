@@ -123,7 +123,6 @@ export default class Quiz extends React.Component {
                 <RaisedButton
                   label='Next'
                   primary={true}
-
                   onClick={this.handleNext}
                 />
               </div>
@@ -133,38 +132,38 @@ export default class Quiz extends React.Component {
       );
     }
     render() {
-        const {loading, stepIndex} = this.state;
+      const {loading, stepIndex} = this.state;
 
-        let allQuizzes;
-        if (this.props.quizzes.length){
-            allQuizzes = (
-                <Stepper activeStep={stepIndex}>
-                {
-                    this.props.quizzes[0].question_types.map(question => {
-                        return (
-                            <Step>
-                                <StepLabel></StepLabel>
-                            </Step>
-                        )
-                    })
-                }
-                </Stepper>
-            )
-        }
+      let allQuizzes;
+      if (this.props.quizzes.length){
+        allQuizzes = (
+          <Stepper activeStep={stepIndex}>
+            {
+              this.props.quizzes[0].question_types.map((question, index) => {
+                return (
+                  <Step key={index}>
+                    <StepLabel></StepLabel>
+                  </Step>
+                )
+              })
+            }
+          </Stepper>
+        )
+      }
 
-        return (
-            <div id="quiz-body" style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
-                <ReactPlayer style={{left: "73%", position: "absolute", top: "45%"}} loop={false} width="300px" height="200px" url="/movies/beathoven-1.mp4" playing />
-                <div className="bad-job" id="beathoven-good-job">
-                    <ReactPlayer style={{left: "10%", top: "50%", position: "absolute"}} loop={false} width="300" height="300" url="/movies/good-job.mp4" playing />
-                </div>
-                {
-                    allQuizzes
-                }
-                <ExpandTransition loading={loading} open={true}>
-                    {this.renderContent()}
-                </ExpandTransition>
-            </div>
-        );
-        }
+      return (
+        <div id="quiz-body" style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
+          <ReactPlayer style={{left: "73%", position: "absolute", top: "45%"}} loop={false} width="300px" height="200px" url="/movies/beathoven-1.mp4" playing />
+          <div className="bad-job" id="beathoven-good-job">
+            <ReactPlayer style={{left: "10%", top: "50%", position: "absolute"}} loop={false} width="300px" height="300px" url="/movies/good-job.mp4" playing />
+          </div>
+          {
+            allQuizzes
+          }
+          <ExpandTransition loading={loading} open={true}>
+            {this.renderContent()}
+          </ExpandTransition>
+        </div>
+      );
     }
+  }

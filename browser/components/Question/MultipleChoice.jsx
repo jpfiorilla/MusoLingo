@@ -107,9 +107,9 @@ export default class MultipleChoiceQuestion extends React.Component {
         questionComponent = RandomRhythmNote;
         correct = randomNoteDuration();
         incorrect = randomOtherNoteDurations(correct);
-        // correct = getNoteName(correct);
         this.setState({ correctAnswer: correct[0] })
         console.log(correct);
+        console.log(incorrect);
         break;
       case "moreRhythm":
         questionComponent = RandomTiedNote;
@@ -157,13 +157,12 @@ export default class MultipleChoiceQuestion extends React.Component {
       <div id="mc-question-body">
         <div className="sheetmusic">
           {
-            React.createElement(questionComponent, {rhythmnote: correctAnswer, tiednote: correctAnswer, note: correctAnswer, type, intervalNotes, chord: correctChord, duration})
+            React.createElement(questionComponent, {rhythmnote: correct, tiednote: correct, note: correct, type, intervalNotes, chord: correctChord, duration})
           }
         </div>
         {
           incorrect.length && buttonsArray.map((button, idx) => {
             let correctness = rightAnswerPosition === idx ? correct : incorrect[index++];
-            console.log("correct answer: ", correct);
             return (
               <div id={`radio${idx}`} key={idx}
                 onClick={() => { (answered) ? null : this.onAnswerSelection(rightAnswerPosition, idx) } }>
