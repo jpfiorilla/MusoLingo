@@ -81,6 +81,7 @@ export default class Challenge extends Component {
 
       let scoreCounter;
       if (this.props.score !== null) {
+        // SCORE COUNTER:
         scoreCounter = (
           <div><h2>{this.props.score} correct {this.scorePercentage(this.props.challenges.notes)}</h2></div>
         )
@@ -105,7 +106,7 @@ export default class Challenge extends Component {
         return (
         <div>
 
-        <b>{this.props.challenges.title}</b> <br />
+        <h3 id="theme-title">{this.props.challenges.title}</h3> <br />
         <i>bpm= </i><b>{this.props.challenges.bpm}</b>
 
         <div id="staff"></div>
