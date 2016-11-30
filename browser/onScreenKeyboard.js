@@ -14,7 +14,7 @@ export function mapSoundsToPiano(keyArray){
   // triggers same note as key on mousedown
   keyArray.forEach(key => {
     key.onmousedown = function (){
-      polySynth.triggerAttack(`${key.dataset.ipn}`)
+      polySynth.triggerAttack(`${key.dataset.ipn}`, null, 75)
     }
   })
   // releases note on mouseup; rewrite to allow releasing off of the key note
@@ -177,5 +177,5 @@ export function toggleKeyboardDisplay(){
     onScreenKeyboard.style.display = (onScreenKeyboard.style.display === 'none' ? '':'none')
     showButton.innerHTML = (onScreenKeyboard.style.display === 'none' ? ('<img id="showKeyboard-icon" src="/images/piano-icon.png" /><div id="toggleKeyboard-text">Show</div>') : ('<img id="showKeyboard-icon" src="/images/piano-icon.png" /><div id="toggleKeyboard-text">HIDE</div>'))
   }
-  
+
 }

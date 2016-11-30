@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
+import SvgIcon from 'material-ui/SvgIcon';
+import PlayIcon from 'material-ui/svg-icons/av/play-circle-filled';
+import StopIcon from 'material-ui/svg-icons/av/stop';
 import { startSequence, stopSequence } from '../../piano_hero';
 import { separateMeasures, separateMeasuresDuringGame, staveCreator, beamCreator, musicRender } from '../../vexparser';
 import { setScore } from '../../redux/ChallengeActions'
@@ -101,16 +105,19 @@ export default class Challenge extends Component {
         return (
         <div>
 
-        <b>{this.props.challenges.title}</b>
-        <i>bpm=</i><b>{this.props.challenges.bpm}</b>
+        <b>{this.props.challenges.title}</b> <br />
+        <i>bpm= </i><b>{this.props.challenges.bpm}</b>
 
         <div id="staff"></div>
 
         {scoreCounter}
 
-        <button type="button" name="button" id="startButton" onClick={() => startSequence(noteSequence, bpm, this.props.challenges.vexNotes)}>START</button>
+        <RaisedButton icon={<PlayIcon />} backgroundColor="#5D99FF" onClick={() => startSequence(noteSequence, bpm, this.props.challenges.vexNotes)} />
+        <RaisedButton icon={<StopIcon />} backgroundColor="#FF6954" onClick={stopSequence} />
 
-        <button type="button" name="button" id="stopButton" onClick={stopSequence}>STOP</button>
+        {/* <button type="button" name="button" id="startButton" onClick={() => startSequence(noteSequence, bpm, this.props.challenges.vexNotes)}>START</button>
+
+        <button type="button" name="button" id="stopButton" onClick={stopSequence}>STOP</button> */}
         </div>
         )
     }
