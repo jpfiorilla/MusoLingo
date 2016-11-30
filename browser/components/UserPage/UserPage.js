@@ -102,7 +102,9 @@ export default class UserPage extends React.Component {
             {
               Object.keys(completed.quizzes).map((quiz_id, index) => {
                 return (
-                  <ListItem disabled={true} key={index} primaryText={`quiz # ${quiz_id}`} />
+                  <ListItem disabled={true} key={index} primaryText={`quiz # ${quiz_id}`}
+                    secondText={`Score: ${completed.quizzes[quiz_id]}`}
+                   />
                 );
               })
             }
