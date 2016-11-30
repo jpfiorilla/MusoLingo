@@ -6,7 +6,6 @@ import { slidesReducer } from './SlidesActions';
 import { challengesReducer, scoreReducer, vexNotesReducer } from './ChallengeActions';
 import { numOfKeysReducer } from './UserKeyActions'
 import { quizzesReducer, currentQuizReducer } from './QuizzesActions'
-import { completedQuizzesReducer, quizScoreReducer } from './ProgressActions'
 
 export default combineReducers({
     user,
@@ -17,6 +16,5 @@ export default combineReducers({
     score: scoreReducer,
     vexNotes: vexNotesReducer,
     keys: numOfKeysReducer,
-    quizzes: quizzesReducer,
-    completedQuizzes: completedQuizzesReducer
+    quizzes: quizzesReducer
 });

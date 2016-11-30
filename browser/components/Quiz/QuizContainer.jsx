@@ -1,7 +1,6 @@
 import Quiz from './Quiz'
 import { connect } from 'react-redux';
-import { addKeys } from '../../redux/UserKeyActions'
-import { saveUserProgressToServer } from '../../redux/ProgressActions'
+import { updateUser } from '../../redux/user';
 
 const mapStateToProps = (state) => ({
     quizzes: state.quizzes,
@@ -9,7 +8,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    addQuizz: (id, quiz) => dispatch(saveUserProgressToServer(id, quiz))
+
+    updateUser: (update, atrr, userId) => {
+      dispatch(updateUser(update, atrr, userId));
+    }
+
 });
 
 const QuizContainer = connect(mapStateToProps, mapDispatchToProps)(Quiz);

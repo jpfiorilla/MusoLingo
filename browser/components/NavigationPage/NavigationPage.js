@@ -22,17 +22,13 @@ export default class NavigationPage extends React.Component {
   }
 
   checkCompletion (lessonId) { // checks current quiz
-    var percentageComplete = 0;
-    if (this.props.user.completedQuizzes) {
-      this.props.user.completedQuizzes.forEach(quizId => {
-        if (quizId === lessonId) percentageComplete = 100;
-      })
+    if (this.props.user.completed && this.props.user.completed.quizzes[lessonId]) {
+      return 100;
     }
-    return percentageComplete;
+    return 0;
   }
 
   flipCurrentLesson (index) {
-    console.log($(`#navpage-${index}`))
     if ($(`#navpage-${index}`)[0].classList.length > 1){
       $(`#navpage-${index}`).removeClass("navpage-flipped")
       $(`#flipper-${index}`).removeClass("navpage-flipped")
@@ -56,19 +52,13 @@ export default class NavigationPage extends React.Component {
   getQuizAndHeadOver (lessonId) {
     this.props.clearQuizzes();
     this.props.askForQuiz(lessonId);
-    this.props.setCurrentQuiz(lessonId);
     browserHistory.push(`/quiz`);
   }
 
   getSlidesAndHeadOver (lessonId) {
     this.props.clearSlides();
-    // NOTE: hard coding 1 for testing purposes.
-    // NOTE: change back  to lesson Id when db is updated with actual lesson material.
-    // *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
-
     this.props.askForSlides(lessonId);
     browserHistory.push('/slides');
-    // *_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_
   }
 
   render () {

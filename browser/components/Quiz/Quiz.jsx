@@ -50,19 +50,19 @@ export default class Quiz extends React.Component {
         finished: stepIndex >= this.props.quizzes[0].question_types.length-1,
       }));
     }
+    
+    const done = this.state.stepIndex === this.props.quizzes[0].question_types.length - 1;
+    const passed = this.state.grade >= 0.6;
 
-    // ADDS COMPLETED QUIZ
-    if (this.state.stepIndex === this.props.quizzes[0].question_types.length - 1){
-
-      // If user passed the test (> 60% right), add quiz id to completed quizzes array
-      if (this.state.grade >= .6) {
-  LEFT OFF HERE
-        this.props.addQuizz(this.props.user.id, this.props.quizzes[0].quiz_id)
-      }
+    if (done && passed) {
+      // NOTE: add this quiz to the user's completed obj.
+      const lesson_id = this.props.quizzes[0].lesson_id;
+      this.props.user.completed.quizzes[lesson_id] = this.state.grade;
+      this.props.updateUser(this.props.user.completed, 'completed', this.props.user.id);
     }
   }
 
-  handlePrev(){
+  handlePrev () {
     const {stepIndex} = this.state;
     if (!this.state.loading) {
       this.dummyAsync(() => this.setState({

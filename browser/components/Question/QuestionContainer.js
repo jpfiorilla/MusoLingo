@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
-import {addNewKeyToServer} from "../../redux/UserKeyActions"
+import { addNewKeyToServer } from "../../redux/UserKeyActions"
 import MultipleChoice from "./MultipleChoice"
-import { saveUserScoreToServer } from "../../redux/ProgressActions"
-
 
 const mapStateToProps = ({ user, currentQuiz }) => ({
   user,
