@@ -90,10 +90,17 @@ export default class Quiz extends React.Component {
     const contentStyle = {margin: '0 16px', overflow: 'hidden'};
 
     if (finished) {
-        document.getElementById("beathoven-quiz-animation").remove()
+      if (document.getElementById("beathoven-quiz-animation")) {
+        $("#beathoven-quiz-animation").addClass("hide-animation")     
+      }
+
+      if (document.getElementById("beathoven-good-job")) {
+        $("#beathoven-good-job").addClass("hide-animation")     
+      }
+
       return (
         <div style={contentStyle}>
-          <p>
+          <div>
             {
                 this.state.grade >= 0.6 ? (
                     <div>      
@@ -118,7 +125,7 @@ export default class Quiz extends React.Component {
                     </div>
                 )
             }
-            </p>
+            </div>
           </div>
         );
       }
@@ -174,7 +181,7 @@ export default class Quiz extends React.Component {
                     <ReactPlayer style={{left: "73%", position: "absolute", top: "45%"}} loop={false} width="300px" height="200px" url="/movies/beathoven-1.mp4" playing />
                 </div>
                 <div className="bad-job" id="beathoven-good-job">
-                    <ReactPlayer style={{left: "10%", top: "50%", position: "absolute"}} loop={false} width="300" height="300" url="/movies/good-job.mp4" playing />
+                    <ReactPlayer style={{left: "10%", top: "50%", position: "absolute"}} loop={true} width="300px" height="300px" url="/movies/good-job.mp4" playing />
                 </div>
                 {
                     allQuizzes

@@ -337,3 +337,11 @@ background-color: #963838;}
   top: -85px;
   left: 123px;
 }
+
+.hide-animation {
+  visibility: hidden;
+}
+
+.show-animation {
+  visibility: visible;
+}
