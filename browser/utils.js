@@ -112,10 +112,15 @@ export const randomShorterNoteDuration = function(){
 export const randomTieDuration = function(){
     let duration = shorterDurations[Math.floor(Math.random() * shorterDurations.length)];
     let chooser = Math.floor(Math.random() * 2);
+    let exp;
     if (chooser === 0){
-        return 'Dotted ' + duration + 'note';
+        exp = 'Dotted ' + duration + ' note';
+        // console.log('tie duration', exp);
+        return exp;
     } else if (chooser === 1){
-        return 'Tied ' + duration + 'note';
+        exp = 'Tied ' + duration + ' note';
+        // console.log('tie duration', exp);
+        return exp;
     // } else if (chooser === 2){
     //     return 'Triplet ' + duration + 'note';
     }
@@ -128,10 +133,12 @@ export const getDuration = function(note){
     notetype === 'half' ? base = 2 :
     notetype === 'quarter' ? base = 1 :
     base = 0.5;
-    alteration === 'Dotted' ? newDuration = notetype * 1.5 :
-    alteration === 'Tied' ? newDuration = notetype * 1.5 :
-    newDuration = notetype * 2 / 3;
-    return newDuration.toString().substring(0, 2) + 'beats';
+    alteration === 'Dotted' ? newDuration = base * 1.5 :
+    alteration === 'Tied' ? newDuration = base * 1.5 :
+    newDuration = base * 2 / 3;
+    let exp = newDuration.toString().substring(0, 3) + ' beats';
+    console.log('getDur of correct: ', exp);
+    return exp;
 }
 
 export const getOtherDurations = function(correct){
