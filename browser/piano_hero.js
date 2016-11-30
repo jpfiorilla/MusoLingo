@@ -3,14 +3,15 @@ import Tone from 'tone';
 import Vex from 'vexflow';
 import store from './store';
 import { setScore, setVexNotes, setNotes } from './redux/ChallengeActions'
-import { polySynth, metronome } from './instruments';
+import { polySynth, metronome, metronomeGain } from './instruments';
+import { separateMeasures } from './vexparser';
 import { selectKeysOnDOM } from './onScreenKeyboard';
-import Challenge, { updateColor } from './components/Challenge/Challenge'
+import Challenge from './components/Challenge/Challenge'
 
 // noteSequence is an array. First value is the note sequence to be played, second is the duration of the click
 var noteSequence = [["C4", ["D4", "E4", "F4"], "G4", ["A4", "G4"]], "4n"]
-var noteSequence = [["C4", ["D4", "E4", "F4"], "G4", ["A4", "G4"], "B4", "D#4", "Gb4", "A#4"], "4n"]
-var noteSequence = [["C4", "D4", "G4", "A4"], "4n"]
+// var noteSequence = [["C4", ["D4", "E4", "F4"], "G4", ["A4", "G4"], "B4", "D#4", "Gb4", "A#4"], "4n"]
+// var noteSequence = [["C4", "D4", "G4", "A4"], "4n"]
 // var noteSequence = [["C4", "D4", ["A4", "D4"], ["A4", "D4"]], "4n"]
 // var noteSequence = [[["A4", "G4"], ["A4", "G4"], ["A4", "G4"], "A4"], "4n"]
 // var noteSequence = [[["A4", "G4"], ["A4", "G4"], "G4", ["A4", "B4", "C5"]], "4n"]
@@ -79,7 +80,7 @@ function noteOn(midiNote, velocity, frequency) {
   polySynth.triggerAttack(frequency, null, velocity)
   let timeTriggered = Tone.Transport.position;
 
-  if (currentNote.triggered === false) {
+  if (currentNote.triggered === false && currentVisualNote !== undefined) {
     if (pitchAccuracy(midiNote)) {
       rhythmicAccuracy(timeTriggered, noteDuration())
     } else {
@@ -102,7 +103,7 @@ function frequencyFromNoteNumber(note) {
 
 
 function pitchAccuracy(midiNote){
-  console.log(currentNote.note, tonal.note.fromMidi(midiNote))
+  // console.log(currentNote.note, tonal.note.fromMidi(midiNote))
 
   if (currentNote.note === tonal.note.fromMidi(midiNote)) return true;
   else return false;
@@ -143,7 +144,7 @@ function rhythmicAccuracy(timePlayed, noteDuration){
     case 1:
       if (decimal >= 3.792 || decimal <= 0.208){
         noteHit(true)
-        console.log("QUARTER NOTE HIT", decimal)
+        // console.log("QUARTER NOTE HIT", decimal)
       } else {
         noteHit(false)
       }
@@ -152,7 +153,7 @@ function rhythmicAccuracy(timePlayed, noteDuration){
     case 2:
       if (decimal >= 3.792 || decimal <= 0.208 || (decimal >= 1.792 && decimal <= 2.208) ){
         noteHit(true)
-        console.log("EIGHTH NOTE HIT", decimal)
+        // console.log("EIGHTH NOTE HIT", decimal)
       } else {
         noteHit(false)
       }
@@ -161,7 +162,7 @@ function rhythmicAccuracy(timePlayed, noteDuration){
     case 3:
       if (decimal >= 3.792 || decimal <= 0.208 || (decimal >= 1.125 && decimal <= 1.541) || (decimal >= 2.459 && decimal <= 2.875)){
         noteHit(true)
-        console.log("TRIPLET NOTE HIT", decimal)
+        // console.log("TRIPLET NOTE HIT", decimal)
       } else {
         noteHit(true)
       }
@@ -170,7 +171,7 @@ function rhythmicAccuracy(timePlayed, noteDuration){
     case 4:
       if (decimal >= 3.792 || decimal <= 0.208 || (decimal >= 0.792 && decimal <= 1.208) || (decimal >= 1.792 && decimal <= 2.208) || (decimal >= 2.792 && decimal <= 3.208)){
         noteHit(true)
-        console.log("SIXTEENTH NOTE HIT", decimal);
+        // console.log("SIXTEENTH NOTE HIT", decimal);
       } else {
         noteHit(false)
       }
@@ -181,6 +182,7 @@ function rhythmicAccuracy(timePlayed, noteDuration){
 
 // metronome loop, which simply needs subdivision time and a corresponding number of events
   var seq = new Tone.Sequence(function(time, note){
+    metronome.chain(metronomeGain, Tone.Master);
     metronome.start(0);
     // increments currentMeasure by one beat every time it clicks; starts at -1 b/c of count-in; must refactor to work with time signatures other than 4
     currentMeasure += .25
@@ -203,30 +205,41 @@ function loopCreator(notes){
     }
 
     // if no key was pressed for the previous note, turn that note red; MUST occur before new currentNote is defined
-    if (currentNote.triggered === false && visualNoteCounter > 0){
+    if (currentNote.triggered === false && visualNoteCounter > 0 && currentNote.note !== 'rest'){
       noteHit(false)
     }
     // redefines currentNote
     currentNote.note = note;
     currentNote.triggered = false;
     // cycles through array of vexFlow notes on the DOM
-    currentVisualNote = visualNotes[visualNoteCounter];
-    visualNoteCounter++;
+
+    // hard-coded for DEMO; rest is a placeholder for half notes, rests, etc. so that the current vexNote doesn't change yet
+    // console.log("NOOOOOTE", note)
+    if (note !== 'rest'){
+      currentVisualNote = visualNotes[visualNoteCounter];
+      visualNoteCounter++;
+    } else {
+      currentVisualNote = visualNotes[visualNoteCounter-1]
+      // console.log("YOOOO", currentVisualNote)
+    }
     // console.log(visualNoteCounter, currentVisualNote)
   }, notes, noteSequence[1]);
 
   return noteSetterLoop;
 }
 // notesToPlay corresponds to the noteSequence that noteSetterLoop will use to declare variables like currentNote
-// vexflowNotes
+// REFACTOR INTO SMALLER FUNCTIONS
 export const startSequence = function(notesToPlay, bpm, vexflowNotes){
   // resets current score when restarting game
   currentScore = 0, visualNoteCounter = 0;
   // saving vexflowNotes to a global variable; converts them from object properties to actual vexNotes
-  vexflowNotes.forEach(vexNote =>{
-    visualNotes.push(new Vex.Flow.StaveNote(vexNote))
-  });
-  console.log("VISUALNOTES", visualNotes)
+  let noteMeasures = separateMeasures(vexflowNotes);
+  visualNotes = [].concat.apply([], noteMeasures);
+
+  // vexflowNotes.forEach(vexNote =>{
+  //   visualNotes.push(new Vex.Flow.StaveNote(vexNote))
+  // });
+  // console.log("VISUALNOTES", visualNotes)
   var noteSetterLoop = loopCreator(notesToPlay)
   noteSequence[0] = notesToPlay;
   Tone.Transport.bpm.value = bpm;
@@ -248,7 +261,6 @@ export const startSequence = function(notesToPlay, bpm, vexflowNotes){
 export const stopSequence = function(){
   Tone.Transport.stop();
   currentMeasure = -1.25;
-  console.log("STOPPED")
 }
 
 // looks at number of notes in sequence, as well as subdivision for beats, and determines when the loop should stop
@@ -266,7 +278,8 @@ export function noteActionGame(note, index, color, type){
   keys[index].style.background = color;
 
   if (type === 'attack') {
-    polySynth.triggerAttack(note)
+    polySynth.triggerAttack(note, null, 75)
+    // console.log("on screen NOTE", note)
 
     // will only evaluate pitch and rhythm if noteSetterLoop has started running
     if (currentVisualNote !== undefined){
