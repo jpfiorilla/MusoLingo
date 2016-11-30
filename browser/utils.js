@@ -144,7 +144,7 @@ export const getDuration = function(note){
 export const getOtherDurations = function(correct){
     let arr = [];
     while (arr.length < 3){
-        let newDuration = getDuration(randomTieDuration());
+        let newDuration = randomTieDuration();
         if (newDuration !== correct && arr.indexOf(newDuration) === -1) arr.push(newDuration);
     }
     return arr;

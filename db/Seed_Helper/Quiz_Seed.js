@@ -5,7 +5,7 @@ const quiz = [{
 }, {
     lesson_id: 2,
     title: "Guess the Note Value",
-    question_types: ['moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm']
+    question_types: ['moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm']
 }, {
     lesson_id: 3,
     title: "Guess the Note Name",
