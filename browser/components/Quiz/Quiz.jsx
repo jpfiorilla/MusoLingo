@@ -90,18 +90,34 @@ export default class Quiz extends React.Component {
     const contentStyle = {margin: '0 16px', overflow: 'hidden'};
 
     if (finished) {
+        document.getElementById("beathoven-quiz-animation").remove()
       return (
         <div style={contentStyle}>
           <p>
-            <a
-              href="#"
-              onClick={(event) => {
-                event.preventDefault();
-                this.setState({stepIndex: 0, finished: false});
-              }}
-              >
-                Click here
-              </a> to reset the example.
+            {
+                this.state.grade >= 0.6 ? (
+                    <div>      
+                        <ReactPlayer style={{ width: "100%" }} loop={true} width="800px" height="400px" url="/movies/beathoven_quiz.mp4" playing />
+                        <div id="quiz-buttons" style={{position: "relative", left: "34%"}}>
+                            <FlatButton label="Challenge" href="/game/4" primary={true} />  
+                            <FlatButton label="Repeat" onClick={(event) => {
+                                event.preventDefault();
+                                this.setState({stepIndex: 0, finished: false});
+                                } } primary={true} />
+                        </div>    
+                    </div>
+                      ) : (
+                    <div>          
+                        <ReactPlayer style={{ width: "100%" }} loop={true} width="800px" height="400px" url="/movies/beathoven-quiz-fail.mp4" playing />
+                        <div id="quiz-buttons" style={{position: "relative", left: "46%"}}>
+                            <FlatButton label="Repeat" onClick={(event) => {
+                                event.preventDefault();
+                                this.setState({stepIndex: 0, finished: false});
+                                } } primary={true} />
+                        </div>    
+                    </div>
+                )
+            }
             </p>
           </div>
         );
@@ -153,8 +169,10 @@ export default class Quiz extends React.Component {
         }
 
         return (
-            <div id="quiz-body" style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
-                <ReactPlayer style={{left: "73%", position: "absolute", top: "45%"}} loop={false} width="300px" height="200px" url="/movies/beathoven-1.mp4" playing />
+            <div id="quiz-body" style={{ width: '100%', maxWidth: 700, margin: 'auto' }}>
+                <div id="beathoven-quiz-animation">    
+                    <ReactPlayer style={{left: "73%", position: "absolute", top: "45%"}} loop={false} width="300px" height="200px" url="/movies/beathoven-1.mp4" playing />
+                </div>
                 <div className="bad-job" id="beathoven-good-job">
                     <ReactPlayer style={{left: "10%", top: "50%", position: "absolute"}} loop={false} width="300" height="300" url="/movies/good-job.mp4" playing />
                 </div>
