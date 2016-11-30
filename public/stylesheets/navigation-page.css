@@ -90,12 +90,12 @@
   font-family: bebas-kai;
   font-size: x-large;
   text-shadow: 1px 1px beige;
-  width: 50%;
+  width: 98%;
   position: relative;
-  left: 40%;
   top: 150px;
   z-index: 100;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .lesson-header {
