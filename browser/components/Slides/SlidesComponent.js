@@ -139,7 +139,7 @@ export default class SlidesComponent extends React.Component {
 
     if (this.props.slides.length) {
       linearStepper = (
-        <Stepper style={{overflowY: "hidden", overflowX: "scroll", marginBottom: "40px"}} activeStep={stepIndex}>
+        <Stepper style={{overflowY: "hidden", overflowX: "scroll", marginBottom: "40px", fontFamily: "bebas-kai"}} activeStep={stepIndex}>
           {
             this.props.slides.map((slide, index) => {
               return (
@@ -159,17 +159,16 @@ export default class SlidesComponent extends React.Component {
 
         <div style={contentStyle}>
           {finished ? (
-            <p>
-              <a href="#" onClick={(event) => {
+            <div style={{textAlign: "center", marginBottom: "20px"}}>
+              <p style={{display: "inline-block", marginRight: "15px", cursor: "pointer", fontWeight: "bold"}} onClick={(event) => {
                 event.preventDefault();
                 this.setState({stepIndex: 0, finished: false});
               }}>
-              Replay the slides
-            </a>
-            <FlatButton onClick={this.goToQuiz}>
-              Go to Quiz
-            </FlatButton>
-          </p>
+              Replay Slides
+            </p>
+            |
+            <p style={{display: "inline-block", marginLeft: "15px", cursor: "pointer", fontWeight: "bold"}} onClick={this.goToQuiz}>Go to Quiz</p>
+          </div>
         ) : (
           <div style={{textAlign: 'center'}}>
             {
