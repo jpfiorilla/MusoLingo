@@ -191,9 +191,9 @@ export default class Quiz extends React.Component {
 
         return (
             <div id="quiz-body" style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
-                <ReactPlayer style={{left: "73%", position: "absolute", top: "45%"}} loop="true" width="300" height="200" url="/movies/beathoven-1.mp4" playing />
+                <ReactPlayer style={{left: "73%", position: "absolute", top: "45%"}} loop={false} width="300px" height="200px" url="/movies/beathoven-1.mp4" playing />
                 <div className="bad-job" id="beathoven-good-job">
-                    <ReactPlayer style={{left: "10%", top: "50%", position: "absolute"}} loop="true" width="300" height="300" url="/movies/good-job.mp4" playing />
+                    <ReactPlayer style={{left: "10%", top: "50%", position: "absolute"}} loop={false} width="300" height="300" url="/movies/good-job.mp4" playing />
                 </div>
                 {
                     allQuizzes

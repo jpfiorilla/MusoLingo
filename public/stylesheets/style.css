@@ -307,16 +307,10 @@ background-color: #963838;}
 .slides-container {
   width: 100%;
   margin: auto;
-  background-color: whitesmoke;
   font-family: gravity-book;
   font-size: medium;
   padding: 10px;
   box-shadow: 0px 0px 11px gray;
-}
-
-.slides-container img {
-  box-shadow: 2px 2px 9px grey;
-  margin: 15px;
 }
 
 /*MULTIPLE CHOICE*/
