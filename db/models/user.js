@@ -16,11 +16,6 @@ const User = db.define('users', {
 			notEmpty: true,
 		},
 	},
-	completedQuizzes: { type: Sequelize.ARRAY(Sequelize.INTEGER), defaultValue: [] },
-	quizzesScore: {
-		type: Sequelize.JSON,
-		defaultValue: {}
-	},
 	image: {
 		type: Sequelize.STRING,
 		allowNull: true,
@@ -35,7 +30,7 @@ const User = db.define('users', {
 	password: Sequelize.VIRTUAL,
 	completed: {
 		type: Sequelize.JSON,
-		defaultValue: {"quizzes": [], "lessons": {}, "keys": 0}
+		defaultValue: {"quizzes": {}, "lessons": {}, "keys": 0}
 	}
 }, {
 	indexes: [{fields: ['email'], unique: true,}],

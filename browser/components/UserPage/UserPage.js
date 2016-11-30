@@ -94,13 +94,13 @@ export default class UserPage extends React.Component {
       }
       // NOTE: if the user has completed some quizzes, we assign jsx to
       // a local quizzes variable.
-      if (this.props.user.completedQuizzes.length) {
+      if (Object.keys(completed.quizzes).length) {
         // NOTE: quizzes is the local variable for the JSX.
         quizzes = (
           <List>
             <h2>Completed:</h2>
             {
-              this.props.user.completedQuizzes.map((quiz_id, index) => {
+              Object.keys(completed.quizzes).map((quiz_id, index) => {
                 return (
                   <ListItem disabled={true} key={index} primaryText={`quiz # ${quiz_id}`} />
                 );

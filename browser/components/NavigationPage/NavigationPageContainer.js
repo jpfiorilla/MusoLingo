@@ -2,14 +2,13 @@ import { connect } from 'react-redux';
 
 import NavigationPage from './NavigationPage';
 import { askServerForTheSlides, clearSlidesBeforeRender } from '../../redux/SlidesActions';
-import { askServerForQuizzes, clearQuizzesBeforeRender, setCurrentQuizForProgress } from '../../redux/QuizzesActions';
+import { askServerForQuizzes, clearQuizzesBeforeRender } from '../../redux/QuizzesActions';
 
 
 const mapStateToProps = function (state) {
   return {
     topics: state.topics,
     lessons: state.lessons,
-    completedQuizzes: state.completedQuizzes,
     user: state.user
   };
 };
@@ -28,9 +27,6 @@ const mapDispatchToProps = function (dispatch) {
     },
     clearQuizzes: () => {
       dispatch(clearQuizzesBeforeRender());
-    },
-    setCurrentQuiz: (lesson_id) => {
-      dispatch(setCurrentQuizForProgress(lesson_id))
     }
   };
 };

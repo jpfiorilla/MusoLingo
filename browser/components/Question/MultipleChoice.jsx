@@ -134,21 +134,17 @@ export default class MultipleChoiceQuestion extends React.Component {
     let selected = "#mca-" + idx;
     if (idx !== rightAnswerPosition) {
       $(selected).addClass("wrong-answer")
-      this.setScore(false)
     }
     else {
       this.props.addKey(this.props.user.id, 1)
       $("#beathoven-good-job").removeClass("bad-job")
-      this.setScore(true)
+
+      // NOTE: this is where we tell parent quiz prop if the user answered right or wrong.
+      this.props.rightOrWrong(true);
+
     }
     $(correct[0]).addClass("right-answer")
     answered = true;
-  }
-
-  setScore(score) {
-    let userId = this.props.user.id;
-    let quizId = this.props.currentQuiz;
-    this.props.saveScores(userId, quizId, score);
   }
 
   render() {
