@@ -125,6 +125,7 @@ export default class MultipleChoiceQuestion extends React.Component {
   }
 
   onAnswerSelection(rightAnswerPosition, idx) {
+    console.log("right answer position: ", rightAnswerPosition, "user choice : ", idx)
     answered = true;
     let answerArr = ["#mca-0", "#mca-1", "#mca-2", "#mca-3"]
     let divArr = ["#radio0", "#radio1", "#radio2", "#radio3"]
@@ -165,9 +166,8 @@ export default class MultipleChoiceQuestion extends React.Component {
             let correctness = rightAnswerPosition === idx ? correct : incorrect[index++];
             console.log("correct answer: ", correct);
             return (
-              <div id={`radio${idx}`} key={idx}
-                onClick={() => { (answered) ? null : this.onAnswerSelection(rightAnswerPosition, idx) } }>
-                <div id={`mca-${idx}`} className="multiple-choice-ans" key={idx}>{correctness}</div>
+              <div id={`radio${idx}`} key={idx}>
+                <div id={`mca-${idx}`} onClick={() => { (answered) ? null : this.onAnswerSelection(rightAnswerPosition, idx) } } className="multiple-choice-ans" key={idx}>{correctness}</div>
               </div>
             )
           })

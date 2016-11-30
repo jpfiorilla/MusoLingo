@@ -233,6 +233,7 @@ background-color: #963838;}
   position: relative;
   left: 20%;
   line-height: 36px;
+  cursor: pointer;
 }
 
 .multiple-choice-ans:active {
