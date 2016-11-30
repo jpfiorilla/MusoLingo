@@ -36,27 +36,25 @@ const challenges = [
   {
     "title": "Hot Cross Buns",
     "bpm": 80,
-    "notes": ["C3", "D3"],
+    "notes": ["B3", "A3", "G3", "rest", "B3", "A3", "G3", "rest", "G3 G3", "G3 G3", "A3 A3", "A3 A3", "B3", "A3", "G3", "rest"],
     "vexNotes": [
-      {clef: 'treble', keys: ['a/4'], duration: '8'},
-      {clef: 'treble', keys: ['g/4'], duration: '8'},
-      {clef: 'treble', keys: ['a/4'], duration: '8'},
-      {clef: 'treble', keys: ['g/4'], duration: '8'},
-      {clef: 'treble', keys: ['a/4'], duration: '8'},
-      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['b/4'], duration: 'q'},
       {clef: 'treble', keys: ['a/4'], duration: 'q'},
-      {clef: 'treble', keys: ['a/4'], duration: '8'},
-      {clef: 'treble', keys: ['g/4'], duration: '8'},
-      {clef: 'treble', keys: ['a/4'], duration: '8'},
-      {clef: 'treble', keys: ['g/4'], duration: '8'},
-      {clef: 'treble', keys: ['a/4'], duration: '8'},
-      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '2'},
+      {clef: 'treble', keys: ['b/4'], duration: 'q'},
       {clef: 'treble', keys: ['a/4'], duration: 'q'},
-      {clef: 'treble', keys: ['c/4'], duration: 'q'},
-      {clef: 'treble', keys: ['d/4'], duration: 'q'},
-      {clef: 'treble', keys: ['e/4'], duration: 'q'},
-      {clef: 'treble', keys: ['f/4'], duration: '8'},
-      {clef: 'treble', keys: ['g/4'], duration: '8'}
+      {clef: 'treble', keys: ['g/4'], duration: '2'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['g/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['a/4'], duration: '8'},
+      {clef: 'treble', keys: ['b/4'], duration: 'q'},
+      {clef: 'treble', keys: ['a/4'], duration: 'q'},
+      {clef: 'treble', keys: ['g/4'], duration: '2'}
     ]
   },
   {
@@ -104,14 +102,5 @@ const challenges = [
     ]
   },
 ]
-
-
-      // {clef: 'treble', keys: ['b/4'], duration: '8'},
-
-      // {clef: 'treble', keys: ['a/4'], duration: '8'},
-      // {clef: 'treble', keys: ['b/4'], duration: '2'},
-      // {clef: 'treble', keys: ['f/4'], duration: 'q'},
-      // {clef: 'treble', keys: ['b/3'], duration: 'q'},
-      // {clef: 'treble', keys: ['g/4'], duration: '2'}
 
 module.exports = challenges;

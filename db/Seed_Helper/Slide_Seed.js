@@ -282,7 +282,7 @@ lessontwoone = [
       img: "/images/lessons_pictures/12semitones.png",
       style: {
         position: "relative",
-        left: "-11%",
+        left: "-9%",
         padding: "40px"
       }
     }, {

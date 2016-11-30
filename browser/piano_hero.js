@@ -126,7 +126,7 @@ function noteDuration(){
 function noteHit(result){
   if (result === true) {
     currentScore++;
-    currentVisualNote.setStyle({strokeStyle: "green", fillStyle: "green"})
+    currentVisualNote.setStyle({strokeStyle: "blue", fillStyle: "blue"})
     store.dispatch(setNotes(visualNotes))
   }
   else if (result === false) {
