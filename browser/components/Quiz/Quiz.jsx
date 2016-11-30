@@ -145,7 +145,7 @@ export default class Quiz extends React.Component {
 
                 </div>
                 <div>{(this.props.quizzes.length) ? this.getStepContent(stepIndex) : <p>Quiz length is empty</p>}</div>
-                <div style={{ marginTop: 24, marginBottom: 12 }}>
+                <div style={{ marginTop: "-107px", marginBottom: "17px", marginRight: "15px" }}>
                 <div className="row">
 {/*                    <div className="col-md-6">
                         <FlatButton
@@ -159,6 +159,7 @@ export default class Quiz extends React.Component {
                         <RaisedButton
                             label='Next'
                             primary={true}
+                            
                             onClick={this.handleNext}
                         />
                     </div>
