@@ -71,10 +71,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         lownote = randomNoteName(56, 75);
         highnote = randomNoteName(vexToMidi(lownote), vexToMidi(lownote) + 2);
         intervalNotes = [lownote, highnote];
-        correct = calculateInterval(intervalNotes);
-        console.log(correct);
-        correct = intervalToStep(correct);
-        console.log(correct);
+        correct = intervalToStep(calculateInterval(intervalNotes));
         incorrect = randomStepsNames(correct);
         this.setState({correctAnswer: correct})
         break;

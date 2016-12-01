@@ -406,13 +406,13 @@ lessontwotwo = [
     "title": "2",
     "slideContent": [
       {
-        img: "/images/lessons_pictures/c3 d3.png"
-      },
-      {
         text: "Let's start with C3 and D3. In terms of distance, the interval between these two notes will always be a <b>second</b>, regardless of any accidentals in either note."
-      },
-      {
-        text: "This goes for all consecutive letter names, as long as they're in the same octave."
+      }, {
+        img: "/images/lessons_pictures/c3 d3.png"
+      }, {
+        text: "This goes for all note names with the same relationship; for example, D3 and E3 also form a second."
+      }, {
+        img: '/images/lessons_pictures/d3 e3.png'
       }
     ]
   },
@@ -484,14 +484,11 @@ lessontwotwo = [
   },
   {
     "title": "9",
-    "slideContent": [
-      {
-        img: "/images/lessons_pictures/c5 g4.png"
-      },
-      {
+    "slideContent": [{
         text: "Intervals can also be counted downward. For example, G3 can be described as being a fourth <b>below</b> C4. If we were to count upward however, they would form a fifth."
-      },
-      {
+      }, {
+        img: "/images/lessons_pictures/c5 g4.png"
+      }, {
         text: "Don't worry too much about counting downward. For our purposes, we'll mostly be counting upward."
       }
     ]
@@ -659,9 +656,68 @@ lessonthreeone.forEach((slide, idx) => {
   slide.number = idx + 1;
 });
 
+lessonthreefour = [
+  {
+  "title": "Inversions",
+  "slideContent": [
+    {
+      text: "So far we've learned how to build triads in what is known as <b>root position</b>. A triad is in root position when its tonic is written as its lowest note, in the bass."
+    }, {
+      img: '/images/lessons_pictures/c root positions.png'
+    }, {
+      text: 'These two chords are both in root position. The mediant E is raised by an octave in the second example, but the lowest note remains the C.'
+    }
+    ]
+  }, {
+      text: "How else might a C triad be arranged? There are two other options for the bass note: the mediant (E) and the dominant (G)."
+    }, {
+      img: '/images/lessons_pictures/c6 and c64.png'
+    }, {
+      text: 'The triads written here are known as <b>inversions</b>.'
+    }
+    ]
+  }, {
+      text: "In the first chord, the mediant (E) is written in the bass; this is known as a C triad in <b>first inversion</b>, or a C 6."
+    }, {
+      img: '/images/lessons_pictures/c6 and c64.png'
+    }, {
+      text: 'The second chord features the dominant (G) in the bass; this is known as <b>second inversion</b>, or a C 6/4.'
+    }
+    ]
+  }, {
+      text: "In root position, a traid is composed of an interval of a third and an interval of a fifth from the bass note. The reason the first-inversion chord is called 'C 6' is that the intervals from the bass note are now a third (E to G) and a sixth (E to C)."
+    }, {
+      img: '/images/lessons_pictures/c6 and c64.png'
+    }, {
+      text: "Similarly, the second-inversion chord is called '6/4' because the intervals from the bass are now a sixth (G to E) and a fourth (G to C)."
+    }
+    ]
+  }, {
+      text: "There are several main reasons one might choose to write a chord in an inversion rather than in root position when writing a piece."
+    }, {
+      img: '/images/lessons_pictures/c64 g c.png'
+    }, {
+      text: 'One frequent reason is to preserve common tones between chords in their respective voices. See here: the progression is C 6/4, G, C. By writing the first C chord in second inversion, the bass is able to stay on the same note for both chords.'
+    }
+    ]
+  }, {
+      text: "There are several main reasons one might choose to write a chord in an inversion rather than in root position when writing a piece."
+    }, {
+      img: '/images/lessons_pictures/c64 g c.png'
+    }, {
+      text: 'One frequent reason is to preserve common tones between chords in their respective voices. See here: the progression is C 6/4, G, C. By writing the first C chord in second inversion, the bass is able to stay on the same note for both chords.'
+    }
+    ]
+  }
+];
+lessonthreefour.forEach((slide, idx) => {
+  slide.lesson_id = 12;
+  slide.number = idx + 1;
+});
+
 // lessonthreetwo;
 // lessonthreethree;
 
-const slides = _.flatten([lessononeone, lessononetwo, lessononethree, lessononefour, lessononefive, lessontwoone, lessontwotwo, lessontwothree, lessonthreeone]);
+const slides = _.flatten([lessononeone, lessononetwo, lessononethree, lessononefour, lessononefive, lessontwoone, lessontwotwo, lessontwothree, lessonthreeone, lessonthreefour]);
 
 module.exports = slides;
