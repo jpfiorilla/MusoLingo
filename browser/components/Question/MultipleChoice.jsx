@@ -49,6 +49,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         incorrect = randomOtherNoteNames(correct, 56, 67);
         this.setState({ correctAnswer: correct })
         correct = getNoteName(correct);
+        console.log(correct);
         break;
       case "guessBassNoteName":
         questionComponent = RandomBassNote;
