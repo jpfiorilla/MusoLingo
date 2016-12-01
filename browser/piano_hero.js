@@ -126,11 +126,12 @@ function noteDuration(){
 function noteHit(result){
   if (result === true) {
     currentScore++;
-    currentVisualNote.setStyle({strokeStyle: "blue", fillStyle: "blue"})
+    // currentVisualNote.setStyle({strokeStyle: "blue", fillStyle: "blue"})
+    currentVisualNote.color = "#2BC22E";
     store.dispatch(setNotes(visualNotes))
   }
   else if (result === false) {
-    currentVisualNote.setStyle({strokeStyle: "red", fillStyle: "red"})
+    currentVisualNote.color = "#963838";
     store.dispatch(setNotes(visualNotes))
   }
 }
@@ -238,6 +239,7 @@ export const startSequence = function(notesToPlay, bpm, vexflowNotes){
   currentScore = 0, visualNoteCounter = 0;
   // saving vexflowNotes to a global variable; converts them from object properties to actual vexNotes
   let noteMeasures = separateMeasures(vexflowNotes);
+  // puts all notes in a single array rather than being separated by measure
   visualNotes = [].concat.apply([], noteMeasures);
 
   // vexflowNotes.forEach(vexNote =>{

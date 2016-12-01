@@ -4,7 +4,7 @@ import SvgIcon from 'material-ui/SvgIcon';
 import PlayIcon from 'material-ui/svg-icons/av/play-circle-outline';
 import StopIcon from 'material-ui/svg-icons/av/stop';
 import { startSequence, stopSequence } from '../../piano_hero';
-import { separateMeasures, separateMeasuresDuringGame, staveCreator, beamCreator, musicRender } from '../../vexparser';
+import { separateMeasures, separateMeasuresDuringGame, staveCreator, beamCreator, notePainter, musicRender } from '../../vexparser';
 import { setScore } from '../../redux/ChallengeActions'
 import MetronomeCounter from './MetronomeCounterContainer'
 import store from '../../store';
@@ -54,15 +54,11 @@ export default class Challenge extends Component {
         // console.log("NOTES", noteMeasures)
         // console.log("STAVES", staveMeasures)
 
-        // noteMeasures[0].forEach(note => {
-        //   note.setStyle({strokeStyle: "green", fillStyle: "green"})
-        // })
-
         musicRender(staveMeasures, noteMeasures, beamArray, context)
 
         postMount = true;
 
-        let updatedVexNotes = [].concat.apply([], noteMeasures);
+        // let updatedVexNotes = [].concat.apply([], noteMeasures);
         // store.dispatch(setNotes(updatedVexNotes))
       }
     }
@@ -89,9 +85,12 @@ export default class Challenge extends Component {
 // how to incorporate separating measures?
       if (postMount === true){
         // THIS VERSION of separateMeasures should handle actual new VF.StaveNotes rather than the just objects with the properties we want
+        // takes the updated props, which correspond to visualNotes in piano_hero.js
         let noteMeasures = separateMeasuresDuringGame(this.props.challenges.vexNotes);
         // staveMeasures = staveCreator(noteMeasures);
         var beamArray = beamCreator(noteMeasures)
+        // must be called AFTER beams are created, otherwise solid noteheads won't change color
+        notePainter(noteMeasures)
 
         // console.log("NOTES", noteMeasures)
         // console.log("STAVES", staveMeasures)
