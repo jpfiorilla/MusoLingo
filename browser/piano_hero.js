@@ -242,10 +242,6 @@ export const startSequence = function(notesToPlay, bpm, vexflowNotes){
   // puts all notes in a single array rather than being separated by measure
   visualNotes = [].concat.apply([], noteMeasures);
 
-  // vexflowNotes.forEach(vexNote =>{
-  //   visualNotes.push(new Vex.Flow.StaveNote(vexNote))
-  // });
-  // console.log("VISUALNOTES", visualNotes)
   var noteSetterLoop = loopCreator(notesToPlay)
   noteSequence[0] = notesToPlay;
   Tone.Transport.bpm.value = bpm;
