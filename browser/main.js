@@ -13,7 +13,7 @@ import { randomTrebleNote } from './utils'
 
 import App from './components/App';
 import Quiz from "./components/Quiz/QuizContainer";
-import {LoginContainer} from "./components/Login/LoginContainer";
+import { LoginContainer } from "./components/Login/LoginContainer";
 import NavigationPage from './components/NavigationPage/NavigationPageContainer';
 import Account from "./components/Account/AccountContainer";
 import SlidesContainer from './components/Slides/SlidesContainer';
@@ -37,7 +37,12 @@ const onNavigationEnter = () => {
 }
 
 const onEnterRetrieveLoggedInUser = () => {
-  store.dispatch(retrieveLoggedInUser());
+// NOTE: if the user is not logged in, send them to the homepage.
+  if (! store.getState().user.completed) {
+    browserHistory.push('/home');
+  } else {
+    store.dispatch(retrieveLoggedInUser());
+  }
 }
 
 const onEnterRetrieveChallenge = (nextState) => {
