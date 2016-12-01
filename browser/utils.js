@@ -8,6 +8,7 @@ const intervals = ['second', 'third', 'fourth', 'fifth', 'sixth', 'seventh'];
 const intervalQualities = ['Augmented', 'Major', 'Perfect', 'Minor', 'diminished'];
 const intervalsPerfect = ['Augmented', 'Perfect', 'Diminished'];
 const intervalsMajor = ['Augmented', 'Major', 'Minor', 'Diminished'];
+const stepQualities = ['Augmented', 'Major', 'Minor', 'Major', 'Minor', 'Major', 'Minor', 'Major', 'Minor']
 
 const triadQualities = ['+', '', 'm', 'dim', 'sus4'];
 
@@ -35,9 +36,9 @@ export const calculateInterval = function(notes){
     let interval = tonal.interval(vexToTonal(notes[0]), vexToTonal(notes[1]));
     interval[1] === 'P' ? quality = 'Perfect' :
     interval[1] === 'A' ? quality = 'Augmented' :
-    interval[1] === 'm' ? quality = 'minor' :
+    interval[1] === 'm' ? quality = 'Minor' :
     interval[1] === 'M' ? quality = 'Major' :
-    interval[1] === 'd' ? quality = 'diminished' : quality = '';
+    interval[1] === 'd' ? quality = 'Diminished' : quality = '';
     interval[0] === '1' ? num = 'unison' :
     interval[0] === '2' ? num = 'second' :
     interval[0] === '3' ? num = 'third' :
@@ -63,6 +64,22 @@ export const randomIntervals = function(correct){
         let newInterval = randomIntervalName();
         if (newInterval !== correct && arr.indexOf(newInterval) === -1) arr.push(newInterval);
     }
+    return arr;
+}
+
+export const randomStepName = function(){
+    let qual = stepQualities[Math.floor(Math.random() * stepQualities.length)];
+    let num = 'step';
+    return qual + ' ' + num;
+}
+
+export const randomStepsNames = function(correct){
+    let arr = [];
+    while (arr.length < 2){
+        let newInterval = randomStepName();
+        if (newInterval !== correct && arr.indexOf(newInterval) === -1) arr.push(newInterval);
+    }
+    arr.push("I don't know");
     return arr;
 }
 

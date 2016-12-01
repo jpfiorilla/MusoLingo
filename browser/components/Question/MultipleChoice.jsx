@@ -10,7 +10,8 @@ import RandomBassNote from '../vexflow/randombassnote';
 import RandomDistance from '../vexflow/randomdistance';
 import RandomInvertedChord from '../vexflow/randominvertedchord';
 import RandomTiedNote from '../vexflow/randomtiednote';
-import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations, randomDistance, randomOtherDistances, randomIntervalName, randomTieDuration, getDuration, getOtherDurations } from '../../utils';
+import RandomHalfOrWholeStep from '../vexflow/randomhalforwholestep';
+import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations, randomDistance, randomOtherDistances, randomIntervalName, randomTieDuration, getDuration, getOtherDurations, randomStepsNames } from '../../utils';
 import  Vex from 'vexflow'
 
 const styles = {
@@ -63,6 +64,15 @@ export default class MultipleChoiceQuestion extends React.Component {
         intervalNotes = [lownote, highnote];
         correct = calculateInterval(intervalNotes);
         incorrect = randomIntervals(correct);
+        this.setState({correctAnswer: correct})
+        break;
+      case "halfOrWholeStep":
+        questionComponent = RandomHalfOrWholeStep;
+        lownote = randomNoteName(56, 75);
+        highnote = randomNoteName(vexToMidi(lownote) + 1, vexToMidi(lownote) + 2);
+        intervalNotes = [lownote, highnote];
+        correct = calculateInterval(intervalNotes);
+        incorrect = randomStepsNames(correct);
         this.setState({correctAnswer: correct})
         break;
       case "guessDistance":
