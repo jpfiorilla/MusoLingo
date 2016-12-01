@@ -4,7 +4,8 @@ import { topicsReducer } from './TopicsActions';
 import { lessonsReducer } from './LessonsActions';
 import { slidesReducer } from './SlidesActions';
 import { challengesReducer, scoreReducer} from './ChallengeActions';
-import { numOfKeysReducer } from './UserKeyActions'
+import { metronomeReducer } from './MetronomeActions';
+import { numOfKeysReducer } from './UserKeyActions';
 import { quizzesReducer, currentQuizReducer } from './QuizzesActions'
 
 export default combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
     challenges: challengesReducer,
     score: scoreReducer,
     keys: numOfKeysReducer,
-    quizzes: quizzesReducer
+    quizzes: quizzesReducer,
+    rhythm: metronomeReducer
 });

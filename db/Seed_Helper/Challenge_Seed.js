@@ -59,7 +59,7 @@ const challenges = [
   },
   {
     "title": "Jurassic Park Theme",
-    "bpm": 80,
+    "bpm": 108,
     "notes": ["Bb4 A4", "Bb4", "F4", "Eb4", "Bb4 A4", "Bb4", "F4", "Eb4", "Bb4 A4", "Bb4", "rest", "F4", "Bb3", "G4", "rest", "rest"],
     "vexNotes": [
       {clef: 'treble', keys: ['bb/4'], duration: '8', accidental: 'b'},

@@ -6,6 +6,7 @@ import StopIcon from 'material-ui/svg-icons/av/stop';
 import { startSequence, stopSequence } from '../../piano_hero';
 import { separateMeasures, separateMeasuresDuringGame, staveCreator, beamCreator, musicRender } from '../../vexparser';
 import { setScore } from '../../redux/ChallengeActions'
+import MetronomeCounter from './MetronomeCounterContainer'
 import store from '../../store';
 import tonal from 'tonal';
 import Vex from 'vexflow';
@@ -27,9 +28,6 @@ export default class Challenge extends Component {
         }
       }
       return `${Math.round(this.props.score/totalNotes * 100)}%`;
-    }
-
-    componentDidMount(){
     }
 
     componentDidUpdate(){
@@ -116,9 +114,8 @@ export default class Challenge extends Component {
         <RaisedButton icon={<PlayIcon />} backgroundColor="#5D99FF" onClick={() => startSequence(noteSequence, bpm, this.props.challenges.vexNotes)} />
         <RaisedButton icon={<StopIcon />} backgroundColor="#FF6954" onClick={stopSequence} />
 
-        {/* <button type="button" name="button" id="startButton" onClick={() => startSequence(noteSequence, bpm, this.props.challenges.vexNotes)}>START</button>
+        <MetronomeCounter />
 
-        <button type="button" name="button" id="stopButton" onClick={stopSequence}>STOP</button> */}
         </div>
         )
     }

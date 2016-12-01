@@ -3,6 +3,7 @@ import Tone from 'tone';
 import Vex from 'vexflow';
 import store from './store';
 import { setScore, setVexNotes, setNotes } from './redux/ChallengeActions'
+import { setBeat, setMeasure } from './redux/MetronomeActions'
 import { polySynth, metronome, metronomeGain } from './instruments';
 import { separateMeasures } from './vexparser';
 import { selectKeysOnDOM } from './onScreenKeyboard';
@@ -93,7 +94,6 @@ function noteOn(midiNote, velocity, frequency) {
 
 // rewrite to have noteOff measure duration note is held? could require longer notes to be sustained for longer; allow a generous margin of error
 function noteOff(midiNote, velocity, frequency) {
-  // console.log('lifted up', Tone.Transport)
   polySynth.triggerRelease(frequency)
 }
 
@@ -181,11 +181,15 @@ function rhythmicAccuracy(timePlayed, noteDuration){
 }
 
 // metronome loop, which simply needs subdivision time and a corresponding number of events
-  var seq = new Tone.Sequence(function(time, note){
+  var seq = new Tone.Sequence(function(time, beat){
     metronome.chain(metronomeGain, Tone.Master);
     metronome.start(0);
     // increments currentMeasure by one beat every time it clicks; starts at -1 b/c of count-in; must refactor to work with time signatures other than 4
     currentMeasure += .25
+    // updates the MetronomeCounter component's props to re-render
+    store.dispatch(setBeat(beat + 1))
+    store.dispatch(setMeasure(Math.floor(currentMeasure) + 1))
+    // console.log("MEASURE", currentMeasure)
     console.log(Tone.Transport.position)
   }, [0,1,2,3], noteSequence[1]);
 
