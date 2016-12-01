@@ -19,16 +19,25 @@ var lessononeone = [{
     {
       'text': 'This is a <b>whole note</b>. It indicates that a note is to be held for <b>four (4) beats</b>.'
     },
-    // {
-    //   "img": "http://i.imgur.com/69AJB7X.png"
-    // },
     {
-      vex: {
-        type: 'SingleRhythmNote',
-        num: '1',
-        info: ['w']
+      img: "http://i.imgur.com/69AJB7X.png",
+      tone: {
+        duration: "1n"
+      },
+      style: {
+        height: "75px"
       }
-    }
+    },
+    // {
+    //   vex: {
+    //     type: 'SingleRhythmNote',
+    //     num: '1',
+    //     info: ['w']
+    //   },
+    //   tone: {
+    //     duration: "1n"
+    //   }
+    // }
   ],
   "lesson_id": 1
 }, {
@@ -38,29 +47,41 @@ var lessononeone = [{
     {
       text: "This is a <b>half note</b>. It's worth half the duration of a whole note, or <b>two (2) beats.</b>"
     },
-    // {
-    //   "img": "http://i.imgur.com/w2N9QO3.png"
-    // },
     {
-      vex: {
-        type: 'SingleRhythmNote',
-        num: '1',
-        info: ['h']
+      img: "http://i.imgur.com/w2N9QO3.png",
+      tone: {
+        duration: "2n"
+      },
+      style: {
+        height: "75px"
       }
     },
+    // {
+    //   vex: {
+    //     type: 'SingleRhythmNote',
+    //     num: '1',
+    //     info: ['h']
+    //   }
+    // },
     {
       text: "Similarly, <b>quarter notes</b> are worth half of eighth notes, or <b>one (1) beat</b>."
     },
-    // {
-    //   "img": "http://i.imgur.com/Wq8bHjw.png"
-    // },
     {
-      vex: {
-        type: 'SingleRhythmNote',
-        num: '2',
-        info: ['q']
+      img: "http://i.imgur.com/Wq8bHjw.png",
+      tone: {
+        duration: "4n"
+      },
+      style: {
+        height: "75px"
       }
-    }
+    },
+    // {
+    //   vex: {
+    //     type: 'SingleRhythmNote',
+    //     num: '2',
+    //     info: ['q']
+    //   }
+    // }
   ],
   "lesson_id": 1
 }, {
@@ -71,13 +92,22 @@ var lessononeone = [{
       text: "This is an <b>eighth note</b>. It's worth half a quarter note, or one <b>half of a beat (1/2)</b>."
     },
     {
-      "img": "http://i.imgur.com/iv4GeCq.png"
+      img: "http://i.imgur.com/iv4GeCq.png",
+      tone: {
+        duration: "8n"
+      },
+      style: {
+        height: "75px"
+      }
     },
     {
       "text": "When two or four eighth notes are written in sequence, they are attached together with a <b>stem</b>."
     },
     {
-      img: "http://i.imgur.com/HdYQtYg.png"
+      img: "http://i.imgur.com/HdYQtYg.png",
+      style: {
+        height: "110px"
+      }
     }
   ],
   "lesson_id": 1
@@ -89,13 +119,88 @@ var lessononeone = [{
       text: "This is a <b>sixteenth note</b>. It's worth half an eighth note, or <b>one quarter of a beat (1/4)</b>."
     },
     {
-      "img": "http://i.imgur.com/PvRcW43.png"
+      img: "http://i.imgur.com/PvRcW43.png",
+      tone: {
+        duration: "16n"
+      },
+      style: {
+        height: "75px"
+      }
     },
     {
       "text": "Like eighth notes, when two or four sixteenth notes are written in sequence, they are attached together with a stem."
     },
     {
-      img: "http://i.imgur.com/e3lyfNN.png"
+      img: "http://i.imgur.com/e3lyfNN.png",
+      style: {
+        height: "110px"
+      }
+    }
+  ],
+  "lesson_id": 1
+}, {
+  "title": "conclusion",
+  "number": 6,
+  "slideContent": [
+    { // whole note:
+      img: "http://i.imgur.com/69AJB7X.png",
+      tone: {
+        duration: "1n"
+      },
+      style: {
+        height: "75px"
+      },
+      div: {
+        style: {display: "inline-block"}
+      }
+    },
+    { // half note:
+      img: "http://i.imgur.com/w2N9QO3.png",
+      tone: {
+        duration: "2n"
+      },
+      style: {
+        height: "75px"
+      },
+      div: {
+        style: {display: "inline-block"}
+      }
+    },
+    { // quarter note:
+      img: "http://i.imgur.com/Wq8bHjw.png",
+      tone: {
+        duration: "4n"
+      },
+      style: {
+        height: "75px"
+      },
+      div: {
+        style: {display: "inline-block"}
+      }
+    },
+    {
+      img: "http://i.imgur.com/iv4GeCq.png",
+      tone: {
+        duration: "8n"
+      },
+      style: {
+        height: "75px"
+      },
+      div: {
+        style: {display: "inline-block"}
+      }
+    },
+    {
+      img: "http://i.imgur.com/PvRcW43.png",
+      tone: {
+        duration: "16n"
+      },
+      style: {
+        height: "75px"
+      },
+      div: {
+        style: {display: "inline-block"}
+      }
     }
   ],
   "lesson_id": 1

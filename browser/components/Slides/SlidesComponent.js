@@ -9,6 +9,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import SingleRhythmNote from '../vexflow/singlerhythmnote';
 const currSlide = 'currSlide';
+import Tone from "tone";
+
+let synth = new Tone.Synth().toMaster();
 
 export default class SlidesComponent extends React.Component {
 
@@ -111,11 +114,33 @@ export default class SlidesComponent extends React.Component {
         </div>
       );
     } else if (obj.img) {
-      return (
-        <div key={index}>
-          <img key={index} src={obj.img} style={obj.style} />
-        </div>
-      );
+      if (obj.tone) {
+        let triggerPopUp = () => {
+          document.getElementById(`click-me-popup-${index}`).style.display = "block";
+        }
+        let hidePopUp = () => {
+          document.getElementById(`click-me-popup-${index}`).style.display = "none";
+        }
+        let note = "C4";
+        let duration = obj.tone.duration;
+        let playSynth = () => {synth.triggerAttackRelease(note, duration)}
+        return (
+          <div style={(obj.div) ? obj.div.style : null} key={index}>
+            <div id={`click-me-popup-${index}`} 
+              style={{display: "none", position: "relative", top: "30px", color: "red", fontSize: "smaller", fontWeight: "bold", fontFamily: "bebas-kai"}}>
+                Click me
+            </div>
+            <img key={index} src={obj.img} style={obj.style} onClick={playSynth} onMouseOver={triggerPopUp} onMouseOut={hidePopUp} />
+          </div>
+        )
+      }
+      else {
+        return (
+          <div key={index}>
+            <img key={index} src={obj.img} style={obj.style} />
+          </div>
+        );
+      }
     } else if (obj.vex) {
       let vexComponent = obj.vex.type;
       obj.vex.type === 'SingleRhythmNote' ?
