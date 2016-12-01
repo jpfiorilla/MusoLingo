@@ -22,7 +22,6 @@ import LessonPage from "./components/LessonPage/LessonPage";
 import Challenge from "./components/Challenge/ChallengeContainer";
 import UserPage from './components/UserPage/UserPageContainer';
 import Keyboard from "./components/Keyboard/Keyboard";
-import UserTextInput from './components/Slides/SubComponents/UserTextInput';
 
 // Redux actions and thunks
 import store from './store'
@@ -65,9 +64,6 @@ render(
       <Route path="/user" component={UserPage}/>
       <Route path="/game/:id" component={Challenge} onEnter={onEnterRetrieveChallenge}/>
       <Route path="/keyboard"/>
-
-      <Route path="/test" component={UserTextInput} />
-
       <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
     </Route>
   </Router>
