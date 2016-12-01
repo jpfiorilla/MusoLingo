@@ -92,6 +92,17 @@ export const beamCreator = function (noteMeasures){
   return beamArray;
 }
 
+export const notePainter = function (noteMeasures){
+  noteMeasures.forEach(measure => {
+    measure.forEach(note => {
+      if (note.color) {
+        note.setStyle({strokeStyle: `${note.color}`, fillStyle: `${note.color}`})
+      }
+    })
+  })
+  // return noteMeasures;
+}
+
 export const musicRender = function (staveMeasures, noteMeasures, beamArray, context){
   staveMeasures.forEach((staff, index) => {
     staff.setContext(context).draw();
