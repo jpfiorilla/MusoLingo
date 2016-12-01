@@ -16,15 +16,16 @@ var vexNotes, beams, stave, context, postMount, renderer, staveMeasures;
 export default class Challenge extends Component {
     constructor() {
       super()
-
       this.scorePercentage = this.scorePercentage.bind(this);
     }
 
     scorePercentage(notes){
       var totalNotes = 0;
       for (let i = 0; i < notes.length; i++){
-        if (notes[i] !== 'rest') {
-          totalNotes += notes[i].split(" ").length;
+        for (let x = 0; x < notes[i].length; x++){
+          if (notes[i][x] !== 'space' && notes[i][x] !== 'rest') {
+            totalNotes++
+          }
         }
       }
       return `${Math.round(this.props.score/totalNotes * 100)}%`;
@@ -77,7 +78,7 @@ export default class Challenge extends Component {
       if (this.props.score !== null) {
         // SCORE COUNTER:
         scoreCounter = (
-          <div><h2>{this.props.score} correct {this.scorePercentage(this.props.challenges.notes)}</h2></div>
+          <div><h2>{this.props.score} correct {this.scorePercentage(noteSequence)}</h2></div>
         )
       }
 
