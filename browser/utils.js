@@ -8,7 +8,7 @@ const intervals = ['second', 'third', 'fourth', 'fifth', 'sixth', 'seventh'];
 const intervalQualities = ['Augmented', 'Major', 'Perfect', 'Minor', 'diminished'];
 const intervalsPerfect = ['Augmented', 'Perfect', 'Diminished'];
 const intervalsMajor = ['Augmented', 'Major', 'Minor', 'Diminished'];
-const stepQualities = ['Augmented', 'Major', 'Minor', 'Major', 'Minor', 'Major', 'Minor', 'Major', 'Minor']
+const stepQualities = ['Augmented', 'Whole', 'Half', 'Whole', 'Half', 'Whole', 'Half', 'Whole', 'Half', 'Whole', 'Half', 'Whole', 'Half'];
 
 const triadQualities = ['+', '', 'm', 'dim', 'sus4'];
 
@@ -71,6 +71,15 @@ export const randomStepName = function(){
     let qual = stepQualities[Math.floor(Math.random() * stepQualities.length)];
     let num = 'step';
     return qual + ' ' + num;
+}
+
+export const intervalToStep = function(interval){
+    return interval === 'Major second' ? 'Whole step' :
+    interval === 'Diminished third' ? 'Whole step' :
+    interval === 'Minor second' ? 'Half step' :
+    interval === 'Augmented unison' ? 'Half step' :
+    interval === 'Augmented second' ? 'Augmented step' :
+    'n/a';
 }
 
 export const randomStepsNames = function(correct){
