@@ -64,7 +64,7 @@ render(
       <Route path="/quiz" component={Quiz} />
       <Route path="/account" component={Account} />
       <Route path="/nav" component={NavigationPage} onEnter={onNavigationEnter}/>
-      <Route path="/slides" component={SlidesContainer} />
+      <Route path="/slides" component={SlidesContainer} onEnter={onNavigationEnter} />
       <Route path="/lesson" component={LessonPage} />
       <Route path="/game" component={Challenge}/>
       <Route path="/user" component={UserPage}/>

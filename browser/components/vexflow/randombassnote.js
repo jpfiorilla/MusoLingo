@@ -35,14 +35,18 @@ export default class RandomBassNote extends Component {
         // Connect it to the rendering context and draw!
         stave.setContext(context).draw();
 
-        if (getNoteName(note)[1]){
-        var notes = [
-            new VF.StaveNote({clef: "bass", keys: [note], duration: "w" }).addAccidental(0, new VF.Accidental(getNoteName(note)[1]))
-        ];} else {
+
+        if (getNoteName(note)[1]) {
+            var notes = [
+                new VF.StaveNote({clef: "bass", keys: [note + "/3"], duration: "w" }).addAccidental(0, new VF.Accidental(getNoteName(note)[1]))
+            ];
+            }
+        else {
             notes = [
-            new VF.StaveNote({clef: "bass", keys: [note], duration: "w" })
+                new VF.StaveNote({clef: "bass", keys: [note + "/3"], duration: "w" })
             ];
         }
+        
 
         // Create a voice in 4/4 and add above notes
         var voice = new VF.Voice({num_beats: 4,  beat_value: 4});
