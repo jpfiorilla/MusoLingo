@@ -3,6 +3,7 @@ import SlidesComponent from './SlidesComponent';
 import { updateUser } from '../../redux/user';
 import { clearSlides } from '../../redux/SlidesActions';
 import { askServerForQuizzes } from '../../redux/QuizzesActions';
+import { addNewKeyToServer } from '../../redux/UserKeyActions'
 
 const mapStateToProps = function (state) {
   return {
@@ -23,6 +24,9 @@ const mapDispatchToProps = function (dispatch) {
     },
     askForQuiz: (lesson_id) => {
       dispatch(askServerForQuizzes(lesson_id));
+    },
+    addKeys: (id, numOfKeys) => {
+      dispatch(addNewKeyToServer(id, numOfKeys))
     }
   };
 };
