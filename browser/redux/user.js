@@ -26,7 +26,7 @@ export default function reducer (currentUser = initUser || {}, action) {
     return action.user;
 
     case REMOVE:
-    updateStorage(loc_stor_user_property, {});
+    updateStorage(loc_stor_user_property, undefined);
     return {};
 
     default:

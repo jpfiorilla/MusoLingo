@@ -40,11 +40,16 @@ const onNavigationEnter = () => {
 const onEnterRetrieveLoggedInUser = () => {
 // NOTE: if the user is not logged in, send them to the homepage.
 
-  if (! store.getState().user.completed) {
-    console.log();
+  if (! localStorage.user) {
+    console.log('Inside');
     browserHistory.push('/home');
   } else {
-    store.dispatch(retrieveLoggedInUser());
+    console.log(store.getState().user);
+    if (! store.getState().user.id) {
+      store.dispatch(retrieveLoggedInUser());
+    } else {
+      console.log('User is already logged in');
+    }
   }
 }
 
