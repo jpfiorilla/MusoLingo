@@ -1,0 +1,32 @@
+
+.main-div {
+  position: relative;
+  left: 5%;
+  /*height: 300px;
+  width: 400px;
+  border-radius: 3%;
+  box-shadow: 0px 0px 19px black;
+  cursor: pointer;*/
+}
+
+.name {
+  text-align: center;
+  background-color: #eee;
+  border-radius: 3%;
+}
+.header {
+  font-size: 25px;
+  color: blue;
+  text-align: center;
+}
+.form {
+  top: 25%;
+  position: fixed;
+  left: 35%;
+}
+.actual-form {
+  font-size: 20px;
+}
+.inputButton {
+  left: 50%;
+}

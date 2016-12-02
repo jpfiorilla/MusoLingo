@@ -32,7 +32,6 @@ router.post('/login', (req, res, next) => {
   })
 		.then(user => {
       // Check if input email not found
-			console.log('MADE IT ', user);
       if (!user) {
         let error = new Error('User not found');
         error.status = 401;

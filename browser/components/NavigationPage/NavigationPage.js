@@ -95,10 +95,10 @@ export default class NavigationPage extends React.Component {
                       </div>  
                     </div>
                   </div>
-                )
-              })
-            }
-        </div>
-  )
-}
+            )
+          })
+        }
+      </div>
+    )
+  }
 }
