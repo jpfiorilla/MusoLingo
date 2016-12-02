@@ -178,7 +178,7 @@ export default class Quiz extends React.Component {
               })
             }
           </Stepper>
-          <p className="correctNumber"><b>Correct: {correct}/{quizIndex}</b></p>
+          <div className="correctBox"><b><p>Correct: </p><div className="correctNumber">{correct}/{quizIndex}</div></b></div>
           <br></br>
         </div>
       )
