@@ -23,13 +23,12 @@ export default class NavigationPage extends React.Component {
 
   checkCompletion(lessonId) { // checks current quiz
     let score = 0;
-    if (this.props.user.completed.quizzes[lessonId] >= 0.6) {
+    // console.log('lessonId ', lessonId);
+    if (this.props.user.completed.quizzes && this.props.user.completed.quizzes[lessonId] >= 0.6) {
       score += 1;
-    }
-    if (this.props.user.completed.challenges[lessonId] >= 0.5) {
+    } if (this.props.user.completed.challenges && this.props.user.completed.challenges[lessonId] >= 0.5) {
       score += 1;
-    }
-    if (this.props.user.completed.lessons[lessonId]) {
+    } if (this.props.user.completed.lessons && this.props.user.completed.lessons[lessonId]) {
       score += 1;
     }
     return (score / 3) * 100;
