@@ -9,6 +9,7 @@ import { MultipleChoiceContainer } from "../Question/QuestionContainer"
 import MultipleChoice from '../Question/MultipleChoice';
 import TextInput from "../Question/TextInput"
 import ReactPlayer from "react-player"
+import Mousetrap from 'mousetrap';
 
 // Material CSS rules
 const centerText = {marginLeft: "10%"}
@@ -96,6 +97,15 @@ export default class Quiz extends React.Component {
         </div>
       </div>
     );
+  }
+
+  componentDidMount() {
+    Mousetrap.bind([`right`], this.handleNext);
+    Mousetrap.bind([`left`], this.handlePrev);
+  }
+  componentWillUnmount() {
+    Mousetrap.unbind([`right`], this.handleNext);
+    Mousetrap.unbind([`left`], this.handlePrev);
   }
 
   renderContent() {
