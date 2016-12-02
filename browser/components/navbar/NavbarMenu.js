@@ -84,7 +84,7 @@ export default class NavbarMenu extends React.Component {
               onRequestClose={this.handleAccountClose}>
               <Menu>
                 <MenuItem style={{fontFamily: "gravity-book", textAlign: "center"}} onClick={() => browserHistory.push("/user")} primaryText="Account" />
-                <MenuItem style={{fontFamily: "gravity-book", textAlign: "center"}} onClick={logout} primaryText="Sign Out" />
+                <MenuItem style={{fontFamily: "gravity-book", textAlign: "center"}} onClick={() => {logout(); browserHistory.push('/home');}} primaryText="Sign Out" />
               </Menu>
             </Popover>
           </div>
