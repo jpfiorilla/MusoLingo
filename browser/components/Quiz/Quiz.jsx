@@ -79,7 +79,8 @@ export default class Quiz extends React.Component {
         }      
         
         this.props.updateUser(this.props.user.completed, 'completed', this.props.user.id);
-        $("#navbar-key").addClass("grow")
+        // this.setState({grow: true})
+        
       }
     }
   }

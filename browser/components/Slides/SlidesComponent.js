@@ -34,7 +34,7 @@ export default class SlidesComponent extends React.Component {
     localStorage.setItem(currSlide, 0);
     Mousetrap.unbind([`right`], this.handleNext);
   }
-  componentDidMount () {
+  componentDidMount() {
     // NOTE: update localStorage with slide Number.
     this.state.stepIndex = +localStorage.getItem(currSlide);
     if (! this.state.stepIndex) {
@@ -64,7 +64,7 @@ export default class SlidesComponent extends React.Component {
       this.props.user.completed.lessons[this.props.slides[0].lesson_id] = 'We did it!';
       this.props.user.completed.keys += 1;
       this.props.completed(this.props.user.completed, 'completed', this.props.user.id);
-      $("#navbar-key").addClass("grow")
+      
       localStorage.setItem(currSlide, 0);
       this.forceUpdate();
     }
