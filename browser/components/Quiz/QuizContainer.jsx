@@ -12,9 +12,6 @@ const mapDispatchToProps = (dispatch) => ({
 
     updateUser: (update, atrr, userId) => {
       dispatch(updateUser(update, atrr, userId));
-    },
-    addKeys: (id, keysToAdd) => {
-        dispatch(addNewKeyToServer(id, keysToAdd))
     }
 
 });

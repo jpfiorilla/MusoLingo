@@ -33,7 +33,8 @@ customUserRoutes.get('/:id', function(req, res, next){
 	.catch(next);
 });
 
-customUserRoutes.put('/:id', (req,res,next) => {
+customUserRoutes.put('/:id', (req, res, next) => {
+	console.log(req.body)
 	userModel.findById(req.params.id)
 		.then(result => result.update(req.body))
 		.then(updated => res.status(201).send(updated))

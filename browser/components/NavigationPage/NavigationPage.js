@@ -21,11 +21,18 @@ export default class NavigationPage extends React.Component {
     this.checkCompletion = this.checkCompletion.bind(this);
   }
 
-  checkCompletion (lessonId) { // checks current quiz
+  checkCompletion(lessonId) { // checks current quiz
+    let score = 0;
     if (this.props.user.completed.quizzes[lessonId] >= 0.6) {
-      return 100;
+      score += 1;
     }
-    return 0;
+    if (this.props.user.completed.challenges[lessonId] >= 0.5) {
+      score += 1;
+    }
+    if (this.props.user.completed.lessons[lessonId]) {
+      score += 1;
+    }
+    return (score / 3) * 100;
   }
 
   setCurrentLesson (hovered) {

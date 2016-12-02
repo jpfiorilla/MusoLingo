@@ -30,7 +30,8 @@ const User = db.define('users', {
 	password: Sequelize.VIRTUAL,
 	completed: {
 		type: Sequelize.JSON,
-		defaultValue: {"quizzes": {}, "lessons": {}, "keys": 0}
+		defaultValue: {
+			"quizzes": {}, "lessons": {}, "challenges": {}, "keys": 0}
 	}
 }, {
 	indexes: [{fields: ['email'], unique: true,}],
