@@ -1,7 +1,6 @@
 import Quiz from './Quiz'
 import { connect } from 'react-redux';
 import { updateUser } from '../../redux/user';
-import {addNewKeyToServer} from '../../redux/UserKeyActions'
 
 const mapStateToProps = (state) => ({
     quizzes: state.quizzes,
