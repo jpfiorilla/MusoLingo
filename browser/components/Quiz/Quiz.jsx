@@ -172,7 +172,7 @@ export default class Quiz extends React.Component {
 
     let allQuizzes;
     let quizIndex = stepIndex + 1;
-    if (stepIndex === this.props.quizzes[0].question_types.length){
+    if (this.props.quizzes.length && stepIndex === this.props.quizzes[0].question_types.length){
       quizIndex = stepIndex;
     }
     if (this.props.quizzes.length){
