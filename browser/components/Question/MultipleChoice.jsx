@@ -50,7 +50,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         incorrect = randomOtherNoteNames(correct, 56, 67);
         this.setState({ correctAnswer: correct })
         correct = getNoteName(correct);
-        console.log(correct);
+        // console.log(correct);
         break;
       case "guessWhiteKeyName":
         questionComponent = RandomTrebleNote;
@@ -58,7 +58,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         incorrect = randomOtherWhiteKeys(correct, 56, 67);
         this.setState({ correctAnswer: correct })
         correct = getNoteName(correct);
-        console.log(correct);
+        // console.log(correct);
         break;
       case "guessBassNoteName":
         questionComponent = RandomBassNote;
@@ -128,7 +128,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         correct = randomNoteDuration();
         incorrect = randomOtherNoteDurations(correct);
         this.setState({ correctAnswer: correct[0] })
-        console.log(correct);
+        // console.log(correct);
         console.log(incorrect);
         break;
       case "moreRhythm":
@@ -145,7 +145,7 @@ export default class MultipleChoiceQuestion extends React.Component {
   }
 
   onAnswerSelection(rightAnswerPosition, idx) {
-    console.log("right answer position: ", rightAnswerPosition, "user choice : ", idx)
+    // console.log("right answer position: ", rightAnswerPosition, "user choice : ", idx)
     answered = true;
     let answerArr = ["#mca-0", "#mca-1", "#mca-2", "#mca-3"]
     let divArr = ["#radio0", "#radio1", "#radio2", "#radio3"]
