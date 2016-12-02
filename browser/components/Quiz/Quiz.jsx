@@ -59,7 +59,10 @@ export default class Quiz extends React.Component {
       // NOTE: add this quiz to the user's completed obj.
       const lesson_id = this.props.quizzes[0].lesson_id;
       this.props.user.completed.quizzes[lesson_id] = this.state.grade;
-      this.props.updateUser(this.props.user.completed, 'completed', this.props.user.id);
+      // console.log('NEW USER COMPLETED OBJECT: ', this.props.user.completed);
+      let update = Object.assign(this.props.user.completed, {});
+      console.log('UPDATE ', update);
+      this.props.updateUser(update, 'completed', this.props.user.id);
 
       // Allotting number of keys:
       let {grade} = this.state;

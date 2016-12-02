@@ -22,7 +22,7 @@ export default class NavigationPage extends React.Component {
   }
 
   checkCompletion (lessonId) { // checks current quiz
-    if (this.props.user.completed.quizzes[lessonId] >= 0.6) {
+    if (this.props.user.completed && this.props.user.completed.quizzes[lessonId] >= 0.6) {
       return 100;
     }
     return 0;
@@ -71,7 +71,7 @@ export default class NavigationPage extends React.Component {
                             if(lesson.topic_id === topic.id){
                               return (
                                 <div className="lesson-container" key={index2}
-                                  onMouseOver={() => { 
+                                  onMouseOver={() => {
                                     $(`#slides-quizzes-${index2}`).addClass("slides-quizzes-visible") } } onMouseOut={() => { $(`#slides-quizzes-${index2}`).removeClass("slides-quizzes-visible") } }>
                                   <h3 id="lesson-step" className="col-md-1">{index2 + 1}</h3>
                                   <h3 id={`lesson-header-${index2}`} className="lesson-header">{lesson.title}</h3>
@@ -92,7 +92,7 @@ export default class NavigationPage extends React.Component {
                           })
                         }
                         </div>
-                      </div>  
+                      </div>
                     </div>
                   </div>
             )

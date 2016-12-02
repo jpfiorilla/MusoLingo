@@ -15,7 +15,9 @@ export function mapSoundsToPiano(keyArray){
   // triggers same note as key on mousedown
   keyArray.forEach(key => {
     key.onmousedown = function (){
-      pianoHelper(key.dataset.ipn);
+      if (pianoHelper) {
+        pianoHelper(key.dataset.ipn);
+      }
       polySynth.triggerAttack(`${key.dataset.ipn}`, null, 75)
     }
   })

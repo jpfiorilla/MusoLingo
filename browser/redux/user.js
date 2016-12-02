@@ -37,9 +37,8 @@ export default function reducer (currentUser = initUser || {}, action) {
 /* ------------       DISPATCHERS     ------------------ */
 
 export const updateUser = (update, att, userId) => dispatch => {
-  axios.put(`/api/users/${userId}`, {[att]: update})
+  axios.post(`/api/users/${userId}`, {[att]: update})
   .then(res => {
-    console.log(res.data);
     dispatch(set(res.data))
   })
   .catch(err => console.error('Error in updateUser', err));
