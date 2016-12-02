@@ -157,7 +157,7 @@ export default class MultipleChoiceQuestion extends React.Component {
       $(selected).addClass("wrong-answer")
     }
     else {
-      this.props.addKey(this.props.user.id, 1)
+      // this.props.addKey(this.props.user.id, 1)
       $("#beathoven-good-job").removeClass("bad-job")
 
       // NOTE: this is where we tell parent quiz prop if the user answered right or wrong.

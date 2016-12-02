@@ -22,7 +22,7 @@ export default class NavigationPage extends React.Component {
   }
 
   checkCompletion (lessonId) { // checks current quiz
-    if (this.props.user.completed && this.props.user.completed.quizzes[lessonId]) {
+    if (this.props.user.completed.quizzes[lessonId] >= 0.6) {
       return 100;
     }
     return 0;
