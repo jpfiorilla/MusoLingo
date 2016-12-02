@@ -4,6 +4,8 @@ import {List, ListItem} from 'material-ui/List';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
 import FlatButton from 'material-ui/FlatButton';
 import Subheader from 'material-ui/Subheader';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 export default class UserPage extends React.Component {
 
@@ -24,6 +26,10 @@ export default class UserPage extends React.Component {
     this.props.updateUserInfo(this.state.update, attrToUpdate, this.props.user.id);
     this.state.update = undefined;
     event.preventDefault();
+    alert('Update Successful!');
+    this.state.something_to_show = undefined;
+    this.state.active = undefined;
+    this.forceUpdate();
   }
   handleChange (event) {
     this.state.update = event.target.value;
@@ -44,13 +50,17 @@ export default class UserPage extends React.Component {
   }
   form (label) {
     return (
-      <form onSubmit={(e) => this.handleSubmit(e, label)}>
-        <label>
-          Update {label}:
-          <input onChange={this.handleChange} type="text" name="name" />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="actual-form">
+        <div>
+          <TextField
+            floatingLabelText={`Update ${label}:`}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div>
+          <RaisedButton label="Submit!" onClick={(e) => this.handleSubmit(e, label)} />
+        </div>
+      </div>
     );
   }
 
@@ -103,8 +113,8 @@ export default class UserPage extends React.Component {
               Object.keys(completed.quizzes).map((quiz_id, index) => {
                 return (
                   <ListItem disabled={true} key={index} primaryText={`quiz # ${quiz_id}`}
-                    secondText={`Score: ${completed.quizzes[quiz_id]}`}
-                   />
+                    secondaryText={`Score: ${completed.quizzes[quiz_id]}`}
+                  />
                 );
               })
             }
@@ -118,46 +128,53 @@ export default class UserPage extends React.Component {
       isAdmin = 'Nope';
     }
     // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
+    const nameStyle = {
+      fontSize: '25px',
+    }
+    const otherStyle = {
+      fontSize: '20px',
+    };
 
     return (
       <div>
-        <div className="col-md-6">
+        <div className="main-div col-md-3 col-lg-3">
           <List>
-            <h2>
+            <h2 className="header">
               User Information
             </h2>
+            <div className="name">
+              <ListItem style={nameStyle} onClick={() => {
+                this.showStuff(this.form('first_name'), 'first_name');
+              }} primaryText={this.props.user.first_name} secondaryText="First Name"/>
 
-            <ListItem onClick={() => {
-              this.showStuff(this.form('first_name'), 'first_name');
-            }} primaryText="First Name" secondaryText={this.props.user.first_name}/>
+              <ListItem style={nameStyle} onClick={() => {
+                this.showStuff(this.form('last_name'), 'last_name');
+              }} primaryText={this.props.user.last_name} secondaryText="Last Name"/>
 
-            <ListItem onClick={() => {
-              this.showStuff(this.form('last_name'), 'last_name');
-            }} primaryText="Last Name" secondaryText={this.props.user.last_name}/>
+              <ListItem style={otherStyle} onClick={() => {
+                this.showStuff(this.form('email'), 'email');
+              }} primaryText={email} secondaryText="Email" />
 
-            <ListItem onClick={() => {
-              this.showStuff(this.form('email'), 'email');
-            }} primaryText="Email" secondaryText={email}/>
+              <ListItem style={otherStyle} onClick={() => {
+                this.showStuff(this.form('image'), 'image');
+              }} primaryText="Update Image"/>
 
-            <ListItem onClick={() => {
-              this.showStuff(this.form('image'), 'image');
-            }} primaryText="Update Image"/>
+              <ListItem style={otherStyle} onClick={() => {
+                this.showStuff(this.form('password'), 'password');
+              }} primaryText="Update Password"/>
 
-            <ListItem onClick={() => {
-              this.showStuff(this.form('password'), 'password');
-            }} primaryText="Update Password"/>
-
-            <ListItem disabled={true} primaryText="Admin" secondaryText={isAdmin}/>
-            <ListItem disabled={true} primaryText="Keys Collected" secondaryText={keys} />
-            <ListItem primaryText="Lessons Completed" secondaryText="Click to view" onClick={() => {
-              this.showStuff(lessons, 'lessons');
-            }} />
-            <ListItem primaryText="Quizzes Completed" secondaryText="Click to view" onClick={() => {
-              this.showStuff(quizzes, 'quizzes');
-            }} />
+              <ListItem style={otherStyle} disabled={true} primaryText="Admin" secondaryText={isAdmin}/>
+              <ListItem style={otherStyle} disabled={true} primaryText={keys} secondaryText="Keys Collected" />
+              <ListItem style={otherStyle} primaryText="Completed Lessons" secondaryText="Click to view" onClick={() => {
+                this.showStuff(lessons, 'lessons');
+              }} />
+              <ListItem style={otherStyle} primaryText="Completed Quizzes" secondaryText="Click to view" onClick={() => {
+                this.showStuff(quizzes, 'quizzes');
+              }} />
+            </div>
           </List>
         </div>
-        <div className="col-md-6">
+        <div className="form col-md-9 col-lg-9">
           { this.state.something_to_show }
         </div>
       </div>

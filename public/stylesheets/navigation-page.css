@@ -1,5 +1,6 @@
-/*NAVIGATION PAGE:*/
-
+/*
+NAVIGATION PAGE:
+*/
 .navbar-icon {
   position: relative;
   left: 28%;
@@ -36,7 +37,6 @@
 }
 
 .navpage-container {
-  perspective: 1000px;
   left: 50px;
   position: relative;
   margin: 20px;
@@ -95,7 +95,6 @@
   top: 150px;
   z-index: 100;
   text-transform: uppercase;
-  text-align: center;
   left: -5%;
 }
 

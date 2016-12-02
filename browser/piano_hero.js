@@ -280,6 +280,9 @@ function stopTime(){
 
 // links up on-screen keyboard to game functionality
 export function noteActionGame(note, index, color, type){
+
+  // !#!#!#
+
   var keys = selectKeysOnDOM();
 
   keys[index].style.background = color;
