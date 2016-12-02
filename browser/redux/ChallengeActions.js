@@ -54,6 +54,7 @@ export const scoreReducer = (state = null, action) => {
       return state
   }
 }
+
 export const challengesReducer = (state = [], action) => {
   switch (action.type) {
     case SET_CHALLENGES:

@@ -38,11 +38,11 @@ const onNavigationEnter = () => {
 
 const onEnterRetrieveLoggedInUser = () => {
 // NOTE: if the user is not logged in, send them to the homepage.
-  if (! store.getState().user.completed) {
-    browserHistory.push('/home');
-  } else {
+  // if (! store.getState().user.completed) {
+  //   browserHistory.push('/home');
+  // } else {
     store.dispatch(retrieveLoggedInUser());
-  }
+  // }
 }
 
 const onEnterRetrieveChallenge = (nextState) => {
