@@ -66,44 +66,44 @@ export default class NavigationPage extends React.Component {
     var random_background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     return (
       <div className="navigation-container">
-            {
-              this.props.topics && this.props.topics.map((topic, index) => {
-                return (
-                  <div id={`navpage-${index}`} className="navpage-container" key={index} onMouseOver={() => {this.setCurrentLesson(topic)}} onClick={() => {this.flipCurrentLesson(index)}}>
-                    <div id={`flipper-${index}`} className="flipper">
-                      <div className="front">
-                            <div className="navbar-icon-text">
-                              <h3 className="topic-header">{topic.name}</h3>
-                            </div>
-                        <div style={{backgroundImage: backgrounds[index] || backgrounds[0], opacity: "0.5"}} className="navbar-icon">
-                          </div>
-                      </div>
-                      <div className="back">
-                        {
-                          this.props.lessons && this.props.lessons.map((lesson, index2) => {
-                            if(lesson.topic_id === topic.id){
-                              return (
-                                <div key={index2}>
-                                  <h3 className="lesson-step">{index2 + 1}</h3>
-                                  <h3 className="lesson-header">{lesson.title}</h3>
-                                  <div className="slides-quizzes">
-                                    <h3 id="learn" onClick={() => {this.getSlidesAndHeadOver(lesson.id)}}>Learn</h3>
-                                    <h3 id="play" onClick={() => {this.getQuizAndHeadOver(lesson.id)}}>Play</h3>
-                                    <LinearProgress style={{width: "60%", left: "20%"}} mode="determinate" value={this.checkCompletion(lesson.id)} />
-                                  </div>
-                                <hr className="style1" />
-                                </div>
-                                )
-                            }
-                          })
-                        }
-                      </div>
+        {
+          this.props.topics && this.props.topics.map((topic, index) => {
+            return (
+              <div key={index}>
+                <div id={`flipper-${index}`} className="flipper">
+                  <div className="front">
+                    <div className="navbar-icon-text">
+                      <h3 className="topic-header">{topic.name}</h3>
+                    </div>
+                    <div style={{backgroundImage: backgrounds[index] || backgrounds[0], opacity: "0.5"}} className="navbar-icon">
                     </div>
                   </div>
-                )
-              })
-            }
-        </div>
-  )
-}
+                  <div className="back">
+                    {
+                      this.props.lessons && this.props.lessons.map((lesson, index2) => {
+                        if(lesson.topic_id === topic.id){
+                          return (
+                            <div key={index2}>
+                              <h3 className="lesson-step">{index2 + 1}</h3>
+                              <h3 className="lesson-header">{lesson.title}</h3>
+                              <div className="slides-quizzes">
+                                <h3 id="learn" onClick={() => {this.getSlidesAndHeadOver(lesson.id)}}>Learn</h3>
+                                <h3 id="play" onClick={() => {this.getQuizAndHeadOver(lesson.id)}}>Play</h3>
+                                <LinearProgress style={{width: "60%", left: "20%"}} mode="determinate" value={this.checkCompletion(lesson.id)} />
+                              </div>
+                              <hr className="style1" />
+                            </div>
+                          )
+                        }
+                      })
+                    }
+                  </div>
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+    )
+  }
 }

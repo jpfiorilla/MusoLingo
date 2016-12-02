@@ -40,7 +40,8 @@ const onEnterRetrieveLoggedInUser = () => {
 // NOTE: if the user is not logged in, send them to the homepage.
 
   if (! store.getState().user.completed) {
-    // browserHistory.push('/home');
+    console.log();
+    browserHistory.push('/home');
   } else {
     store.dispatch(retrieveLoggedInUser());
   }
