@@ -24,9 +24,6 @@ const mapDispatchToProps = function (dispatch) {
     },
     askForQuiz: (lesson_id) => {
       dispatch(askServerForQuizzes(lesson_id));
-    },
-    addKeys: (id, numOfKeys) => {
-      dispatch(addNewKeyToServer(id, numOfKeys))
     }
   };
 };

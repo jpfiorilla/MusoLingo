@@ -6,7 +6,8 @@ var users = [{"completed": {
     {"completed": {
           "quizzes":{},
           "lessons": {'1': 'We did it!', '2': 'Yes!'},
-          "keys": 1
+          "keys": 1,
+          "challenges": {"1": 0.9}
         }, "first_name":"Brian","last_name":"Long","email":"blong8334@gmail.com","isAdmin":true,"password":"Brian"}];
 
 module.exports = users;
