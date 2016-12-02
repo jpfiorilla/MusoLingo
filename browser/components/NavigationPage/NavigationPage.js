@@ -28,16 +28,6 @@ export default class NavigationPage extends React.Component {
     return 0;
   }
 
-  flipCurrentLesson (index) {
-    if ($(`#navpage-${index}`)[0].classList.length > 1){
-      $(`#navpage-${index}`).removeClass("navpage-flipped")
-      $(`#flipper-${index}`).removeClass("navpage-flipped")
-    } else {
-      $(`#navpage-${index}`).addClass("navpage-flipped");
-      $(`#flipper-${index}`).addClass("navpage-flipped");
-    }
-  }
-
   setCurrentLesson (hovered) {
     const topic_id = hovered.id;
     let lessonsWithId = this.props.lessons.filter(lesson => {
@@ -69,29 +59,32 @@ export default class NavigationPage extends React.Component {
             {
               this.props.topics && this.props.topics.map((topic, index) => {
                 return (
-                  <div id={`navpage-${index}`} className="navpage-container" key={index} onMouseOver={() => {this.setCurrentLesson(topic)}} onClick={() => {this.flipCurrentLesson(index)}}>
-                    <div id={`flipper-${index}`} className="flipper">
-                      <div className="front">
-                            <div className="navbar-icon-text">
-                              <h3 className="topic-header">{topic.name}</h3>
-                            </div>
-                        <div style={{backgroundImage: backgrounds[index] || backgrounds[0], opacity: "0.5"}} className="navbar-icon">
-                          </div>
-                      </div>
-                      <div className="back">
+                  <div id={`navpage-${index}`} className="navpage-container" key={index}>
+                    <div className="col-xs-12 col-md-2">
+                      <h3 className="topic-header">{topic.name}</h3>
+                    </div>
+                    <div className="col-xs-12 col-md-10">
+                      <div className="topic-lessons-container">
                         {
                           this.props.lessons && this.props.lessons.map((lesson, index2) => {
                             if(lesson.topic_id === topic.id){
                               return (
-                                <div key={index2}>
-                                  <h3 className="lesson-step">{index2 + 1}</h3>
+                                <div className="lesson-container" key={index2}
+                                  onMouseOver={() => { 
+                                    $(`#slides-quizzes-${index2}`).addClass("slides-quizzes-visible") } } onMouseOut={() => { $(`#slides-quizzes-${index2}`).removeClass("slides-quizzes-visible") } }>
+                                  <h3 id="lesson-step" className="col-md-1">{index2 + 1}</h3>
                                   <h3 className="lesson-header">{lesson.title}</h3>
-                                  <div className="slides-quizzes">
-                                    <h3 id="learn" onClick={() => {this.getSlidesAndHeadOver(lesson.id)}}>Learn</h3>
-                                    <h3 id="play" onClick={() => {this.getQuizAndHeadOver(lesson.id)}}>Play</h3>
-                                    <LinearProgress style={{width: "60%", left: "20%"}} mode="determinate" value={this.checkCompletion(lesson.id)} />
+                                  <div className="progress vertical">
+                                    <div className="progress-bar progress-bar-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style={{ width: this.checkCompletion(lesson.id) + "%"}}>
+                                    </div>
                                   </div>
-                                <hr className="style1" />
+                                  <div id={`slides-quizzes-${index2}`} className="slides-quizzes">
+                                    <h3 id="learn" onClick={() => { this.getSlidesAndHeadOver(lesson.id) } }>Learn</h3>
+                                    <h3 id="divider">|</h3>
+                                    <h3 id="test" onClick={() => { this.getQuizAndHeadOver(lesson.id) } }>Test</h3>
+                                    <h3 id="divider">|</h3>
+                                    <h3 id="play">Play</h3>
+                                  </div>
                                 </div>
                                 )
                             }
