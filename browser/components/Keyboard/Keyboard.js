@@ -24,7 +24,7 @@ export default class Keyboard extends React.Component {
           <div id="toggleKeyboard-text">Show</div>
         </div>
         <div id="keyboard" className="ui-widget-content" style={{display: 'none'}}>
-          <div id="keyboard-help">?
+          <div id="keyboard-help">x
             <div id="keyboard-help-text">Click and drag me to reposition</div>
           </div>
         </div>

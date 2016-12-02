@@ -15,7 +15,7 @@ export function mapSoundsToPiano(keyArray){
   // triggers same note as key on mousedown
   keyArray.forEach(key => {
     key.onmousedown = function (){
-      pianoHelper(key.dataset.ipn);
+      if (pianoHelper) pianoHelper(key.dataset.ipn);
       polySynth.triggerAttack(`${key.dataset.ipn}`, null, 75)
     }
   })
@@ -174,8 +174,14 @@ function noteRelease(keyName){
 export function toggleKeyboardDisplay(){
   var showButton = document.querySelector('#showKeyboard');
   var onScreenKeyboard = document.querySelector('#keyboard');
+  let xButton = document.querySelector('#keyboard-help');
 
   showButton.onclick = function(){
+    onScreenKeyboard.style.display = (onScreenKeyboard.style.display === 'none' ? '':'none')
+    showButton.innerHTML = (onScreenKeyboard.style.display === 'none' ? ('<img id="showKeyboard-icon" src="/images/piano-icon.png" /><div id="toggleKeyboard-text">Show</div>') : ('<img id="showKeyboard-icon" src="/images/piano-icon.png" /><div id="toggleKeyboard-text">HIDE</div>'))
+  }
+
+  xButton.onclick = function(){
     onScreenKeyboard.style.display = (onScreenKeyboard.style.display === 'none' ? '':'none')
     showButton.innerHTML = (onScreenKeyboard.style.display === 'none' ? ('<img id="showKeyboard-icon" src="/images/piano-icon.png" /><div id="toggleKeyboard-text">Show</div>') : ('<img id="showKeyboard-icon" src="/images/piano-icon.png" /><div id="toggleKeyboard-text">HIDE</div>'))
   }
