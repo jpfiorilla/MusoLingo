@@ -42,6 +42,7 @@ export default class SlidesComponent extends React.Component {
     }
     Mousetrap.bind([`right`], this.handleNext);
   }
+
   goToQuiz () {
     this.props.askForQuiz(this.props.slides[0].lesson_id);
     browserHistory.push('/quiz');
@@ -54,8 +55,18 @@ export default class SlidesComponent extends React.Component {
       finished: stepIndex >= this.props.slides.length - 1,
     });
     localStorage.setItem(currSlide, this.state.stepIndex + 1);
-    if (stepIndex >= this.props.slides.length - 1) {
+
+    if (this.props.user.completed.lessons[this.props.slides[0].lesson_id]) {
+      console.log("User already completed this slide");
       localStorage.setItem(currSlide, 0);
+    }  
+    else if (stepIndex === this.props.slides.length - 1 && this.props.user.completed) {
+      this.props.user.completed.lessons[this.props.slides[0].lesson_id] = 'We did it!';
+      this.props.user.completed.keys += 1;
+      this.props.completed(this.props.user.completed, 'completed', this.props.user.id);
+      $("#navbar-key").addClass("grow")
+      localStorage.setItem(currSlide, 0);
+      this.forceUpdate();
     }
   };
 
@@ -214,13 +225,6 @@ export default class SlidesComponent extends React.Component {
                 label={stepIndex === this.props.slides.length - 1 ? 'Finish' : 'Next'}
                 primary={true}
                 onClick={() => {
-                  if (stepIndex === this.props.slides.length - 1 && this.props.user.completed) {
-                    this.props.user.completed.lessons[this.props.slides[0].lesson_id] = 'We did it!';
-                    this.props.user.completed.keys += 1;
-                    this.props.completed(this.props.user.completed, 'completed', this.props.user.id);
-                    localStorage.setItem(currSlide, 0);
-                    this.forceUpdate();
-                  }
                   this.handleNext();
                 }}
               />
