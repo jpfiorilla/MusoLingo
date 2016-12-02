@@ -124,15 +124,16 @@ function noteDuration(){
 
 // changes note color
 function noteHit(result){
-  if (result === true) {
-    currentScore++;
-    // currentVisualNote.setStyle({strokeStyle: "blue", fillStyle: "blue"})
-    currentVisualNote.color = "#2BC22E";
-    store.dispatch(setNotes(visualNotes))
-  }
-  else if (result === false) {
-    currentVisualNote.color = "#963838";
-    store.dispatch(setNotes(visualNotes))
+  if (currentVisualNote !== 'rest'){
+    if (result === true) {
+      currentScore++;
+      currentVisualNote.color = "#2BC22E";
+      store.dispatch(setNotes(visualNotes))
+    }
+    else if (result === false) {
+      currentVisualNote.color = "#963838";
+      store.dispatch(setNotes(visualNotes))
+    }
   }
 }
 
@@ -210,22 +211,25 @@ function loopCreator(notes){
     }
 
     // if no key was pressed for the previous note, turn that note red; MUST occur before new currentNote is defined
-    if (currentNote.triggered === false && visualNoteCounter > 0 && currentNote.note !== 'rest'){
+    if (currentNote.triggered === false && visualNoteCounter > 0 && currentNote.note !== 'space'){
       noteHit(false)
     }
     // redefines currentNote
     currentNote.note = note;
     currentNote.triggered = false;
-    // cycles through array of vexFlow notes on the DOM
 
-    // hard-coded for DEMO; rest is a placeholder for half notes, rests, etc. so that the current vexNote doesn't change yet
+    // cycles through array of vexFlow notes on the DOM
+    // hard-coded for DEMO; space is a placeholder for half notes, etc. so that the current vexNote doesn't change yet
     // console.log("NOOOOOTE", note)
-    if (note !== 'rest'){
+    if (note !== 'space' && note !== 'rest'){
       currentVisualNote = visualNotes[visualNoteCounter];
       visualNoteCounter++;
-    } else {
+    } else if (note === 'space') {
       currentVisualNote = visualNotes[visualNoteCounter-1]
       // console.log("YOOOO", currentVisualNote)
+    } else if (note === 'rest') {
+      currentVisualNote = 'rest';
+      visualNoteCounter++;
     }
     // console.log(visualNoteCounter, currentVisualNote)
   }, notes, noteSequence[1]);
@@ -268,6 +272,7 @@ export const stopSequence = function(){
 // looks at number of notes in sequence, as well as subdivision for beats, and determines when the loop should stop
 function stopTime(){
   // replace 4 with whatever subdivision variable that the sequence is in
+  // console.log("NOTE SEQUENCE 0", noteSequence[0])
   let bars = Math.floor(noteSequence[0].length / 4 ) + 1;
   let beats = noteSequence[0].length - ((bars - 1) * 4);
   return `${bars}:${beats}:0`

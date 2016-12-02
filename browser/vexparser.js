@@ -11,6 +11,7 @@ export const durationParser = function(note){
     case 'q': return 1;
     case 'qr': return 1;
     case '8': return 0.5;
+    case '8r': return 0.5;
     case '16': return 0.25;
     default: console.log("Unknown vexNote duration")
   }

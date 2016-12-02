@@ -49,6 +49,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         incorrect = randomOtherNoteNames(correct, 56, 67);
         this.setState({ correctAnswer: correct })
         correct = getNoteName(correct);
+        console.log(correct);
         break;
       case "guessBassNoteName":
         questionComponent = RandomBassNote;
@@ -71,10 +72,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         lownote = randomNoteName(56, 75);
         highnote = randomNoteName(vexToMidi(lownote), vexToMidi(lownote) + 2);
         intervalNotes = [lownote, highnote];
-        correct = calculateInterval(intervalNotes);
-        console.log(correct);
-        correct = intervalToStep(correct);
-        console.log(correct);
+        correct = intervalToStep(calculateInterval(intervalNotes));
         incorrect = randomStepsNames(correct);
         this.setState({correctAnswer: correct})
         break;

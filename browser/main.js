@@ -38,11 +38,11 @@ const onNavigationEnter = () => {
 
 const onEnterRetrieveLoggedInUser = () => {
 // NOTE: if the user is not logged in, send them to the homepage.
-  // if (! store.getState().user.completed) {
-    // browserHistory.push('/home');
-  // } else {
+  if (! store.getState().user.completed) {
+    browserHistory.push('/home');
+  } else {
     store.dispatch(retrieveLoggedInUser());
-  // }
+  }
 }
 
 const onEnterRetrieveChallenge = (nextState) => {
@@ -61,9 +61,9 @@ render(
       <Route path="/lesson" component={LessonPage} />
       <Route path="/game" component={Challenge}/>
       <Route path="/user" component={UserPage}/>
-      <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
       <Route path="/game/:id" component={Challenge} onEnter={onEnterRetrieveChallenge}/>
       <Route path="/keyboard"/>
+      <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
     </Route>
   </Router>
 </Provider>,
