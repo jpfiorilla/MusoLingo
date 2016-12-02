@@ -39,7 +39,8 @@ export default class PianoUserInput extends React.Component {
     super ();
 
     this.state = {
-      notePlayed: undefined
+      notePlayed: undefined,
+      notesToPlay: this.props.notesToPlay || ['A']
     };
   }
 

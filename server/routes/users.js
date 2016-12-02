@@ -12,15 +12,15 @@ module.exports = customUserRoutes;
 
 customUserRoutes.get('/', (req,res,next) => {
 	userModel.findAll()
-		.then(result => res.send(result))
-		.catch(next);
+	.then(result => res.send(result))
+	.catch(next);
 });
 
 // how to set addresses & creditcard ?
 customUserRoutes.post('/', (req,res,next) => {
 	userModel.create(req.body)
-		.then(result => res.send(result))
-		.catch(next);
+	.then(result => res.send(result))
+	.catch(next);
 });
 
 // // ----------------> '/users/:id' <---------------------
@@ -33,52 +33,55 @@ customUserRoutes.get('/:id', function(req, res, next){
 	.catch(next);
 });
 
-customUserRoutes.put('/:id', (req, res, next) => {
-	console.log(req.body)
+customUserRoutes.post('/:id', (req,res,next) => {
+
 	userModel.findById(req.params.id)
-		.then(result => result.update(req.body))
-		.then(updated => res.status(201).send(updated))
-		.catch(next);
+	.then(result => result.update(req.body))
+	.then(updated => {
+		console.log('updated ', updated.dataValues.completed.quizzes);
+		res.status(201).json(updated);
+	})
+	.catch(next);
 });
 
 customUserRoutes.delete('/:id', (req,res,next) => {
 	userModel.findById(req.params.id)
-		.then(result => result.destroy())
-		.then(() => res.sendStatus(204))
-		.catch(next);
+	.then(result => result.destroy())
+	.then(() => res.sendStatus(204))
+	.catch(next);
 });
 
 customUserRoutes.post('/quizzes/score/:id', (req, res, next) => {
 	userModel.findById(req.params.id)
-		.then(user => {
-			var quizzesScore = user.quizzesScore;
-			if (Array.isArray(quizzesScore[req.body.quizId])) {
-				quizzesScore[req.body.quizId].push(req.body.scores)
-			}
-			else {quizzesScore[req.body.quizId] = [req.body.scores]}
-			return user.update({ quizzesScore })
-		})
-		.then(updatedUser => {console.log(updatedUser); res.send(updatedUser)})
+	.then(user => {
+		var quizzesScore = user.quizzesScore;
+		if (Array.isArray(quizzesScore[req.body.quizId])) {
+			quizzesScore[req.body.quizId].push(req.body.scores)
+		}
+		else {quizzesScore[req.body.quizId] = [req.body.scores]}
+		return user.update({ quizzesScore })
+	})
+	.then(updatedUser => {console.log(updatedUser); res.send(updatedUser)})
 })
 
 customUserRoutes.post('/quizzes/:id', (req, res, next) => {
 	userModel.findById(req.params.id)
-		.then(user => user.update(
-			{completedQuizzes: [...user.completedQuizzes, req.body.completedQuiz]}
-		))
-		.then(updatedUser => {console.log(updatedUser); res.send(updatedUser)})
+	.then(user => user.update(
+		{completedQuizzes: [...user.completedQuizzes, req.body.completedQuiz]}
+	))
+	.then(updatedUser => {console.log(updatedUser); res.send(updatedUser)})
 })
 
 customUserRoutes.post('/keys/:id', (req, res, next) => {
 	userModel.findById(req.params.id)
-		.then(user => user.update(
-			{completed: {
-				quizzes: user.completed.quizzes,
-				lessons: user.completed.lessons,
-				keys: user.completed.keys + req.body.keysToAdd
-			}}
-		))
-		.then(updatedUser => {console.log(req.body); res.send(updatedUser)})
+	.then(user => user.update(
+		{completed: {
+			quizzes: user.completed.quizzes,
+			lessons: user.completed.lessons,
+			keys: user.completed.keys + req.body.keysToAdd
+		}}
+	))
+	.then(updatedUser => {res.send(updatedUser)})
 })
 
 // // Epilogue will automatically create standard RESTful routes

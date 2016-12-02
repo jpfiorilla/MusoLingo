@@ -59,7 +59,7 @@ export default class Quiz extends React.Component {
     if (done && passed) {
       // NOTE: add this quiz to the user's completed obj.
       const lesson_id = this.props.quizzes[0].lesson_id;
-      let {grade} = this.state;
+      let { grade } = this.state;
       this.props.user.completed.quizzes[lesson_id] = grade;
 
       // Allotting number of keys:
@@ -72,8 +72,8 @@ export default class Quiz extends React.Component {
       }
       else {
         this.props.user.completed.keys += 3;
-      }      
-      
+      }
+
       this.props.updateUser(this.props.user.completed, 'completed', this.props.user.id);
     }
   }

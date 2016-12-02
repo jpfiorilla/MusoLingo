@@ -10,6 +10,7 @@ export const askServerForAllLessons = () => {
   return dispatch => {
     axios.get('/api/lessons/all')
     .then(res => {
+      console.log('res.data ', res.data);
       dispatch(setLessons(res.data));
     })
     .catch(err => {
