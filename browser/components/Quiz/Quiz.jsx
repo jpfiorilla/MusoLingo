@@ -60,7 +60,7 @@ export default class Quiz extends React.Component {
       const lesson_id = this.props.quizzes[0].lesson_id;
       this.props.user.completed.quizzes[lesson_id] = this.state.grade;
       this.props.updateUser(this.props.user.completed, 'completed', this.props.user.id);
-      
+
       // Allotting number of keys:
       let {grade} = this.state;
       if (grade < .79) {

@@ -15,6 +15,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 // parent component.
 // Basically a user has to answer a question to be able to move on in the slides.
 
+
+// NOTE: this function is what we are going to send out
+// to the piano hero functions to update our state when a note is played.
+// The outter function will scope our state while the inner function
+// can be called from wherever we send it to update the state.
 const pianoInput = function (state) {
 
   var x = function (update) {
