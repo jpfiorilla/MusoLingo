@@ -7,9 +7,13 @@ const quiz = [{
     title: "Guess the Note Value",
     question_types: ['moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm', 'moreRhythm']
 }, {
-    lesson_id: 3,
+    lesson_id: 4,
     title: "Guess the Note Name",
     question_types: ['guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName']
+}, {
+    lesson_id: 3,
+    title: "Guess the Note Name",
+    question_types: ['guessWhiteKeyName', 'guessWhiteKeyName', 'guessWhiteKeyName', 'guessWhiteKeyName', 'guessWhiteKeyName', 'guessWhiteKeyName', 'guessWhiteKeyName', 'guessWhiteKeyName', 'guessWhiteKeyName', 'guessWhiteKeyName']
 }, {
     lesson_id: 5,
     title: "Guess the Bass Clef Note Name",
