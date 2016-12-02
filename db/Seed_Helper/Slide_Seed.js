@@ -983,7 +983,7 @@ lessonthreeone.forEach((slide, idx) => {
 
 lessonthreefour = [
   {
-  "title": "Inversions",
+  "title": "Root position",
   "slideContent": [
     {
       text: "So far we've learned how to build triads in what is known as <b>root position</b>. A triad is in root position when its tonic is written as its lowest note, in the bass."
@@ -992,49 +992,54 @@ lessonthreefour = [
     }, {
       text: 'These two chords are both in root position. The mediant E is raised by an octave in the second example, but the lowest note remains the C.'
     }
-    ]
-  }, {
+  ]}, {
+    "title": "Inversions",
+    "slideContent": [{
       text: "How else might a C triad be arranged? There are two other options for the bass note: the mediant (E) and the dominant (G)."
     }, {
       img: '/images/lessons_pictures/c6 and c64.png'
     }, {
       text: 'The triads written here are known as <b>inversions</b>.'
     }
-    ]
-  }, {
+  ]}, {
+    "title": "6 & 6/4",
+    "slideContent": [{
       text: "In the first chord, the mediant (E) is written in the bass; this is known as a C triad in <b>first inversion</b>, or a C 6."
     }, {
       img: '/images/lessons_pictures/c6 and c64.png'
     }, {
       text: 'The second chord features the dominant (G) in the bass; this is known as <b>second inversion</b>, or a C 6/4.'
     }
-    ]
-  }, {
+  ]},{
+    "title": "Inversion names & intervals",
+    "slideContent": [{
       text: "In root position, a traid is composed of an interval of a third and an interval of a fifth from the bass note. The reason the first-inversion chord is called 'C 6' is that the intervals from the bass note are now a third (E to G) and a sixth (E to C)."
     }, {
       img: '/images/lessons_pictures/c6 and c64.png'
     }, {
       text: "Similarly, the second-inversion chord is called '6/4' because the intervals from the bass are now a sixth (G to E) and a fourth (G to C)."
     }
-    ]
-  }, {
-      text: "There are several main reasons one might choose to write a chord in an inversion rather than in root position when writing a piece."
+  ]}, {
+    "title": "Why invert?",
+    "slideContent": [{
+      text: "There are many reasons one might choose to write a chord in an inversion rather than in root position when writing a piece."
     }, {
       img: '/images/lessons_pictures/c64 g c.png'
     }, {
-      text: 'One frequent reason is to preserve common tones between chords in their respective voices. See here: the progression is C 6/4, G, C. By writing the first C chord in second inversion, the bass is able to stay on the same note for both chords.'
+      text: 'One frequent reason is to preserve common tones between chords in their respective voices. See here: the progression is <b>C 6/4, G, C</b>. By writing the first C chord in second inversion, the bass is able to stay on the same note for both chords.'
     }
-    ]
-  }, {
-      text: "There are several main reasons one might choose to write a chord in an inversion rather than in root position when writing a piece."
+  ]
+}, {
+    "title": "Why invert? (2)",
+    "slideContent": [{
+      text: "Another reason might be to create a specific melody out of the bass line."
     }, {
-      img: '/images/lessons_pictures/c64 g c.png'
+      img: '/images/lessons_pictures/am dm f g c.png'
     }, {
-      text: 'One frequent reason is to preserve common tones between chords in their respective voices. See here: the progression is C 6/4, G, C. By writing the first C chord in second inversion, the bass is able to stay on the same note for both chords.'
+      text: "This example features a simple functional progression; <b>Am, Dm, F, G, C</b>. Since these chords contain the notes 'E, D, C, B, C', we can arrange the progression and inversions such that those notes comprise the bass line."
     }
-    ]
-  }
-];
+  ]
+}];
 lessonthreefour.forEach((slide, idx) => {
   slide.lesson_id = 12;
   slide.number = idx + 1;
