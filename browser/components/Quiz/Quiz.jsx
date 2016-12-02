@@ -32,6 +32,7 @@ export default class Quiz extends React.Component {
     if (right) {
       this.state.correct ++;
       this.state.grade = this.state.correct / this.props.quizzes[0].question_types.length;
+      this.forceUpdate();
     }
   }
 
@@ -109,7 +110,7 @@ export default class Quiz extends React.Component {
                     <FlatButton label="Challenge" href="/game/4" primary={true} />
                     <FlatButton label="Repeat" onClick={(event) => {
                       event.preventDefault();
-                      this.setState({stepIndex: 0, finished: false});
+                      this.setState({stepIndex: 0, finished: false, correct: 0});
                     } } primary={true} />
                   </div>
                 </div>
@@ -156,22 +157,30 @@ export default class Quiz extends React.Component {
   }
   render() {
     
-    const {loading, stepIndex} = this.state;
+    const {loading, stepIndex, correct} = this.state;
 
     let allQuizzes;
+    let quizIndex = stepIndex + 1;
+    if (stepIndex === this.props.quizzes[0].question_types.length){
+      quizIndex = stepIndex;
+    }
     if (this.props.quizzes.length){
       allQuizzes = (
-        <Stepper activeStep={stepIndex}>
-          {
-            this.props.quizzes[0].question_types.map((question, index) => {
-              return (
-                <Step key={index}>
-                  <StepLabel></StepLabel>
-                </Step>
-              )
-            })
-          }
-        </Stepper>
+        <div>
+          <Stepper activeStep={stepIndex}>
+            {
+              this.props.quizzes[0].question_types.map((question, index) => {
+                return (
+                  <Step key={index}>
+                    <StepLabel></StepLabel>
+                  </Step>
+                )
+              })
+            }
+          </Stepper>
+          <p className="correctNumber"><b>Correct: {correct}/{quizIndex}</b></p>
+          <br></br>
+        </div>
       )
     }
 
