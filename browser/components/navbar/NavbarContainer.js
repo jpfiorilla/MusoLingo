@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import { logout } from '../../redux/user'
 import NavbarMenu from "./NavbarMenu"
-import { setKeys } from "../../redux/UserKeyActions"
 
 const mapStateToProps = ({ user, numOfKeys, keys, slides, lessons }) => ({
   numOfKeys,

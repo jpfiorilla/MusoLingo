@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { addNewKeyToServer } from "./UserKeyActions"
 import updateStorage from './Local_Storage';
 
 /* -----------------    ACTIONS     ------------------ */

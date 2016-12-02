@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { addNewKeyToServer } from "../../redux/UserKeyActions"
 import MultipleChoice from "./MultipleChoice"
 
 const mapStateToProps = ({ user, currentQuiz }) => ({
