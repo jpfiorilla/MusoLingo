@@ -156,7 +156,7 @@ export default class Quiz extends React.Component {
     );
   }
   render() {
-    
+
     const {loading, stepIndex, correct} = this.state;
 
     let allQuizzes;

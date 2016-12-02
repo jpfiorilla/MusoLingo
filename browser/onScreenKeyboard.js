@@ -1,6 +1,7 @@
 import Tone from 'tone';
 import { polySynth } from './instruments';
 import { noteActionGame } from './piano_hero';
+import { pianoHelper } from './components/Slides/SubComponents/PianoUserInput';
 
 // fills an array with all the keys on the DOM (2 octaves)
 export function selectKeysOnDOM(){
@@ -14,6 +15,7 @@ export function mapSoundsToPiano(keyArray){
   // triggers same note as key on mousedown
   keyArray.forEach(key => {
     key.onmousedown = function (){
+      pianoHelper(key.dataset.ipn);
       polySynth.triggerAttack(`${key.dataset.ipn}`, null, 75)
     }
   })
