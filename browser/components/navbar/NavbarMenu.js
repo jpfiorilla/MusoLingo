@@ -25,7 +25,6 @@ export default class NavbarMenu extends React.Component {
     this.onAccountToggle = this.onAccountToggle.bind(this)
     this.handleAccountClose = this.handleAccountClose.bind(this)
   }
-
   onAccountToggle(e){
     e.preventDefault()
 
@@ -44,7 +43,10 @@ export default class NavbarMenu extends React.Component {
   render(props) {
     const { role, logout, user } = this.props;
     return (
-      <ToolbarGroup style={{float: 'right'}}>
+      <ToolbarGroup style={{ float: 'right' }}>
+        <div className="navbar-item">
+
+        </div>  
       {
         // /admin
         role === 3 ? (

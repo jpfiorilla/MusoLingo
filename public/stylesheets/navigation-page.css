@@ -1,6 +1,10 @@
-/*
-NAVIGATION PAGE:
-*/
+<<<<<<< HEAD
+/*NAVIGATION PAGE:*/
+@font-face {
+  font-family: basic-title;
+  src: url("/fonts/BasicTitle.ttf");
+}
+
 .navbar-icon {
   position: relative;
   left: 28%;
@@ -11,12 +15,12 @@ NAVIGATION PAGE:
   cursor: pointer;
 }
 
-.lesson-step {
-  font-size: 65px;
+#lesson-step {
+  font-size: 100px;
   position: relative;
-  top: 123px;
-  left: 5px;
-  color: #be3636;
+  top: 35px;
+  left: 47px;
+  color: #6d6d6d;
 }
 
 .navbar-icon:hover {
@@ -88,25 +92,50 @@ NAVIGATION PAGE:
 
 .topic-header {
   font-family: bebas-kai;
-  font-size: x-large;
-  text-shadow: 1px 1px beige;
+  font-size: 55px;
   width: 98%;
   position: relative;
-  top: 150px;
   z-index: 100;
   text-transform: uppercase;
-  left: -5%;
+  left: 0%;
+  text-align: right;
+  margin-bottom: 10px;
+  margin-right: 21px;
+  line-height: 110%;
+  color: #bd3636;
+}
+
+.topic-header-fixed {
+  position: fixed;
+}
+
+.topic-lessons-container {
+  border-radius: 1%;
+  box-shadow: 0px 0px 13px black;
+  width: 85%;
+  margin-bottom: 50px;
+
 }
 
 .lesson-header {
   font-family: bebas-kai;
-  text-align: center;
-  font-size: larger;
-  padding-left: 20px;
+  font-size: 35px;
+  top: 95px;
+  position: relative;
+  margin-left: 8%;
+  color: #bd3636;
 }
 
 .slides-quizzes {
   text-align: center;
+  padding-bottom: 20px;
+  visibility: hidden;
+  position: relative;
+  top: -10px;
+}
+
+.slides-quizzes-visible {
+  visibility: visible;
 }
 
 #learn {
@@ -114,9 +143,35 @@ NAVIGATION PAGE:
   cursor: pointer;
   display: inline-block;
   margin: 20px;
+  font-size: 15px;
+  position: relative;
+  top: -45px;
 }
 
 #learn:hover {
+  color: rgb(182, 31, 31);
+}
+
+#divider {
+  font-family: gravity-book;
+  font-size: 15px;
+  display: inline-block;
+  top: -45px;
+  position: relative;
+  margin: 20px;
+}
+
+#test {
+  font-family: gravity-book;
+  cursor: pointer;
+  display: inline-block;
+  margin: 20px;
+  font-size: 15px;
+  position: relative;
+  top: -45px;
+}
+
+#test:hover {
   color: rgb(182, 31, 31);
 }
 
@@ -125,6 +180,9 @@ NAVIGATION PAGE:
   cursor: pointer;
   display: inline-block;
   margin: 20px;
+  font-size: 15px;
+  position: relative;
+  top: -45px;
 }
 
 #play:hover {
@@ -135,4 +193,21 @@ hr.style1{
 	border-top: 1px solid #8c8b8b;
   margin-left: 10px;
   opacity: 0.5;
+}
+
+.vertical {
+  display: inline-block;
+  position: relative;
+  left: 85%;
+  top: 30px;
+  width: 20%;
+  height: 40px;
+  -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+  transform: rotate(-90deg);
+}
+.vertical {
+  box-shadow: inset 0px 4px 6px #ccc;
+}
+.progress-bar {
+  box-shadow: inset 0px 4px 6px rgba(100,100,100,0.6);
 }

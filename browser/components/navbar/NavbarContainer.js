@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import { logout } from '../../redux/user'
 import NavbarMenu from "./NavbarMenu"
-import {setKeys} from "../../redux/UserKeyActions"
+import { setKeys } from "../../redux/UserKeyActions"
 
-const mapStateToProps = ({ user, numOfKeys, keys }) => ({
+const mapStateToProps = ({ user, numOfKeys, keys, slides, lessons }) => ({
   numOfKeys,
   user,
   keys,
+  slides,
+  lessons,
   role: !Object.keys(user).length ? 1 : !user.isAdmin ? 2 : 3
 });
 
