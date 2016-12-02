@@ -11,7 +11,8 @@ import RandomDistance from '../vexflow/randomdistance';
 import RandomInvertedChord from '../vexflow/randominvertedchord';
 import RandomTiedNote from '../vexflow/randomtiednote';
 import RandomHalfOrWholeStep from '../vexflow/randomhalforwholestep';
-import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations, randomDistance, randomOtherDistances, randomIntervalName, randomTieDuration, getDuration, getOtherDurations, randomStepsNames, intervalToStep } from '../../utils';
+import RandomWhiteKeyNote from '../vexflow/randomwhitekeynote';
+import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations, randomDistance, randomOtherDistances, randomIntervalName, randomTieDuration, getDuration, getOtherDurations, randomStepsNames, intervalToStep, randomWhiteKeyName, randomOtherWhiteKeys } from '../../utils';
 import  Vex from 'vexflow'
 
 const styles = {
@@ -47,6 +48,14 @@ export default class MultipleChoiceQuestion extends React.Component {
         questionComponent = RandomTrebleNote;
         correct = randomNoteName(56, 75);
         incorrect = randomOtherNoteNames(correct, 56, 67);
+        this.setState({ correctAnswer: correct })
+        correct = getNoteName(correct);
+        console.log(correct);
+        break;
+      case "guessWhiteKeyName":
+        questionComponent = RandomTrebleNote;
+        correct = randomWhiteKeyName(56, 75);
+        incorrect = randomOtherWhiteKeys(correct, 56, 67);
         this.setState({ correctAnswer: correct })
         correct = getNoteName(correct);
         console.log(correct);
