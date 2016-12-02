@@ -59,7 +59,8 @@ export default class NavigationPage extends React.Component {
             {
               this.props.topics && this.props.topics.map((topic, index) => {
                 return (
-                  <div id={`navpage-${index}`} className="navpage-container" key={index}>
+                  <div id={`navpage-${index}`} className="navpage-container container" key={index}>
+                  <div className="row">
                     <div className="col-xs-12 col-md-2">
                       <h3 className="topic-header">{topic.name}</h3>
                     </div>
@@ -73,7 +74,7 @@ export default class NavigationPage extends React.Component {
                                   onMouseOver={() => { 
                                     $(`#slides-quizzes-${index2}`).addClass("slides-quizzes-visible") } } onMouseOut={() => { $(`#slides-quizzes-${index2}`).removeClass("slides-quizzes-visible") } }>
                                   <h3 id="lesson-step" className="col-md-1">{index2 + 1}</h3>
-                                  <h3 className="lesson-header">{lesson.title}</h3>
+                                  <h3 id={`lesson-header-${index2}`} className="lesson-header">{lesson.title}</h3>
                                   <div className="progress vertical">
                                     <div className="progress-bar progress-bar-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style={{ width: this.checkCompletion(lesson.id) + "%"}}>
                                     </div>
@@ -90,7 +91,8 @@ export default class NavigationPage extends React.Component {
                             }
                           })
                         }
-                      </div>
+                        </div>
+                      </div>  
                     </div>
                   </div>
                 )

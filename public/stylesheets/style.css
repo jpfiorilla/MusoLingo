@@ -51,7 +51,9 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 /* Nav bar */
 
 #navbar-container {
-background-color: #963838;}
+  background-color: #963838;
+  height: 12%;
+}
 
 #navbar {
   color: #963838;
