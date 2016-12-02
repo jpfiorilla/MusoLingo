@@ -58,9 +58,6 @@ export default class Challenge extends Component {
         musicRender(staveMeasures, noteMeasures, beamArray, context)
 
         postMount = true;
-
-        // let updatedVexNotes = [].concat.apply([], noteMeasures);
-        // store.dispatch(setNotes(updatedVexNotes))
       }
     }
 
