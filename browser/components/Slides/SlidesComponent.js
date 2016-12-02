@@ -32,6 +32,7 @@ export default class SlidesComponent extends React.Component {
   componentWillUnmount () {
     this.props.clearSlides();
     localStorage.setItem(currSlide, 0);
+    Mousetrap.unbind([`right`], this.handleNext);
   }
   componentDidMount () {
     // NOTE: update localStorage with slide Number.
@@ -39,6 +40,7 @@ export default class SlidesComponent extends React.Component {
     if (! this.state.stepIndex) {
       this.state.stepIndex = 0;
     }
+    Mousetrap.bind([`right`], this.handleNext);
   }
   goToQuiz () {
     this.props.askForQuiz(this.props.slides[0].lesson_id);
