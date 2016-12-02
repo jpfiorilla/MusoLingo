@@ -40,11 +40,10 @@ const onNavigationEnter = () => {
 const onEnterRetrieveLoggedInUser = () => {
 // NOTE: if the user is not logged in, send them to the homepage.
 
-  if (! localStorage.user) {
-    console.log('Inside');
+  var user = localStorage.user && JSON.parse(localStorage.user);
+  if (! user || ! user.id) {
     browserHistory.push('/home');
   } else {
-    console.log(store.getState().user);
     if (! store.getState().user.id) {
       store.dispatch(retrieveLoggedInUser());
     } else {

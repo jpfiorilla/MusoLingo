@@ -26,7 +26,7 @@ export default function reducer (currentUser = initUser || {}, action) {
     return action.user;
 
     case REMOVE:
-    updateStorage(loc_stor_user_property, undefined);
+    updateStorage(loc_stor_user_property, {});
     return {};
 
     default:
@@ -82,7 +82,7 @@ export const logout = () => dispatch => {
   axios.delete('/api/auth/logout')
   .then(() => {
     dispatch(remove());
-    browserHistory.push(`/`);
+    browserHistory.push(`/home`);
   })
   .catch(err => console.error('Unable to logout', err));
 }

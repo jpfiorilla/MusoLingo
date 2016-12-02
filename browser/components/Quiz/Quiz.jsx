@@ -32,6 +32,7 @@ export default class Quiz extends React.Component {
     if (right) {
       this.state.correct ++;
       this.state.grade = this.state.correct / this.props.quizzes[0].question_types.length;
+      this.forceUpdate();
     }
   }
 
@@ -155,7 +156,7 @@ export default class Quiz extends React.Component {
     );
   }
   render() {
-    
+
     const {loading, stepIndex} = this.state;
 
     let allQuizzes;
