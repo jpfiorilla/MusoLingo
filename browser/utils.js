@@ -31,6 +31,28 @@ export const randomOtherNoteNames = function (note, floor, ceiling) {
     return arr;
 }
 
+export const randomWhiteKeyName = function(floor = 0, ceiling = 87){
+    let newNoteMidi = Math.floor(Math.random() * (ceiling-floor) + floor + 1);
+    let noteName = midiToVex(newNoteMidi);
+    if (noteName[1] === 'b' || noteName[1] === '#'){
+        return randomWhiteKeyName(floor, ceiling);
+    } else {
+        return noteName;
+    }
+}
+
+export const randomOtherWhiteKeys = function (note, floor, ceiling) {
+    // calculates three other "wrong" notes
+    if (!floor) floor = vexToMidi(note);
+    if (!ceiling) ceiling = floor + 11;
+    let arr = [];
+    while (arr.length < 3){
+        let newNote = getNoteName(randomWhiteKeyName(floor, ceiling));
+        if (newNote !== getNoteName(note) && arr.indexOf(newNote) === -1) arr.push(getNoteName(newNote));
+    }
+    return arr;
+}
+
 export const calculateInterval = function(notes){
     let quality, num;
     let interval = tonal.interval(vexToTonal(notes[0]), vexToTonal(notes[1]));
@@ -229,11 +251,3 @@ export const tonalToVex = function(tonalName){
     // console.log('tonaltovex', tonalName);
     return '' + getNoteName(tonalName) + '/' + tonalName[tonalName.length-1];
 }
-
-// const randomBassNote = function(){
-//     let letter = noteLetters[Math.floor(Math.random() * noteLetters.length)];
-//     let octave = ['4', '5'][Math.floor(Math.random() * 2)];
-//     return '' + letter + '/' + octave;
-// }
-
-// console.log(randomTrebleNote());

@@ -22,6 +22,7 @@ import LessonPage from "./components/LessonPage/LessonPage";
 import Challenge from "./components/Challenge/ChallengeContainer";
 import UserPage from './components/UserPage/UserPageContainer';
 import Keyboard from "./components/Keyboard/Keyboard";
+import PianoUserInput from './components/Slides/SubComponents/PianoUserInput';
 
 // Redux actions and thunks
 import store from './store'
@@ -37,12 +38,16 @@ const onNavigationEnter = () => {
 }
 
 const onEnterRetrieveLoggedInUser = () => {
-// NOTE: if the user is not logged in, send them to the homepage.
-  // if (! store.getState().user.completed) {
-  //   browserHistory.push('/home');
-  // } else {
-    store.dispatch(retrieveLoggedInUser());
-  // }
+  var user = localStorage.user && JSON.parse(localStorage.user);
+  if (! user || ! user.id) {
+    browserHistory.push('/home');
+  } else {
+    if (! store.getState().user.id) {
+      store.dispatch(retrieveLoggedInUser());
+    } else {
+      console.log('User is already logged in');
+    }
+  }
 }
 
 const onEnterRetrieveChallenge = (nextState) => {
@@ -63,6 +68,9 @@ render(
       <Route path="/user" component={UserPage}/>
       <Route path="/game/:id" component={Challenge} onEnter={onEnterRetrieveChallenge}/>
       <Route path="/keyboard"/>
+
+      <Route path="/test" component={PianoUserInput}/>
+
       <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
     </Route>
   </Router>

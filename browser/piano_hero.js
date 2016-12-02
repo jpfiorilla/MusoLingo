@@ -8,6 +8,7 @@ import { polySynth, metronome, metronomeGain } from './instruments';
 import { separateMeasures } from './vexparser';
 import { selectKeysOnDOM } from './onScreenKeyboard';
 import Challenge from './components/Challenge/Challenge'
+import { pianoHelper } from './components/Slides/SubComponents/PianoUserInput';
 
 // noteSequence is an array. First value is the note sequence to be played, second is the duration of the click
 var noteSequence = [["C4", ["D4", "E4", "F4"], "G4", ["A4", "G4"]], "4n"]
@@ -281,7 +282,12 @@ function stopTime(){
 // links up on-screen keyboard to game functionality
 export function noteActionGame(note, index, color, type){
 
-  // !#!#!#
+  // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
+  // NOTE: this is for the user input in slides
+  if (pianoHelper && type === 'attack') {
+    pianoHelper (note);
+  }
+  // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 
   var keys = selectKeysOnDOM();
 
