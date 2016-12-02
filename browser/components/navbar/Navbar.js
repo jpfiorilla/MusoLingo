@@ -36,10 +36,9 @@ export default class Navbar extends React.Component {
 
   render(props) {
     return (
-      <Toolbar id="navbar" style={{backgroundColor: '#b61f1f', opacity: "0.9", height: "70px"}}>
+      <Toolbar id="navbar" style={{backgroundColor: '#b61f1f', opacity: "0.9", height: "95px"}}>
           <Link to="/">
             <img id="navbar-logo" src="/images/logo.png" />
-            <h3 id="navbar-logo-text">KEYS</h3>
           </Link>
         <NavbarMenuContainer { ...props } />
       </Toolbar>

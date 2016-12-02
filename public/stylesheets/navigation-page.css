@@ -1,10 +1,94 @@
+<<<<<<< HEAD
 /*NAVIGATION PAGE:*/
 @font-face {
   font-family: basic-title;
   src: url("/fonts/BasicTitle.ttf");
 }
 
+.navbar-icon {
+  position: relative;
+  left: 28%;
+  height: 300px;
+  width: 400px;
+  border-radius: 3%;
+  box-shadow: 0px 0px 19px black;
+  cursor: pointer;
+}
 
+#lesson-step {
+  font-size: 100px;
+  position: relative;
+  top: 35px;
+  left: 47px;
+  color: #6d6d6d;
+}
+
+.navbar-icon:hover {
+    box-shadow: 0px 0px 19px rgb(182, 31, 31);
+}
+
+.navpage-flipped {
+  -moz-transform: rotateY(180deg) translateX(-480px);
+  -webkit-transform: rotateY(180deg) translateX(-480px);
+  transform: rotateY(180deg) translateX(-480px);
+}
+
+#reading-music-icon {
+  height: 100px;
+  position: relative;
+  top: 15%;
+  left: 14%;
+}
+
+.navpage-container {
+  left: 50px;
+  position: relative;
+  margin: 20px;
+}
+
+.navbar-icon-text {
+  left: 20px;
+  position: relative;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+  left: -5%;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	top: 0;
+	left: 200px;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+    position: absolute;
+    height: 300px;
+    width: 400px;
+    border-radius: 3%;
+    box-shadow: 0px 0px 19px black;
+    transform: rotateY(180deg) scale(-1, 1);
+    -moz-transform: rotateY(180deg) scale(-1, 1);
+    -webkit-transform: rotateY(180deg) scale(-1, 1);
+    -o-transform: rotateY(180deg) scale(-1, 1);
+    -ms-transform: rotateY(180deg) scale(-1, 1);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 
 .topic-header {
   font-family: bebas-kai;
@@ -13,12 +97,30 @@
   position: relative;
   z-index: 100;
   text-transform: uppercase;
+  left: 0%;
+  text-align: right;
+  margin-bottom: 10px;
+  margin-right: 21px;
+  line-height: 110%;
+  color: #bd3636;
+}
+
+.topic-header-fixed {
+  position: fixed;
+}
+
+.topic-lessons-container {
+  border-radius: 1%;
+  box-shadow: 0px 0px 13px black;
+  width: 85%;
+  margin-bottom: 50px;
+
 }
 
 .lesson-header {
   font-family: bebas-kai;
-  font-size: 24px;
-  top: 18px;
+  font-size: 35px;
+  top: 95px;
   position: relative;
   margin-left: 8%;
   color: #bd3636;
@@ -28,6 +130,8 @@
   text-align: center;
   padding-bottom: 20px;
   visibility: hidden;
+  position: relative;
+  top: -10px;
 }
 
 .slides-quizzes-visible {
@@ -83,6 +187,12 @@
 
 #play:hover {
   color: rgb(182, 31, 31);
+}
+
+hr.style1{
+	border-top: 1px solid #8c8b8b;
+  margin-left: 10px;
+  opacity: 0.5;
 }
 
 .vertical {
