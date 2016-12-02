@@ -65,7 +65,7 @@ export default class NavbarMenu extends React.Component {
         role === 2 ? (
           <div className="navbar-item">
             <i id="navbar-key"
-              data-badge={this.props.keys}
+              data-badge={this.props.user.completed.keys}
               className="material-icons mdl-badge mdl-badge--no-background mdl-badge--overlap">vpn_key</i>
           </div>
         ) : null

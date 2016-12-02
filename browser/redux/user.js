@@ -36,6 +36,7 @@ export default function reducer (currentUser = initUser || {}, action) {
 
 /* ------------       DISPATCHERS     ------------------ */
 
+//this.props.completed(this.props.user.completed, 'completed', this.props.user.id);
 export const updateUser = (update, att, userId) => dispatch => {
   axios.post(`/api/users/${userId}`, {[att]: update})
   .then(res => {

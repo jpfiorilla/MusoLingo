@@ -9,6 +9,7 @@ import { MultipleChoiceContainer } from "../Question/QuestionContainer"
 import MultipleChoice from '../Question/MultipleChoice';
 import TextInput from "../Question/TextInput"
 import ReactPlayer from "react-player"
+import Mousetrap from 'mousetrap';
 
 // Material CSS rules
 const centerText = {marginLeft: "10%"}
@@ -58,23 +59,22 @@ export default class Quiz extends React.Component {
     if (done && passed) {
       // NOTE: add this quiz to the user's completed obj.
       const lesson_id = this.props.quizzes[0].lesson_id;
-      this.props.user.completed.quizzes[lesson_id] = this.state.grade;
-      // console.log('NEW USER COMPLETED OBJECT: ', this.props.user.completed);
-      let update = Object.assign(this.props.user.completed, {});
-      console.log('UPDATE ', update);
-      this.props.updateUser(update, 'completed', this.props.user.id);
+      let { grade } = this.state;
+      this.props.user.completed.quizzes[lesson_id] = grade;
 
       // Allotting number of keys:
-      let {grade} = this.state;
+      let {quizzes, lessons} = this.props.user;
       if (grade < .79) {
-        this.props.addKeys(this.props.user.id, 1)
+        this.props.user.completed.keys += 1;
       }
       else if (grade >= .79 && grade <= .99) {
-        this.props.addKeys(this.props.user.id, 2)
+        this.props.user.completed.keys += 2;
       }
       else {
-        this.props.addKeys(this.props.user.id, 3)
+        this.props.user.completed.keys += 3;
       }
+
+      this.props.updateUser(this.props.user.completed, 'completed', this.props.user.id);
     }
   }
 
@@ -99,6 +99,15 @@ export default class Quiz extends React.Component {
         </div>
       </div>
     );
+  }
+
+  componentDidMount() {
+    Mousetrap.bind([`right`], this.handleNext);
+    Mousetrap.bind([`left`], this.handlePrev);
+  }
+  componentWillUnmount() {
+    Mousetrap.unbind([`right`], this.handleNext);
+    Mousetrap.unbind([`left`], this.handlePrev);
   }
 
   renderContent() {

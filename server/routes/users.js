@@ -35,14 +35,6 @@ customUserRoutes.get('/:id', function(req, res, next){
 
 customUserRoutes.post('/:id', (req,res,next) => {
 
-	// userModel.update(req.body, {
-	// 	where: {
-	// 		id: req.params.id
-	// 	}
-	// })
-
-
-
 	userModel.findById(req.params.id)
 	.then(result => result.update(req.body))
 	.then(updated => {
