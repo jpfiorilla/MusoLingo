@@ -77,11 +77,10 @@ export default class Quiz extends React.Component {
         }
         else {
           this.props.user.completed.keys += 3;
-        }      
-        
+        }
+
         this.props.updateUser(this.props.user.completed, 'completed', this.props.user.id);
         // this.setState({grow: true})
-        
       }
     }
   }

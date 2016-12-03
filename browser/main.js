@@ -68,6 +68,7 @@ render(
       <Route path="/user" component={UserPage}/>
       <Route path="/game/:id" component={Challenge} onEnter={onEnterRetrieveChallenge}/>
       <Route path="/keyboard"/>
+      <Route path="/*" Component={HomePage} />
 
       {/* <Route path="/test" component={ExternalLink}/> */}
 
