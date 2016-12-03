@@ -8,9 +8,9 @@ import { Link, browserHistory } from 'react-router';
 
 export default class AudioLink extends React.Component {
 
-  constructor () {
+  constructor (props) {
 
-    super ();
+    super (props);
 
     this.state = {
       source: this.props && this.props.source || "http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3",

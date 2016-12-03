@@ -9,6 +9,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import SingleRhythmNote from '../vexflow/singlerhythmnote';
 const currSlide = 'currSlide';
+
 let overallIndex = 0;
 
 // NOTE: SUBCOMPONENTS %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
@@ -29,11 +30,18 @@ export default class SlidesComponent extends React.Component {
       finished: false,
       stepIndex: 0,
       staffNum: 0,
+      disabled: false,
+      setDisable: true
     };
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.whatShouldWeRender = this.whatShouldWeRender.bind(this);
     this.goToQuiz = this.goToQuiz.bind(this);
+    this.enableButton = this.enableButton.bind(this);
+  }
+
+  enableButton () {
+    this.setState({disabled: false, setDisable: false})
   }
 
   componentWillUnmount () {
@@ -62,6 +70,7 @@ export default class SlidesComponent extends React.Component {
     this.setState({
       stepIndex: stepIndex + 1,
       finished: stepIndex >= this.props.slides.length - 1,
+      setDisable: true
     });
     localStorage.setItem(currSlide, this.state.stepIndex + 1);
     if (stepIndex >= this.props.slides.length - 1) {
@@ -72,12 +81,13 @@ export default class SlidesComponent extends React.Component {
   handlePrev () {
     const {stepIndex} = this.state;
     if (stepIndex > 0) {
-      this.setState({stepIndex: stepIndex - 1});
+      this.setState({stepIndex: stepIndex - 1, setDisable: true});
       localStorage.setItem(currSlide, this.state.stepIndex - 1);
     }
   };
 
   whatShouldWeRender (obj, index) {
+    console.log('back inside');
 
     let subComponent;
 
@@ -105,20 +115,27 @@ export default class SlidesComponent extends React.Component {
       description={refs.description}
     />;
   } else if (obj.pianoUserInput) {
+    if (this.state.setDisable) {
+      this.state.disabled = true;
+    }
     let refs = obj.pianoUserInput;
     subComponent =
     <PianoUserInput
       notesToPlay={refs.notesToPlay}
+      enable={this.enableButton}
     />;
   } else if (obj.audioLink) {
     let refs = obj.audioLink;
     subComponent =
-    <AudioLink
+    <PlayAudio
       source={refs.source}
       type={refs.type}
       description={refs.description}
     />;
   } else if (obj.userTextInput) {
+    if (this.state.setDisable) {
+      this.state.disabled = true;
+    }
     let refs = obj.userTextInput;
     subComponent =
     <UserTextInput
@@ -126,6 +143,7 @@ export default class SlidesComponent extends React.Component {
       question={refs.question}
       correctAnswerMessage={refs.correctAnswerMessage}
       incorrectAnswerMessage={refs.incorrectAnswerMessage}
+      enable={this.enableButton}
     />;
   }
 
@@ -193,6 +211,7 @@ render() {
             <RaisedButton
               label={stepIndex === this.props.slides.length - 1 ? 'Finish' : 'Next'}
               primary={true}
+              disabled={this.state.disabled}
               onClick={() => {
                 if (stepIndex === this.props.slides.length - 1 && this.props.user.completed) {
                   this.props.user.completed.lessons[this.props.slides[0].lesson_id] = 'We did it!';

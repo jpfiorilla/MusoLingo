@@ -40,7 +40,7 @@ export default class ExternalLink extends React.Component {
                 <RaisedButton
                   label={this.state.linkDisplay[index]}
                   onClick={() => window.open(link)}
-                  style="primary"
+                  primary={true}
                 />
               </div>
             );
