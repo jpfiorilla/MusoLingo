@@ -11,7 +11,6 @@
 }
 
 #navbar-key {
-    margin-right: -10px;
     color: gold;
 }
 
@@ -37,4 +36,24 @@
 
 #navbar-logo-text:hover {
     color: rgb(182, 31, 31);
+}
+
+@keyframes scaling {
+    0% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+    50% {
+        transform: scale(2.0);
+        -webkit-transform: scale(2.0);
+    }
+    100% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
+
+.grow {
+    animation: scaling 2s ease-in-out alternate;
+    -webkit-animation: scaling 2s ease-in-out alternate;
 }

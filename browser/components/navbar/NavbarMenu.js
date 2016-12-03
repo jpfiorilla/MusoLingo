@@ -20,11 +20,29 @@ export default class NavbarMenu extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      open: false
+      open: false,
+      grow: false
     }
     this.onAccountToggle = this.onAccountToggle.bind(this)
     this.handleAccountClose = this.handleAccountClose.bind(this)
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props.user.completed.quizzes !== nextProps.user.completed.quizzes) {
+      this.state.grow = true;
+      return true;
+    } else if (this.props.user.completed.lessons !== nextProps.user.completed.lessons) {
+      this.state.grow = true;
+      return true;
+    } else if (this.props.user.completed.challenges !== nextProps.user.completed.challenges) {
+      this.state.grow = true;
+      return true;
+    } else {
+      this.state.grow = false;
+      return true;
+    }
+  }
+
   onAccountToggle(e){
     e.preventDefault()
 
@@ -66,7 +84,7 @@ export default class NavbarMenu extends React.Component {
           <div className="navbar-item">
             <i id="navbar-key"
               data-badge={this.props.user.completed.keys}
-              className="material-icons mdl-badge mdl-badge--no-background mdl-badge--overlap">vpn_key</i>
+              className={(this.state.grow) ? "grow " + "material-icons mdl-badge mdl-badge--no-background mdl-badge--overlap" : "" + "material-icons mdl-badge mdl-badge--no-background mdl-badge--overlap"}>vpn_key</i>
           </div>
         ) : null
       }

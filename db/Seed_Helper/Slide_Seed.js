@@ -14,7 +14,7 @@ var lessononeone = [{
   "title": "",
   "slideContent": [
     {
-      text: "Music moves in time. We use <b>rhythm</b> to organize the flow of time."
+      text: "Music moves in time. We use <b>rhythm</b> to organize the flow of time like a specific kind of pattern formed by a series of notes differing in duration and stress."
     },
     // { // include some relevant picture
     //   img: "http://i.imgur.com/PvRcW43.png",
@@ -34,7 +34,20 @@ var lessononeone = [{
       text: "A piece of sheet music is made up of <b>measures</b>."
     },
     {
-      img: "" // empty measure
+      text: "Vertical black bars called <b>bar lines</b> divide the staff into measures."
+    },
+    {
+      img: "/images/lessons_pictures/measure-1.png",
+      style: {
+        width: "70%"
+      }
+    },
+    {
+      text: "This staff has been split up into two measures."
+    },
+    {
+      img: "/images/lessons_pictures/measure-2.png",
+      style: {width: "68%"}
     },
     {
       text: "Each measure holds a certain number of <b>beats</b>. A <b>beat</b> is the basic unit of duration."
@@ -47,7 +60,25 @@ var lessononeone = [{
       text: "The number of beats held by each measure is determined by its time signature, which we'll learn about a little later. For now, let's assume that all measures contain <b>4 beats</b>."
     },
     {
-      img: "" // measure with 4/4 and 4 quarter notes
+      img: "/images/lessons_pictures/measure-3.png",
+      style: {width: "70%"}
+    },
+    {
+      text: "The first measure is in 4/4 time, while the second measure is in 3/4 time."
+    },
+    {
+      img: "/images/lessons_pictures/measure-4.png",
+      style: {width: "70%"}
+    },
+    {
+      text: "The first measure (4/4) contains four quarter notes"
+    },
+    {
+      img: "/images/lessons_pictures/measure-5.png",
+      style: {width: "70%"}
+    },
+    {
+      text: "While the second measure (3/4) contains three quarter notes."
     },
     {
       text: "Different rhythmic notes are meant to be played for a different number of beats. Let's learn what the basic rhythmic notes are!"
@@ -185,6 +216,16 @@ var lessononeone = [{
 }, {
   "title": "conclusion",
   "slideContent": [
+    {
+      text: "This chart displays the relationship of all five note types discussed in this lesson."
+    },
+    {
+      img: "/images/lessons_pictures/notes-graph.png",
+      style: {width: "70%"}
+    },
+    {
+      text: "Try listening to the differences!"
+    },
     { // whole note:
       img: "http://i.imgur.com/69AJB7X.png",
       tone: {
@@ -299,6 +340,15 @@ lessononetwo = [{
     },
     {
       text: "But how long is one beat? Surely it can't be the same for all songs, since some songs are faster or slower than others."
+    },
+    {
+      text: "Beat is the duration we assign to our rhythm definitions. This can be a fraction of a second, a second, a few seconds, or several seconds. Putting several beats together gives us a steady series of units which make up rhythm."
+    },
+    {
+      text: "See this example of a 4 beat rhythm."
+    },
+    {
+      img: "/images/lessons_pictures/four-beat-rhythm.gif"
     }
   ]
 }, {
