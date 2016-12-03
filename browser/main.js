@@ -22,7 +22,7 @@ import LessonPage from "./components/LessonPage/LessonPage";
 import Challenge from "./components/Challenge/ChallengeContainer";
 import UserPage from './components/UserPage/UserPageContainer';
 import Keyboard from "./components/Keyboard/Keyboard";
-import PianoUserInput from './components/Slides/SubComponents/PianoUserInput';
+// import ExternalLink from './components/Slides/SubComponents/ExternalRefs';
 
 // Redux actions and thunks
 import store from './store'
@@ -69,7 +69,7 @@ render(
       <Route path="/game/:id" component={Challenge} onEnter={onEnterRetrieveChallenge}/>
       <Route path="/keyboard"/>
 
-      <Route path="/test" component={PianoUserInput}/>
+      {/* <Route path="/test" component={ExternalLink}/> */}
 
       <IndexRoute component={NavigationPage} onEnter={onNavigationEnter}/>
     </Route>
