@@ -47,9 +47,9 @@ export let pianoHelper;
 // NOTE: Main React component.
 export default class PianoUserInput extends React.Component {
 
-  constructor () {
+  constructor (props) {
 
-    super ();
+    super (props);
 
     this.state = {
       notePlayed: undefined,
@@ -63,6 +63,7 @@ export default class PianoUserInput extends React.Component {
     // the note logged to the console during testing so i can pass the test.
 
     // console.log(this.state.notePlayed);
+    this.props.enable();
   }
 
   componentWillMount () {

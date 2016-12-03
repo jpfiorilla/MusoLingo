@@ -14,9 +14,9 @@ const style = {
 
 export default class ExternalLink extends React.Component {
 
-  constructor () {
+  constructor (props) {
 
-    super ();
+    super (props);
 
     this.state = {
       link: this.props && this.props.link || ['http://www.pgatour.com/'],
@@ -40,7 +40,7 @@ export default class ExternalLink extends React.Component {
                 <RaisedButton
                   label={this.state.linkDisplay[index]}
                   onClick={() => window.open(link)}
-                  style="primary"
+                  primary={true}
                 />
               </div>
             );

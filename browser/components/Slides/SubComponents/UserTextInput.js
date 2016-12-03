@@ -17,9 +17,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 export default class UserTextInput extends React.Component {
 
-  constructor () {
+  constructor (props) {
 
-    super ();
+    super (props);
 
     this.state = {
       userAnswer: '',
@@ -74,7 +74,7 @@ export default class UserTextInput extends React.Component {
       <FlatButton
         label="Got it!"
         primary={true}
-        onClick={this.handleClose}
+        onClick={() => {this.handleClose; this.props.enable();}}
       />
     ];
 
