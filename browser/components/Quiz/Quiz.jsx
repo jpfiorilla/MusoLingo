@@ -61,7 +61,6 @@ export default class Quiz extends React.Component {
       const lesson_id = this.props.quizzes[0].lesson_id;
 
       let { grade } = this.state;
-      this.props.user.completed.quizzes[lesson_id] = grade;
 
       if (this.props.user.completed.quizzes[lesson_id] >= 0.6) {
         console.log("User already completed and passed this quiz!")
@@ -82,7 +81,6 @@ export default class Quiz extends React.Component {
 
         this.props.updateUser(this.props.user.completed, 'completed', this.props.user.id);
         // this.setState({grow: true})
-
       }
     }
   }
