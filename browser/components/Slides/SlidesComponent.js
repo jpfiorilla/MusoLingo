@@ -9,9 +9,17 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import SingleRhythmNote from '../vexflow/singlerhythmnote';
 const currSlide = 'currSlide';
-import Tone from "tone";
+let overallIndex = 0;
 
-let synth = new Tone.Synth().toMaster();
+// NOTE: SUBCOMPONENTS %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
+import ExternalRefs from './SubComponents/ExternalRefs';
+import PianoUserInput from './SubComponents/PianoUserInput';
+import PlayAudio from './SubComponents/PlayAudio';
+import Text from './SubComponents/Text';
+import UserTextInput from './SubComponents/UserTextInput';
+import Image from './SubComponents/Image';
+// %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
+
 
 export default class SlidesComponent extends React.Component {
 
@@ -20,12 +28,11 @@ export default class SlidesComponent extends React.Component {
     this.state = {
       finished: false,
       stepIndex: 0,
-      staffNum: 0
+      staffNum: 0,
     };
     this.handleNext = this.handleNext.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
-    this.textOrImage = this.textOrImage.bind(this);
-    this.jsxBold = this.jsxBold.bind(this);
+    this.whatShouldWeRender = this.whatShouldWeRender.bind(this);
     this.goToQuiz = this.goToQuiz.bind(this);
   }
 
@@ -34,6 +41,7 @@ export default class SlidesComponent extends React.Component {
     localStorage.setItem(currSlide, 0);
     Mousetrap.unbind([`right`], this.handleNext);
   }
+
   componentDidMount () {
     // NOTE: update localStorage with slide Number.
     this.state.stepIndex = +localStorage.getItem(currSlide);
@@ -42,6 +50,7 @@ export default class SlidesComponent extends React.Component {
     }
     Mousetrap.bind([`right`], this.handleNext);
   }
+
   goToQuiz () {
     this.props.askForQuiz(this.props.slides[0].lesson_id);
     browserHistory.push('/quiz');
@@ -49,6 +58,7 @@ export default class SlidesComponent extends React.Component {
 
   handleNext () {
     const {stepIndex} = this.state;
+
     this.setState({
       stepIndex: stepIndex + 1,
       finished: stepIndex >= this.props.slides.length - 1,
@@ -67,167 +77,137 @@ export default class SlidesComponent extends React.Component {
     }
   };
 
-  jsxBold (text, index) {
-    // NOTE: since the slides are seeded with <b> tags, we need have the bold text actually display.
-    var retArr = [];
-    var index = 0;
-    var elType = 'p';
-    var subStr = '';
-    var childIndex = 0;
+  whatShouldWeRender (obj, index) {
 
-    while (index < text.length) {
-      var features = {
-        style: {display : 'inline'},
-        key: childIndex
-      };
-      // NOTE: if we encounter a tag we assume it's an opening or closing b tag.
-      if (text[index] === '<') {
-        // NOTE: if it's an opening tag...
-        if (text.slice(index, index + 3) === '<b>') {
-          // NOTE: create a <p> JSX element with the text in substring.
-          retArr.push(React.createElement(elType, features, subStr));
-          subStr = '';
-          elType = 'b';
-          index += 3;
-        } else { // closing tag, return the b.
-          retArr.push(React.createElement(elType, features, subStr));
-          subStr = '';
-          elType = 'p';
-          index += 4;
-        }
-        childIndex ++;
-      } else {
-        subStr += text[index];
-        index ++;
-      }
-    }
-    if (subStr) {
-      retArr.push(React.createElement('p', features, subStr));
-    }
-    return retArr;
-  }
-  textOrImage (obj, index) {
+    let subComponent;
 
     if (obj.text) {
-      var y = this.jsxBold(obj.text, index);
-      return (
-        <div key={index}>
-          {y}
-        </div>
-      );
-    } else if (obj.img) {
-      if (obj.tone) {
-        let triggerPopUp = () => {
-          document.getElementById(`click-me-popup-${index}`).style.display = "block";
-        }
-        let hidePopUp = () => {
-          document.getElementById(`click-me-popup-${index}`).style.display = "none";
-        }
-        let note = "C4";
-        let duration = obj.tone.duration;
-        let playSynth = () => {synth.triggerAttackRelease(note, duration)}
-        return (
-          <div style={(obj.div) ? obj.div.style : null} key={index}>
-            <div id={`click-me-popup-${index}`} 
-              style={{display: "none", position: "relative", top: "30px", color: "red", fontSize: "smaller", fontWeight: "bold", fontFamily: "bebas-kai"}}>
-                Click me
-            </div>
-            <img key={index} src={obj.img} style={obj.style} onClick={playSynth} onMouseOver={triggerPopUp} onMouseOut={hidePopUp} />
-          </div>
-        )
-      }
-      else {
-        return (
-          <div key={index}>
-            <img key={index} src={obj.img} style={obj.style} />
-          </div>
-        );
-      }
-    } else if (obj.vex) {
-      let vexComponent = obj.vex.type;
-      obj.vex.type === 'SingleRhythmNote' ?
-      vexComponent = SingleRhythmNote : console.log('no vex type');
-      let info = obj.vex.info;
-      var staffId = 'staff' + obj.vex.num;
-      return (
-        <div key={index}>
-          {
-            React.createElement(vexComponent, {info, staffId})
-          }
-        </div>
-      )
-    }
+      subComponent =
+      <Text
+        text={obj.text}
+        index={index}
+      />
+  } else if (obj.img) {
+    subComponent =
+    <Image
+      img={obj.img}
+      index={index}
+      tone={obj.tone}
+      div={obj.div}
+      style={obj.style}
+    />;
+  } else if (obj.externalRef) {
+    let refs = obj.externalRef;
+    subComponent =
+    <ExternalRefs
+      link={refs.link}
+      linkDisplay={refs.linkDisplay}
+      description={refs.description}
+    />;
+  } else if (obj.pianoUserInput) {
+    let refs = obj.pianoUserInput;
+    subComponent =
+    <PianoUserInput
+      notesToPlay={refs.notesToPlay}
+    />;
+  } else if (obj.audioLink) {
+    let refs = obj.audioLink;
+    subComponent =
+    <AudioLink
+      source={refs.source}
+      type={refs.type}
+      description={refs.description}
+    />;
+  } else if (obj.userTextInput) {
+    let refs = obj.userTextInput;
+    subComponent =
+    <UserTextInput
+      correctAnswer={refs.correctAnswer}
+      question={refs.question}
+      correctAnswerMessage={refs.correctAnswerMessage}
+      incorrectAnswerMessage={refs.incorrectAnswerMessage}
+    />;
   }
-  render() {
-    const {finished, stepIndex} = this.state;
-    const contentStyle = {margin: '0 16px'};
 
-    let linearStepper;
+  overallIndex ++;
+  return (
+    <div key={overallIndex}>
+      {subComponent}
+    </div>
+  );
 
-    if (this.props.slides.length) {
-      linearStepper = (
-        <Stepper style={{overflowY: "hidden", overflowX: "scroll", marginBottom: "40px", fontFamily: "bebas-kai"}} activeStep={stepIndex}>
+}
+
+render() {
+  const {finished, stepIndex} = this.state;
+  const contentStyle = {margin: '0 16px'};
+
+  let linearStepper;
+
+  if (this.props.slides.length) {
+    linearStepper = (
+      <Stepper style={{overflowY: "hidden", overflowX: "scroll", marginBottom: "40px", fontFamily: "bebas-kai"}} activeStep={stepIndex}>
+        {
+          this.props.slides.map((slide, index) => {
+            return (
+              <Step key={index}>
+                <StepLabel>{slide.title}</StepLabel>
+              </Step>
+            );
+          })
+        }
+      </Stepper>
+    )
+  }
+  return (
+    <div className="slides-container">
+
+      { linearStepper }
+
+      <div style={contentStyle}>
+        {finished ? (
+          <div style={{textAlign: "center", marginBottom: "20px"}}>
+            <p style={{display: "inline-block", marginRight: "15px", cursor: "pointer", fontWeight: "bold"}} onClick={(event) => {
+              event.preventDefault();
+              this.setState({stepIndex: 0, finished: false});
+            }}>
+            Replay Slides
+          </p>
+          |
+          <p style={{display: "inline-block", marginLeft: "15px", cursor: "pointer", fontWeight: "bold"}} onClick={this.goToQuiz}>Go to Quiz</p>
+        </div>
+      ) : (
+        <div style={{textAlign: 'center'}}>
           {
-            this.props.slides.map((slide, index) => {
-              return (
-                <Step key={index}>
-                  <StepLabel>{slide.title}</StepLabel>
-                </Step>
-              );
+            this.props.slides.length && this.props.slides[this.state.stepIndex].slideContent.map((stuff, index) => {
+              return this.whatShouldWeRender(stuff, index);
             })
           }
-        </Stepper>
-      )
-    }
-    return (
-      <div className="slides-container">
-
-        { linearStepper }
-
-        <div style={contentStyle}>
-          {finished ? (
-            <div style={{textAlign: "center", marginBottom: "20px"}}>
-              <p style={{display: "inline-block", marginRight: "15px", cursor: "pointer", fontWeight: "bold"}} onClick={(event) => {
-                event.preventDefault();
-                this.setState({stepIndex: 0, finished: false});
-              }}>
-              Replay Slides
-            </p>
-            |
-            <p style={{display: "inline-block", marginLeft: "15px", cursor: "pointer", fontWeight: "bold"}} onClick={this.goToQuiz}>Go to Quiz</p>
+          <div style={{marginTop: 12}}>
+            <FlatButton
+              label="Back"
+              disabled={stepIndex === 0}
+              onClick={this.handlePrev}
+              style={{marginRight: 12}}
+            />
+            <RaisedButton
+              label={stepIndex === this.props.slides.length - 1 ? 'Finish' : 'Next'}
+              primary={true}
+              onClick={() => {
+                if (stepIndex === this.props.slides.length - 1 && this.props.user.completed) {
+                  this.props.user.completed.lessons[this.props.slides[0].lesson_id] = 'We did it!';
+                  this.props.user.completed.keys += 1;
+                  this.props.completed(this.props.user.completed, 'completed', this.props.user.id);
+                  localStorage.setItem(currSlide, 0);
+                  this.forceUpdate();
+                }
+                this.handleNext();
+              }}
+            />
           </div>
-        ) : (
-          <div style={{textAlign: 'center'}}>
-            {
-              this.props.slides.length && this.props.slides[stepIndex].slideContent.map((stuff, index) => {
-                return this.textOrImage(stuff, index);
-              })
-            }
-            <div style={{marginTop: 12}}>
-              <FlatButton
-                label="Back"
-                disabled={stepIndex === 0}
-                onClick={this.handlePrev}
-                style={{marginRight: 12}}
-              />
-              <RaisedButton
-                label={stepIndex === this.props.slides.length - 1 ? 'Finish' : 'Next'}
-                primary={true}
-                onClick={() => {
-                  if (stepIndex === this.props.slides.length - 1 && this.props.user.completed) {
-                    this.props.user.completed.lessons[this.props.slides[0].lesson_id] = 'We did it!';
-                    this.props.user.completed.keys += 1;
-                    this.props.completed(this.props.user.completed, 'completed', this.props.user.id);
-                    localStorage.setItem(currSlide, 0);
-                    this.forceUpdate();
-                  }
-                  this.handleNext();
-                }}
-              />
-            </div>
-          </div>
-        )}
-      </div>
-    </div>);
-  }
+        </div>
+      )}
+    </div>
+  </div>);
+}
 }

@@ -23,10 +23,10 @@ export default class UserTextInput extends React.Component {
 
     this.state = {
       userAnswer: '',
-      correct_answer: (this.props && this.props.answer) || '900',
+      correctAnswer: (this.props && this.props.correctAnswer) || '900',
       question: (this.props && this.props.question) || 'How old am I????',
-      correct_answer_message: (this.props && this.props.correct_answer_message) || "Oh my god, that's right!",
-      incorrect_answer_message: (this.props && this.props.incorrect_answer_message) ||
+      correctAnswerMessage: (this.props && this.props.correctAnswerMessage) || "Oh my god, that's right!",
+      incorrectAnswerMessage: (this.props && this.props.incorrectAnswerMessage) ||
       "Some may say that answer is not correct.  HINT: I've been alive for 90 decades.",
       teacherResponse: undefined,
       open: false
@@ -59,10 +59,10 @@ export default class UserTextInput extends React.Component {
 
     if (! this.state.userAnswer) {
       // NOTE: do nothing
-    } else if (this.state.userAnswer === this.state.correct_answer) {
-      this.answerFeedBack (this.state.correct_answer_message);
+    } else if (this.state.userAnswer === this.state.correctAnswer) {
+      this.answerFeedBack (this.state.correctAnswerMessage);
     } else {
-      this.answerFeedBack (this.state.incorrect_answer_message);
+      this.answerFeedBack (this.state.incorrectAnswerMessage);
     }
   }
 
