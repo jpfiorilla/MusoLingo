@@ -13,7 +13,10 @@ import RandomTiedNote from '../vexflow/randomtiednote';
 import RandomHalfOrWholeStep from '../vexflow/randomhalforwholestep';
 import RandomWhiteKeyNote from '../vexflow/randomwhitekeynote';
 import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations, randomDistance, randomOtherDistances, randomIntervalName, randomTieDuration, getDuration, getOtherDurations, randomStepsNames, intervalToStep, randomWhiteKeyName, randomOtherWhiteKeys } from '../../utils';
-import  Vex from 'vexflow'
+import Vex from 'vexflow'
+import Tone from "tone";
+
+let synth = new Tone.Synth().toMaster();
 
 const styles = {
   block: {
@@ -35,7 +38,8 @@ export default class MultipleChoiceQuestion extends React.Component {
       type: this.props.questionType,
       answered: false,
       correctAnswer: '',
-      score: []
+      score: [],
+      incorrect: []
     }
     this.onAnswerSelection = this.onAnswerSelection.bind(this);
   }
@@ -48,6 +52,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         questionComponent = RandomTrebleNote;
         correct = randomNoteName(56, 75);
         incorrect = randomOtherNoteNames(correct, 56, 67);
+        this.state.incorrect = incorrect;
         this.setState({ correctAnswer: correct })
         correct = getNoteName(correct);
         // console.log(correct);
@@ -56,6 +61,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         questionComponent = RandomTrebleNote;
         correct = randomWhiteKeyName(56, 75);
         incorrect = randomOtherWhiteKeys(correct, 56, 67);
+        this.state.incorrect = incorrect;
         this.setState({ correctAnswer: correct })
         correct = getNoteName(correct);
         // console.log(correct);
@@ -64,6 +70,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         questionComponent = RandomBassNote;
         correct = randomNoteName(37, 56);
         incorrect = randomOtherNoteNames(correct, 37, 48);
+        this.state.incorrect = incorrect;
         this.setState({ correctAnswer: correct })
         correct = getNoteName(correct);
         break;
@@ -74,6 +81,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         intervalNotes = [lownote, highnote];
         correct = calculateInterval(intervalNotes);
         incorrect = randomIntervals(correct);
+        this.state.incorrect = incorrect;
         this.setState({correctAnswer: correct})
         break;
       case "halfOrWholeStep":
@@ -101,6 +109,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         intervalNotes = [lownote, highnote];
         correct = calculateInterval(intervalNotes);
         incorrect = randomIntervals(correct);
+        this.state.incorrect = incorrect;
         this.setState({correctAnswer: correct})
         break;
       case "guessChordName":
@@ -137,6 +146,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         correct = getDuration(duration);
         // incorrect = getOtherDurations(correct);
         incorrect = ['2 beats', '4 beats', '0.5 beats'];
+        this.state.incorrect = incorrect;
         // tied, dotted, triplet
         break;
       default:
@@ -145,10 +155,25 @@ export default class MultipleChoiceQuestion extends React.Component {
   }
 
   onAnswerSelection(rightAnswerPosition, idx) {
-    // console.log("right answer position: ", rightAnswerPosition, "user choice : ", idx)
+    console.log(this.props)
+
     answered = true;
     let answerArr = ["#mca-0", "#mca-1", "#mca-2", "#mca-3"]
     let divArr = ["#radio0", "#radio1", "#radio2", "#radio3"]
+    let note = "C4";
+    switch (this.props.questionType) {
+      case "rhythmNote":
+        if ($("#mca-" + idx).html() === "whole") synth.triggerAttackRelease(note, "1n")
+        else if ($("#mca-" + idx).html() === "half") synth.triggerAttackRelease(note, "2n")
+        else if ($("#mca-" + idx).html() === "quarter") synth.triggerAttackRelease(note, "4n")
+        else if ($("#mca-" + idx).html() === "8th") synth.triggerAttackRelease(note, "8n")
+        else if($("#mca-" + idx).html() === "16th") synth.triggerAttackRelease(note, "16n")
+        break;
+      case "guessWhiteKeyName":
+        synth.triggerAttackRelease($("#mca-" + idx).html() + "4", "8n")
+        break;
+    }
+
 
     let correct = answerArr.splice(rightAnswerPosition, 1);
     let incorrect = answerArr;

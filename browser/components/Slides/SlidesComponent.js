@@ -34,6 +34,7 @@ export default class SlidesComponent extends React.Component {
     localStorage.setItem(currSlide, 0);
     Mousetrap.unbind([`right`], this.handleNext);
   }
+  
   componentDidMount() {
     // NOTE: update localStorage with slide Number.
     this.state.stepIndex = +localStorage.getItem(currSlide);
