@@ -23,13 +23,12 @@ export default class NavigationPage extends React.Component {
 
   checkCompletion(lessonId) { // checks current quiz
     let score = 0;
-    if (this.props.user.completed.quizzes[lessonId] >= 0.6) {
+    // console.log('lessonId ', lessonId);
+    if (this.props.user.completed.quizzes && this.props.user.completed.quizzes[lessonId] >= 0.6) {
       score += 1;
-    }
-    if (this.props.user.completed.challenges[lessonId] >= 0.5) {
+    } if (this.props.user.completed.challenges && this.props.user.completed.challenges[lessonId] >= 0.5) {
       score += 1;
-    }
-    if (this.props.user.completed.lessons[lessonId]) {
+    } if (this.props.user.completed.lessons && this.props.user.completed.lessons[lessonId]) {
       score += 1;
     }
     return (score / 3) * 100;
@@ -63,23 +62,23 @@ export default class NavigationPage extends React.Component {
     var random_background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     return (
       <div className="navigation-container">
-            {
-              this.props.topics && this.props.topics.map((topic, index) => {
-                return (
-                  <div id={`navpage-${index}`} className="navpage-container container" key={index}>
-                  <div className="row">
-                    <div className="col-xs-12 col-md-2">
-                      <h3 className="topic-header">{topic.name}</h3>
-                    </div>
-                    <div className="col-xs-12 col-md-10">
-                      <div className="topic-lessons-container">
-                        {
-                          this.props.lessons && this.props.lessons.map((lesson, index2) => {
-                            if(lesson.topic_id === topic.id){
-                              return (
-                                <div className="lesson-container" key={index2}
-                                  onMouseOver={() => { 
-                                    $(`#slides-quizzes-${index2}`).addClass("slides-quizzes-visible") } } onMouseOut={() => { $(`#slides-quizzes-${index2}`).removeClass("slides-quizzes-visible") } }>
+        {
+          this.props.topics && this.props.topics.map((topic, index) => {
+            return (
+              <div id={`navpage-${index}`} className="navpage-container container" key={index}>
+                <div className="row">
+                  <div className="col-xs-12 col-md-2">
+                    <h3 className="topic-header">{topic.name}</h3>
+                  </div>
+                  <div className="col-xs-12 col-md-10">
+                    <div className="topic-lessons-container">
+                      {
+                        this.props.lessons && this.props.lessons.map((lesson, index2) => {
+                          if(lesson.topic_id === topic.id){
+                            return (
+                              <div className="lesson-container" key={index2}
+                                onMouseOver={() => {
+                                  $(`#slides-quizzes-${index2}`).addClass("slides-quizzes-visible") } } onMouseOut={() => { $(`#slides-quizzes-${index2}`).removeClass("slides-quizzes-visible") } }>
                                   <h3 id="lesson-step" className="col-md-1">{index2 + 1}</h3>
                                   <h3 id={`lesson-header-${index2}`} className="lesson-header">{lesson.title}</h3>
                                   <div className="progress vertical">
@@ -94,18 +93,18 @@ export default class NavigationPage extends React.Component {
                                     <h3 id="play">Play</h3>
                                   </div>
                                 </div>
-                                )
+                              )
                             }
                           })
                         }
-                        </div>
-                      </div>  
+                      </div>
                     </div>
                   </div>
-            )
-          })
-        }
-      </div>
-    )
+                </div>
+              )
+            })
+          }
+        </div>
+      )
+    }
   }
-}

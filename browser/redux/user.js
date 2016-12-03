@@ -37,10 +37,8 @@ export default function reducer (currentUser = initUser || {}, action) {
 
 //this.props.completed(this.props.user.completed, 'completed', this.props.user.id);
 export const updateUser = (update, att, userId) => dispatch => {
-  console.log("updated: ", update)
-  axios.put(`/api/users/${userId}`, {[att]: update})
+  axios.post(`/api/users/${userId}`, {[att]: update})
   .then(res => {
-    console.log(res.data);
     dispatch(set(res.data))
   })
   .catch(err => console.error('Error in updateUser', err));
@@ -81,7 +79,6 @@ export const logout = () => dispatch => {
   axios.delete('/api/auth/logout')
   .then(() => {
     dispatch(remove());
-    browserHistory.push(`/home`);
   })
   .catch(err => console.error('Unable to logout', err));
 }
