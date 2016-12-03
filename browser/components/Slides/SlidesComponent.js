@@ -40,6 +40,10 @@ export default class SlidesComponent extends React.Component {
     this.enableButton = this.enableButton.bind(this);
   }
 
+  componentWillReceiveProps (nextProps) {
+    console.log(nextProps);
+  }
+
   enableButton () {
     this.setState({disabled: false, setDisable: false})
   }
@@ -57,6 +61,7 @@ export default class SlidesComponent extends React.Component {
       this.state.stepIndex = 0;
     }
     Mousetrap.bind([`right`], this.handleNext);
+    Mousetrap.bind([`left`], this.handlePrev);
   }
 
   goToQuiz () {
@@ -65,6 +70,11 @@ export default class SlidesComponent extends React.Component {
   }
 
   handleNext () {
+    let length = this.props.slides[this.state.stepIndex] && this.props.slides[this.state.stepIndex].slideContent.length;
+    if (length) {
+      overallIndex += length;
+    }
+
     const {stepIndex} = this.state;
 
     this.setState({
@@ -72,24 +82,28 @@ export default class SlidesComponent extends React.Component {
       finished: stepIndex >= this.props.slides.length - 1,
       setDisable: true
     });
+
     localStorage.setItem(currSlide, this.state.stepIndex + 1);
 
     if (this.props.user.completed.lessons[this.props.slides[0].lesson_id]) {
-      console.log("User already completed this slide");
       localStorage.setItem(currSlide, 0);
-    }  
-    else if (stepIndex === this.props.slides.length - 1 && this.props.user.completed) {
+    } else if (stepIndex === this.props.slides.length - 1 && this.props.user.completed) {
       this.props.user.completed.lessons[this.props.slides[0].lesson_id] = 'We did it!';
       this.props.user.completed.keys += 1;
       this.props.completed(this.props.user.completed, 'completed', this.props.user.id);
-      
       localStorage.setItem(currSlide, 0);
       this.forceUpdate();
     }
+
   };
 
   handlePrev () {
-    const {stepIndex} = this.state;
+    let length = this.props.slides[this.state.stepIndex] && this.props.slides[this.state.stepIndex].slideContent.length;
+    if (length) {
+      overallIndex += length;
+    }
+
+    const { stepIndex } = this.state;
     if (stepIndex > 0) {
       this.setState({stepIndex: stepIndex - 1, setDisable: true});
       localStorage.setItem(currSlide, this.state.stepIndex - 1);
@@ -97,7 +111,6 @@ export default class SlidesComponent extends React.Component {
   };
 
   whatShouldWeRender (obj, index) {
-    console.log('back inside');
 
     let subComponent;
 
@@ -107,136 +120,135 @@ export default class SlidesComponent extends React.Component {
         text={obj.text}
         index={index}
       />
-  } else if (obj.img) {
-    subComponent =
-    <Image
-      img={obj.img}
-      index={index}
-      tone={obj.tone}
-      div={obj.div}
-      style={obj.style}
-    />;
-  } else if (obj.externalRef) {
-    let refs = obj.externalRef;
-    subComponent =
-    <ExternalRefs
-      link={refs.link}
-      linkDisplay={refs.linkDisplay}
-      description={refs.description}
-    />;
-  } else if (obj.pianoUserInput) {
-    if (this.state.setDisable) {
-      this.state.disabled = true;
+    } else if (obj.img) {
+      subComponent =
+      <Image
+        img={obj.img}
+        index={index}
+        tone={obj.tone}
+        div={obj.div}
+        style={obj.style}
+      />;
+    } else if (obj.externalRef) {
+      let refs = obj.externalRef;
+      subComponent =
+      <ExternalRefs
+        link={refs.link}
+        linkDisplay={refs.linkDisplay}
+        description={refs.description}
+      />;
+    } else if (obj.pianoUserInput) {
+      if (this.state.setDisable) {
+        this.state.disabled = true;
+      }
+      let refs = obj.pianoUserInput;
+      subComponent =
+      <PianoUserInput
+        notesToPlay={refs.notesToPlay}
+        enable={this.enableButton}
+      />;
+    } else if (obj.audioLink) {
+      let refs = obj.audioLink;
+      subComponent =
+      <PlayAudio
+        source={refs.source}
+        type={refs.type}
+        description={refs.description}
+      />;
+    } else if (obj.userTextInput) {
+      if (this.state.setDisable) {
+        this.state.disabled = true;
+      }
+      let refs = obj.userTextInput;
+      subComponent =
+      <UserTextInput
+        correctAnswer={refs.correctAnswer}
+        question={refs.question}
+        correctAnswerMessage={refs.correctAnswerMessage}
+        incorrectAnswerMessage={refs.incorrectAnswerMessage}
+        enable={this.enableButton}
+      />;
     }
-    let refs = obj.pianoUserInput;
-    subComponent =
-    <PianoUserInput
-      notesToPlay={refs.notesToPlay}
-      enable={this.enableButton}
-    />;
-  } else if (obj.audioLink) {
-    let refs = obj.audioLink;
-    subComponent =
-    <PlayAudio
-      source={refs.source}
-      type={refs.type}
-      description={refs.description}
-    />;
-  } else if (obj.userTextInput) {
-    if (this.state.setDisable) {
-      this.state.disabled = true;
-    }
-    let refs = obj.userTextInput;
-    subComponent =
-    <UserTextInput
-      correctAnswer={refs.correctAnswer}
-      question={refs.question}
-      correctAnswerMessage={refs.correctAnswerMessage}
-      incorrectAnswerMessage={refs.incorrectAnswerMessage}
-      enable={this.enableButton}
-    />;
+
+    return (
+      <div key={overallIndex + index}>
+        {subComponent}
+      </div>
+    );
+
   }
 
-  overallIndex ++;
-  return (
-    <div key={overallIndex}>
-      {subComponent}
-    </div>
-  );
+  render() {
+    const {finished, stepIndex} = this.state;
+    const contentStyle = {margin: '0 16px'};
 
-}
+    let linearStepper;
 
-render() {
-  const {finished, stepIndex} = this.state;
-  const contentStyle = {margin: '0 16px'};
-
-  let linearStepper;
-
-  if (this.props.slides.length) {
-    linearStepper = (
-      <Stepper style={{overflowY: "hidden", overflowX: "scroll", marginBottom: "40px", fontFamily: "bebas-kai"}} activeStep={stepIndex}>
-        {
-          this.props.slides.map((slide, index) => {
-            return (
-              <Step key={index}>
-                <StepLabel>{slide.title}</StepLabel>
-              </Step>
-            );
-          })
-        }
-      </Stepper>
-    )
-  }
-  return (
-    <div className="slides-container">
-
-      { linearStepper }
-
-      <div style={contentStyle}>
-        {finished ? (
-          <div style={{textAlign: "center", marginBottom: "20px"}}>
-            <p style={{display: "inline-block", marginRight: "15px", cursor: "pointer", fontWeight: "bold"}} onClick={(event) => {
-              event.preventDefault();
-              this.setState({stepIndex: 0, finished: false});
-            }}>
-            Replay Slides
-          </p>
-          |
-          <p style={{display: "inline-block", marginLeft: "15px", cursor: "pointer", fontWeight: "bold"}} onClick={this.goToQuiz}>Go to Quiz</p>
-        </div>
-      ) : (
-        <div style={{textAlign: 'center'}}>
+    if (this.props.slides.length) {
+      linearStepper = (
+        <Stepper style={{overflowY: "hidden", overflowX: "scroll", marginBottom: "40px", fontFamily: "bebas-kai"}} activeStep={stepIndex}>
           {
-            this.props.slides.length && this.props.slides[this.state.stepIndex].slideContent.map((stuff, index) => {
-              return this.whatShouldWeRender(stuff, index);
+            this.props.slides.map((slide, index) => {
+              return (
+                <Step key={index}>
+                  <StepLabel>{slide.title}</StepLabel>
+                </Step>
+              );
             })
           }
-          <div style={{marginTop: 12}}>
-            <FlatButton
-              label="Back"
-              disabled={stepIndex === 0}
-              onClick={this.handlePrev}
-              style={{marginRight: 12}}
-            />
-            <RaisedButton
-              label={stepIndex === this.props.slides.length - 1 ? 'Finish' : 'Next'}
-              primary={true}
-              disabled={this.state.disabled}
-              onClick={() => {
-                if (stepIndex === this.props.slides.length - 1 && this.props.user.completed) {
-                  this.props.user.completed.lessons[this.props.slides[0].lesson_id] = 'We did it!';
-                  this.props.user.completed.keys += 1;
-                  this.props.completed(this.props.user.completed, 'completed', this.props.user.id);
-                  localStorage.setItem(currSlide, 0);
-                  this.forceUpdate();
-                }
-                this.handleNext();
-              }}
-            />
+        </Stepper>
+      )
+    }
+    return (
+      <div className="slides-container">
+
+        { linearStepper }
+
+        <div style={contentStyle}>
+          {finished ? (
+            <div style={{textAlign: "center", marginBottom: "20px"}}>
+              <p style={{display: "inline-block", marginRight: "15px", cursor: "pointer", fontWeight: "bold"}} onClick={(event) => {
+                event.preventDefault();
+                this.setState({stepIndex: 0, finished: false});
+              }}>
+              Replay Slides
+            </p>
+            |
+            <p style={{display: "inline-block", marginLeft: "15px", cursor: "pointer", fontWeight: "bold"}} onClick={this.goToQuiz}>Go to Quiz</p>
           </div>
-        </div>
-      )}
-    </div>
-  </div>);
-}
+        ) : (
+          <div style={{textAlign: 'center'}}>
+            {
+              this.props.slides.length && this.props.slides[this.state.stepIndex].slideContent.map((stuff, index) => {
+                return this.whatShouldWeRender(stuff, index);
+              })
+            }
+            <div style={{marginTop: 12}}>
+              <FlatButton
+                label="Back"
+                disabled={stepIndex === 0}
+                onClick={this.handlePrev}
+                style={{marginRight: 12}}
+              />
+              <RaisedButton
+                label={stepIndex === this.props.slides.length - 1 ? 'Finish' : 'Next'}
+                primary={true}
+                disabled={this.state.disabled}
+                onClick={() => {
+                  if (stepIndex === this.props.slides.length - 1 && this.props.user.completed) {
+                    this.props.user.completed.lessons[this.props.slides[0].lesson_id] = 'We did it!';
+                    this.props.user.completed.keys += 1;
+                    this.props.completed(this.props.user.completed, 'completed', this.props.user.id);
+                    localStorage.setItem(currSlide, 0);
+                    this.forceUpdate();
+                  }
+                  this.handleNext();
+                }}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </div>);
+  }
 }
