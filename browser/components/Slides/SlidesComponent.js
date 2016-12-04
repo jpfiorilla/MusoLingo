@@ -19,6 +19,7 @@ import PlayAudio from './SubComponents/PlayAudio';
 import Text from './SubComponents/Text';
 import UserTextInput from './SubComponents/UserTextInput';
 import Image from './SubComponents/Image';
+import BPMCounter from './SubComponents/BPMCounter'
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 
 
@@ -168,6 +169,8 @@ export default class SlidesComponent extends React.Component {
         incorrectAnswerMessage={refs.incorrectAnswerMessage}
         enable={this.enableButton}
       />;
+    } else if (obj.BPMCounter) {
+      subComponent = <BPMCounter />
     }
 
     return (
