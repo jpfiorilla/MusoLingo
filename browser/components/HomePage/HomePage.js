@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {LoginContainer} from "../Login/LoginContainer";
 import {GetStartedContainer} from "../Login/LoginContainer"
 import AOS from "aos";
+import ReactPlayer from "react-player";
 
 const style = {
     margin: 12
@@ -18,6 +19,12 @@ export default class HomePage extends React.Component {
             <MuiThemeProvider>
                 <div>
                     <div className="homepage-1">
+
+                        <div className="fullscreen-beathoven">
+                            <video loop muted autoPlay className="fullscreen-bg-video">
+                                <source src="movies/beathoven-main.mp4" type="video/mp4" />
+                            </video>
+                        </div>
                         <div id="image-overlay">
                             <div className="homepage-navbar">
                                 <LoginContainer />

@@ -1,14 +1,18 @@
 #intro-logo {
     height: 20em;
     position: relative;
-    left: 39%;
-    top: 7em;
+    top: 10em;
+}
+
+.homepage-content {
+    align-items: center;
+    position: relative;
+    text-align: center;
 }
 
 .homepage-1 {
     width: 100%;
-    height: 750px;
-    background: url("/images/homepage-image.jpg");
+    height: 1000px;
     background-size: 100% 100%;
     z-index: -1;
 }
@@ -17,15 +21,34 @@
     background: transparent;
 }
 
+.fullscreen-beathoven {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
 .homepage-1 #image-overlay {
     width: 100%;
-    height: 750px;
+    height: 1000px;
     opacity: 0.6;
-    background: darkblue;
-    background: -webkit-linear-gradient(darkblue, black);
-    background: -o-linear-gradient(darkblue, black);
-    background: -moz-linear-gradient(darkblue, black);
-    background: linear-gradient(darkblue, black);
+    background: maroon;
+    background: -webkit-linear-gradient(maroon, black);
+    background: -o-linear-gradient(maroon, black);
+    background: -moz-linear-gradient(maroon, black);
+    background: linear-gradient(maroon, black);
     z-index: -1;
 }
 
@@ -78,7 +101,7 @@
     color: white;
     z-index: 1;
     top: 125px;
-    left: 43.6%;
+    left: 35.6%;
     font-weight: lighter;
     width: 30%;
 }
@@ -89,7 +112,6 @@
     border-color: white;
     color: white;
     font-size: large;
-    left: 48%;
     position: relative;
     top: 145px;
     font-weight: 200;

@@ -318,7 +318,7 @@ lessononetwo = [{
   "slideContent": [
     {
       text: "The duration of a beat is determined by the song's <b>tempo</b>, which is represented by a number denoting the piece's bpm (beats per minute)."
-    },
+      },
     {
       img: '' // relevant image, something about tempo/bpm
     }
