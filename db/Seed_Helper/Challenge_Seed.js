@@ -1,15 +1,14 @@
 // for notes, enter eighth, triplet and sixteenth notes as strings with extra spaces
 const challenges = [
   {
-    "title": "First Example",
+    "title": "",
     "bpm": 80,
-    "notes": ["C3", "D3", "E3", "F3 G3"],
+    "notes": ["C3", "space", "C4", "space"],
     "vexNotes": [
-      {clef: 'treble', keys: ['c/4'], duration: 'q'},
-      {clef: 'treble', keys: ['d/4'], duration: 'q'},
-      {clef: 'treble', keys: ['e/4'], duration: 'q'},
-      {clef: 'treble', keys: ['f/4'], duration: '8'},
-      {clef: 'treble', keys: ['g/4'], duration: '8'}
+      {clef: 'treble', keys: ['b/4'], duration: 'q'},
+      {clef: 'treble', keys: ['b/4'], duration: 'q', accidental: 'b'},
+      {clef: 'treble', keys: ['b/4'], duration: 'q'},
+      {clef: 'treble', keys: ['b/4'], duration: 'q', accidental: 'n'},
     ]
   },
   {
