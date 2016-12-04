@@ -584,10 +584,11 @@ lessononefive = [
         text: "Remember back in the first lesson, when we told you to assume that every measure holds 4 beats?"
       },
       {
-        img: "" //some funny image - a serious face?
+        img: "/images/lessons_pictures/measure-4.png",
+        style: {width: "70%"}
       },
       {
-        text: "FORGET THAT EVER HAPPENED. That isn't <b>actually</b> true, we just simplified things to make the concepts of note duration and tempo easier to understand"
+        text: "FORGET THAT EVER HAPPENED. That isn't <b>always</b> true, we just simplified things to make the concepts of note duration and tempo easier to understand."
       }
     ]
   },
@@ -595,44 +596,60 @@ lessononefive = [
   "title": "Time signatures",
   "slideContent": [
     {
-      text: "As you may have noticed, written music is usually prefaced by a figure composed of two numbers, one stacked atop the other."
+      text: "Written music is usually prefaced by a figure composed of two numbers, one stacked atop the other."
     }, {
-      img: '' // image of staff with time sig
+      img: "/images/lessons_pictures/measure-4.png",
+      style: {width: "70%"}
     }, {
-      text: "This is known as a 'time signature,' and it indicates the number of beats in that measure and all proceeding measures."
+      text: "This is known as a <b>time signature</b>, and it indicates the number of beats in that measure and all proceeding measures."
     }
   ]
 }, {
-  "title": "Time signatures",
+  "title": "",
+  "slideContent": [{
+      text: "The top number indicates how many beats make up one measure. When the time signature is 4/4 (pronounced 'four-four'), there are 4 beats per measure, while in 3/4, there are 3 beats per measure"
+    }, {
+      img: "/images/lessons_pictures/measure-4.png",
+      style: {width: "70%"}
+    }, {
+      text: "The bottom number indicates which note is considered one <b>beat</b> when counting a measure."
+    }, {
+      text: "A 4 indicates that a quarter note is comprises one beat. An 8 indicates that an eighth note takes up one beat. And so on."
+    }
+  ]
+}, {
+  "title": "",
+  "slideContent": [{
+      text: "Thus, in 4/4, there are 4 beats, and a quarter note is equivalent to one beat. So we can fit up to 4 quarter notes per measure."
+    }, {
+      img: "/images/lessons_pictures/measure-4.png",
+      style: {width: "70%"}
+    }, {
+      text: "How many eighth notes could fit in one 4/4 measure?" // REQUIRE INPUT : 8
+    }
+  ]
+}, {
+  "title": "",
   "slideContent": [
     {
-      text: ""
-    }, {
-      img: ''
-    }, {
-      text: ""
-    }
-  ]
-}, {
-  "title": "Time signatures",
-  "slideContent": [
+      text: "In a 3/2 time signature, there are 3 beats, and a half note comprises one beat. So we could fit 3 half notes, 6 quarter notes, 12 eighth notes, 24 sixteenth notes, or some combination of them in one measure."
+    },
     {
-      text: "The bottom number indicates which note is considered one 'beat' when counting a measure. A 4 indicates a quarter note, an 8 indicates an eithth note, and so on."
-    }, {
-      img: ''
-    }, {
-      text: "The top number indicates how many of that beat comprises the timespan of a measure. Thus, this time signature, 4/4, means each measure is made up of four quarter notes."
-    }
+      img: "/images/lessons_pictures/timesigsin3.png"
+    },
+    {
+      text: "In 3/8, there are 3 beats per measure, and an eighth note comprises one beat. How many sixteenth notes would fit in one measure of 3/8?"
+    } // REQUIRE ANSWER: 6
   ]
 }, {
-  "title": "4/4",
+  "title": "Common Time",
   "slideContent": [
     {
       text: "A 4/4 time signature is the most common time signature in western music."
     }, {
-      img: ''
+      img: "/images/lessons_pictures/commontime.jpg"
     }, {
-      text: "Because of this, it is sometimes written simply as a large C."
+      text: "Because of this, it is sometimes written simply as a large C, denoting <b>common time</b>."
     }
   ]
 }, {
@@ -641,7 +658,7 @@ lessononefive = [
     {
       text: "Other common time signatures include 2/4 ('oom-pah'), 3/4 (as in a waltz), and 6/8 (a hybrid of 2/4 and 3/4)."
     }, {
-      img: ''
+      img: '/images/lessons_pictures/timesigs.jpg'
     }, {
       text: "Each implies a different rhythmic feel. As you play music in each of these, you'll naturally develop an understanding of how they sound."
     }
@@ -670,7 +687,7 @@ lessononesix.forEach((slide, idx) => {
 });
 
 lessontwoone = [
-   {
+  {
   "title": "1",
   "number": 1,
   "slideContent": [
@@ -744,7 +761,7 @@ lessontwoone = [
       img: "/images/lessons_pictures/fullpiano.png",
       style: {
         position: "relative",
-        left: "-20%",
+        left: "-3%",
         padding: "30px 0 15px"
       }
     },
@@ -764,7 +781,7 @@ lessontwoone = [
       img: "images/lessons_pictures/halfwholestep.png",
       style: {
         position: "relative",
-        left: "-26.5%"
+        left: "-2.5%"
       }
     },
     {
