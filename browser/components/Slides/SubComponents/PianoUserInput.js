@@ -48,11 +48,6 @@ const pianoInput = function (state, notesToPlay) {
 // NOTE: export piano input so the other functions can pass it really useful information.
 export let pianoHelper;
 
-export let disablePianoHelper = function () {
-  // console.log('inside');
-  pianoHelper = undefined;
-}
-
 // NOTE: Main React component.
 export default class PianoUserInput extends React.Component {
 
@@ -74,7 +69,10 @@ export default class PianoUserInput extends React.Component {
     this.props.enable();
   }
 
-  componentWillMount () {
+  componentWillUnmount () {
+    pianoHelper = undefined;
+  }
+  componentDidMount () {
     // invoke the wrapper function with state and notesToPlay.
     pianoHelper = pianoInput(this, this.state.notesToPlay);
   }
