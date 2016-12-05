@@ -98,9 +98,6 @@ export default class RandomTiedNote extends Component {
         var context = renderer.getContext();
         context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
-        // Create a stave of width 400 at position 10, 40 on the canvas.
-        var stave = new VF.Stave(10, 40, 400);
-
         let alteration = duration.split(" ")[0].toString();
         let noteType = duration.split(" ")[1].toString();
 
@@ -123,12 +120,14 @@ export default class RandomTiedNote extends Component {
         keys = ['c/5'] :
         keys = ['a/4'];
 
-        let vexNotes;
+        let vexNotes, width;
         if (alteration === 'Dotted'){
+            width = 175;
             vexNotes = [
                 new VF.StaveNote({clef: "treble", keys, duration: vexDur + "d" }).addDotToAll()
             ]
         } else if (alteration === 'Tied'){
+            width = 50;
             vexNotes = [
                 new VF.StaveNote({clef: 'treble', keys, duration: vexDur}),
                 new VF.StaveNote({clef: 'treble', keys, duration: halfDur})
@@ -138,6 +137,9 @@ export default class RandomTiedNote extends Component {
         } else {
             console.error('Invalid note alteration');
         }
+
+        // Create a stave of width 400 at position 10, 40 on the canvas.
+        var stave = new VF.Stave(width, 40, 400);
 
         // let notes = [new VF.StaveNote({clef: 'treble', keys, duration: noteDur})];
 
