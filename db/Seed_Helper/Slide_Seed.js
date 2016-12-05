@@ -201,23 +201,38 @@ var lessononeone = [{
     // question: if there's already one quarter note and two eighth notes in a measure, how many sixteenth notes can we fit in that same measure? answer: 4
   ]
 }, {
-  "title": "",
+  "title": "Rests",
   "slideContent": [
     {
-      text: "With just the five rhythmic notes that we learned, there are tons of different ways to fill up measures of 4 beats."
+      text: "Music is as much about silence as it is about sound. Silence is represented in music through rests."
     },
     {
-      img: "" // different examples of full 4/4 measures
+      text: "Like notes, rests also change visually depending on their duration."
     },
     {
-      text: "Good job making it through the lecture. Once you're ready, take the quiz, which will test your ability to identify the different rhythmic notes."
+      img: "/images/lessons_pictures/allrests.png"
+    },
+    {
+      text: "From the left, these are the whole rest, half rest, quarter rest, eighth rest, and sixteenth rest."
     }
   ]
 }, {
-  "title": "conclusion",
   "slideContent": [
     {
-      text: "This chart displays the relationship of all five note types discussed in this lesson."
+      text: "Rests take up as many beats as their corresponding note. So how many beats does a half rest take up?"
+    }, // REQUIRE ANSWER
+    {
+      img: "/images/lessons_pictures/allrests.png"
+    },
+    {
+      text: "How about a quarter rest?"
+    } // REQUIRE ANSWER
+  ]
+}, {
+  "title": "Note Chart",
+  "slideContent": [
+    {
+      text: "This chart displays the relationship of five note types discussed in this lesson."
     },
     {
       img: "/images/lessons_pictures/notes-graph.png",
@@ -285,9 +300,26 @@ var lessononeone = [{
       div: {
         style: {display: "inline-block"}
       }
+    }]
+    },
+    {
+      "title": "",
+      "slideContent": [
+        {
+          text: "With just the five rhythmic notes and rests that we learned, there are tons of different ways to fill up measures of 4 beats."
+        },
+        {
+          img: "/images/lessons_pictures/challenge1screenshot.png" // different examples of full 4/4 measures
+        },
+        {
+          img: "/images/lessons_pictures/challenge1screenshot.png"
+        },
+        {
+          text: "Good job making it through the lecture. Once you're ready, take the quiz, which will test your ability to identify the different rhythmic notes."
+        }
+      ]
     }
-  ]
-}];
+];
 
 lessononeone.forEach((slide, idx) => {
   slide.lesson_id = 1;
