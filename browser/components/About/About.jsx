@@ -25,12 +25,9 @@ export default class About extends React.Component {
                             I'm a fullstack software engineer who likes to get down with Beathoven to Beethoven.
                             </CardText>
                             <CardActions>
-                            <i className="fa fa-github" aria-hidden="true"></i>
-
                             <FlatButton 
                                 href="https://github.com/wiseshrimp"
-                                icon={<i className="fa fa-github"></i>}
-                                style={buttonStyle} />
+                                style={buttonStyle} label="GITHUB" />
                             <FlatButton style={buttonStyle} label="LINKEDIN" />
                             </CardActions>
                         </Card>
