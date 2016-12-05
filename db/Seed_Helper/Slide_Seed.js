@@ -584,9 +584,44 @@ lessononefive = [{
   "title": "Bass clef",
   "slideContent": [
     {
-      text: "Temp"
+      text: "So far, we've written every note on the treble clef. The treble clef is used for certain instruments, or when a part is written in a certain range."
     }, {
       img: ''
+    }, {
+      text: "What do we do when a part is written beneath the range of the treble clef? Usually we'll employ the <b>bass clef</b>, seen above."
+    }
+  ]
+}, {
+  "title": "Bass clef notes",
+  "slideContent": [
+    {
+      text: "The bass clef functions exactly the same as a treble clef; notes are still written in ascending letter order, and durations are the same as we've gone over previously."
+    }, {
+      img: ''
+    }, {
+      img: "The main difference is in which note corresponds to which line and space. Here you can see the names of the lines of the bass clef, <b>G B D F A</b> (Good Boys Do Fine Always)."
+    }
+  ]
+}, {
+  "title": "Grand staff",
+  "slideContent": [
+    {
+      text: "The other difference is where on the piano one would play notes written on the bass clef. Pictured here is the <b>grand staff</b>, a combination of the treble clef and the bass clef (I'm at the treble clef / I'm at the bass clef / I'm at the combination treble clef and bass clef)."
+    }, {
+      img: ''
+    }, {
+      img: "Most piano music is written for the grand staff, with each of the pianist's hands corresponding to one of the staves, the higher clef for the right hand, and the lower clef for the left."
+    }
+  ]
+}, {
+  "title": "Grand staff",
+  "slideContent": [
+    {
+      text: "You'll notice that there are two notes written on this staff; on the treble clef is written a C4, as you've seen before. On the bass clef is <b>also</b> written a C4."
+    }, {
+      img: ''
+    }, {
+      img: "These two notes as written are the same key on a piano. This is where the treble clef and the bass clef meet. From here you can derive the note names going down from C4."
     }
   ]
 }
@@ -957,21 +992,81 @@ lessonthreeone = [
   "title": "Triads",
   "slideContent": [
     {
-      text: "A <b>chord</b> is a group of three or more notes that combine harmoniously when played together."
+      text: "A <b>chord</b> is a group of two or more notes played together. A chord comprised of three notes; a <b>root</b>, a <b>third</b>, and a <b>fifth</b>; is known as a <b>triad</b>."
     }, {
       img: ''
     }
     ]
   }, {
-    "title": "Major/Minor Chords",
+    "title": "Major/Minor Triads",
     "slideContent": [
       {
-        text: "The most commonly used chords in Western music are the <b>major</b> and <b>minor</b> triads."
+        text: "The most basic triads in Western music are the <b>major</b> and <b>minor</b> triads."
       }, {
         img: ''
       },
       {
-        text: "A <b>triad</b> is a type of chord with a structure of three notes: the <b>root</b>, the <b>third</b>, and the <b>fifth</b>."
+        text: "Major and minor triads have different sounds, conventionally known perhaps as having 'happy' and 'sad' qualities, but in actuality more accurately resembling the textures 'hard' and 'soft.'"
+      }
+    ]
+  }, {
+    "title": "Major Triads",
+    "slideContent": [
+      {
+        text: "A chord's root is the lowest note of the chord when the chord is written in its most basic form, a series of thirds."
+      }, {
+        img: ''
+      },
+      {
+        text: "A major triad, written here, is comprised of a <b>major third</b>, and a <b>perfect fifth</b>. So if the root of a major triad is C, the other notes would be E natural and G natural."
+      }
+    ]
+  }, {
+    "title": "Minor Triads",
+    "slideContent": [
+      {
+        text: "Likewise, a minor triad is comprised of a <b>minor third</b> and a <b>perfect fifth</b>. Below you'll see C minor."
+      }, {
+        img: ''
+      },
+      {
+        text: "A minor third above C is Eb, and a perfect fifth from C is G. Play C major and C minor on your keyboard to get a bearing on how they sound."
+      }
+    ]
+  }, {
+    "title": "Augmented Triads",
+    "slideContent": [
+      {
+        text: "There are two other kinds of notable triads; <b>diminished<b> and <b>augmented</b> triads. An augmented triad is composed of a <b>major third</b> and an <b>augmented fifth</b>."
+      }, {
+        img: ''
+      },
+      {
+        text: "A C augmented triad then (written C+) would be made up of C, E, and G#. Augmented triads have a very unqiue sound to them, a sort of 'deer in headlights' feeling."
+      }
+    ]
+  }, {
+    "title": "Diminished Triads",
+    "slideContent": [
+      {
+        text: "Diminished triads are comprised of a root, its <b>minor third</b>, and its <b>diminished fifth</b>."
+      }, {
+        img: ''
+      },
+      {
+        text: "A C diminished triad then (written Co) would be made up of C, Eb, and Gb. Since diminished triads contain the diminished fifth, or <b>tri-tone</b>, which is the most dissonant interval on the keyboard, they are used only in certain circumstances."
+      }
+    ]
+  }, {
+    "title": "Sus chords",
+    "slideContent": [
+      {
+        text: "One last kind of chord is worth noting here; you may have seen a 'sus4' chord written on a piece of music at some point. This is a kind of triad composed not with a third, but of a <b>perfect fourth</b>, and a <b>perfect fifth</b>."
+      }, {
+        img: ''
+      },
+      {
+        text: "Sus4 chords are very commonly resolved to their major counterparts; this is known as a '4-3' suspension, since the fourth of the chord is being played into the chord's third."
       }
     ]
   }
@@ -980,6 +1075,64 @@ lessonthreeone.forEach((slide, idx) => {
   slide.lesson_id = 9;
   slide.number = idx + 1;
 });
+
+/*
+lessonthreethree = [
+  {
+    "title": "Seventh chords",
+    "slideContent": [
+      {
+        text: "Triads are built out of thirds, and subsequently dense chords are built the same way. Beyond triads, there exist <b>seventh chords</b>, <b>ninth chords</b>, and even <b>eleventh</b> and <b>thirteenth chords</b>."
+      }, {
+        img: ''
+      },
+      {
+        text: "For now we'll discuss seventh chords and how they're constructed and named."
+      }
+    ]
+  }, {
+    "title": "Seventh chords",
+    "slideContent": [
+      {
+        text: "Seventh chords can be thought of as comprising a triad, and the seventh of that triad's root. This is functionally how seventh chords are named and used."
+      }, {
+        img: ''
+      },
+      {
+        text: "On the staff here are the notes: <b>C E G Bb</b>. From the previous lesson, you know that the first three notes comprise a <b>C Major triad</b>."
+      }
+    ]
+  }, {
+    "title": "Dominant seventh chords",
+    "slideContent": [
+      {
+        text: "From the lessons on intervals, you'll also know that a C to a Bb forms a <b>minor seventh</b>."
+      }, {
+        img: ''
+      },
+      {
+        text: "This combination - a major triad with a minor seventh - forms the most basic of seventh chords, a <b>dominant seventh</b>. This would be written as a <b>C7</b>, prounced 'C seven.'"
+      }
+    ]
+  }, {
+    "title": "Major seventh chords",
+    "slideContent": [
+      {
+        text: "A "
+      }, {
+        img: ''
+      },
+      {
+        text: ""
+      }
+    ]
+  }
+]
+lessonthreethree.forEach((slide, idx) => {
+  slide.lesson_id = 11;
+  slide.number = idx + 1;
+});
+*/
 
 lessonthreefour = [
   {
