@@ -75,10 +75,12 @@
 
 #homepage-features-link {
     left: 83%;
+    cursor: pointer;
 }
 
 #homepage-about-link {
     left: 86%;
+    cursor: pointer;
 }
 
 #homepage-home-link:hover {

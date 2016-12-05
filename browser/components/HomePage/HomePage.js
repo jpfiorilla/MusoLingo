@@ -30,7 +30,7 @@ export default class HomePage extends React.Component {
                             <div className="homepage-navbar">
                                 <LoginContainer />
                                 <a href="" className="homepage-nb" id="homepage-home-link">Home</a>
-                                <a href="" className="homepage-nb" id="homepage-features-link">Features</a>
+                                <a onClick={() => browserHistory.push('/faq')} className="homepage-nb" id="homepage-features-link">Features</a>
                                 <a onClick={() => browserHistory.push('/about')} className="homepage-nb" id="homepage-about-link">Team</a>
                             </div>
                             <div className="homepage-content">

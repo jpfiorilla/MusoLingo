@@ -401,7 +401,7 @@ lessononetwo = [{
   "slideContent": [
     {
       text: "60 bpm is considered a very <b>slow</b> tempo. Let's hear 4 quarter notes played at double that speed: 120 bpm."
-    }, // sound sample
+    }, // sound sample (120 bpm)
     {
       text: "No matter what the tempo is, each quarter note will <b>always</b> last for one beat. So even if we speed up the tempo, 4 quarter notes will always fit in a measure of 4 beats."
     },
