@@ -8,6 +8,17 @@ let buttonStyle = {
 }
 
 export default class About extends React.Component {
+
+  constructor(props) {
+    super (props);
+    this.state = {};
+  }
+  componentWillDismount () {
+    // if (! ) {
+    //
+    // }
+  }
+
     render () {
         return (
             <div className="container">
@@ -25,7 +36,7 @@ export default class About extends React.Component {
                             I'm a fullstack software engineer who likes to get down with Beathoven to Beethoven.
                             </CardText>
                             <CardActions>
-                            <FlatButton 
+                            <FlatButton
                                 href="https://github.com/wiseshrimp"
                                 style={buttonStyle} label="GITHUB" />
                             <FlatButton style={buttonStyle} label="LINKEDIN" />
@@ -41,7 +52,7 @@ export default class About extends React.Component {
                             <CardMedia>
                             <img src="images/homepage-image.jpg" />
                             </CardMedia>
-                            <CardTitle id="about-name" title="NAME HERE" subtitle="Beathoven's Helper" />
+                            <CardTitle id="about-name" title="Brian Long" subtitle="Beathoven's Helper" />
                             <CardText id="about-text">
                             I'm a fullstack software engineer who likes to get down with Beathoven to Beethoven.
                             </CardText>

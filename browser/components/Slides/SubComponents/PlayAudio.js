@@ -13,10 +13,9 @@ export default class AudioLink extends React.Component {
     super (props);
 
     this.state = {
-      source: this.props && this.props.source || "http://www.stephaniequinn.com/Music/Allegro%20from%20Duet%20in%20C%20Major.mp3",
+      source: this.props && this.props.source,
       type: this.props && this.props.type || "audio/mp3",
-      description: this.props && this.props.description ||
-      "Beathoven is the king of funk!!!"
+      description: this.props && this.props.description
     };
 
   }

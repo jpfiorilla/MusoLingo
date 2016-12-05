@@ -19,9 +19,9 @@ export default class ExternalLink extends React.Component {
     super (props);
 
     this.state = {
-      link: this.props && this.props.link || ['http://www.pgatour.com/'],
-      linkDisplay: this.props && this.props.linkDisplay || ["YES!!"],
-      description: this.props && this.props.description || 'Check out some more really cool info on this subject!'
+      link: this.props && this.props.link,
+      linkDisplay: this.props && this.props.linkDisplay,
+      description: this.props && this.props.description
     };
 
   }

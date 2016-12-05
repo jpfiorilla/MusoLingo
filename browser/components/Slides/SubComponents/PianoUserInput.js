@@ -26,10 +26,9 @@ const pianoInput = function (state, notesToPlay) {
     let message;
     if (update === notesToPlay[0]) {
       notesToPlay.shift();
-
       message = `That was certainly a ${update}!  Way to go!!`;
     } else {
-      message = `Is it me or was that a ${update}?  Keep trying!`;
+      message = `That was a ${update}!  Keep trying!`;
     }
 
     state.setState({
@@ -53,7 +52,7 @@ export default class PianoUserInput extends React.Component {
 
     this.state = {
       notePlayed: undefined,
-      notesToPlay: this.props && this.props.notesToPlay || ['C3', 'D3', 'E3', 'F3'],
+      notesToPlay: this.props && this.props.notesToPlay,
       message: undefined
     };
   }
@@ -83,9 +82,9 @@ export default class PianoUserInput extends React.Component {
 
     // NOTE: Check if we still have notes to play.
     if (this.state.notesToPlay.length) {
-      direction = `Play me a ${this.state.notesToPlay[0]}!`;
+      direction = `Play a ${this.state.notesToPlay[0]}!`;
     } else {
-      direction = "Great Job!  Watch out Beathoven, there's a new sheriff in town.  Let's move on!";
+      direction = "Great Job!  Let's move on!";
     }
 
     return (
