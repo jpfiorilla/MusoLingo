@@ -309,10 +309,14 @@ var lessononeone = [{
           text: "With just the five rhythmic notes and rests that we learned, there are tons of different ways to fill up measures of 4 beats."
         },
         {
-          img: "/images/lessons_pictures/challenge1screenshot.png" // different examples of full 4/4 measures
+          img: "/images/lessons_pictures/challenge1screenshot.png",
+          // different examples of full 4/4 measures
+          style: 
+            {width: "97%"}
         },
         {
-          img: "/images/lessons_pictures/challenge1screenshot.png"
+          img: "/images/lessons_pictures/challenge1screenshot.png",
+          style: {width: "97%"}
         },
         {
           text: "Good job making it through the lecture. Once you're ready, take the quiz, which will test your ability to identify the different rhythmic notes."
@@ -570,7 +574,7 @@ lessononefour = [
       img: "/images/lessons_pictures/dsharpeb.png"
     }, {
       text: "Try playing it, and compare the way it sounds to its surrounding notes!"
-    } // require user to input D#3 on keyboard
+    },  // require user to input D#3 on keyboard
   ]
 }, {
   "title": "",
@@ -622,7 +626,7 @@ lessononefive = [
       },
       {
         img: "/images/lessons_pictures/measure-4.png",
-        style: {width: "70%"}
+        style: {width: "50%"}
       },
       {
         text: "FORGET THAT EVER HAPPENED. That isn't <b>always</b> true, we just simplified things to make the concepts of note duration and tempo easier to understand."
@@ -636,7 +640,7 @@ lessononefive = [
       text: "Written music is usually prefaced by a figure composed of two numbers, one stacked atop the other."
     }, {
       img: "/images/lessons_pictures/measure-4.png",
-      style: {width: "70%"}
+      style: {width: "50%"}
     }, {
       text: "This is known as a <b>time signature</b>, and it indicates the number of beats in that measure and all proceeding measures."
     }
@@ -647,7 +651,7 @@ lessononefive = [
       text: "The top number indicates how many beats make up one measure. When the time signature is 4/4 (pronounced 'four-four'), there are 4 beats per measure, while in 3/4, there are 3 beats per measure"
     }, {
       img: "/images/lessons_pictures/measure-4.png",
-      style: {width: "70%"}
+      style: {width: "50%"}
     }, {
       text: "The bottom number indicates which note is considered one <b>beat</b> when counting a measure."
     }, {
@@ -662,7 +666,12 @@ lessononefive = [
       img: "/images/lessons_pictures/measure-4.png",
       style: {width: "70%"}
     }, {
-      text: "How many eighth notes could fit in one 4/4 measure?" // REQUIRE INPUT : 8
+      userTextInput: {
+        correctAnswer: "8",
+        question: "How many eighth notes could fit in one 4/4 measure?",
+        correctAnswerMessage: "Good job!",
+        incorrectAnswerMessage: "Try again!"
+      }
     }
   ]
 }, {
