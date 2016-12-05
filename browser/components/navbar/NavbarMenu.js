@@ -69,12 +69,12 @@ export default class NavbarMenu extends React.Component {
         // /admin
         role === 3 ? (
           <div className="navbar-item">
-            <Link to="/admin">
+            {/* <Link to="/admin"> */}
               <FlatButton
                 label="Admin" labelStyle={buttonText}
                 hoverColor="#2b4b91" rippleColor="#2b4b91"
               />
-            </Link>
+            {/* </Link> */}
           </div>
         ) : null
       }
