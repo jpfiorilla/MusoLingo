@@ -211,7 +211,7 @@ export const getDuration = function(note){
     alteration === 'Tied' ? newDuration = base * 1.5 :
     newDuration = base * 2 / 3;
     let exp = newDuration.toString().substring(0, 3) + ' beats';
-    console.log('getDur of correct: ', exp);
+    // console.log('getDur of correct: ', exp);
     return exp;
 }
 
@@ -276,4 +276,28 @@ export const midiToVex = function(mid){
 export const tonalToVex = function(tonalName){
     // console.log('tonaltovex', tonalName);
     return '' + getNoteName(tonalName) + '/' + tonalName[tonalName.length-1];
+}
+
+const timeSigs = ['4/4', '3/4', '2/4', '6/4', '6/8', '9/8', '12/8', '3/2'];
+const smallerDurations = ['half', 'quarter', '8th', '16th'];
+export const howManyTimeSig = function(){
+    let noteName = smallerDurations[Math.floor(Math.random() * smallerDurations.length)];
+    let noteDur = noteName === 'half' ? 0.5 :
+    noteName === 'quarter' ? 0.25 :
+    noteName === '8th' ? 0.125 : 0.0625;
+    let timeSig = timeSigs[Math.floor(Math.random() * timeSigs.length)];
+    let slash = timeSig.indexOf('/');
+    console.log('slash', slash)
+    let total = Number(timeSig.substring(0, slash)) / Number(timeSig.substring(slash+1));
+    let numNotes = Math.floor(total/noteDur);
+    return { numNotes, noteName, timeSig };
+}
+
+export const randomNums = function(correct){
+    let arr = [];
+    while (arr.length < 3){
+        let newNum = (Math.floor(Math.random() * 7) + 1) * 2;
+        if (newNum !== correct && arr.indexOf(newNum) === -1) arr.push(newNum);
+    }
+    return arr;
 }

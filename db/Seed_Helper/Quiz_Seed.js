@@ -15,6 +15,10 @@ const quiz = [{
     title: "Guess the Note Name",
     question_types: ['guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName', 'guessNoteName']
 }, {
+    lesson_id: 5,
+    title: "Time Signatures",
+    question_types: ['guessTimeSignature', 'guessTimeSignature', 'guessTimeSignature', 'guessTimeSignature', 'guessTimeSignature', 'guessTimeSignature', 'guessTimeSignature', 'guessTimeSignature', 'guessTimeSignature', 'guessTimeSignature']
+}, {
     lesson_id: 6,
     title: "Guess the Bass Clef Note Name",
     question_types: ['guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName', 'guessBassNoteName']

@@ -13,7 +13,8 @@ import RandomTiedNote from '../vexflow/randomtiednote';
 import RandomHalfOrWholeStep from '../vexflow/randomhalforwholestep';
 import RandomWhiteKeyNote from '../vexflow/randomwhitekeynote';
 import RandomSeventhChord from '../vexflow/randomseventhchord';
-import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations, randomDistance, randomOtherDistances, randomIntervalName, randomTieDuration, getDuration, getOtherDurations, randomStepsNames, intervalToStep, randomWhiteKeyName, randomOtherWhiteKeys, randomSeventhChord, randomOtherSeventhChords } from '../../utils';
+import RandomHowManyTimeSig from '../vexflow/randomhowmanytimesig';
+import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations, randomDistance, randomOtherDistances, randomIntervalName, randomTieDuration, getDuration, getOtherDurations, randomStepsNames, intervalToStep, randomWhiteKeyName, randomOtherWhiteKeys, randomSeventhChord, randomOtherSeventhChords, howManyTimeSig, randomNums } from '../../utils';
 import Vex from 'vexflow'
 import Tone from "tone";
 
@@ -29,7 +30,7 @@ const styles = {
   },
 };
 
-var questionComponent, correct, incorrect, lownote, highnote, intervalNotes, correctChord, buttonsArray, rightAnswerPosition, index, answered, incorrectChords, correctArr, duration;
+var questionComponent, correct, incorrect, lownote, highnote, intervalNotes, correctChord, buttonsArray, rightAnswerPosition, index, answered, incorrectChords, correctArr, duration, parts;
 
 export default class MultipleChoiceQuestion extends React.Component {
   constructor(props) {
@@ -132,7 +133,6 @@ export default class MultipleChoiceQuestion extends React.Component {
         incorrect = [];
         incorrectChords = randomOtherSeventhChords(correctArr[1]);
         incorrectChords.forEach(chord => incorrect.push(chord));
-        console.log(correct, incorrect);
         this.setState({ correctAnswer: correct });
         break;
       case "guessInversionName":
@@ -149,7 +149,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         questionComponent = RandomRhythmNote;
         correct = randomNoteDuration();
         incorrect = randomOtherNoteDurations(correct);
-        this.setState({ correctAnswer: correct[0] })
+        this.setState({ correctAnswer: correct[0] });
         // console.log(correct);
         console.log(incorrect);
         break;
@@ -160,6 +160,14 @@ export default class MultipleChoiceQuestion extends React.Component {
         // incorrect = getOtherDurations(correct);
         incorrect = ['2 beats', '4 beats', '0.5 beats'];
         this.state.incorrect = incorrect;
+        // tied, dotted, triplet
+        break;
+      case "guessTimeSignature":
+        questionComponent = RandomHowManyTimeSig;
+        parts = howManyTimeSig();
+        correct = parts.numNotes;
+        incorrect = randomNums(correct);
+        this.setState({ correctAnswer: correct, noteName: parts.noteName, timeSig: parts.timeSig });
         // tied, dotted, triplet
         break;
       default:
@@ -216,7 +224,7 @@ export default class MultipleChoiceQuestion extends React.Component {
       <div id="mc-question-body">
         <div className="sheetmusic">
           {
-            React.createElement(questionComponent, {rhythmnote: correct, tiednote: correct, note: correct, type, intervalNotes, chord: correctChord, duration})
+            React.createElement(questionComponent, {rhythmnote: correct, tiednote: correct, note: correct, type, intervalNotes, chord: correctChord, duration, noteName: parts.noteName, timeSig: parts.timeSig})
           }
         </div>
         {
