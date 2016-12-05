@@ -20,6 +20,8 @@ export default class Challenge extends Component {
     }
 
     scorePercentage(notes){
+      let route = window.location.pathname;
+      var lessonId = route[route.length - 1];
       var totalNotes = 0;
       for (let i = 0; i < notes.length; i++){
         for (let x = 0; x < notes[i].length; x++){
@@ -28,7 +30,25 @@ export default class Challenge extends Component {
           }
         }
       }
+
+      let {score} = this.props;
+      let finalScore = score/totalNotes;
+      let passed = (score / totalNotes >= 0.5) ? true : false;
+      this.props.user.completed.challenges[lessonId] = finalScore;
+      if (passed) {
+        if (finalScore < .75) {
+          this.props.user.completed.keys += 1;
+        }
+        else if (finalScore <= .99) {
+          this.props.user.completed.keys += 2;
+        }
+        else {
+          this.props.user.completed.keys += 3;
+        }
+
+        this.props.updateUser(this.props.user.completed, 'completed', this.props.user.id);
       return `${Math.round(this.props.score/totalNotes * 100)}%`;
+    }
     }
 
     componentDidUpdate(){
