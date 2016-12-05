@@ -1,0 +1,27 @@
+#faq-header {
+    text-align: center;
+    font-size: 100px;
+    margin: 50px;
+    font-family: bebas-kai;
+}
+
+.faq-answer {
+    font-family: gravity-book;
+}
+
+.faq-question {
+    font-family: gravity-bold;
+    text-decoration: none;
+}
+
+.faq-question:hover {
+    text-decoration: none;
+    font-size: large;
+}
+
+#subheader {
+    font-family: bebas-kai;
+    font-size: 40px;
+    position: relative;
+    margin: 15px;
+}

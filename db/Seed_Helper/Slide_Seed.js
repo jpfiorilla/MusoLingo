@@ -14,7 +14,7 @@ var lessononeone = [{
   "title": "",
   "slideContent": [
     {
-      text: "Music moves in time. We use <b>rhythm</b> to organize the flow of time like a specific kind of pattern formed by a series of notes differing in duration and stress."
+      text: "Music moves in time. We use <b>rhythm</b> to organize the flow of time into patterns of notes differing in duration."
     },
     // { // include some relevant picture
     //   img: "http://i.imgur.com/PvRcW43.png",
@@ -201,23 +201,38 @@ var lessononeone = [{
     // question: if there's already one quarter note and two eighth notes in a measure, how many sixteenth notes can we fit in that same measure? answer: 4
   ]
 }, {
-  "title": "",
+  "title": "Rests",
   "slideContent": [
     {
-      text: "With just the five rhythmic notes that we learned, there are tons of different ways to fill up measures of 4 beats."
+      text: "Music is as much about silence as it is about sound. Silence is represented in music through rests."
     },
     {
-      img: "" // different examples of full 4/4 measures
+      text: "Like notes, rests also change visually depending on their duration."
     },
     {
-      text: "Good job making it through the lecture. Once you're ready, take the quiz, which will test your ability to identify the different rhythmic notes."
+      img: "/images/lessons_pictures/allrests.png"
+    },
+    {
+      text: "From the left, these are the whole rest, half rest, quarter rest, eighth rest, and sixteenth rest."
     }
   ]
 }, {
-  "title": "conclusion",
   "slideContent": [
     {
-      text: "This chart displays the relationship of all five note types discussed in this lesson."
+      text: "Rests take up as many beats as their corresponding note. So how many beats does a half rest take up?"
+    }, // REQUIRE ANSWER
+    {
+      img: "/images/lessons_pictures/allrests.png"
+    },
+    {
+      text: "How about a quarter rest?"
+    } // REQUIRE ANSWER
+  ]
+}, {
+  "title": "Note Chart",
+  "slideContent": [
+    {
+      text: "This chart displays the relationship of five note types discussed in this lesson."
     },
     {
       img: "/images/lessons_pictures/notes-graph.png",
@@ -285,9 +300,26 @@ var lessononeone = [{
       div: {
         style: {display: "inline-block"}
       }
+    }]
+    },
+    {
+      "title": "",
+      "slideContent": [
+        {
+          text: "With just the five rhythmic notes and rests that we learned, there are tons of different ways to fill up measures of 4 beats."
+        },
+        {
+          img: "/images/lessons_pictures/challenge1screenshot.png" // different examples of full 4/4 measures
+        },
+        {
+          img: "/images/lessons_pictures/challenge1screenshot.png"
+        },
+        {
+          text: "Good job making it through the lecture. Once you're ready, take the quiz, which will test your ability to identify the different rhythmic notes."
+        }
+      ]
     }
-  ]
-}];
+];
 
 lessononeone.forEach((slide, idx) => {
   slide.lesson_id = 1;
@@ -302,32 +334,39 @@ lessononetwo = [{
     },
     {
       text: "But how long is one beat? Surely it can't be the same for all songs, since some songs are faster or slower than others."
-    },
+    }
+  ]
+}, {
+  "title": '',
+  "slideContent": [
     {
       text: "Beat is the duration we assign to our rhythm definitions. This can be a fraction of a second, a second, a few seconds, or several seconds. Putting several beats together gives us a steady series of units which make up rhythm."
     },
     {
-      text: "See this example of a 4 beat rhythm."
+      img: "/images/lessons_pictures/four-beat-rhythm.gif"
     },
     {
-      img: "/images/lessons_pictures/four-beat-rhythm.gif"
+      text: "See this example of a 4 beat rhythm. The notes in each of the two measures add up to 4 beats, but the actual length of one beat is unclear."
     }
   ]
 }, {
-  "title": '',
+  "title": 'Tempo',
   "slideContent": [
     {
       text: "The duration of a beat is determined by the song's <b>tempo</b>, which is represented by a number denoting the piece's bpm (beats per minute)."
+      },
+    {
+      img: "/images/lessons_pictures/bpm_staff.png"
     },
     {
-      img: '' // relevant image, something about tempo/bpm
+      text: "The tempo of a piece is usually denoted at the top of the page. If it changes mid-song, the change will be denoted above the relevant measure."
     }
   ]
 }, {
   "title": '',
   "slideContent": [
     {
-      text: "For example, a tempo of 60 bpm means that each beat lasts for <b>one second</b>."
+      text: "A tempo of 60 bpm means that each beat lasts for <b>one second</b>."
     },
     {
       text: "The following sound sample will play a measure of 4 quarter notes at 60 bpm. Since a quarter note lasts for one beat, each quarter note will last for one second"
@@ -350,16 +389,19 @@ lessononetwo = [{
     }, // sound sample
   ] // question: answer: 8
 }, {
-  "title": '',
+  "title": 'Keeping Time',
   "slideContent": [
     {
       text: "Thankfully, nobody expects musicians to memorize how long a beat leasts for each tempo - that would be insane!"
     },
     {
-      img: '' // picture of metronome
+      img: '/images/lessons_pictures/metronome.jpg'
     },
     {
       text: "Instead, we can get the length of each beat from a <b>metronome</b>, which takes a bpm and plays a repetitive 'click' sound once for each beat."
+    },
+    {
+      img: "Compare the following samples. The first is a metronome playing 8 clicks at 72 bpm, the second is at 96 bpm, and the last is at 144 bpm."
     } // sound sample of metronome playing 4 beats; make sure you tell them what bpm it's at
   ]
 }, {
@@ -369,7 +411,7 @@ lessononetwo = [{
       text: "In an orchestra, the conductor keeps the musicians in time by waving his baton to the speed of each beat."
     },
     {
-      img: '' // picture of conductor
+      img: '/images/lessons_pictures/baton.jpg'
     },
     {
       text: "Of course, in most performance situations, you won't have a metronome or conductor to give you the pulse. In a smaller band, it's up to the musicians to stay in sync with each other. In a solo performance, the musician has to be able to stick to a consistent beat."
@@ -397,7 +439,7 @@ lessononethree = [
       }
     ]
 }, {
-  "title": '',
+  "title": 'Pitch',
   "slideContent": [
     {
       text: "Each key on the piano produces a note of a different <b>pitch</b>."
@@ -415,11 +457,16 @@ lessononethree = [
     {
       text: "The pitch of a note is described by a letter name. In Western music, there are <b>12</b> different note names used to denote pitch."
     },
-    { // list of notes, mapped out on a piano
-      img:""
+    {
+      img:"/images/lessons_pictures/piano_notes_staff.jpg"
     },
     {
       text: "For example, if we play the first white key from the left on our on-screen keyboard, it will produce a C. Try it yourself!"
+    },
+    {
+      pianoUserInput: {
+        notesToPlay: ["C3"]
+      }
     } // REQUIRE user to input C3 before they can move on
   ]
 }, {
@@ -429,13 +476,14 @@ lessononethree = [
       text: "The second white key from the left will produce a D, the third one will produce an E, and so on. Once we get to G, the letter names restart again with A."
     },
     {
-      img: "" //keep same image from last slide
+      img: "/images/lessons_pictures/piano_notes_staff.jpg" //keep same image from last slide
     },
     {
       text: "As we move towards the right on the keyboard, we are <b>ascending</b>, and the pitches get <b>higher</b>. If we move towards the left, we are <b>descending</b>, and they become <b>lower</b>."
     },
     {
       text: "Pop quiz: play the highest note on the on screen keyboard!"
+    }
     } // REQUIRE user to input B4 (\ key)
   ]
 }, {
@@ -444,111 +492,55 @@ lessononethree = [
     {
       text: "Notes are read on a <b>staff</b>. A staff is a set of five lines on which all sheet music is written."
     }, {
-      img: '' // image of staff with note names
+      img: '/images/lessons_pictures/treble-clef-notes.png' // image of staff with note names
     },
     {
       text: "The vertical placement of a note on the staff tells us which pitch that note corresponds to."
     }
   ]
 }, {
-  "title": "Notes on the treble clef",
+  "title": "Treble clef",
   "slideContent": [
     {
       text: "The symbol on the left of the staff is the treble clef. This indicates that the notes on the spaces in between the lines of this staff are F A C E."
     }, {
-      img: "" // image of staff with F A C E denoted
+      img: '/images/lessons_pictures/treble-clef-space-notes.png' // image of staff with F A C E denoted
     }, {
-      img: "" // image of an F and a C
+      img: "/images/lessons_pictures/f3 c3.png" // image of an F and a C
     }, {
-      text: "The first half note, for example, is an F. The second one is a C."
+      text: "In the image above, the first half note is an F. The second one is a C."
     }, {
-      img: "" // image of an E
+      img: "/images/lessons_pictures/e3.png" // image of an E
     }, // question: Can you play this note? answer: E3 OR E4
   ]
 }, {
-  "title": "Notes on the treble clef",
+  "title": "",
   "slideContent": [
     {
       text: "Notes can also be placed directly <b>on</b> the staff lines. Ascending from the bottom line, the notes would be E G B D F."
     }, {
-      img: "" // image of staff with line notes displayed
+      img: '/images/lessons_pictures/treble-clef-line-notes.png' // image of staff with line notes displayed
     },
     {
       text: "An easy way to remember this is through the pnuemonic <b>E</b>very <b>G</b>ood <b>B</b>oy <b>D</b>oes <b>F</b>ine."
     }
   ]
 }, {
-  "title": "Notes on the treble clef",
+  "title": "",
   "slideContent": [
     {
       text: "As you might have noticed, the names of notes wrap around from A to G. This means there are multiple notes of each letter name."
     }, {
-      img: "" // re-use image of notes mapped out on keyboard
+      img: "/images/lessons_pictures/piano_notes_staff.jpg" // re-use image of notes mapped out on keyboard
     }, {
-      text: "Both of these notes are 'C.' The lower one is 'middle C,' also known as C4. This is the C nearest the middle of the piano."
+      text: "In the image below, both of the notes are 'C.' The lower one is 'middle C,' also known as C4. This is the C nearest the middle of the piano."
+    }, {
+      img: "/images/lessons_pictures/c3 c4.png"
     }, {
       text: "We'll learn more about repeating note names in our lesson on octaves and half-steps."
     }
   ]
-}, {
-  "title": "Accidentals", // SPLIT INTO ITS OWN LESSON
-  "slideContent": [
-    {
-      text: "You probably been wondering what the black keys are for. Remember when we learned that there are 12 notes? 7 of them are played by the white keys, and other 5 are played by the black keys."
-    }, {
-      text: "The black keys play notes with symbols in their letter names, known as <b>accidentals</b>."
-    }, {
-      img: "" // picture of black keys with note names
-    }, {
-      text: "There are two types of accidentals, sharps (#) and flats (b)."
-    }
-  ]
-}, {
-  "title": "",
-  "slideContent": [
-    {
-      text: "Remember that as we move to the left, we ascend pitches, and the notes get higher."
-    }, {
-      text: "The first black key from the left plays the note that, in terms of pitch, lies <b>in between</b> C and D, its surrounding white keys."
-    }, {
-      img: "" //image of C# on staff
-    }, {
-      text: "Try playing it, and compare the way it sounds to its surrounding notes!"
-    } // require user to input C#3 on keyboard
-  ]
-}, {
-  "title": "",
-  "slideContent": [
-    {
-      text: "What do we call this note? It actually has two names: C-sharp(C#) and D-flat(Db)."
-    },
-    {
-      text: "A <b>half-step</b> describes the space between two consecutive notes. A sharp raises the affected note by a half-step, while a flat lowers the note by a half-step."
-    }, {
-      img: "" // image of C# and Db on staff
-    }, {
-      text: "So this note can be thought of as either a raised C <b>or</b> a lowered D. Whether we call it C# or Db, the note has the same pitch."
-    }
-  ]
-}, {
-  "title": "",
-  "slideContent": [
-    {
-      img: "" //picture of a A#/Bb
-    } // question: What is this note called? If you've been paying attention, you'll know that there are two possible right answers! answer: A# OR Bb
-  ]
-}, {
-  "title": "",
-  "slideContent": [
-    {
-      text: "When a note is written with an accidental, that accidental applies to each subsequent note on that line for the rest of the measure."
-    }, {
-      img: "" // image of B, Bb, Bb, B
-    }, {
-      text: "The 'natural' symbol displayed here cancels that effect. Thus the notes in this measure are: B, Bb, Bb, B."
-    }
-  ]
-}];
+}]
 lessononethree.forEach((slide, idx) => {
   slide.lesson_id = 3;
   slide.number = idx + 1;
@@ -556,16 +548,85 @@ lessononethree.forEach((slide, idx) => {
 
 lessononefour = [
   {
+    "title": "Accidentals", // SPLIT INTO ITS OWN LESSON
+    "slideContent": [
+      {
+        text: "You probably been wondering what the black keys are for. Remember when we learned that there are 12 notes? 7 of them are played by the white keys, and other 5 are played by the black keys."
+      }, {
+        text: "The black keys play notes with symbols in their letter names, known as <b>accidentals</b>."
+      }, {
+        img: "/images/lessons_pictures/blackkeys.png" // picture of black keys with note names
+      }, {
+        text: "There are two types of accidentals, sharps (#) and flats (b)."
+      }
+    ]
+  }, {
+  "title": "Black Keys",
+  "slideContent": [
+    {
+      text: "Remember that as we move to the left, we ascend pitches, and the notes get higher."
+    }, {
+      text: "The second black key from the left plays the note that, in terms of pitch, lies <b>in between</b> D and E, its surrounding white keys."
+    }, {
+      img: "/images/lessons_pictures/dsharpeb.png"
+    }, {
+      text: "Try playing it, and compare the way it sounds to its surrounding notes!"
+    } // require user to input D#3 on keyboard
+  ]
+}, {
+  "title": "",
+  "slideContent": [
+    {
+      text: "What do we call this note? It actually has two names: D-sharp(D#) and E-flat(Eb)."
+    },
+    {
+      text: "A <b>half-step</b> describes the space between two consecutive notes. A sharp raises the affected note by a half-step, while a flat lowers the note by a half-step."
+    }, {
+      img: "/images/lessons_pictures/dsharpebstaff.png" // image of D# and Eb on staff
+    }, {
+      text: "So this note can be thought of as either a raised D <b>or</b> a lowered E. Whether we call it D# or Eb, the note has the same pitch."
+    }
+  ]
+}, {
+  "title": "",
+  "slideContent": [
+    {
+      img: "/images/lessons_pictures/asharpbb.png" //picture of a A#/Bb
+    },
+    {
+      text: "What is this note called? If you've been paying attention, you'll know that there are two possible right answers!"
+    } // question: REQUIRE answer: A# OR Bb
+  ]
+}, {
+  "title": "",
+  "slideContent": [
+    {
+      text: "When a note is written with an accidental, that accidental applies to each subsequent note on that line for the rest of the measure."
+    }, {
+      img: "images/lessons_pictures/bnatural.png" // image of B, Bb, Bb, B
+    }, {
+      text: "The 'natural' symbol displayed here cancels that effect. Thus the notes in this measure are: B, Bb, Bb, B."
+    }
+  ]
+}];
+lessononefour.forEach((slide, idx) => {
+  slide.lesson_id = 4;
+  slide.number = idx + 1;
+});
+
+lessononefive = [
+  {
     "title": "",
     "slideContent": [
       {
         text: "Remember back in the first lesson, when we told you to assume that every measure holds 4 beats?"
       },
       {
-        img: "" //some funny image - a serious face?
+        img: "/images/lessons_pictures/measure-4.png",
+        style: {width: "70%"}
       },
       {
-        text: "FORGET THAT EVER HAPPENED. That isn't <b>actually</b> true, we just simplified things to make the concepts of note duration and tempo easier to understand"
+        text: "FORGET THAT EVER HAPPENED. That isn't <b>always</b> true, we just simplified things to make the concepts of note duration and tempo easier to understand."
       }
     ]
   },
@@ -573,44 +634,60 @@ lessononefour = [
   "title": "Time signatures",
   "slideContent": [
     {
-      text: "As you may have noticed, written music is usually prefaced by a figure composed of two numbers, one stacked atop the other."
+      text: "Written music is usually prefaced by a figure composed of two numbers, one stacked atop the other."
     }, {
-      img: '' // image of staff with time sig
+      img: "/images/lessons_pictures/measure-4.png",
+      style: {width: "70%"}
     }, {
-      text: "This is known as a 'time signature,' and it indicates the number of beats in that measure and all proceeding measures."
+      text: "This is known as a <b>time signature</b>, and it indicates the number of beats in that measure and all proceeding measures."
     }
   ]
 }, {
-  "title": "Time signatures",
+  "title": "",
+  "slideContent": [{
+      text: "The top number indicates how many beats make up one measure. When the time signature is 4/4 (pronounced 'four-four'), there are 4 beats per measure, while in 3/4, there are 3 beats per measure"
+    }, {
+      img: "/images/lessons_pictures/measure-4.png",
+      style: {width: "70%"}
+    }, {
+      text: "The bottom number indicates which note is considered one <b>beat</b> when counting a measure."
+    }, {
+      text: "A 4 indicates that a quarter note is comprises one beat. An 8 indicates that an eighth note takes up one beat. And so on."
+    }
+  ]
+}, {
+  "title": "",
+  "slideContent": [{
+      text: "Thus, in 4/4, there are 4 beats, and a quarter note is equivalent to one beat. So we can fit up to 4 quarter notes per measure."
+    }, {
+      img: "/images/lessons_pictures/measure-4.png",
+      style: {width: "70%"}
+    }, {
+      text: "How many eighth notes could fit in one 4/4 measure?" // REQUIRE INPUT : 8
+    }
+  ]
+}, {
+  "title": "",
   "slideContent": [
     {
-      text: ""
-    }, {
-      img: ''
-    }, {
-      text: ""
-    }
-  ]
-}, {
-  "title": "Time signatures",
-  "slideContent": [
+      text: "In a 3/2 time signature, there are 3 beats, and a half note comprises one beat. So we could fit 3 half notes, 6 quarter notes, 12 eighth notes, 24 sixteenth notes, or some combination of them in one measure."
+    },
     {
-      text: "The bottom number indicates which note is considered one 'beat' when counting a measure. A 4 indicates a quarter note, an 8 indicates an eithth note, and so on."
-    }, {
-      img: ''
-    }, {
-      text: "The top number indicates how many of that beat comprises the timespan of a measure. Thus, this time signature, 4/4, means each measure is made up of four quarter notes."
-    }
+      img: "/images/lessons_pictures/timesigsin3.png"
+    },
+    {
+      text: "In 3/8, there are 3 beats per measure, and an eighth note comprises one beat. How many sixteenth notes would fit in one measure of 3/8?"
+    } // REQUIRE ANSWER: 6
   ]
 }, {
-  "title": "4/4",
+  "title": "Common Time",
   "slideContent": [
     {
       text: "A 4/4 time signature is the most common time signature in western music."
     }, {
-      img: ''
+      img: "/images/lessons_pictures/commontime.jpg"
     }, {
-      text: "Because of this, it is sometimes written simply as a large C."
+      text: "Because of this, it is sometimes written simply as a large C, denoting <b>common time</b>."
     }
   ]
 }, {
@@ -619,19 +696,19 @@ lessononefour = [
     {
       text: "Other common time signatures include 2/4 ('oom-pah'), 3/4 (as in a waltz), and 6/8 (a hybrid of 2/4 and 3/4)."
     }, {
-      img: ''
+      img: '/images/lessons_pictures/timesigs.jpg'
     }, {
       text: "Each implies a different rhythmic feel. As you play music in each of these, you'll naturally develop an understanding of how they sound."
     }
   ]
 }
 ];
-lessononefour.forEach((slide, idx) => {
-  slide.lesson_id = 4;
+lessononefive.forEach((slide, idx) => {
+  slide.lesson_id = 5;
   slide.number = idx + 1;
 });
 
-lessononefive = [{
+lessononesix = [{
   "title": "Bass clef",
   "slideContent": [
     {
@@ -642,13 +719,13 @@ lessononefive = [{
   ]
 }
 ];
-lessononefive.forEach((slide, idx) => {
-  slide.lesson_id = 5;
+lessononesix.forEach((slide, idx) => {
+  slide.lesson_id = 6;
   slide.number = idx + 1;
 });
 
 lessontwoone = [
-   {
+  {
   "title": "1",
   "number": 1,
   "slideContent": [
@@ -722,7 +799,7 @@ lessontwoone = [
       img: "/images/lessons_pictures/fullpiano.png",
       style: {
         position: "relative",
-        left: "-20%",
+        left: "-3%",
         padding: "30px 0 15px"
       }
     },
@@ -742,7 +819,7 @@ lessontwoone = [
       img: "images/lessons_pictures/halfwholestep.png",
       style: {
         position: "relative",
-        left: "-26.5%"
+        left: "-2.5%"
       }
     },
     {
@@ -762,7 +839,7 @@ lessontwoone = [
 }
 ]
 lessontwoone.forEach((slide, idx) => {
-  slide.lesson_id = 6;
+  slide.lesson_id = 7;
   slide.number = idx + 1;
 });
 
@@ -879,7 +956,7 @@ lessontwotwo = [
   }
 ]
 lessontwotwo.forEach((slide, idx) => {
-  slide.lesson_id = 7;
+  slide.lesson_id = 8;
   slide.number = idx + 1;
 });
 
@@ -999,7 +1076,7 @@ lessontwothree = [
 },
 ]
 lessontwothree.forEach((slide, idx) => {
-  slide.lesson_id = 8;
+  slide.lesson_id = 9;
   slide.number = idx + 1;
 });
 
@@ -1028,7 +1105,7 @@ lessonthreeone = [
   }
 ];
 lessonthreeone.forEach((slide, idx) => {
-  slide.lesson_id = 9;
+  slide.lesson_id = 10;
   slide.number = idx + 1;
 });
 
@@ -1092,13 +1169,13 @@ lessonthreefour = [
   ]
 }];
 lessonthreefour.forEach((slide, idx) => {
-  slide.lesson_id = 12;
+  slide.lesson_id = 13;
   slide.number = idx + 1;
 });
 
 // lessonthreetwo;
 // lessonthreethree;
 
-const slides = _.flatten([lessononeone, lessononetwo, lessononethree, lessononefour, lessononefive, lessontwoone, lessontwotwo, lessontwothree, lessonthreeone, lessonthreefour]);
+const slides = _.flatten([lessononeone, lessononetwo, lessononethree, lessononefour, lessononefive, lessononesix, lessontwoone, lessontwotwo, lessontwothree, lessonthreeone, lessonthreefour]);
 
 module.exports = slides;

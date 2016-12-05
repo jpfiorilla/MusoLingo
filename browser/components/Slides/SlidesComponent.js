@@ -168,7 +168,7 @@ export default class SlidesComponent extends React.Component {
         incorrectAnswerMessage={refs.incorrectAnswerMessage}
         enable={this.enableButton}
       />;
-    }
+    } 
 
     return (
       <div key={overallIndex + index}>

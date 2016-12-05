@@ -90,7 +90,7 @@ export default class NavigationPage extends React.Component {
                                     <h3 id="divider">|</h3>
                                     <h3 id="test" onClick={() => { this.getQuizAndHeadOver(lesson.id) } }>Test</h3>
                                     <h3 id="divider">|</h3>
-                                    <h3 id="play">Play</h3>
+                                    <a id="play" href={`/game/${lesson.id}`}>Play</a>
                                   </div>
                                 </div>
                               )
