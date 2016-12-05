@@ -13,11 +13,6 @@ export default class About extends React.Component {
     super (props);
     this.state = {};
   }
-  componentWillDismount () {
-    // if (! ) {
-    //
-    // }
-  }
 
     render () {
         return (
