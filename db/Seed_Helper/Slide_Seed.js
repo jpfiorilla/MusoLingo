@@ -462,6 +462,11 @@ lessononethree = [
     },
     {
       text: "For example, if we play the first white key from the left on our on-screen keyboard, it will produce a C. Try it yourself!"
+    },
+    {
+      pianoUserInput: {
+        notesToPlay: ["C3"]
+      }
     } // REQUIRE user to input C3 before they can move on
   ]
 }, {
@@ -478,6 +483,7 @@ lessononethree = [
     },
     {
       text: "Pop quiz: play the highest note on the on screen keyboard!"
+    }
     } // REQUIRE user to input B4 (\ key)
   ]
 }, {
