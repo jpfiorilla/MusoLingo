@@ -1,46 +1,28 @@
-body {
-    padding-top: 30px;
-}
-
-.faq-cat-content {
-    margin-top: 25px;
-}
-
-.faq-cat-tabs li a {
-    padding: 15px 10px 15px 10px;
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    color: #777777;
-}
-
-.nav-tabs li a:focus,
-.panel-heading a:focus {
-    outline: none;
-}
-
-.panel-heading a,
-.panel-heading a:hover,
-.panel-heading a:focus {
-    text-decoration: none;
-    color: #777777;
-}
-
-.faq-cat-content .panel-heading:hover {
-    background-color: #efefef;
-}
-
-.active-faq {
-    border-left: 5px solid #888888;
-}
-
-.panel-faq .panel-heading .panel-title span {
-    font-size: 13px;
-    font-weight: normal;
-}
 
 #faq-header {
     text-align: center;
     font-size: 100px;
     margin: 50px;
     font-family: bebas-kai;
+}
+
+.faq-answer {
+    font-family: gravity-book;
+}
+
+.faq-question {
+    font-family: gravity-bold;
+    text-decoration: none;
+}
+
+.faq-question:hover {
+    text-decoration: none;
+    font-size: large;
+}
+
+#subheader {
+    font-family: bebas-kai;
+    font-size: 40px;
+    position: relative;
+    margin: 15px;
 }
