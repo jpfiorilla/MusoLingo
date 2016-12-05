@@ -87,6 +87,7 @@ const challenges = [
   },
   {
     "title": "Jurassic Park Theme",
+    "hint": "Play this classic tune from the 90s, using your newfound knowledge of accidentals.",
     "bpm": 108,
     "notes": ["Bb4 A4", "Bb4", "F4", "Eb4", "Bb4 A4", "Bb4", "F4", "Eb4", "Bb4 A4", "Bb4", "space", "F4", "Bb3", "G4", "space", "space"],
     "vexNotes": [
@@ -166,6 +167,114 @@ const challenges = [
       {clef: 'treble', keys: ['b/4'], duration: 'qr'}
     ]
   },
+  {
+    "title": "Bass Clef Practice",
+    "hint": "",
+    "bpm": 92,
+    "notes": [],
+    "vexNotes": [
+
+    ]
+  },
+  {
+    "title": "Octaves and Half-Steps",
+    "hint": "",
+    "bpm": 92,
+    "notes": [],
+    "vexNotes": [
+
+    ]
+  },
+  {
+    "title": "Interval Distance",
+    "hint": "",
+    "bpm": 92,
+    "notes": [],
+    "vexNotes": [
+
+    ]
+  },
+  {
+    "title": "Interval Quality",
+    "hint": "",
+    "bpm": 92,
+    "notes": [],
+    "vexNotes": [
+
+    ]
+  },
+  {
+    "title": "Arpeggios",
+    "hint": "Arpeggios are 'broken chords' - each arpeggio corresponds to a chord, and simply consists of that chord's notes, played sequentially rather than simultaneously.",
+    "bpm": 92,
+    "notes": ["C3", "E3", "G3", "C4"],
+    "vexNotes": [
+
+    ]
+  },
+  {
+    "title": "Triad Qualities",
+    "hint": "",
+    "bpm": 92,
+    "notes": [],
+    "vexNotes": [
+
+    ]
+  },{
+
+    "title": "Suspended Chords",
+    "hint": "",
+    "bpm": 92,
+    "notes": [],
+    "vexNotes": [
+
+    ]
+  },
+  {
+    "title": "Chord Inversions",
+    "hint": "",
+    "bpm": 92,
+    "notes": [],
+    "vexNotes": [
+
+    ]
+  },
+  {
+    "title": "Major Scale",
+    "hint": "",
+    "bpm": 92,
+    "notes": [],
+    "vexNotes": [
+
+    ]
+  },
+  {
+    "title": "Minor Scale",
+    "hint": "",
+    "bpm": 92,
+    "notes": [],
+    "vexNotes": [
+
+    ]
+  },
+  {
+    "title": "Key Signatures",
+    "hint": "",
+    "bpm": 92,
+    "notes": [],
+    "vexNotes": [
+
+    ]
+  },
+  {
+    "title": "Circle of Fifths",
+    "hint": "",
+    "bpm": 92,
+    "notes": [],
+    "vexNotes": [
+
+    ]
+  }
 ]
 
 module.exports = challenges;
