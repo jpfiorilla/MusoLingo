@@ -46,8 +46,8 @@ export default class About extends React.Component {
                             I'm a fullstack software engineer who likes to get down with Beathoven to Beethoven.
                             </CardText>
                             <CardActions>
-                            <FlatButton style={buttonStyle} label="GITHUB" />
-                            <FlatButton style={buttonStyle} label="LINKEDIN" />
+                            <FlatButton href="" style={buttonStyle} label="GITHUB" />
+                            <FlatButton href="" style={buttonStyle} label="LINKEDIN" />
                             </CardActions>
                         </Card>
                     </div>
@@ -64,8 +64,8 @@ export default class About extends React.Component {
                             I'm a fullstack software engineer who likes to get down with Beathoven to Beethoven.
                             </CardText>
                             <CardActions>
-                            <FlatButton style={buttonStyle} label="GITHUB" />
-                            <FlatButton style={buttonStyle} label="LINKEDIN" />
+                            <FlatButton href="" style={buttonStyle} label="GITHUB" />
+                            <FlatButton href="" style={buttonStyle} label="LINKEDIN" />
                             </CardActions>
                         </Card>
                     </div>
@@ -82,8 +82,8 @@ export default class About extends React.Component {
                             I'm a fullstack software engineer who likes to get down with Beathoven to Beethoven.
                             </CardText>
                             <CardActions>
-                            <FlatButton style={buttonStyle} label="GITHUB" />
-                            <FlatButton style={buttonStyle} label="LINKEDIN" />
+                            <FlatButton href="" style={buttonStyle} label="GITHUB" />
+                            <FlatButton href="" style={buttonStyle} label="LINKEDIN" />
                             </CardActions>
                         </Card>
                     </div>
