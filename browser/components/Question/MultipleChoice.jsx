@@ -30,7 +30,7 @@ const styles = {
   },
 };
 
-var questionComponent, correct, incorrect, lownote, highnote, intervalNotes, correctChord, buttonsArray, rightAnswerPosition, index, answered, incorrectChords, correctArr, duration, parts;
+var questionComponent, correct, incorrect, lownote, highnote, intervalNotes, correctChord, buttonsArray, rightAnswerPosition, index, answered, incorrectChords, correctArr, duration, parts = {};
 
 export default class MultipleChoiceQuestion extends React.Component {
   constructor(props) {

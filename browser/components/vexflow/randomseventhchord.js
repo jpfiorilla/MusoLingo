@@ -26,7 +26,7 @@ export default class RandomSeventhChord extends Component {
         var context = renderer.getContext();
         context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
-        var stave = new VF.Stave(10, 40, 400);
+        var stave = new VF.Stave(125, 40, 150);
 
         // Add a clef and time signature.
         stave.addClef("treble").addTimeSignature("4/4");

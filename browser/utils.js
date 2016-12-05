@@ -142,6 +142,11 @@ export const randomSeventhChord = function(floor = 56, ceiling = 73){
     let randomQuality = sevenChordQualities[Math.floor(Math.random() * sevenChordQualities.length)];
     let convertedQuality = convertSeventhQuality(randomQuality);
     let tonalChord = tonal.chord.build(randomQuality, randomRoot);
+    let root = tonalChord[0], seventh = tonalChord[3];
+    if (Number(root[root.length-1]) + 1 < seventh[seventh.length-1]){
+        console.log('reducing seventh octave');
+        tonalChord[3] = tonalChord[3].substring(0, seventh.length-1) + (Number(seventh[seventh.length-1]) - 1).toString();
+    } 
     let chord = [];
     tonalChord.forEach(note => chord.push(tonalToVex(note)));
     // return [chord, tonalChord];
