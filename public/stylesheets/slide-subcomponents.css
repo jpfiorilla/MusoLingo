@@ -1,0 +1,21 @@
+#usertextinput-question-header{
+    font-family: bebas-kai;
+    font-size: 30px;
+    margin: 15px;
+    color: #bd3636;
+}
+
+#usertextinput-container {
+    box-shadow: 0px 0px 15px grey;
+    width: 40%;
+    padding: 20px;
+    border-radius: 3%;
+    left: 30%;
+    position: relative;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#usertextinput-input {
+    width: 90%;
+}

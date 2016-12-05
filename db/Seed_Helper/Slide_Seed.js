@@ -98,9 +98,13 @@ var lessononeone = [{
       style: {
         height: "75px"
       }
-    },
-    {
-      text: "Remember, we said that every measure contains 4 beats (for now). So how many whole notes can fit in one measure?"
+    },{
+      userTextInput: {
+        correctAnswer: "1",
+        question: "Remember, we said that every measure contains 4 beats (for now). So how many whole notes can fit in one measure?",
+        correctAnswerMessage: "Great job!",
+        incorrectAnswerMessage: "Sorry! Try again."
+      }
     }
     // question: user must answer 1 in order to continue
   ]
@@ -128,7 +132,14 @@ var lessononeone = [{
     // },
     {
       text: "<b>Quarter notes</b> are the next smallest type of note. Each quarter note is worth <b>one (1) beat</b>."
-    }, // question: if there is already one half note in a measure, how many quarter notes will fit? answer: 2
+    },{
+      userTextInput: {
+        correctAnswer: "2",
+        question: "If there is already one half note in a measure, how many quarter notes will fit in the measure?",
+        correctAnswerMessage: "Great job! You're nailing it!",
+        incorrectAnswerMessage: "Sorry! Try again!"
+      }
+    },// question: if there is already one half note in a measure, how many quarter notes will fit? answer: 2
     {
       img: "http://i.imgur.com/Wq8bHjw.png",
       tone: {
@@ -197,8 +208,14 @@ var lessononeone = [{
       style: {
         height: "110px"
       }
+    }, {
+      userTextInput: {
+        correctAnswer: "4",
+        question: "If there's already one quarter note and two eighth notes in a measure, how many sixteenth notes can we fit in that same measure?",
+        correctAnswer: "Great job!",
+        incorrectAnswerMessage: "Sorry, try again!"
+      }
     }
-    // question: if there's already one quarter note and two eighth notes in a measure, how many sixteenth notes can we fit in that same measure? answer: 4
   ]
 }, {
   "title": "Rests",
@@ -487,7 +504,11 @@ lessononethree = [
     },
     {
       text: "Pop quiz: play the highest note on the on screen keyboard!"
-    } // REQUIRE user to input B4 (\ key)
+    }, {
+      pianoUserInput: {
+        notesToPlay: ["B4"]
+      }
+    }// REQUIRE user to input B4 (\ key)
   ]
 }, {
   "title": "Notes on the staff",
@@ -514,7 +535,11 @@ lessononethree = [
       text: "In the image above, the first half note is an F. The second one is a C."
     }, {
       img: "/images/lessons_pictures/e3.png" // image of an E
-    }, // question: Can you play this note? answer: E3 OR E4
+    }, {
+      pianoUserInput: {
+        notesToPlay: [["E3", "E4"]]
+      }
+    } // question: Can you play this note? answer: E3 OR E4
   ]
 }, {
   "title": "",
@@ -685,6 +710,11 @@ lessononefive = [
     },
     {
       text: "In 3/8, there are 3 beats per measure, and an eighth note comprises one beat. How many sixteenth notes would fit in one measure of 3/8?"
+    }, {
+      correctAnswer: "6",
+      question: "In 3/8, there are 3 beats per measure, and an eighth note comprises one beat. How many sixteenth notes would fit in one measure of 3/8?",
+      correctAnswerMessage: "Nice! Six sixteenth notes would fit in one measure of 3/8!",
+      incorrectAnswerMessage: "Sorry! Try again!"
     } // REQUIRE ANSWER: 6
   ]
 }, {
