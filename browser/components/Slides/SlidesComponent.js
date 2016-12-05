@@ -45,7 +45,9 @@ export default class SlidesComponent extends React.Component {
   }
 
   enableButton () {
-    this.setState({disabled: false, setDisable: false})
+    if (this.state.disabled) {
+      this.setState({disabled: false, setDisable: false});
+    }
   }
 
   componentWillUnmount () {
@@ -168,7 +170,7 @@ export default class SlidesComponent extends React.Component {
         incorrectAnswerMessage={refs.incorrectAnswerMessage}
         enable={this.enableButton}
       />;
-    } 
+    }
 
     return (
       <div key={overallIndex + index}>

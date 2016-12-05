@@ -476,7 +476,7 @@ lessononethree = [
       text: "The second white key from the left will produce a D, the third one will produce an E, and so on. Once we get to G, the letter names restart again with A."
     },
     {
-      img: "/images/lessons_pictures/piano_notes_staff.jpg" //keep same image from last slide
+      img: "/images/lessons_pictures/piano_notes_staff.jpg"
     },
     {
       text: "As we move towards the right on the keyboard, we are <b>ascending</b>, and the pitches get <b>higher</b>. If we move towards the left, we are <b>descending</b>, and they become <b>lower</b>."
@@ -484,7 +484,6 @@ lessononethree = [
     {
       text: "Pop quiz: play the highest note on the on screen keyboard!"
     }
-    } // REQUIRE user to input B4 (\ key)
   ]
 }, {
   "title": "Notes on the staff",
