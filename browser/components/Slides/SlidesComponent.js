@@ -82,7 +82,8 @@ export default class SlidesComponent extends React.Component {
     this.setState({
       stepIndex: stepIndex + 1,
       finished: stepIndex >= this.props.slides.length - 1,
-      setDisable: true
+      setDisable: true,
+      disabled: false
     });
 
     localStorage.setItem(currSlide, this.state.stepIndex + 1);
@@ -107,7 +108,7 @@ export default class SlidesComponent extends React.Component {
 
     const { stepIndex } = this.state;
     if (stepIndex > 0) {
-      this.setState({stepIndex: stepIndex - 1, setDisable: true});
+      this.setState({stepIndex: stepIndex - 1, setDisable: true, disabled: false});
       localStorage.setItem(currSlide, this.state.stepIndex - 1);
     }
   };
