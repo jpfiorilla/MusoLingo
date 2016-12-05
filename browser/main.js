@@ -40,14 +40,14 @@ const onNavigationEnter = () => {
 }
 
 const onEnterRetrieveLoggedInUser = () => {
+  console.log('location ', window.location.pathname);
   let user = localStorage.user && JSON.parse(localStorage.user);
   let aboutPath = window.location.pathname === '/about';
   let faqPath = window.location.pathname === '/faq';
   let either = aboutPath || faqPath;
 
-  console.log(either);
-
   if (! user || ! user.id && ! either) {
+
     browserHistory.push('/home');
   } else if (! either) {
     if (! store.getState().user.id) {
