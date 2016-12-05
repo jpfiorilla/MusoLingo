@@ -183,6 +183,8 @@
   font-size: 15px;
   position: relative;
   top: -45px;
+  text-decoration: none;
+  color: black;
 }
 
 #play:hover {
