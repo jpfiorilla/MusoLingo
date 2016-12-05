@@ -19,8 +19,8 @@ import PlayAudio from './SubComponents/PlayAudio';
 import Text from './SubComponents/Text';
 import UserTextInput from './SubComponents/UserTextInput';
 import Image from './SubComponents/Image';
+import { disablePianoHelper } from './SubComponents/PianoUserInput';
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
-
 
 export default class SlidesComponent extends React.Component {
 
@@ -40,10 +40,6 @@ export default class SlidesComponent extends React.Component {
     this.enableButton = this.enableButton.bind(this);
   }
 
-  componentWillReceiveProps (nextProps) {
-    // console.log(nextProps);
-  }
-
   enableButton () {
     if (this.state.disabled) {
       this.setState({disabled: false, setDisable: false});
@@ -54,6 +50,8 @@ export default class SlidesComponent extends React.Component {
     this.props.clearSlides();
     localStorage.setItem(currSlide, 0);
     Mousetrap.unbind([`right`], this.handleNext);
+    Mousetrap.unbind([`left`], this.handlePrev);
+    disablePianoHelper();
   }
 
   componentDidMount () {
@@ -143,6 +141,7 @@ export default class SlidesComponent extends React.Component {
     } else if (obj.pianoUserInput) {
       if (this.state.setDisable) {
         this.state.disabled = true;
+        this.state.setDisable = false;
       }
       let refs = obj.pianoUserInput;
       subComponent =
@@ -161,6 +160,7 @@ export default class SlidesComponent extends React.Component {
     } else if (obj.userTextInput) {
       if (this.state.setDisable) {
         this.state.disabled = true;
+        this.state.setDisable = false;
       }
       let refs = obj.userTextInput;
       subComponent =

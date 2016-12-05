@@ -48,6 +48,11 @@ const pianoInput = function (state, notesToPlay) {
 // NOTE: export piano input so the other functions can pass it really useful information.
 export let pianoHelper;
 
+export let disablePianoHelper = function () {
+  // console.log('inside');
+  pianoHelper = undefined;
+}
+
 // NOTE: Main React component.
 export default class PianoUserInput extends React.Component {
 
@@ -66,19 +71,12 @@ export default class PianoUserInput extends React.Component {
     // NOTE: you dont need this here, i just dont know music and need to see
     // the note logged to the console during testing so i can pass the test.
 
-    // console.log(this.state.notePlayed);
     this.props.enable();
   }
 
   componentWillMount () {
     // invoke the wrapper function with state and notesToPlay.
     pianoHelper = pianoInput(this, this.state.notesToPlay);
-  }
-
-  componentWillUnmount () {
-    // NOTE: when you play the keyboard in any other component we
-    // don't want pianoHelper to run anymore.
-    pianoHelper = undefined;
   }
 
   render() {
