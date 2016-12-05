@@ -7,13 +7,17 @@ export default class FAQ extends React.Component {
   render() {
       return (
         <div>
+
           <h3 id="faq-header">FAQ</h3>
+
+          {/* SUBHEADER */}
           <h4 id="subheader">General</h4>
           <div className="container ">
             <div className="panel-group" id="faqAccordion">
                 <div className="panel panel-default ">
                     <div className="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
                         <h4 className="panel-title">
+                          {/* QUESTION */}
                             <a href="#" className="ing"><h3 className="faq-question">Q: What is 88 Keys?</h3></a>
                       </h4>
 
