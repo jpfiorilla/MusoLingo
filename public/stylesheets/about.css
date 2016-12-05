@@ -1,0 +1,11 @@
+#about-name{
+    text-align: center;
+    font-family: basictitle;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#about-text{
+    text-align: justify;
+    font-family: gravity-book;
+}
