@@ -12,9 +12,9 @@ Music is a language. Learn the fundamentals in this React-based educational app.
 
 ```sh
 npm install
-node db/seed
+npm run seed
 npm run build-watch
-npm run dev
+npm start
 ```
 
 The above script will go through the following steps:
@@ -27,9 +27,8 @@ The above script will go through the following steps:
 
 All pushes to GitHub are being built and tested by Travis CI. However, only a select few of these builds will be deployed to Heroku.
 
-We have two versions of the app on Heroku:  
-// **Prod**: [https://just-home.herokuapp.com/](https://just-home.herokuapp.com/)  
-// **Test**: [https://just-home-test.herokuapp.com/](https://just-home-test.herokuapp.com/)  
+We have one versions of the app on Heroku:  
+// **Prod**: [https://eighty-eight-keys.herokuapp.com](https://eighty-eight-keys.herokuapp.com) 
 
 ### Deploying to Test
 

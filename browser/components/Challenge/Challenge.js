@@ -119,7 +119,7 @@ export default class Challenge extends Component {
 
 // change start button to reset after one loop; maybe have it toggle once the scoreCounter is visible?
         return (
-        <div>
+        <div id="challenge-container">
 
         <b id="theme-title">{this.props.challenges.title}</b> <br />
         <i>bpm= </i><b>{this.props.challenges.bpm}</b>

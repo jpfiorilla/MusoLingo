@@ -399,3 +399,8 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
 }
+
+#challenge-container {
+  position: relative;
+  top: 30px;
+}
