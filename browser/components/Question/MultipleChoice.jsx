@@ -13,7 +13,7 @@ import RandomTiedNote from '../vexflow/randomtiednote';
 import RandomHalfOrWholeStep from '../vexflow/randomhalforwholestep';
 import RandomWhiteKeyNote from '../vexflow/randomwhitekeynote';
 import RandomSeventhChord from '../vexflow/randomseventhchord';
-import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations, randomDistance, randomOtherDistances, randomIntervalName, randomTieDuration, getDuration, getOtherDurations, randomStepsNames, intervalToStep, randomWhiteKeyName, randomOtherWhiteKeys } from '../../utils';
+import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations, randomDistance, randomOtherDistances, randomIntervalName, randomTieDuration, getDuration, getOtherDurations, randomStepsNames, intervalToStep, randomWhiteKeyName, randomOtherWhiteKeys, randomSeventhChord, randomOtherSeventhChords } from '../../utils';
 import Vex from 'vexflow'
 import Tone from "tone";
 
@@ -116,12 +116,24 @@ export default class MultipleChoiceQuestion extends React.Component {
       case "guessChordName":
         questionComponent = RandomChord;
         correctArr = randomTriad(56, 75);
+        // console.log('correctarr', correctArr);
         correct = correctArr[1];
         correctChord = correctArr[0];
         incorrect = [];
         incorrectChords = randomOtherTriads(correctArr[1]);
         incorrectChords.forEach(chord => incorrect.push(chord));
-        this.setState({ correctAnswer: correct })
+        this.setState({ correctAnswer: correct });
+        break;
+      case "guessSeventhChord":
+        questionComponent = RandomSeventhChord;
+        correctArr = randomSeventhChord(56, 73);
+        correct = correctArr[1];
+        correctChord = correctArr[0];
+        incorrect = [];
+        incorrectChords = randomOtherSeventhChords(correctArr[1]);
+        incorrectChords.forEach(chord => incorrect.push(chord));
+        console.log(correct, incorrect);
+        this.setState({ correctAnswer: correct });
         break;
       case "guessInversionName":
         questionComponent = RandomInvertedChord;
@@ -149,9 +161,6 @@ export default class MultipleChoiceQuestion extends React.Component {
         incorrect = ['2 beats', '4 beats', '0.5 beats'];
         this.state.incorrect = incorrect;
         // tied, dotted, triplet
-        break;
-      case "guessSeventhChord":
-        questionComponent = RandomSeventhChord;
         break;
       default:
         console.log("No question type defined")

@@ -136,6 +136,32 @@ export const randomTriad = function(floor, ceiling){
     return [triad, [getNoteName(triadRoot), triadQuality].join('')];
 }
 
+const sevenChordQualities = ['7', 'Maj7', 'm7', 'mMaj7', '7#5', 'M7#5', 'dim7', 'm7b5', '7sus4'];
+export const randomSeventhChord = function(floor = 56, ceiling = 73){
+    let randomRoot = vexToTonal(randomNoteName(floor, ceiling));
+    let randomQuality = sevenChordQualities[Math.floor(Math.random() * sevenChordQualities.length)];
+    let convertedQuality = convertSeventhQuality(randomQuality);
+    let tonalChord = tonal.chord.build(randomQuality, randomRoot);
+    let chord = [];
+    tonalChord.forEach(note => chord.push(tonalToVex(note)));
+    // return [chord, tonalChord];
+    return [chord, [getNoteName(randomRoot), convertedQuality].join('')];
+}
+
+export const convertSeventhQuality = function(seventh){
+    return seventh === 'M7#5' ? 'Maj7#5' : seventh === 'm7b5' ? 'ø' : seventh;
+}
+
+export const randomOtherSeventhChords = function(rightSeventhChordName){
+    let arr = [];
+    while (arr.length < 3){
+        let chordQuality = convertSeventhQuality(sevenChordQualities[Math.floor(Math.random() * sevenChordQualities.length)]);
+        let newTriad = [getNoteName(rightSeventhChordName), chordQuality].join('');
+        if (newTriad !== rightSeventhChordName && arr.indexOf(newTriad) === -1) arr.push(newTriad);
+    }
+    return arr;
+}
+
 export const randomOtherTriads = function(rightTriadName){
     let arr = [];
     while (arr.length < 3){

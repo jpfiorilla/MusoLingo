@@ -1,3 +1,3 @@
-var topics = [{"name":"Reading music"}, {"name": "Intervals"}, {"name": "Chords"}, {"name": "Scales"}];
+var topics = [{"name":"Reading music"}, {"name": "Intervals"}, {"name": "Chords"}];
 
 module.exports = topics;
