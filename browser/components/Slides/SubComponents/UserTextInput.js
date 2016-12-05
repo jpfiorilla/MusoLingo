@@ -23,11 +23,10 @@ export default class UserTextInput extends React.Component {
 
     this.state = {
       userAnswer: '',
-      correctAnswer: (this.props && this.props.correctAnswer) || '900',
-      question: (this.props && this.props.question) || 'How old am I????',
-      correctAnswerMessage: (this.props && this.props.correctAnswerMessage) || "Oh my god, that's right!",
-      incorrectAnswerMessage: (this.props && this.props.incorrectAnswerMessage) ||
-      "Some may say that answer is not correct.  HINT: I've been alive for 90 decades.",
+      correctAnswer: (this.props && this.props.correctAnswer),
+      question: (this.props && this.props.question),
+      correctAnswerMessage: (this.props && this.props.correctAnswerMessage),
+      incorrectAnswerMessage: (this.props && this.props.incorrectAnswerMessage),
       teacherResponse: undefined,
       open: false
     };

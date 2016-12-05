@@ -328,7 +328,7 @@ var lessononeone = [{
         {
           img: "/images/lessons_pictures/challenge1screenshot.png",
           // different examples of full 4/4 measures
-          style: 
+          style:
             {width: "97%"}
         },
         {
