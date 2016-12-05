@@ -12,6 +12,7 @@ import RandomInvertedChord from '../vexflow/randominvertedchord';
 import RandomTiedNote from '../vexflow/randomtiednote';
 import RandomHalfOrWholeStep from '../vexflow/randomhalforwholestep';
 import RandomWhiteKeyNote from '../vexflow/randomwhitekeynote';
+import RandomSeventhChord from '../vexflow/randomseventhchord';
 import { getNoteName, vexToMidi, calculateInterval, randomIntervals, randomNoteName, randomOtherNoteNames, randomTriad, randomOtherTriads, randomNoteDuration, randomOtherNoteDurations, randomDistance, randomOtherDistances, randomIntervalName, randomTieDuration, getDuration, getOtherDurations, randomStepsNames, intervalToStep, randomWhiteKeyName, randomOtherWhiteKeys } from '../../utils';
 import Vex from 'vexflow'
 import Tone from "tone";
@@ -148,6 +149,9 @@ export default class MultipleChoiceQuestion extends React.Component {
         incorrect = ['2 beats', '4 beats', '0.5 beats'];
         this.state.incorrect = incorrect;
         // tied, dotted, triplet
+        break;
+      case "guessSeventhChord":
+        questionComponent = RandomSeventhChord;
         break;
       default:
         console.log("No question type defined")
