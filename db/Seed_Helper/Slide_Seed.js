@@ -484,7 +484,7 @@ lessononethree = [
     {
       text: "Pop quiz: play the highest note on the on screen keyboard!"
     }
-    } // REQUIRE user to input B4 (\ key)
+     // REQUIRE user to input B4 (\ key)
   ]
 }, {
   "title": "Notes on the staff",
