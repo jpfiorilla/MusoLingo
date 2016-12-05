@@ -30,7 +30,7 @@ export default class HomePage extends React.Component {
                                 <LoginContainer />
                                 <a href="" className="homepage-nb" id="homepage-home-link">Home</a>
                                 <a href="" className="homepage-nb" id="homepage-features-link">Features</a>
-                                <a href="" className="homepage-nb" id="homepage-about-link">About</a>
+                                <a href="/about" className="homepage-nb" id="homepage-about-link">Team</a>
                             </div>
                             <div className="homepage-content">
                                 <img src="/images/logo.png" id="intro-logo" />

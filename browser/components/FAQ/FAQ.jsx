@@ -71,6 +71,27 @@ export default class FAQ extends React.Component {
                 
             </div>
         </div>
+          <h4 id="subheader">How It Works</h4>
+          <div className="container ">
+            <div className="panel-group" id="faqAccordion">
+                <div className="panel panel-default ">
+                    <div className="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
+                        <h4 className="panel-title">
+                          {/* QUESTION */}
+                            <a href="#" className="ing"><h3 className="faq-question">Q: Where do I start?</h3></a>
+                      </h4>
+
+                    </div>
+                    <div id="question0" className="panel-collapse collapse" style={{height: "0px"}}>
+                        <div className="panel-body">
+                            <p>
+                              ANSWER HERE
+                                </p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
       </div>
     );
   }
