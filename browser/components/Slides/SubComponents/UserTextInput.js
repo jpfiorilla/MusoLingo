@@ -74,7 +74,7 @@ export default class UserTextInput extends React.Component {
       <FlatButton
         label="Got it!"
         primary={true}
-        onClick={() => {this.handleClose; this.props.enable();}}
+        onClick={() => {this.handleClose(); this.props.enable();}}
       />
     ];
 

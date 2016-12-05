@@ -68,7 +68,7 @@ export default class FAQ extends React.Component {
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
       </div>
