@@ -19,7 +19,6 @@ import PlayAudio from './SubComponents/PlayAudio';
 import Text from './SubComponents/Text';
 import UserTextInput from './SubComponents/UserTextInput';
 import Image from './SubComponents/Image';
-import { disablePianoHelper } from './SubComponents/PianoUserInput';
 // %^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^%^
 
 export default class SlidesComponent extends React.Component {
@@ -51,7 +50,6 @@ export default class SlidesComponent extends React.Component {
     localStorage.setItem(currSlide, 0);
     Mousetrap.unbind([`right`], this.handleNext);
     Mousetrap.unbind([`left`], this.handlePrev);
-    disablePianoHelper();
   }
 
   componentDidMount () {
