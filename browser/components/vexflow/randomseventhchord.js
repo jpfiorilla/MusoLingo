@@ -13,7 +13,6 @@ export default class RandomSeventhChord extends Component {
         )
     }
     componentDidMount(){
-        console.log('in component');
         const {chord} = this.props;
 
         var VF = Vex.Flow;
