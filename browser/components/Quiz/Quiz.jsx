@@ -45,7 +45,7 @@ export default class Quiz extends React.Component {
 
   handleNext(){
     const {stepIndex} = this.state;
-    if (!this.state.loading) {
+    if (!this.state.loading && this.props.quizzes.length && stepIndex !== this.props.quizzes[0].question_types.length) {
       this.dummyAsync(() => this.setState({
         loading: false,
         stepIndex: stepIndex + 1,
