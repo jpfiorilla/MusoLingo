@@ -47,6 +47,7 @@ module.exports = app
 .use(express.static(resolve(__dirname, '..', 'node_modules/react-threejs')))
 .use(express.static(resolve(__dirname, '..', 'public/sounds')))
 .use(express.static(resolve(__dirname, '..', 'node_modules/beautiful-piano/dist')))
+.use(express.static(resolve(__dirname, '..', 'node_modules/font-awesome/css')))
 
 
 // Serve our api

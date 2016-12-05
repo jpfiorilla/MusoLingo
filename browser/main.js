@@ -22,6 +22,7 @@ import LessonPage from "./components/LessonPage/LessonPage";
 import Challenge from "./components/Challenge/ChallengeContainer";
 import UserPage from './components/UserPage/UserPageContainer';
 import Keyboard from "./components/Keyboard/Keyboard";
+import About from "./components/About/About"
 import FAQ from './components/FAQ/FAQ';
 // import ExternalLink from './components/Slides/SubComponents/ExternalRefs';
 
@@ -60,7 +61,8 @@ render(
     <Router history={ browserHistory }>
       <Route path="/home" component={HomePage} />
       <Route path="/" component={App} onEnter={onEnterRetrieveLoggedInUser}>
-      <Route path="/about" component={FAQ} />
+      <Route path="/faq" component={FAQ} />
+      <Route path="/about" component={About} />
       <Route path="/quiz" component={Quiz} />
       <Route path="/account" component={Account} />
       <Route path="/nav" component={NavigationPage} onEnter={onNavigationEnter}/>
