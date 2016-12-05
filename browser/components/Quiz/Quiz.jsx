@@ -110,11 +110,9 @@ export default class Quiz extends React.Component {
 
   componentDidMount() {
     Mousetrap.bind([`right`], this.handleNext);
-    Mousetrap.bind([`left`], this.handlePrev);
   }
   componentWillUnmount() {
     Mousetrap.unbind([`right`], this.handleNext);
-    Mousetrap.unbind([`left`], this.handlePrev);
   }
 
   renderContent() {
