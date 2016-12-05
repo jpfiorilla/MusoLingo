@@ -41,7 +41,7 @@ export default class SlidesComponent extends React.Component {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.log(nextProps);
+    // console.log(nextProps);
   }
 
   enableButton () {
