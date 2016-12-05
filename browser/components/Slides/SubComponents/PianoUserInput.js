@@ -23,19 +23,24 @@ import RaisedButton from 'material-ui/RaisedButton';
 const pianoInput = function (state, notesToPlay) {
 
   var hiIamTheHelperFunc = function (update) {
+    let noteToPlay = notesToPlay[0];
     let message;
-    if (update === notesToPlay[0]) {
+
+    // if multiple notes are correct:
+    let multipleNoteChoice = (Array.isArray(noteToPlay) && noteToPlay.includes(update)) ? true : false;
+
+    if (update === noteToPlay || multipleNoteChoice) {
       notesToPlay.shift();
       message = `That was certainly a ${update}!  Way to go!!`;
     } else {
       message = `That was a ${update}!  Keep trying!`;
     }
 
-    state.setState({
-      notePlayed: update,
-      notesToPlay,
-      message
-    });
+      state.setState({
+        notePlayed: update,
+        notesToPlay,
+        message
+      });
   }
   return hiIamTheHelperFunc;
 }

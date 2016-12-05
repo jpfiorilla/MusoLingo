@@ -94,16 +94,16 @@ export default class UserTextInput extends React.Component {
   render() {
 
     return (
-      <div>
+      <div id="usertextinput-container">
         <div>
-          <h1>
+          <h1 id="usertextinput-question-header">
             QUESTION
           </h1>
           <p>
             {this.state.question}
           </p>
         </div>
-        <div>
+        <div id="usertextinput-input">
           <TextField
             floatingLabelText="Answer Here!"
             onChange={this.onAnswerChange}
