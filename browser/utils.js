@@ -215,7 +215,7 @@ export const getDuration = function(note){
     alteration === 'Dotted' ? newDuration = base * 1.5 :
     alteration === 'Tied' ? newDuration = base * 1.5 :
     newDuration = base * 2 / 3;
-    let exp = newDuration.toString().substring(0, 3) + ' beats';
+    let exp = newDuration.toString().substring(0, 4) + ' beats';
     // console.log('getDur of correct: ', exp);
     return exp;
 }

@@ -158,7 +158,7 @@ export default class MultipleChoiceQuestion extends React.Component {
         duration = randomTieDuration();
         correct = getDuration(duration);
         // incorrect = getOtherDurations(correct);
-        incorrect = ['2 beats', '4 beats', '0.5 beats'];
+        incorrect = ['2 beats', '0.5 beats', (Number(correct.split(' ')[0]) * 2).toString() + ' beats'];
         this.state.incorrect = incorrect;
         // tied, dotted, triplet
         break;
