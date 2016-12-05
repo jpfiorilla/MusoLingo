@@ -8,12 +8,12 @@ var lessons = [{"title":"Notes","level":1,"description":"Learn how to read rhyth
 {"title":"Distance","level":2,"description":"Intervals","topic_id":2},
 {"title":"Interval qualities","level":3,"description":"Intervals","topic_id":2},
 {"title":"Triads","level":1,"description":"Learn how to build chords.","topic_id":3},
-// {"title":"Seventh chords","level":2,"description":"Learn how to build chords.","topic_id":3},
-{"title":"Inversions","level":3,"description":"Learn how to build chords.","topic_id":3},
-{"title":"Major scale","level":1,"description":"Learn how to build chords.","topic_id":4},
-{"title":"Minor scale","level":2,"description":"Learn how to build chords.","topic_id":4},
-{"title":"Key signatures","level":3,"description":"Learn how to build chords.","topic_id":4},
-{"title":"Circle of fifths","level":4,"description":"Learn how to build chords.","topic_id":4}
+{"title":"Seventh chords","level":2,"description":"Learn how to build chords.","topic_id":3},
+{"title":"Inversions","level":3,"description":"Learn how to build chords.","topic_id":3}
+// {"title":"Major scale","level":1,"description":"Learn how to build chords.","topic_id":4},
+// {"title":"Minor scale","level":2,"description":"Learn how to build chords.","topic_id":4},
+// {"title":"Key signatures","level":3,"description":"Learn how to build chords.","topic_id":4},
+// {"title":"Circle of fifths","level":4,"description":"Learn how to build chords.","topic_id":4}
 ];
 
 

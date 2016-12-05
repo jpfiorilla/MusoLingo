@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton';
 import {LoginContainer} from "../Login/LoginContainer";
@@ -29,8 +30,8 @@ export default class HomePage extends React.Component {
                             <div className="homepage-navbar">
                                 <LoginContainer />
                                 <a href="" className="homepage-nb" id="homepage-home-link">Home</a>
-                                <a href="/faq" className="homepage-nb" id="homepage-features-link">Features</a>
-                                <a href="/about" className="homepage-nb" id="homepage-about-link">Team</a>
+                                <a onClick={() => browserHistory.push('/faq')} className="homepage-nb" id="homepage-features-link">Features</a>
+                                <a onClick={() => browserHistory.push('/about')} className="homepage-nb" id="homepage-about-link">Team</a>
                             </div>
                             <div className="homepage-content">
                                 <img src="/images/logo.png" id="intro-logo" />

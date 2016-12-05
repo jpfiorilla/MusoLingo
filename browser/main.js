@@ -40,10 +40,16 @@ const onNavigationEnter = () => {
 }
 
 const onEnterRetrieveLoggedInUser = () => {
-  var user = localStorage.user && JSON.parse(localStorage.user);
-  if (! user || ! user.id) {
+  console.log('location ', window.location.pathname);
+  let user = localStorage.user && JSON.parse(localStorage.user);
+  let aboutPath = window.location.pathname === '/about';
+  let faqPath = window.location.pathname === '/faq';
+  let either = aboutPath || faqPath;
+
+  if (! user || ! user.id && ! either) {
+
     browserHistory.push('/home');
-  } else {
+  } else if (! either) {
     if (! store.getState().user.id) {
       store.dispatch(retrieveLoggedInUser());
     } else {
@@ -61,8 +67,8 @@ render(
     <Router history={ browserHistory }>
       <Route path="/home" component={HomePage} />
       <Route path="/" component={App} onEnter={onEnterRetrieveLoggedInUser}>
-      <Route path="/faq" component={FAQ} />
       <Route path="/about" component={About} />
+      <Route path="/faq" component={FAQ} />
       <Route path="/quiz" component={Quiz} />
       <Route path="/account" component={Account} />
       <Route path="/nav" component={NavigationPage} onEnter={onNavigationEnter}/>

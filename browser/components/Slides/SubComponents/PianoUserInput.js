@@ -31,10 +31,9 @@ const pianoInput = function (state, notesToPlay) {
 
     if (update === noteToPlay || multipleNoteChoice) {
       notesToPlay.shift();
-
       message = `That was certainly a ${update}!  Way to go!!`;
     } else {
-      message = `Is it me or was that a ${update}?  Keep trying!`;
+      message = `That was a ${update}!  Keep trying!`;
     }
 
       state.setState({
@@ -58,7 +57,7 @@ export default class PianoUserInput extends React.Component {
 
     this.state = {
       notePlayed: undefined,
-      notesToPlay: this.props && this.props.notesToPlay || ['C3', 'D3', 'E3', 'F3'],
+      notesToPlay: this.props && this.props.notesToPlay,
       message: undefined
     };
   }
@@ -67,19 +66,15 @@ export default class PianoUserInput extends React.Component {
     // NOTE: you dont need this here, i just dont know music and need to see
     // the note logged to the console during testing so i can pass the test.
 
-    // console.log(this.state.notePlayed);
     this.props.enable();
   }
 
-  componentWillMount () {
+  componentWillUnmount () {
+    pianoHelper = undefined;
+  }
+  componentDidMount () {
     // invoke the wrapper function with state and notesToPlay.
     pianoHelper = pianoInput(this, this.state.notesToPlay);
-  }
-
-  componentWillUnmount () {
-    // NOTE: when you play the keyboard in any other component we
-    // don't want pianoHelper to run anymore.
-    pianoHelper = undefined;
   }
 
   render() {
@@ -88,9 +83,9 @@ export default class PianoUserInput extends React.Component {
 
     // NOTE: Check if we still have notes to play.
     if (this.state.notesToPlay.length) {
-      direction = `Play me a ${this.state.notesToPlay[0]}!`;
+      direction = `Play a ${this.state.notesToPlay[0]}!`;
     } else {
-      direction = "Great Job!  Watch out Beathoven, there's a new sheriff in town.  Let's move on!";
+      direction = "Great Job!  Let's move on!";
     }
 
     return (

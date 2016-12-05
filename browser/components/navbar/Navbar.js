@@ -35,9 +35,15 @@ export default class Navbar extends React.Component {
   }
 
   render(props) {
+    let linker;
+    if (this.props.user.id) {
+      linker = '/';
+    } else {
+      linker = '/home';
+    }
     return (
       <Toolbar id="navbar" style={{backgroundColor: '#b61f1f', opacity: "0.9", height: "95px"}}>
-          <Link to="/">
+          <Link to={linker}>
             <img id="navbar-logo" src="/images/logo.png" />
           </Link>
         <NavbarMenuContainer { ...props } />

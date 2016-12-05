@@ -328,7 +328,7 @@ var lessononeone = [{
         {
           img: "/images/lessons_pictures/challenge1screenshot.png",
           // different examples of full 4/4 measures
-          style: 
+          style:
             {width: "97%"}
         },
         {
@@ -1160,7 +1160,7 @@ lessonthreeone = [
     {
       text: "A <b>chord</b> is a group of two or more notes played together. A chord comprised of three notes; a <b>root</b>, a <b>third</b>, and a <b>fifth</b>; is known as a <b>triad</b>."
     }, {
-      img: ''
+      img: '/images/lessons_pictures/C.png'
     }
     ]
   }, {
@@ -1169,7 +1169,7 @@ lessonthreeone = [
       {
         text: "The most basic triads in Western music are the <b>major</b> and <b>minor</b> triads."
       }, {
-        img: ''
+        img: '/images/lessons_pictures/C.png'
       },
       {
         text: "Major and minor triads have different sounds, conventionally known perhaps as having 'happy' and 'sad' qualities, but in actuality more accurately resembling the textures 'hard' and 'soft.'"
@@ -1181,7 +1181,7 @@ lessonthreeone = [
       {
         text: "A chord's root is the lowest note of the chord when the chord is written in its most basic form, a series of thirds."
       }, {
-        img: ''
+        img: '/images/lessons_pictures/C.png'
       },
       {
         text: "A major triad, written here, is comprised of a <b>major third</b>, and a <b>perfect fifth</b>. So if the root of a major triad is C, the other notes would be E natural and G natural."
@@ -1193,7 +1193,7 @@ lessonthreeone = [
       {
         text: "Likewise, a minor triad is comprised of a <b>minor third</b> and a <b>perfect fifth</b>. Below you'll see C minor."
       }, {
-        img: ''
+        img: '/images/lessons_pictures/Cm.png'
       },
       {
         text: "A minor third above C is Eb, and a perfect fifth from C is G. Play C major and C minor on your keyboard to get a bearing on how they sound."
@@ -1205,7 +1205,7 @@ lessonthreeone = [
       {
         text: "There are two other kinds of notable triads; <b>diminished<b> and <b>augmented</b> triads. An augmented triad is composed of a <b>major third</b> and an <b>augmented fifth</b>."
       }, {
-        img: ''
+        img: '/images/lessons_pictures/C+.png'
       },
       {
         text: "A C augmented triad then (written C+) would be made up of C, E, and G#. Augmented triads have a very unqiue sound to them, a sort of 'deer in headlights' feeling."
@@ -1217,7 +1217,7 @@ lessonthreeone = [
       {
         text: "Diminished triads are comprised of a root, its <b>minor third</b>, and its <b>diminished fifth</b>."
       }, {
-        img: ''
+        img: '/images/lessons_pictures/Cdim.png'
       },
       {
         text: "A C diminished triad then (written Co) would be made up of C, Eb, and Gb. Since diminished triads contain the diminished fifth, or <b>tri-tone</b>, which is the most dissonant interval on the keyboard, they are used only in certain circumstances."
@@ -1229,7 +1229,7 @@ lessonthreeone = [
       {
         text: "One last kind of chord is worth noting here; you may have seen a 'sus4' chord written on a piece of music at some point. This is a kind of triad composed not with a third, but of a <b>perfect fourth</b>, and a <b>perfect fifth</b>."
       }, {
-        img: ''
+        img: '/images/lessons_pictures/Csus4.png'
       },
       {
         text: "Sus4 chords are very commonly resolved to their major counterparts; this is known as a '4-3' suspension, since the fourth of the chord is being played into the chord's third."
@@ -1242,15 +1242,14 @@ lessonthreeone.forEach((slide, idx) => {
   slide.number = idx + 1;
 });
 
-/*
-lessonthreethree = [
+lessonthreetwo = [
   {
     "title": "Seventh chords",
     "slideContent": [
       {
         text: "Triads are built out of thirds, and subsequently dense chords are built the same way. Beyond triads, there exist <b>seventh chords</b>, <b>ninth chords</b>, and even <b>eleventh</b> and <b>thirteenth chords</b>."
       }, {
-        img: ''
+        img: '/images/lessons_pictures/Cextendedchords.png'
       },
       {
         text: "For now we'll discuss seventh chords and how they're constructed and named."
@@ -1262,7 +1261,7 @@ lessonthreethree = [
       {
         text: "Seventh chords can be thought of as comprising a triad, and the seventh of that triad's root. This is functionally how seventh chords are named and used."
       }, {
-        img: ''
+        img: '/images/lessons_pictures/Cplus7equalsC7.png'
       },
       {
         text: "On the staff here are the notes: <b>C E G Bb</b>. From the previous lesson, you know that the first three notes comprise a <b>C Major triad</b>."
@@ -1274,33 +1273,77 @@ lessonthreethree = [
       {
         text: "From the lessons on intervals, you'll also know that a C to a Bb forms a <b>minor seventh</b>."
       }, {
-        img: ''
-      },
-      {
-        text: "This combination - a major triad with a minor seventh - forms the most basic of seventh chords, a <b>dominant seventh</b>. This would be written as a <b>C7</b>, prounced 'C seven.'"
+        img: '/images/lessons_pictures/Cplus7equalsC7.png'
+      }, {
+        text: "This combination - a major triad with a minor seventh - forms the most fundamental of seventh chords, a <b>dominant seventh</b>. This would be written as a <b>C7</b>, prounced 'C seven.'"
       }
     ]
   }, {
     "title": "Major seventh chords",
     "slideContent": [
       {
-        text: "A "
+        text: "What if you were to use a <b>major 7th</b> instead of a minor 7th? A major triad with a major seventh combines to produce a <b>major seventh</b> chord, here written as a <b>CMaj7</b>."
       }, {
-        img: ''
-      },
+        img: '/images/lessons_pictures/CplusM7equalsCMaj7.png'
+      }, {
+        text: "These two options - major and minor 7th - in addition to the kinds of triads - major, minor, augmented, diminished - are what define the various 7th chord qualities. From here you can combine any one of the former with any one of the latter to produce a unique 7th chord."
+      }
+    ]
+  }, {
+    "title": "Minor seventh chords",
+    "slideContent": [
       {
-        text: ""
+        text: "A <b>minor triad</b> with a <b>minor seventh</b> yields a <b>minor seventh chord</b>, written here as a <b>Cm7</b>. This chord has a mellow, sleepy sound that is the foundation of a lot of modal jazz."
+      }, {
+        img: '/images/lessons_pictures/Cm7.png'
+      }, {
+        text: "A <b>minor triad</b> with a <b>major seventh</b> yields a <b>minor-major seventh chord</b>, written here as a <b>CmMaj7</b>."
+      }, {
+        img: '/images/lessons_pictures/CmM7.png'
+      }, {
+        text: "This chord is more dicomforting, and if you look you might notice a source of that discomfort, namely that the third, fifth, and seventh of this chord - Eb, G, B - form an augmented triad."
+      }
+    ]
+  }, {
+    "title": "Augmented seventh chords",
+    "slideContent": [
+      {
+        text: "An <b>augmented triad</b> with a <b>minor seventh</b> yields an <b>augmented seventh chord</b>, written here as a <b>C+7</b>. This chord is actually more commonly written as <b>'C7(#5)'</b> due to prevailing notation standards in jazz, and sounds like a more dissonant & propulsive version of the original augmented triad."
+      }, {
+        img: '/images/lessons_pictures/C7s5.png'
+      }, {
+        text: "An <b>augmented triad</b> with a <b>major seventh</b> yields an <b>augmented major seventh chord</b>, written here as a <b>CMaj7(#5)</b>. This chord is rarely used but implies its own, totally unique tonality."
+      }, {
+        img: '/images/lessons_pictures/CMaj7s5.png'
+      }
+    ]
+  }, {
+    "title": "Diminished seventh chords",
+    "slideContent": [
+      {
+        text: "A <b>diminished triad</b> with a <b>minor seventh</b> yields a <b>half-diminished chord</b>, written here as a <b>Cø</b>. Half-diminished chords can also be written as <b>Cm7(b5)</b>."
+      }, {
+        img: '/images/lessons_pictures/Chalfdim.png'
+      }, {
+        text: "An <b>diminished triad</b> with a <b>major seventh</b> yields a <b>diminished-major seventh chord</b>, written here as a <b>CoMaj7</b>. Like augmented-major seventh chords, CoMaj7 is rarely written but has a sound all its own."
+      }, {
+        img: '/images/lessons_pictures/CdimMaj7.png'
+      }, {
+        text: "More commonly used than CoMaj7, diminished seventh chords uniquely feature a triad with a <b>diminished seventh</b>, yielding a <b>diminished triad</b>, written like <b>Co7</b>."
+      }, {
+        img: '/images/lessons_pictures/Cdim7.png'
+      }, {
+        text: "Since a diminished 7th is enharmonic to a major 6th, Co7 chords are typically written with the 6th to avoid double accidentals (for example, Co7 would otherwise be written here as C E G Bbb)."
       }
     ]
   }
 ]
-lessonthreethree.forEach((slide, idx) => {
+lessonthreetwo.forEach((slide, idx) => {
   slide.lesson_id = 11;
   slide.number = idx + 1;
 });
-*/
 
-lessonthreefour = [
+lessonthreethree = [
   {
   "title": "Root position",
   "slideContent": [
@@ -1359,14 +1402,13 @@ lessonthreefour = [
     }
   ]
 }];
-lessonthreefour.forEach((slide, idx) => {
-  slide.lesson_id = 13;
+lessonthreethree.forEach((slide, idx) => {
+  slide.lesson_id = 12;
   slide.number = idx + 1;
 });
 
 // lessonthreetwo;
-// lessonthreethree;
 
-const slides = _.flatten([lessononeone, lessononetwo, lessononethree, lessononefour, lessononefive, lessononesix, lessontwoone, lessontwotwo, lessontwothree, lessonthreeone, lessonthreefour]);
+const slides = _.flatten([lessononeone, lessononetwo, lessononethree, lessononefour, lessononefive, lessononesix, lessontwoone, lessontwotwo, lessontwothree, lessonthreeone, lessonthreethree, lessonthreetwo]);
 
 module.exports = slides;
