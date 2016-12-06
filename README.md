@@ -23,34 +23,5 @@ The above script will go through the following steps:
 1. perform a build with Webpack and watch for changes
 1. run the server and watch for file changes with nodemon
 
-## Deploying to Heroku
-
-All pushes to GitHub are being built and tested by Travis CI. However, only a select few of these builds will be deployed to Heroku.
-
 We have one versions of the app on Heroku:  
 // **Prod**: [https://eighty-eight-keys.herokuapp.com](https://eighty-eight-keys.herokuapp.com) 
-
-### Deploying to Test
-
-Right now, only branches specified in our `.travis.yml` file will be deployed to Heroku by Travis CI. You can mark a branch for deployment to Test by editing the following section like so:
-
-```yml
-...
-  app:
-    master: just-home
-    your_branch: just-home-test
-...
-```
-
-If you do this, be sure not to change the other branches and their deployment targets.
-
-### Deploying to Prod
-
-All deployments to Prod will go through the following process:
-
-1. A feature branch opens up a Pull Request on `master`
-2. The branch is built and tested by Travis CI
-3. If the build/tests pass, GitHub will allow collaborators to complete the merge
-4. Once the PR is merged, Travis will rebuild the repo and deploy to Prod
-
-No changes need to be made to the `.travis.yml` file to enable this process. Be sure not to directly push to `master` in an effort to avoid bad builds being deployed to Prod.
