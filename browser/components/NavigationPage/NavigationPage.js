@@ -88,7 +88,7 @@ export default class NavigationPage extends React.Component {
                                   <div id={`slides-quizzes-${index2}`} className="slides-quizzes">
                                     <h3 id="learn" onClick={() => { this.getSlidesAndHeadOver(lesson.id) } }>Learn</h3>
                                     <h3 id="divider">|</h3>
-                                    <h3 id="test" onClick={() => { this.getQuizAndHeadOver(lesson.id) } }>Test</h3>
+                                    <h3 id="test" onClick={() => { this.getQuizAndHeadOver(lesson.id) } }>Quiz</h3>
                                     <h3 id="divider">|</h3>
                                     <a id="play" href={`/game/${lesson.id}`}>Play</a>
                                   </div>
