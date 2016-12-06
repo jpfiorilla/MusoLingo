@@ -808,7 +808,7 @@ lessontwoone = [
       img: "/images/lessons_pictures/12semitones.png",
       style: {
         position: "relative",
-        left: "-9%",
+        left: "-2%",
         padding: "40px"
       }
     }, {
@@ -872,7 +872,6 @@ lessontwoone = [
       img: "/images/lessons_pictures/fullpiano.png",
       style: {
         position: "relative",
-        left: "-3%",
         padding: "30px 0 15px"
       }
     },
@@ -891,8 +890,7 @@ lessontwoone = [
     {
       img: "images/lessons_pictures/halfwholestep.png",
       style: {
-        position: "relative",
-        left: "-2.5%"
+        position: "relative"
       }
     },
     {
