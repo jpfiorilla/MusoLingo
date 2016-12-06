@@ -332,10 +332,6 @@ var lessononeone = [{
             {width: "97%"}
         },
         {
-          img: "/images/lessons_pictures/challenge1screenshot.png",
-          style: {width: "97%"}
-        },
-        {
           text: "Good job making it through the lecture. Once you're ready, take the quiz, which will test your ability to identify the different rhythmic notes."
         }
       ]
@@ -364,7 +360,10 @@ lessononetwo = [{
       text: "Beat is the duration we assign to our rhythm definitions. This can be a fraction of a second, a second, a few seconds, or several seconds. Putting several beats together gives us a steady series of units which make up rhythm."
     },
     {
-      img: "/images/lessons_pictures/four-beat-rhythm.gif"
+      img: "/images/lessons_pictures/four-beat-rhythm.gif",
+      style: {
+        padding: "35px"
+      }
     },
     {
       text: "See this example of a 4 beat rhythm. The notes in each of the two measures add up to 4 beats, but the actual length of one beat is unclear."
@@ -377,7 +376,10 @@ lessononetwo = [{
       text: "The duration of a beat is determined by the song's <b>tempo</b>, which is represented by a number denoting the piece's bpm (beats per minute)."
       },
     {
-      img: "/images/lessons_pictures/bpm_staff.png"
+      img: "/images/lessons_pictures/bpm_staff.png",
+      style: {
+        padding: "30px"
+      }
     },
     {
       text: "The tempo of a piece is usually denoted at the top of the page. If it changes mid-song, the change will be denoted above the relevant measure."
@@ -390,8 +392,15 @@ lessononetwo = [{
       text: "A tempo of 60 bpm means that each beat lasts for <b>one second</b>."
     },
     {
-      text: "The following sound sample will play a measure of 4 quarter notes at 60 bpm. Since a quarter note lasts for one beat, each quarter note will last for one second"
-    }, // sound sample
+      text: "Click the play button below to hear a measure of 4 quarter notes at 60 bpm. Since a quarter note lasts for one beat, each quarter note will last for one second"
+    },
+    {
+      'audioLink': {
+        'source': '/sounds/60 bpm quarter notes.mp3',
+        'type': 'audio/mp3',
+        'description': '4 beats @ 60 BPM'
+      } // sound sample
+    },
     {
       text: "By the way, the sound samples you heard in the last lesson were played at 90 bpm."
     }
@@ -401,13 +410,35 @@ lessononetwo = [{
   "slideContent": [
     {
       text: "60 bpm is considered a very <b>slow</b> tempo. Let's hear 4 quarter notes played at double that speed: 120 bpm."
+    },
+    {
+      'audioLink': {
+        'source': '/sounds/120 bpm quarter notes.mp3',
+        'type': 'audio/mp3',
+        'description': '4 beats @ 120 BPM'
+      }
     }, // sound sample (120 bpm)
     {
       text: "No matter what the tempo is, each quarter note will <b>always</b> last for one beat. So even if we speed up the tempo, 4 quarter notes will always fit in a measure of 4 beats."
     },
     {
-      text: "Now let's hear a measure full of eighth notes played at that tempo. How many eighth notes were played?"
-    }, // sound sample
+      text: "Now let's hear a measure full of eighth notes played at that tempo."
+    },
+    {
+      'audioLink': {
+        'source': '/sounds/120 bpm eighth notes.mp3',
+        'type': 'audio/mp3',
+        'description': '8th notes @ 120 BPM'
+      }
+    },
+    {
+      'userTextInput': {
+        'correctAnswer': '8',
+        'question': 'How many eighth notes were played?',
+        'correctAnswerMessage': 'Nice counting!',
+        'incorrectAnswerMessage': 'Hmm...not quite. Listen to the sample and try again. Make sure to write your answer as a number.'
+      }
+    }
   ] // question: answer: 8
 }, {
   "title": 'Keeping Time',
@@ -416,13 +447,37 @@ lessononetwo = [{
       text: "Thankfully, nobody expects musicians to memorize how long a beat leasts for each tempo - that would be insane!"
     },
     {
-      img: '/images/lessons_pictures/metronome.jpg'
+      img: '/images/lessons_pictures/metronome.jpg',
+      style: {
+        padding: "30px"
+      }
     },
     {
       text: "Instead, we can get the length of each beat from a <b>metronome</b>, which takes a bpm and plays a repetitive 'click' sound once for each beat."
     },
     {
-      img: "Compare the following samples. The first is a metronome playing 8 clicks at 72 bpm, the second is at 96 bpm, and the last is at 144 bpm."
+      text: "Compare the following samples. All three consist of 2 measures of quarter notes, but each are at a different tempo."
+    },
+    {
+      'audioLink': {
+        'source': '/sounds/72 bpm metronome.mp3',
+        'type': 'audio/mp3',
+        'description': '72 BPM'
+      }
+    },
+    {
+      'audioLink': {
+        'source': '/sounds/96 bpm metronome.mp3',
+        'type': 'audio/mp3',
+        'description': '96 BPM'
+      }
+    },
+    {
+      'audioLink': {
+        'source': '/sounds/144 bpm metronome.mp3',
+        'type': 'audio/mp3',
+        'description': '144 BPM'
+      }
     } // sound sample of metronome playing 4 beats; make sure you tell them what bpm it's at
   ]
 }, {
@@ -432,7 +487,10 @@ lessononetwo = [{
       text: "In an orchestra, the conductor keeps the musicians in time by waving his baton to the speed of each beat."
     },
     {
-      img: '/images/lessons_pictures/baton.jpg'
+      img: '/images/lessons_pictures/baton.jpg',
+      style: {
+        padding: "30px"
+      }
     },
     {
       text: "Of course, in most performance situations, you won't have a metronome or conductor to give you the pulse. In a smaller band, it's up to the musicians to stay in sync with each other. In a solo performance, the musician has to be able to stick to a consistent beat."
@@ -479,7 +537,10 @@ lessononethree = [
       text: "The pitch of a note is described by a letter name. In Western music, there are <b>12</b> different note names used to denote pitch."
     },
     {
-      img:"/images/lessons_pictures/piano_notes_staff.jpg"
+      img:"/images/lessons_pictures/piano_notes_staff.jpg",
+      style: {
+        margin: "10px"
+      }
     },
     {
       text: "For example, if we play the first white key from the left on our on-screen keyboard, it will produce a C. Try it yourself!"
@@ -497,7 +558,10 @@ lessononethree = [
       text: "The second white key from the left will produce a D, the third one will produce an E, and so on. Once we get to G, the letter names restart again with A."
     },
     {
-      img: "/images/lessons_pictures/piano_notes_staff.jpg"
+      img: "/images/lessons_pictures/piano_notes_staff.jpg",
+      style: {
+        margin: "10px"
+      }
     },
     {
       text: "As we move towards the right on the keyboard, we are <b>ascending</b>, and the pitches get <b>higher</b>. If we move towards the left, we are <b>descending</b>, and they become <b>lower</b>."
@@ -516,7 +580,10 @@ lessononethree = [
     {
       text: "Notes are read on a <b>staff</b>. A staff is a set of five lines on which all sheet music is written."
     }, {
-      img: '/images/lessons_pictures/treble-clef-notes.png' // image of staff with note names
+      img: '/images/lessons_pictures/treble-clef-notes.png',
+      style: {
+        margin: "40px"
+      }
     },
     {
       text: "The vertical placement of a note on the staff tells us which pitch that note corresponds to."
@@ -528,13 +595,22 @@ lessononethree = [
     {
       text: "The symbol on the left of the staff is the treble clef. This indicates that the notes on the spaces in between the lines of this staff are F A C E."
     }, {
-      img: '/images/lessons_pictures/treble-clef-space-notes.png' // image of staff with F A C E denoted
+      img: '/images/lessons_pictures/treble-clef-space-notes.png',
+      style: {
+        margin: "15px 0 0 0px"
+      } // image of staff with F A C E denoted
     }, {
-      img: "/images/lessons_pictures/f3 c3.png" // image of an F and a C
+      img: "/images/lessons_pictures/f3 c3.png",
+      style: {
+        margin: "10px"
+      } // image of an F and a C
     }, {
       text: "In the image above, the first half note is an F. The second one is a C."
     }, {
-      img: "/images/lessons_pictures/e3.png" // image of an E
+      img: "/images/lessons_pictures/e3.png",
+      style: {
+        margin: "20px"
+      } // image of an E
     }, {
       pianoUserInput: {
         notesToPlay: [["E3", "E4"]]
@@ -547,7 +623,10 @@ lessononethree = [
     {
       text: "Notes can also be placed directly <b>on</b> the staff lines. Ascending from the bottom line, the notes would be E G B D F."
     }, {
-      img: '/images/lessons_pictures/treble-clef-line-notes.png' // image of staff with line notes displayed
+      img: '/images/lessons_pictures/treble-clef-line-notes.png',
+      style: {
+        margin: "20px"
+      } // image of staff with line notes displayed
     },
     {
       text: "An easy way to remember this is through the pnuemonic <b>E</b>very <b>G</b>ood <b>B</b>oy <b>D</b>oes <b>F</b>ine."
@@ -559,11 +638,17 @@ lessononethree = [
     {
       text: "As you might have noticed, the names of notes wrap around from A to G. This means there are multiple notes of each letter name."
     }, {
-      img: "/images/lessons_pictures/piano_notes_staff.jpg" // re-use image of notes mapped out on keyboard
+      img: "/images/lessons_pictures/piano_notes_staff.jpg",
+      style: {
+        margin: "10px"
+      } // re-use image of notes mapped out on keyboard
     }, {
       text: "In the image below, both of the notes are 'C.' The lower one is 'middle C,' also known as C4. This is the C nearest the middle of the piano."
     }, {
-      img: "/images/lessons_pictures/c3 c4.png"
+      img: "/images/lessons_pictures/c3 c4.png",
+      style: {
+        margin: "20px"
+      }
     }, {
       text: "We'll learn more about repeating note names in our lesson on octaves and half-steps."
     }
@@ -576,14 +661,18 @@ lessononethree.forEach((slide, idx) => {
 
 lessononefour = [
   {
-    "title": "Accidentals", // SPLIT INTO ITS OWN LESSON
+    "title": "Accidentals",
     "slideContent": [
       {
         text: "You probably been wondering what the black keys are for. Remember when we learned that there are 12 notes? 7 of them are played by the white keys, and other 5 are played by the black keys."
       }, {
         text: "The black keys play notes with symbols in their letter names, known as <b>accidentals</b>."
       }, {
-        img: "/images/lessons_pictures/blackkeys.png" // picture of black keys with note names
+        img: "/images/lessons_pictures/blackkeys.png",
+        style: {
+          width: "36%",
+          margin: "30px"
+        }
       }, {
         text: "There are two types of accidentals, sharps (#) and flats (b)."
       }
@@ -596,7 +685,11 @@ lessononefour = [
     }, {
       text: "The second black key from the left plays the note that, in terms of pitch, lies <b>in between</b> D and E, its surrounding white keys."
     }, {
-      img: "/images/lessons_pictures/dsharpeb.png"
+      img: "/images/lessons_pictures/dsharpeb.png",
+      style: {
+        width: "25%",
+        margin: "25px"
+      }
     }, {
       text: "Try playing it, and compare the way it sounds to its surrounding notes!"
     },  // require user to input D#3 on keyboard
@@ -610,7 +703,10 @@ lessononefour = [
     {
       text: "A <b>half-step</b> describes the space between two consecutive notes. A sharp raises the affected note by a half-step, while a flat lowers the note by a half-step."
     }, {
-      img: "/images/lessons_pictures/dsharpebstaff.png" // image of D# and Eb on staff
+      img: "/images/lessons_pictures/dsharpebstaff.png",
+      style: {
+        margin: "20px"
+      } // image of D# and Eb on staff
     }, {
       text: "So this note can be thought of as either a raised D <b>or</b> a lowered E. Whether we call it D# or Eb, the note has the same pitch."
     }
@@ -619,7 +715,10 @@ lessononefour = [
   "title": "",
   "slideContent": [
     {
-      img: "/images/lessons_pictures/asharpbb.png" //picture of a A#/Bb
+      img: "/images/lessons_pictures/asharpbb.png",
+      style: {
+        margin: "10px"
+      } //picture of a A#/Bb
     },
     {
       text: "What is this note called? If you've been paying attention, you'll know that there are two possible right answers!"
@@ -631,7 +730,7 @@ lessononefour = [
     {
       text: "When a note is written with an accidental, that accidental applies to each subsequent note on that line for the rest of the measure."
     }, {
-      img: "images/lessons_pictures/bnatural.png" // image of B, Bb, Bb, B
+      img: "/images/lessons_pictures/bnatural.png" // image of B, Bb, Bb, B
     }, {
       text: "The 'natural' symbol displayed here cancels that effect. Thus the notes in this measure are: B, Bb, Bb, B."
     }
@@ -651,7 +750,10 @@ lessononefive = [
       },
       {
         img: "/images/lessons_pictures/measure-4.png",
-        style: {width: "50%"}
+        style: {
+          width: "50%",
+          margin: "25px"
+        }
       },
       {
         text: "FORGET THAT EVER HAPPENED. That isn't <b>always</b> true, we just simplified things to make the concepts of note duration and tempo easier to understand."
@@ -665,7 +767,10 @@ lessononefive = [
       text: "Written music is usually prefaced by a figure composed of two numbers, one stacked atop the other."
     }, {
       img: "/images/lessons_pictures/measure-4.png",
-      style: {width: "50%"}
+      style: {
+        width: "50%",
+        margin: "25px"
+      }
     }, {
       text: "This is known as a <b>time signature</b>, and it indicates the number of beats in that measure and all proceeding measures."
     }
@@ -676,7 +781,10 @@ lessononefive = [
       text: "The top number indicates how many beats make up one measure. When the time signature is 4/4 (pronounced 'four-four'), there are 4 beats per measure, while in 3/4, there are 3 beats per measure"
     }, {
       img: "/images/lessons_pictures/measure-4.png",
-      style: {width: "50%"}
+      style: {
+        width: "50%",
+        margin: "25px"
+      }
     }, {
       text: "The bottom number indicates which note is considered one <b>beat</b> when counting a measure."
     }, {
@@ -689,13 +797,16 @@ lessononefive = [
       text: "Thus, in 4/4, there are 4 beats, and a quarter note is equivalent to one beat. So we can fit up to 4 quarter notes per measure."
     }, {
       img: "/images/lessons_pictures/measure-4.png",
-      style: {width: "70%"}
+      style: {
+        width: "50%",
+        margin: "25px"
+      }
     }, {
       userTextInput: {
         correctAnswer: "8",
         question: "How many eighth notes could fit in one 4/4 measure?",
         correctAnswerMessage: "Good job!",
-        incorrectAnswerMessage: "Try again!"
+        incorrectAnswerMessage: "Not quite. Try again!"
       }
     }
   ]
@@ -723,7 +834,11 @@ lessononefive = [
     {
       text: "A 4/4 time signature is the most common time signature in western music."
     }, {
-      img: "/images/lessons_pictures/commontime.jpg"
+      img: "/images/lessons_pictures/commontime.jpg",
+      style: {
+        width: "15%",
+        margin: "20px"
+      }
     }, {
       text: "Because of this, it is sometimes written simply as a large C, denoting <b>common time</b>."
     }
@@ -734,7 +849,8 @@ lessononefive = [
     {
       text: "Other common time signatures include 2/4 ('oom-pah'), 3/4 (as in a waltz), and 6/8 (a hybrid of 2/4 and 3/4)."
     }, {
-      img: '/images/lessons_pictures/timesigs.jpg'
+      img: '/images/lessons_pictures/timesigs.jpg',
+      style: {margin: "25px"}
     }, {
       text: "Each implies a different rhythmic feel. As you play music in each of these, you'll naturally develop an understanding of how they sound."
     }
@@ -752,7 +868,11 @@ lessononesix = [{
     {
       text: "So far, we've written every note on the treble clef. The treble clef is used for certain instruments, or when a part is written in a certain range."
     }, {
-      img: ''
+      img: '/images/lessons_pictures/bass-clef.png',
+      style: {
+        width: "10%",
+        margin: "30px"
+      }
     }, {
       text: "What do we do when a part is written beneath the range of the treble clef? Usually we'll employ the <b>bass clef</b>, seen above."
     }
@@ -763,9 +883,12 @@ lessononesix = [{
     {
       text: "The bass clef functions exactly the same as a treble clef; notes are still written in ascending letter order, and durations are the same as we've gone over previously."
     }, {
-      img: ''
+      img: '/images/lessons_pictures/bass-clef-notes.png',
+      style: {
+        margin: "30px"
+      }
     }, {
-      img: "The main difference is in which note corresponds to which line and space. Here you can see the names of the lines of the bass clef, <b>G B D F A</b> (Good Boys Do Fine Always)."
+      text: "The main difference is in which note corresponds to which line and space. Here you can see the names of the lines of the bass clef, <b>G B D F A</b> (Good Boys Do Fine Always)."
     }
   ]
 }, {
@@ -774,20 +897,26 @@ lessononesix = [{
     {
       text: "The other difference is where on the piano one would play notes written on the bass clef. Pictured here is the <b>grand staff</b>, a combination of the treble clef and the bass clef (I'm at the treble clef / I'm at the bass clef / I'm at the combination treble clef and bass clef)."
     }, {
-      img: ''
+      img: '/images/lessons_pictures/grand-staff-pnuemonics.gif',
+      style: {
+        margin: "25px"
+      }
     }, {
-      img: "Most piano music is written for the grand staff, with each of the pianist's hands corresponding to one of the staves, the higher clef for the right hand, and the lower clef for the left."
+      text: "Most piano music is written for the grand staff, with each of the pianist's hands corresponding to one of the staves, the higher clef for the right hand, and the lower clef for the left."
     }
   ]
 }, {
   "title": "Grand staff",
   "slideContent": [
     {
-      text: "You'll notice that there are two notes written on this staff; on the treble clef is written a C4, as you've seen before. On the bass clef is <b>also</b> written a C4."
+      text: "Here are the notes on both clefs. Notice how the middle C (C4) is highlighted in red?"
     }, {
-      img: ''
+      img: '/images/lessons_pictures/grand-staff-notes.jpg',
+      style: {
+        margin: "30px"
+      }
     }, {
-      img: "These two notes as written are the same key on a piano. This is where the treble clef and the bass clef meet. From here you can derive the note names going down from C4."
+      text: "C4 is where the treble clef and the bass clef meet. From here you can derive the note names going down or up from C4."
     }
   ]
 }
@@ -1122,6 +1251,9 @@ lessontwothree = [
       },
       {
         img: "/images/lessons_pictures/consonancedissonance.png",
+        style: {
+          margin: "35px"
+        }
       },
       {
         text: "In Western music theory, <b>consonant intervals</b> are described as being pleasant and agreeable, while <b>dissonant intervals</b> are said to create tension."
@@ -1133,12 +1265,6 @@ lessontwothree = [
   "slideContent": [
     {
       text: "These concepts are central to <b>harmony</b>, the study of how notes interact when played simultaneously."
-    },
-    {
-      img: "/images/lessons_pictures/consonance_dissonance.png",
-      style: {
-        padding: "25px 0"
-      }
     },
     {
       text: "Stayed tuned for more harmony in our next lesson: <b>chords</b>!"
@@ -1158,7 +1284,8 @@ lessonthreeone = [
     {
       text: "A <b>chord</b> is a group of two or more notes played together. A chord comprised of three notes; a <b>root</b>, a <b>third</b>, and a <b>fifth</b>; is known as a <b>triad</b>."
     }, {
-      img: '/images/lessons_pictures/C.png'
+      img: '/images/lessons_pictures/C.png',
+      style: {margin: "35px"}
     }
     ]
   }, {
@@ -1167,7 +1294,8 @@ lessonthreeone = [
       {
         text: "The most basic triads in Western music are the <b>major</b> and <b>minor</b> triads."
       }, {
-        img: '/images/lessons_pictures/C.png'
+        img: '/images/lessons_pictures/C.png',
+        style: {margin: "35px"}
       },
       {
         text: "Major and minor triads have different sounds, conventionally known perhaps as having 'happy' and 'sad' qualities, but in actuality more accurately resembling the textures 'hard' and 'soft.'"
@@ -1179,7 +1307,8 @@ lessonthreeone = [
       {
         text: "A chord's root is the lowest note of the chord when the chord is written in its most basic form, a series of thirds."
       }, {
-        img: '/images/lessons_pictures/C.png'
+        img: '/images/lessons_pictures/C.png',
+        style: {margin: "35px"}
       },
       {
         text: "A major triad, written here, is comprised of a <b>major third</b>, and a <b>perfect fifth</b>. So if the root of a major triad is C, the other notes would be E natural and G natural."
@@ -1191,7 +1320,8 @@ lessonthreeone = [
       {
         text: "Likewise, a minor triad is comprised of a <b>minor third</b> and a <b>perfect fifth</b>. Below you'll see C minor."
       }, {
-        img: '/images/lessons_pictures/Cm.png'
+        img: '/images/lessons_pictures/Cm.png',
+        style: {margin: "35px"}
       },
       {
         text: "A minor third above C is Eb, and a perfect fifth from C is G. Play C major and C minor on your keyboard to get a bearing on how they sound."
@@ -1203,7 +1333,8 @@ lessonthreeone = [
       {
         text: "There are two other kinds of notable triads; <b>diminished<b> and <b>augmented</b> triads. An augmented triad is composed of a <b>major third</b> and an <b>augmented fifth</b>."
       }, {
-        img: '/images/lessons_pictures/C+.png'
+        img: '/images/lessons_pictures/C+.png',
+        style: {margin: "35px"}
       },
       {
         text: "A C augmented triad then (written C+) would be made up of C, E, and G#. Augmented triads have a very unqiue sound to them, a sort of 'deer in headlights' feeling."
@@ -1215,7 +1346,8 @@ lessonthreeone = [
       {
         text: "Diminished triads are comprised of a root, its <b>minor third</b>, and its <b>diminished fifth</b>."
       }, {
-        img: '/images/lessons_pictures/Cdim.png'
+        img: '/images/lessons_pictures/Cdim.png',
+        style: {margin: "35px"}
       },
       {
         text: "A C diminished triad then (written Co) would be made up of C, Eb, and Gb. Since diminished triads contain the diminished fifth, or <b>tri-tone</b>, which is the most dissonant interval on the keyboard, they are used only in certain circumstances."
@@ -1227,7 +1359,8 @@ lessonthreeone = [
       {
         text: "One last kind of chord is worth noting here; you may have seen a 'sus4' chord written on a piece of music at some point. This is a kind of triad composed not with a third, but of a <b>perfect fourth</b>, and a <b>perfect fifth</b>."
       }, {
-        img: '/images/lessons_pictures/Csus4.png'
+        img: '/images/lessons_pictures/Csus4.png',
+        style: {margin: "35px"}
       },
       {
         text: "Sus4 chords are very commonly resolved to their major counterparts; this is known as a '4-3' suspension, since the fourth of the chord is being played into the chord's third."
@@ -1247,7 +1380,8 @@ lessonthreetwo = [
       {
         text: "Triads are built out of thirds, and subsequently dense chords are built the same way. Beyond triads, there exist <b>seventh chords</b>, <b>ninth chords</b>, and even <b>eleventh</b> and <b>thirteenth chords</b>."
       }, {
-        img: '/images/lessons_pictures/Cextendedchords.png'
+        img: '/images/lessons_pictures/Cextendedchords.png',
+        style: {margin: "35px"}
       },
       {
         text: "For now we'll discuss seventh chords and how they're constructed and named."
@@ -1259,7 +1393,8 @@ lessonthreetwo = [
       {
         text: "Seventh chords can be thought of as comprising a triad, and the seventh of that triad's root. This is functionally how seventh chords are named and used."
       }, {
-        img: '/images/lessons_pictures/Cplus7equalsC7.png'
+        img: '/images/lessons_pictures/Cplus7equalsC7.png',
+        style: {margin: "35px"}
       },
       {
         text: "On the staff here are the notes: <b>C E G Bb</b>. From the previous lesson, you know that the first three notes comprise a <b>C Major triad</b>."
@@ -1271,7 +1406,8 @@ lessonthreetwo = [
       {
         text: "From the lessons on intervals, you'll also know that a C to a Bb forms a <b>minor seventh</b>."
       }, {
-        img: '/images/lessons_pictures/Cplus7equalsC7.png'
+        img: '/images/lessons_pictures/Cplus7equalsC7.png',
+        style: {margin: "35px"}
       }, {
         text: "This combination - a major triad with a minor seventh - forms the most fundamental of seventh chords, a <b>dominant seventh</b>. This would be written as a <b>C7</b>, prounced 'C seven.'"
       }
@@ -1282,7 +1418,8 @@ lessonthreetwo = [
       {
         text: "What if you were to use a <b>major 7th</b> instead of a minor 7th? A major triad with a major seventh combines to produce a <b>major seventh</b> chord, here written as a <b>CMaj7</b>."
       }, {
-        img: '/images/lessons_pictures/CplusM7equalsCMaj7.png'
+        img: '/images/lessons_pictures/CplusM7equalsCMaj7.png',
+        style: {margin: "35px"}
       }, {
         text: "These two options - major and minor 7th - in addition to the kinds of triads - major, minor, augmented, diminished - are what define the various 7th chord qualities. From here you can combine any one of the former with any one of the latter to produce a unique 7th chord."
       }
@@ -1293,11 +1430,13 @@ lessonthreetwo = [
       {
         text: "A <b>minor triad</b> with a <b>minor seventh</b> yields a <b>minor seventh chord</b>, written here as a <b>Cm7</b>. This chord has a mellow, sleepy sound that is the foundation of a lot of modal jazz."
       }, {
-        img: '/images/lessons_pictures/Cm7.png'
+        img: '/images/lessons_pictures/Cm7.png',
+        style: {margin: "35px"}
       }, {
         text: "A <b>minor triad</b> with a <b>major seventh</b> yields a <b>minor-major seventh chord</b>, written here as a <b>CmMaj7</b>."
       }, {
-        img: '/images/lessons_pictures/CmM7.png'
+        img: '/images/lessons_pictures/CmM7.png',
+        style: {margin: "35px"}
       }, {
         text: "This chord is more dicomforting, and if you look you might notice a source of that discomfort, namely that the third, fifth, and seventh of this chord - Eb, G, B - form an augmented triad."
       }
@@ -1308,11 +1447,13 @@ lessonthreetwo = [
       {
         text: "An <b>augmented triad</b> with a <b>minor seventh</b> yields an <b>augmented seventh chord</b>, written here as a <b>C+7</b>. This chord is actually more commonly written as <b>'C7(#5)'</b> due to prevailing notation standards in jazz, and sounds like a more dissonant & propulsive version of the original augmented triad."
       }, {
-        img: '/images/lessons_pictures/C7s5.png'
+        img: '/images/lessons_pictures/C7s5.png',
+        style: {margin: "35px"}
       }, {
         text: "An <b>augmented triad</b> with a <b>major seventh</b> yields an <b>augmented major seventh chord</b>, written here as a <b>CMaj7(#5)</b>. This chord is rarely used but implies its own, totally unique tonality."
       }, {
-        img: '/images/lessons_pictures/CMaj7s5.png'
+        img: '/images/lessons_pictures/CMaj7s5.png',
+        style: {margin: "35px"}
       }
     ]
   }, {
@@ -1321,15 +1462,18 @@ lessonthreetwo = [
       {
         text: "A <b>diminished triad</b> with a <b>minor seventh</b> yields a <b>half-diminished chord</b>, written here as a <b>Cø</b>. Half-diminished chords can also be written as <b>Cm7(b5)</b>."
       }, {
-        img: '/images/lessons_pictures/Chalfdim.png'
+        img: '/images/lessons_pictures/Chalfdim.png',
+        style: {margin: "35px"}
       }, {
         text: "An <b>diminished triad</b> with a <b>major seventh</b> yields a <b>diminished-major seventh chord</b>, written here as a <b>CoMaj7</b>. Like augmented-major seventh chords, CoMaj7 is rarely written but has a sound all its own."
       }, {
-        img: '/images/lessons_pictures/CdimMaj7.png'
+        img: '/images/lessons_pictures/CdimMaj7.png',
+        style: {margin: "35px"}
       }, {
         text: "More commonly used than CoMaj7, diminished seventh chords uniquely feature a triad with a <b>diminished seventh</b>, yielding a <b>diminished triad</b>, written like <b>Co7</b>."
       }, {
-        img: '/images/lessons_pictures/Cdim7.png'
+        img: '/images/lessons_pictures/Cdim7.png',
+        style: {margin: "35px"}
       }, {
         text: "Since a diminished 7th is enharmonic to a major 6th, Co7 chords are typically written with the 6th to avoid double accidentals (for example, Co7 would otherwise be written here as C E G Bbb)."
       }
@@ -1348,7 +1492,8 @@ lessonthreethree = [
     {
       text: "So far we've learned how to build triads in what is known as <b>root position</b>. A triad is in root position when its tonic is written as its lowest note, in the bass."
     }, {
-      img: '/images/lessons_pictures/c root positions.png'
+      img: '/images/lessons_pictures/c root positions.png',
+      style: {margin: "25px"}
     }, {
       text: 'These two chords are both in root position. The mediant E is raised by an octave in the second example, but the lowest note remains the C.'
     }
@@ -1357,7 +1502,8 @@ lessonthreethree = [
     "slideContent": [{
       text: "How else might a C triad be arranged? There are two other options for the bass note: the mediant (E) and the dominant (G)."
     }, {
-      img: '/images/lessons_pictures/c6 and c64.png'
+      img: '/images/lessons_pictures/c6 and c64.png',
+      style: {margin: "25px"}
     }, {
       text: 'The triads written here are known as <b>inversions</b>.'
     }
@@ -1366,7 +1512,8 @@ lessonthreethree = [
     "slideContent": [{
       text: "In the first chord, the mediant (E) is written in the bass; this is known as a C triad in <b>first inversion</b>, or a C 6."
     }, {
-      img: '/images/lessons_pictures/c6 and c64.png'
+      img: '/images/lessons_pictures/c6 and c64.png',
+      style: {margin: "25px"}
     }, {
       text: 'The second chord features the dominant (G) in the bass; this is known as <b>second inversion</b>, or a C 6/4.'
     }
@@ -1375,7 +1522,8 @@ lessonthreethree = [
     "slideContent": [{
       text: "In root position, a traid is composed of an interval of a third and an interval of a fifth from the bass note. The reason the first-inversion chord is called 'C 6' is that the intervals from the bass note are now a third (E to G) and a sixth (E to C)."
     }, {
-      img: '/images/lessons_pictures/c6 and c64.png'
+      img: '/images/lessons_pictures/c6 and c64.png',
+      style: {margin: "25px"}
     }, {
       text: "Similarly, the second-inversion chord is called '6/4' because the intervals from the bass are now a sixth (G to E) and a fourth (G to C)."
     }
@@ -1384,7 +1532,8 @@ lessonthreethree = [
     "slideContent": [{
       text: "There are many reasons one might choose to write a chord in an inversion rather than in root position when writing a piece."
     }, {
-      img: '/images/lessons_pictures/c64 g c.png'
+      img: '/images/lessons_pictures/c64 g c.png',
+      style: {margin: "25px"}
     }, {
       text: 'One frequent reason is to preserve common tones between chords in their respective voices. See here: the progression is <b>C 6/4, G, C</b>. By writing the first C chord in second inversion, the bass is able to stay on the same note for both chords.'
     }
@@ -1394,7 +1543,8 @@ lessonthreethree = [
     "slideContent": [{
       text: "Another reason might be to create a specific melody out of the bass line."
     }, {
-      img: '/images/lessons_pictures/am dm f g c.png'
+      img: '/images/lessons_pictures/am dm f g c.png',
+      style: {margin: "25px"}
     }, {
       text: "This example features a simple functional progression; <b>Am, Dm, F, G, C</b>. Since these chords contain the notes 'E, D, C, B, C', we can arrange the progression and inversions such that those notes comprise the bass line."
     }
